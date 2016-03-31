@@ -8,4 +8,8 @@ package com.asen.android.lib.base;
  * @date 2016/3/31 15:12
  */
 public class BaseApplication {
+
+    public void a () {
+
+    }
 }
