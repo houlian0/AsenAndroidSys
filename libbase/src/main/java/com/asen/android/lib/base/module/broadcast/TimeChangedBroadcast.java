@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 
 /**
  * Created by ASEN on 2016/3/31.
+ * 时间改变广播监听
  *
  * @author ASEN
  * @version v1.0
