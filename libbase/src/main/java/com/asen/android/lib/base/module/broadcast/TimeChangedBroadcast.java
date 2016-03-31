@@ -21,11 +21,20 @@ public class TimeChangedBroadcast implements IBroadcastDefinition {
 
     private TimeReceiver mRecevier;
 
+    /**
+     * 时间改变时的监听
+     */
     public interface OnTimeChangeListener {
 
+        /**
+         * 时间监听
+         */
         void timeChanged();
     }
 
+    /**
+     * 开始监听
+     */
     @Override
     public void startWatch() {
         if (mRecevier != null) {
@@ -33,6 +42,9 @@ public class TimeChangedBroadcast implements IBroadcastDefinition {
         }
     }
 
+    /**
+     * 结束监听
+     */
     @Override
     public void stopWatch() {
         if (mRecevier != null) {
