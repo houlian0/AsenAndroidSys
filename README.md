@@ -80,7 +80,7 @@ LibBase介绍
 1. 仿照AsyncTask写的异步类SenAsyncTask<br>
 2. 定时任务异步类SenTimingTask<br>
 
-## 反射机制的快速
+## 反射机制的快速FindView
 
 首先在控件上加AFindView注解,此处tvShow与xml中的id同名,不同名时可以通过id来设置.也可以快速的给控件设置onClick监听
 
