@@ -1,8 +1,8 @@
-package com.asen.android.lib.base.ui.view.tree.adapter;
+package com.asen.android.lib.base.ui.quick.adapter.tree.adapter;
 
-import com.asen.android.lib.base.ui.view.tree.TreeNode;
-import com.asen.android.lib.base.ui.view.tree.TreeNodeId;
-import com.asen.android.lib.base.ui.view.tree.TreeNodePid;
+import com.asen.android.lib.base.ui.quick.adapter.tree.TreeNode;
+import com.asen.android.lib.base.ui.quick.adapter.tree.TreeNodeId;
+import com.asen.android.lib.base.ui.quick.adapter.tree.TreeNodePid;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

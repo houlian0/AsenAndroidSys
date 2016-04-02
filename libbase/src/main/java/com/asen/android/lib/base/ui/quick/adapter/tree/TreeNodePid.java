@@ -1,4 +1,4 @@
-package com.asen.android.lib.base.ui.view.tree;
+package com.asen.android.lib.base.ui.quick.adapter.tree;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * Simple to Introduction
- * 树节点编号注解
+ * 树节点父编号注解
  *
  * @author ASEN
  * @version v1.0
@@ -15,7 +15,6 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface TreeNodeId {
-
+public @interface TreeNodePid {
 
 }

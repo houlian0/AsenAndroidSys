@@ -1,4 +1,4 @@
-package com.asen.android.lib.base.ui.view.tree.adapter;
+package com.asen.android.lib.base.ui.quick.adapter.tree.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -7,7 +7,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
-import com.asen.android.lib.base.ui.view.tree.TreeNode;
+import com.asen.android.lib.base.ui.quick.adapter.tree.TreeNode;
 
 import java.util.List;
 
