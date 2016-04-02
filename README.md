@@ -18,7 +18,7 @@ LibBase介绍
 ## GPS定位
     首先在AndroidManifest.xml增加定位权限<br>
 
-    `<!--用于进行网络定位-->
+    ｀<!--用于进行网络定位-->
      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
      <!--用于访问GPS定位-->
      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />`
