@@ -133,11 +133,9 @@ Fragment中或者其他需要在View中查找控件的,可用如下方法
          @TreeNodePid
          private String pid;
          
-         
          private String name;
          
          ...
-         
      }
      
 写一个Adapter,如下
