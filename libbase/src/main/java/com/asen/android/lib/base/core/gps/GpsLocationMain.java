@@ -26,6 +26,7 @@ import com.asen.android.lib.base.tool.util.LogUtil;
 import com.asen.android.lib.base.tool.util.Version;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,7 +44,7 @@ public class GpsLocationMain extends GpsLocation {
 
     private static final int MIN_DISTANCE = 0; // 更新最小距离间隔
 
-    private static final long STAY_TIME_INTERVAL = 300 * 1000; // 停留时间间隔
+    private static final long STAY_TIME_INTERVAL = 60 * 1000; // 停留时间间隔
 
     public static final int EXTENSION_BUFFER_DISTANCE = 10; // 第三方定位缓冲距离，超过这个距离与两点精度的和，则更新点位
 
@@ -409,13 +410,15 @@ public class GpsLocationMain extends GpsLocation {
                 double longitude = location.getLongitude();
                 double latitude = location.getLatitude();
                 float accuracy = location.getAccuracy();
-                if (accuracy < mGpsPoint.getAccuracy() || (distance(longitude, latitude, mGpsPoint.getLongitude(), mGpsPoint.getLatitude()) > accuracy * 2 && location.getSpeed() != 0)) {
-                    // 如果两个经纬度间的距离大于精度和 或者  前一个点为第三方定位获得或网络定位获得，则重新定位
+                int accuracyScale = type == LocationType.TYPE_EXTENSION ? 3 : 2; // 扩展定位，更严格的偏移后才去改变位置
+                if (accuracy < mGpsPoint.getAccuracy() || (distance(longitude, latitude, mGpsPoint.getLongitude(), mGpsPoint.getLatitude()) > accuracy * accuracyScale)) {
+                    // 如果两个经纬度间的距离大于精度和
                     location(type, location);
                 } else {
                     mGpsPoint.setSpeed(location.getTime() - mGpsPoint.getTime() > STAY_TIME_INTERVAL ? 0 : location.getSpeed());
                 }
             }
+
         }
     }
 
@@ -458,6 +461,9 @@ public class GpsLocationMain extends GpsLocation {
 
     // 发送处理定位监听
     void sendLocationListener() {
+        if (mGpsPoint.getSpeed() != 0 && new Date().getTime() - mGpsPoint.getTime() > STAY_TIME_INTERVAL) {
+            mGpsPoint.setSpeed(0);
+        }
         for (OnLocationChangedListener listener : mOnLocationChangedListeners) {
             listener.locationChanged(mGpsPoint, mMapPoint);
         }
