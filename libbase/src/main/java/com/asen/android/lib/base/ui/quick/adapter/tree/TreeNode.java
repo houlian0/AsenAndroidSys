@@ -1,4 +1,4 @@
-package com.asen.android.lib.base.ui.view.tree;
+package com.asen.android.lib.base.ui.quick.adapter.tree;
 
 import java.util.ArrayList;
 import java.util.List;
