@@ -13,6 +13,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -91,14 +93,14 @@ public class DownloadContextXml {
      * @param document Document对象
      * @throws TransformerException
      */
-    private void saveXml(File file, Document document) throws TransformerException {
+    private void saveXml(File file, Document document) throws TransformerException, FileNotFoundException {
         String tmpName = "." + file.getName();
         File tmpFile = new File(file.getParent(), tmpName);
 
         TransformerFactory transformerFactory = TransformerFactory.newInstance();//获得一个TransformerFactory对象
         Transformer transformer = transformerFactory.newTransformer(); //获得一个Transformer对象
         Source xmlSource = new DOMSource(document);   //把document对象用一个DOMSource对象包装起来
-        Result outputTarget = new StreamResult(tmpFile);   //建立一个存储目标对象
+        Result outputTarget = new StreamResult(new FileOutputStream(tmpFile));   //建立一个存储目标对象
         transformer.setOutputProperty("encoding", "UTF-8");//设定文档编码，属性也可以使用OutputKeys的静态常量属性设定
         transformer.setOutputProperty(OutputKeys.METHOD, "xml");//输出方式，可以是xml、html和text
         transformer.setOutputProperty(OutputKeys.CDATA_SECTION_ELEMENTS, "yes");
@@ -192,7 +194,7 @@ public class DownloadContextXml {
      *
      * @param url 下载地址
      */
-    public void removeContextElement(String url) throws TransformerException {
+    public void removeContextElement(String url) throws TransformerException, FileNotFoundException {
         Element child = getChildElementByUrl(url);
         if (child != null) {
             contextDocument.getElementsByTagName("files").item(0).removeChild(child);

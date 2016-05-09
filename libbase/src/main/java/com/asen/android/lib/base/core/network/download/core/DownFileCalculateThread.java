@@ -12,6 +12,7 @@ import com.asen.android.lib.base.tool.util.FileUtil;
 import org.xml.sax.SAXException;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -137,7 +138,7 @@ public class DownFileCalculateThread extends Thread {
             // 删除断点信息
             try {
                 deleteMessage();
-            } catch (TransformerException e) {
+            } catch (TransformerException | FileNotFoundException e) {
                 if (onDownloadFileListener != null) {
                     onDownloadFileListener.error(IErrorCode.FILE_CONFIG_ERROR, e);
                 }
@@ -196,7 +197,7 @@ public class DownFileCalculateThread extends Thread {
         downloadContextXml.createOrUpdateDownConfig(featid, downloadLength, progressItems);
     }
 
-    protected void deleteMessage() throws TransformerException { // 删除断点信息
+    protected void deleteMessage() throws TransformerException, FileNotFoundException { // 删除断点信息
         synchronized (mProgressInfo) {
             downloadContextXml.removeContextElement(mFileService.getUrlStr());
             downloadContextXml.deleteDownConfig(featid);
