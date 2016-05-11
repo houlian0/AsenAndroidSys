@@ -74,6 +74,50 @@ public class GraphicUtil {
         return bitmap;
     }
 
+    /**
+     * 将文字转成Bitmap图片（支持多行文字）
+     *
+     * @param contents  文字内容
+     * @param textSize  文字大小
+     * @param textColor 文字颜色
+     * @return Bitmap图片
+     */
+    public static Bitmap getTextBitmap(String[] contents, float textSize, int textColor) {
+        if (contents == null || contents.length == 0)
+            return null;
+
+        Paint paint = new Paint();
+        paint.setTextSize(textSize);
+        paint.setColor(textColor);
+        paint.setAntiAlias(true);
+        Paint.FontMetrics metrics = getFontMetrics(paint);
+
+        int maxWidth = 0; // 宽度
+        int heigh = 0; // 高度
+        for (String content : contents) {
+            if (content == null)
+                content = "";
+            Rect rect = new Rect();
+            paint.getTextBounds(content, 0, content.length(), rect);
+            int width = rect.width();
+            if (maxWidth < width) {
+                maxWidth = width;
+            }
+            if (heigh == 0) {
+                heigh = (int) Math.ceil(metrics.descent - metrics.ascent);
+            }
+        }
+
+        Bitmap bitmap = Bitmap.createBitmap(maxWidth, heigh * contents.length, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        canvas.setDrawFilter(new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG));
+        for (int i = 0; i < contents.length; i++) {
+            canvas.drawText(contents[i], 0, (float) Math.abs(Math.ceil(metrics.ascent)) + heigh * i, paint);
+        }
+
+        return bitmap;
+    }
+
 
 //    /**
 //     * 计算单行文字高宽
