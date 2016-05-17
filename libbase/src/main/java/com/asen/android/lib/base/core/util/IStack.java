@@ -1,4 +1,4 @@
-package com.asen.android.lib.base;
+package com.asen.android.lib.base.core.util;
 
 /**
  * Simple to Introduction
