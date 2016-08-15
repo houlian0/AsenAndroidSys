@@ -14,8 +14,6 @@ import android.util.TypedValue;
  */
 public class DensityUtil {
 
-
-
     /**
      * 描述：dip转换为px.
      *

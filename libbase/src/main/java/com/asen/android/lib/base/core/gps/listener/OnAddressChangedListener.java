@@ -3,19 +3,18 @@ package com.asen.android.lib.base.core.gps.listener;
 import com.asen.android.lib.base.core.gps.bean.LocationInfo;
 
 /**
- * Simple to Introduction
- * åœ°å€æ”¹å˜æ—¶ ç›‘å¬
+ * µØÖ·¸Ä±äÊ± ¼àÌı
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:11
  */
 public interface OnAddressChangedListener {
 
     /**
-     * åœ°å€æ”¹å˜æ—¶è§¦å‘
+     * µØÖ·¸Ä±äÊ±´¥·¢
      *
-     * @param locationInfo åœ°å€ä¿¡æ¯
+     * @param locationInfo µØÖ·ĞÅÏ¢
      */
     void addressChanged(LocationInfo locationInfo);
 

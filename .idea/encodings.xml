@@ -7,6 +7,12 @@
     <file url="file://$PROJECT_DIR$/app/src/test/java/com/asen/android/app/ExampleUnitTest.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/build.gradle" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/build.gradle" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/GpsInfoType.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/GpsLocation.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/GpsLocationMain.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/GpsLocationTimingTask.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/GpsStatusListener.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/ICoordinateTransform.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/GpsPoint.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/LocationInfo.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/MapPoint.java" charset="GBK" />
@@ -14,6 +20,13 @@
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/extension/ExtensionASingleLocation.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/extension/ExtensionContinuousLocation.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/extension/IExtensionLocation.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/geocode/GeocodeReverse.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/geocode/IGeocodeReverse.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/geocode/tdt/GeoAddressInfo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/geocode/tdt/TianDTGeocodeReverse.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/listener/OnAddressChangedListener.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/listener/OnLocationChangedListener.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/listener/OnSatelliteChangedListener.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/AppUtil.java" charset="UTF-8" />
     <file url="PROJECT" charset="GBK" />
   </component>

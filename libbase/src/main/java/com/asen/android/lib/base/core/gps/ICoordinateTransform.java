@@ -4,26 +4,27 @@ import com.asen.android.lib.base.core.gps.bean.GpsPoint;
 import com.asen.android.lib.base.core.gps.bean.MapPoint;
 
 /**
- * Simple to Introduction
- * GPS åæ ‡è½¬æ¢æ¥å£
+ * GPS ×ø±ê×ª»»½Ó¿Ú
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:11
  */
 public interface ICoordinateTransform {
 
     /**
-     * W84åæ ‡ è½¬ åœ°æ–¹åæ ‡
+     * W84×ø±ê ×ª µØ·½×ø±ê
      *
-     * @param gpsPoint
-     * @return
+     * @param gpsPoint GPS¶¨Î»ĞÅÏ¢£¨W84×ø±ê£©
+     * @return µØ·½×ø±êĞÅÏ¢
      */
     MapPoint gpsPoint2MapPoint(GpsPoint gpsPoint);
 
     /**
-     * @param mapPoint
-     * @return
+     * µØ·½×ø±ê ×ª W84×ø±ê
+     *
+     * @param mapPoint µØ·½×ø±êĞÅÏ¢
+     * @return GPS¶¨Î»ĞÅÏ¢£¨W84×ø±ê£©
      */
     GpsPoint mapPoint2GpsPoint(MapPoint mapPoint);
 

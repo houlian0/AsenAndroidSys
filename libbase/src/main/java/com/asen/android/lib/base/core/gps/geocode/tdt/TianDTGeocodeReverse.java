@@ -3,7 +3,6 @@ package com.asen.android.lib.base.core.gps.geocode.tdt;
 import com.asen.android.lib.base.core.gps.bean.GpsPoint;
 import com.asen.android.lib.base.core.gps.bean.LocationInfo;
 import com.asen.android.lib.base.core.gps.geocode.GeocodeReverse;
-import com.asen.android.lib.base.core.gps.listener.OnAddressChangedListener;
 import com.asen.android.lib.base.core.network.task.SenAsyncTask;
 import com.asen.android.lib.base.core.network.urlconn.HttpUtil;
 import com.asen.android.lib.base.tool.util.LogUtil;
@@ -14,41 +13,34 @@ import org.json.JSONObject;
 import java.net.URLEncoder;
 
 /**
- * Simple to Introduction
- * å¤©åœ°å›¾é€†åœ°ç†ç¼–ç 
+ * ÌìµØÍ¼ÄæµØÀí±àÂë
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:11
  */
 public class TianDTGeocodeReverse extends GeocodeReverse {
 
-    private static final double DISTANCE_ONE_DEGREE = 111111; // ç»çº¬åº¦ä¸­çš„1åº¦çº¦111.11å…¬é‡Œ
+    private static final double MIN_DISTANCE = 5.0; // ×îĞ¡Ë¢ĞÂÎ»ÖÃĞÅÏ¢µÄ¾àÀë
 
     private static final String TAG = TianDTGeocodeReverse.class.getName();
 
-    private SenAsyncTask<Double, Void, GeoAddressInfo> mSenAsyncTask;
-
-    private LocationInfo mLocationInfo;
-
-    @Override
-    public LocationInfo getLocationInfo() {
-        return mLocationInfo;
-    }
+    private SenAsyncTask<Double, Void, GeoAddressInfo> mSenAsyncTask; // Òì²½¼ÓÔØÀà
 
     @Override
     public void reverseGeocode(GpsPoint gpsPoint) {
-
+        // ÕıÔÚ»ñÈ¡Î»ÖÃĞÅÏ¢Ê±£¬²»ÖØ¸´Ö´ĞĞ
         if (mSenAsyncTask != null) return;
 
         mSenAsyncTask = new SenAsyncTask<Double, Void, GeoAddressInfo>() {
             @Override
             protected GeoAddressInfo doInBackground(Double... params) throws RuntimeException {
+                // ¼ì²âÊÇ·ñĞèÒªÖØĞÂ»ñÈ¡Î»ÖÃĞÅÏ¢
                 if (!checkNeadRequest(params[0], params[1])) return null;
 
                 String result;
                 try {
-                    result = get(params[0], params[1]);
+                    result = get(params[0], params[1]); // getÇëÇó£¬»ñÈ¡½á¹û
                 } catch (Exception e) {
                     e.printStackTrace();
                     throw new RuntimeException("network connection is failed");
@@ -77,11 +69,7 @@ public class TianDTGeocodeReverse extends GeocodeReverse {
                     mLocationInfo.setAddress(result.getAddress());
                     mLocationInfo.setCity(result.getCity());
                 }
-                if (mAddressChangedListeners != null) {
-                    for (OnAddressChangedListener listener : mAddressChangedListeners) {
-                        listener.addressChanged(mLocationInfo);
-                    }
-                }
+                refreshAddressChangedListener();
             }
 
             @Override
@@ -93,36 +81,10 @@ public class TianDTGeocodeReverse extends GeocodeReverse {
         mSenAsyncTask.execute(gpsPoint.getLongitude(), gpsPoint.getLatitude());
     }
 
-
-    @Override
-    public LocationInfo reverseGeocodeOpen(GpsPoint gpsPoint) {
-        String result;
-        try {
-            result = get(gpsPoint.getLongitude(), gpsPoint.getLatitude());
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("network connection is failed");
-        }
-
-        if (result == null) {
-            throw new RuntimeException("network connection is failed");
-        }
-
-        try {
-            GeoAddressInfo geoAddressInfo = result2AddressInfo(result);
-            return new LocationInfo(geoAddressInfo.getAddress(), geoAddressInfo.getCity());
-        } catch (JSONException e) {
-            e.printStackTrace();
-            throw new RuntimeException("json error");
-        }
-    }
-
-    private double mLon = Double.NaN, mLat = Double.NaN;
-
     /**
-     * åˆ¤æ–­æ˜¯å¦éœ€è¦ç½‘ç»œè¯·æ±‚åœ°å€ä¿¡æ¯ï¼Œéå¸¸è¿‘æ—¶è¿”å›false
+     * ÅĞ¶ÏÊÇ·ñĞèÒªÍøÂçÇëÇóµØÖ·ĞÅÏ¢£¬·Ç³£½üÊ±·µ»Øfalse
      *
-     * @return æ˜¯å¦éœ€è¦ç½‘ç»œè¯·æ±‚åœ°å€ä¿¡æ¯
+     * @return ÊÇ·ñĞèÒªÍøÂçÇëÇóµØÖ·ĞÅÏ¢
      */
     private boolean checkNeadRequest(double lon, double lat) {
         if (Double.isNaN(mLon) || Double.isNaN(mLat)) {
@@ -131,8 +93,8 @@ public class TianDTGeocodeReverse extends GeocodeReverse {
             return true;
         }
 
-        double distance = Math.sqrt((lon - mLon) * (lon - mLon) + (lat - mLat) * (lat - mLat));
-        if (distance < 5.0 / DISTANCE_ONE_DEGREE) { // è·ç¦»å°äº5mï¼ˆå¤§çº¦è·ç¦»ï¼‰
+        double distance = distance(mLon, mLat, lon, lat);
+        if (distance < MIN_DISTANCE) { // ¾àÀëĞ¡ÓÚ5m£¨´óÔ¼¾àÀë£©
             return false;
         } else {
             mLon = lon;
@@ -141,12 +103,17 @@ public class TianDTGeocodeReverse extends GeocodeReverse {
         }
     }
 
+    // ¼ÆËã¾­Î³¶ÈÖ®¼äµÄ¾àÀë
+    private double distance(double lon1, double lat1, double lon2, double lat2) { // 6371004.0
+        return 6378137.000 * Math.acos(1 - (Math.pow((Math.sin((90 - lat1) * Math.PI / 180) * Math.cos(lon1 * Math.PI / 180) - Math.sin((90 - lat2) * Math.PI / 180) * Math.cos(lon2 * Math.PI / 180)), 2) + Math.pow((Math.sin((90 - lat1) * Math.PI / 180) * Math.sin(lon1 * Math.PI / 180) - Math.sin((90 - lat2) * Math.PI / 180) * Math.sin(lon2 * Math.PI / 180)), 2) + Math.pow((Math.cos((90 - lat1) * Math.PI / 180) - Math.cos((90 - lat2) * Math.PI / 180)), 2)) / 2);
+    }
+
     /**
-     * getè¯·æ±‚è·å¾—é€†åœ°ç†ç¼–ç ç»“æœ
+     * getÇëÇó»ñµÃÄæµØÀí±àÂë½á¹û
      *
-     * @param lon ç»åº¦
-     * @param lat çº¬åº¦
-     * @return è¿”å›ç½‘ç»œè¯·æ±‚ç»“æœ
+     * @param lon ¾­¶È
+     * @param lat Î³¶È
+     * @return ·µ»ØÍøÂçÇëÇó½á¹û
      * @throws Exception
      */
     private String get(double lon, double lat) throws Exception {
@@ -156,10 +123,10 @@ public class TianDTGeocodeReverse extends GeocodeReverse {
     }
 
     /**
-     * è§£æJSONä¸²
+     * ½âÎöJSON´®
      *
-     * @param result ç½‘ç»œè¯·æ±‚ç»“æœ
-     * @return è¿”å›ç»“æœå¯¹è±¡
+     * @param result ÍøÂçÇëÇó½á¹û
+     * @return ·µ»Ø½á¹û¶ÔÏó
      * @throws JSONException
      */
     private GeoAddressInfo result2AddressInfo(String result) throws JSONException {

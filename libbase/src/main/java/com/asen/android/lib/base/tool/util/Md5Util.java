@@ -20,7 +20,7 @@ public class Md5Util {
      * @param str
      * @return
      */
-    public final static String md5(String str) {
+    public static String md5(String str) {
         char hexDigits[] = { // 用来将字节转换成 16 进制表示的字符
                 '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
         try {
@@ -51,7 +51,7 @@ public class Md5Util {
      * @param str
      * @return
      */
-    public final static String MD5(String str) {
+    public static String MD5(String str) {
         String result = md5(str);
         return result == null ? null : result.toUpperCase(Locale.getDefault());
     }
@@ -62,7 +62,7 @@ public class Md5Util {
      * @param string
      * @return
      */
-    public final static String md5Second(String string) {
+    public static String md5Second(String string) {
         byte[] hash;
         try {
             hash = MessageDigest.getInstance("MD5").digest(string.getBytes("UTF-8"));
@@ -86,7 +86,7 @@ public class Md5Util {
      * @param str
      * @return
      */
-    public final static String MD5Second(String str) {
+    public static String MD5Second(String str) {
         String result = md5Second(str);
         return result == null ? null : result.toUpperCase(Locale.getDefault());
     }

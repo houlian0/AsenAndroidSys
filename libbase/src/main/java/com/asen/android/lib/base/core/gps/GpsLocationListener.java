@@ -5,19 +5,19 @@ import android.location.LocationListener;
 import android.os.Bundle;
 
 /**
- * Simple to Introduction
+ * Android原生定位监听
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:11
  */
-public class GpsLocationListener implements LocationListener {
+class GpsLocationListener implements LocationListener {
 
     private GpsLocationMain mGpsLocation;
 
     private GpsInfoType mType;
 
-    public GpsLocationListener(GpsLocationMain gpsLocation, GpsInfoType type) {
+    GpsLocationListener(GpsLocationMain gpsLocation, GpsInfoType type) {
         mGpsLocation = gpsLocation;
         mType = type;
     }

@@ -7,16 +7,16 @@ import com.asen.android.lib.base.core.gps.extension.IExtensionLocation;
 import com.asen.android.lib.base.core.network.task.SenTimingTask;
 
 /**
- * Created by ASEN on 2016/3/31.
+ * 位置刷新的定时任务
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:18
  */
 class GpsLocationTimingTask extends SenTimingTask<Void, Void, Void> {
 
     /**
-     * 鍒锋柊GPS浣嶇疆鐨勬椂闂撮棿闅斻�佹墿灞曟�у畾浣嶄富鍔ㄥ畾浣嶇殑鏃堕棿闂撮殧
+     * 刷新GPS位置的时间间隔、扩展性定位主动定位的时间间隔
      */
     public static final long TIME_INTERVAL = 5000;
 
@@ -46,7 +46,7 @@ class GpsLocationTimingTask extends SenTimingTask<Void, Void, Void> {
         IExtensionLocation extensionLocation = mGpsLocation.getExtensionLocation();
         if (extensionLocation != null && extensionLocation instanceof ExtensionASingleLocation) {
             Location location = extensionLocation.getLocation();
-            extensionLocation.refreshLocation(location); // 涓诲姩鑾峰彇GPS瀹氫綅
+            extensionLocation.refreshLocation(location); // 主动获取GPS定位
         }
         if (mGpsLocation.hasGpsPoint())
             publishProgress();

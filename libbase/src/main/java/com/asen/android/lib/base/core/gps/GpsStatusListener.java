@@ -11,8 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Simple to Introduction
- * GPS çŠ¶æ€ç›‘å¬
+ * GPS ×´Ì¬¼àÌı
  *
  * @author ASEN
  * @version v1.0
@@ -26,9 +25,9 @@ class GpsStatusListener implements GpsStatus.Listener {
 
     private List<GpsSatellite> mGpsSatellites;
 
-    public GpsStatusListener(GpsLocationMain gpsLocation) {
+    GpsStatusListener(GpsLocationMain gpsLocation) {
         mGpsLocation = gpsLocation;
-        mGpsSatellites = new ArrayList<GpsSatellite>();
+        mGpsSatellites = new ArrayList<>();
     }
 
     @Override
@@ -40,12 +39,12 @@ class GpsStatusListener implements GpsStatus.Listener {
         switch (event) {
             case GpsStatus.GPS_EVENT_FIRST_FIX: {
                 int i = gpsStatus.getTimeToFirstFix();
-                LogUtil.d(TAG, "GPS ç¬¬ä¸€æ¬¡ä¿®æ­£ç”¨æ—¶  " + i);
+                LogUtil.d(TAG, "GPS µÚÒ»´ÎĞŞÕıÓÃÊ±  " + i);
                 mGpsLocation.refreshGpsStatus(event, null);
                 break;
             }
-            case GpsStatus.GPS_EVENT_SATELLITE_STATUS: {// å‘¨æœŸçš„æŠ¥å‘Šå«æ˜ŸçŠ¶æ€
-                // å¾—åˆ°æ‰€æœ‰æ”¶åˆ°çš„å«æ˜Ÿçš„ä¿¡æ¯ï¼ŒåŒ…æ‹¬ å«æ˜Ÿçš„é«˜åº¦è§’ã€æ–¹ä½è§’ã€ä¿¡å™ªæ¯”ã€å’Œä¼ªéšæœºå·ï¼ˆåŠå«æ˜Ÿç¼–å·ï¼‰
+            case GpsStatus.GPS_EVENT_SATELLITE_STATUS: {// ÖÜÆÚµÄ±¨¸æÎÀĞÇ×´Ì¬
+                // µÃµ½ËùÓĞÊÕµ½µÄÎÀĞÇµÄĞÅÏ¢£¬°üÀ¨ ÎÀĞÇµÄ¸ß¶È½Ç¡¢·½Î»½Ç¡¢ĞÅÔë±È¡¢ºÍÎ±Ëæ»úºÅ£¨¼°ÎÀĞÇ±àºÅ£©
                 Iterable<GpsSatellite> allSatellites = gpsStatus.getSatellites();
                 Iterator<GpsSatellite> iterator = allSatellites.iterator();
 
@@ -54,41 +53,41 @@ class GpsStatusListener implements GpsStatus.Listener {
                     mGpsSatellites.add(iterator.next());
                 }
 
-                LogUtil.d(TAG, "æ€»å…±æœç´¢åˆ°" + mGpsSatellites.size() + "é¢—å«æ˜Ÿ");
+                LogUtil.d(TAG, "×Ü¹²ËÑË÷µ½" + mGpsSatellites.size() + "¿ÅÎÀĞÇ");
                 mGpsLocation.refreshGpsStatus(event, mGpsSatellites);
 
-                // é€šè¿‡éå†é‡æ–°æ•´ç†ä¸ºArrayList
+                // Í¨¹ı±éÀúÖØĞÂÕûÀíÎªArrayList
 //                if (GpsLocation.DEBUG) {
-//                    // è¾“å‡ºå«æ˜Ÿä¿¡æ¯
+//                    // Êä³öÎÀĞÇĞÅÏ¢
 //                    for (int i = 0; i < mGpsSatellites.size(); i++) {
 //                        GpsSatellite satellite = mGpsSatellites.get(i);
-//                        // å«æ˜Ÿçš„æ–¹ä½è§’ï¼Œæµ®ç‚¹å‹æ•°æ®
-//                        mGpsLocation.logD("å«æ˜Ÿçš„æ–¹ä½è§’" + satellite.getAzimuth());
-//                        // å«æ˜Ÿçš„é«˜åº¦ï¼Œæµ®ç‚¹å‹æ•°æ®
-//                        mGpsLocation.logD("å«æ˜Ÿçš„é«˜åº¦" + satellite.getElevation());
-//                        // å«æ˜Ÿçš„ä¼ªéšæœºå™ªå£°ç ï¼Œæ•´å½¢æ•°æ®
-//                        mGpsLocation.logD("å«æ˜Ÿçš„ä¼ªéšæœºå™ªå£°ç " + satellite.getPrn());
-//                        // å«æ˜Ÿçš„ä¿¡å™ªæ¯”ï¼Œæµ®ç‚¹å‹æ•°æ®
-//                        mGpsLocation.logD("å«æ˜Ÿçš„ä¿¡å™ªæ¯”" + satellite.getSnr());
-//                        // å«æ˜Ÿæ˜¯å¦æœ‰å¹´å†è¡¨ï¼Œå¸ƒå°”å‹æ•°æ®
-//                        mGpsLocation.logD("å«æ˜Ÿæ˜¯å¦æœ‰å¹´å†è¡¨" + satellite.hasAlmanac());
-//                        // å«æ˜Ÿæ˜¯å¦æœ‰æ˜Ÿå†è¡¨ï¼Œå¸ƒå°”å‹æ•°æ®
-//                        mGpsLocation.logD("å«æ˜Ÿæ˜¯å¦æœ‰æ˜Ÿå†è¡¨" + satellite.hasEphemeris());
-//                        // å«æ˜Ÿæ˜¯å¦è¢«ç”¨äºè¿‘æœŸçš„GPSä¿®æ­£è®¡ç®—
-//                        mGpsLocation.logD("å«æ˜Ÿæ˜¯å¦è¢«ç”¨äºè¿‘æœŸçš„GPSä¿®æ­£è®¡ç®—" + satellite.hasAlmanac());
-//                        // åˆ†éš”ç¬¦
+//                        // ÎÀĞÇµÄ·½Î»½Ç£¬¸¡µãĞÍÊı¾İ
+//                        mGpsLocation.logD("ÎÀĞÇµÄ·½Î»½Ç" + satellite.getAzimuth());
+//                        // ÎÀĞÇµÄ¸ß¶È£¬¸¡µãĞÍÊı¾İ
+//                        mGpsLocation.logD("ÎÀĞÇµÄ¸ß¶È" + satellite.getElevation());
+//                        // ÎÀĞÇµÄÎ±Ëæ»úÔëÉùÂë£¬ÕûĞÎÊı¾İ
+//                        mGpsLocation.logD("ÎÀĞÇµÄÎ±Ëæ»úÔëÉùÂë" + satellite.getPrn());
+//                        // ÎÀĞÇµÄĞÅÔë±È£¬¸¡µãĞÍÊı¾İ
+//                        mGpsLocation.logD("ÎÀĞÇµÄĞÅÔë±È" + satellite.getSnr());
+//                        // ÎÀĞÇÊÇ·ñÓĞÄêÀú±í£¬²¼¶ûĞÍÊı¾İ
+//                        mGpsLocation.logD("ÎÀĞÇÊÇ·ñÓĞÄêÀú±í" + satellite.hasAlmanac());
+//                        // ÎÀĞÇÊÇ·ñÓĞĞÇÀú±í£¬²¼¶ûĞÍÊı¾İ
+//                        mGpsLocation.logD("ÎÀĞÇÊÇ·ñÓĞĞÇÀú±í" + satellite.hasEphemeris());
+//                        // ÎÀĞÇÊÇ·ñ±»ÓÃÓÚ½üÆÚµÄGPSĞŞÕı¼ÆËã
+//                        mGpsLocation.logD("ÎÀĞÇÊÇ·ñ±»ÓÃÓÚ½üÆÚµÄGPSĞŞÕı¼ÆËã" + satellite.hasAlmanac());
+//                        // ·Ö¸ô·û
 //                        mGpsLocation.logD("*******************************");
 //                    }
 //                }
                 break;
             }
             case GpsStatus.GPS_EVENT_STARTED: {
-                LogUtil.d(TAG, "å®šä½å¯åŠ¨");
+                LogUtil.d(TAG, "¶¨Î»Æô¶¯");
                 mGpsLocation.refreshGpsStatus(event, null);
                 break;
             }
             case GpsStatus.GPS_EVENT_STOPPED: {
-                LogUtil.d(TAG, "å®šä½ç»“æŸ");
+                LogUtil.d(TAG, "¶¨Î»½áÊø");
                 mGpsLocation.refreshGpsStatus(event, null);
                 break;
             }

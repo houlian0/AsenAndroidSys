@@ -2,6 +2,8 @@ package com.asen.android.lib.base.core.gps.extension;
 
 import android.location.Location;
 
+import com.asen.android.lib.base.core.gps.bean.LocationInfo;
+
 /**
  * 扩展定位接口
  *
@@ -29,8 +31,19 @@ public interface IExtensionLocation {
     Location getLocation();
 
     /**
-     * 刷新定位信息
+     * 刷新位置信息
+     *
+     * @param location GPS位置信息
      */
     void refreshLocation(Location location);
+
+    /**
+     * 刷新定位地址信息
+     *
+     * @param lon          经度
+     * @param lat          纬度
+     * @param locationInfo 地址信息
+     */
+    void refreshLocationInfo(double lon, double lat, LocationInfo locationInfo);
 
 }

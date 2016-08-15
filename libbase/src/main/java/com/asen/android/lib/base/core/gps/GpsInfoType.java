@@ -1,36 +1,28 @@
 package com.asen.android.lib.base.core.gps;
 
 /**
- * Simple to Introduction
+ * ¶¨Î»ĞÅÏ¢ÀàĞÍ
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:11
  */
 public enum GpsInfoType {
 
-//    static final int TYPE_FIRST = 0x01; // é¦–æ¬¡åˆ·æ–°
-//
-//    static final int TYPE_GPS = 0x02; // GPS å®šä½
-//
-//    static final int TYPE_NETWORK = 0x03; // ç½‘ç»œå®šä½
-//
-//    static final int TYPE_EXTENSION = 0x04; // æ‰©å±•æ€§å®šä½
-
     /**
-     * é¦–æ¬¡åˆ·æ–°
+     * Ê×´ÎË¢ĞÂ
      */
     TYPE_FIRST,
     /**
-     * GPS å®šä½
+     * GPS ¶¨Î»
      */
     TYPE_GPS,
     /**
-     * ç½‘ç»œå®šä½ï¼ˆAndroidè‡ªå¸¦çš„ç½‘ç»œå®šä½ï¼‰
+     * ÍøÂç¶¨Î»£¨Android×Ô´øµÄÍøÂç¶¨Î»£©
      */
     TYPE_NETWORK,
     /**
-     * æ‰©å±•æ€§å®šä½ï¼ˆç¬¬ä¸‰æ–¹æ’ä»¶å®šä½ï¼Œè‡ªå®šä¹‰ï¼‰
+     * À©Õ¹ĞÔ¶¨Î»£¨µÚÈı·½²å¼ş¶¨Î»£¬×Ô¶¨Òå£©
      */
     TYPE_EXTENSION
 
