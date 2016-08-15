@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'asen-lib-base'
+
+    publishedGroupId = 'com.asen.android.lib.base'
+    libraryName = 'libbase'
+    artifact = 'asen-lib-base'
+
+    libraryDescription = 'Android Lib'
+
+    siteUrl = 'https://github.com/houlian0/AsenAndroidSys'
+    gitUrl = 'https://github.com/houlian0/AsenAndroidSys.git'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'asen'
+    developerName = 'HouLian'
+    developerEmail = '597356831@qq.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 24
     buildToolsVersion "23.0.3"
@@ -22,4 +46,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.1'
+
 }
+
