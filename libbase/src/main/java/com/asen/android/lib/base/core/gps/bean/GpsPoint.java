@@ -3,145 +3,215 @@ package com.asen.android.lib.base.core.gps.bean;
 import com.asen.android.lib.base.core.gps.GpsInfoType;
 
 /**
- * Simple to Introduction
- * <p/>
- * GPS ÁÇπ‰Ωç‰ø°ÊÅØ
+ * GPS µ„Œª–≈œ¢
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:11
  */
 public class GpsPoint {
 
     /**
-     * ÁªèÂ∫¶
+     * æ≠∂»
      */
     private double longitude;
 
     /**
-     * Á∫¨Â∫¶
+     * Œ≥∂»
      */
     private double latitude;
 
     /**
-     * Êµ∑ÊãîÔºàW84Ê§≠ÁêÉÔºâ
+     * ∫£∞Œ£®W84Õ÷«Ú£©
      */
     private double altitude;
 
     /**
-     * Á≤æÂ∫¶
+     * æ´∂»
      */
     private float accuracy;
 
     /**
-     * ÈÄüÂ∫¶
+     * ÀŸ∂»
      */
     private float speed;
 
     /**
-     * ËΩ¥Â∫¶(0-360)
+     * ÷·∂»(0-360)
      */
     private float bearing;
 
     /**
-     * Êó∂Èó¥
+     *  ±º‰
      */
     private long time;
 
     /**
-     * ÂÆö‰ΩçÁÇπÁ±ªÂûã
+     * ∂®Œªµ„¿‡–Õ
      */
     private GpsInfoType gpsInfoType;
 
+    /**
+     * ø’ππ‘Ï∫Ø ˝
+     */
     public GpsPoint() {
     }
 
+    /**
+     * ππ‘Ï∫Ø ˝
+     *
+     * @param longitude æ≠∂»
+     * @param latitude  Œ≥∂»
+     * @param altitude  ∏ﬂ≥Ã
+     */
     public GpsPoint(double longitude, double latitude, double altitude) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.altitude = altitude;
     }
 
+    /**
+     * ªÒ»°gps–≈œ¢µƒ¿‡–Õ
+     *
+     * @return gps–≈œ¢µƒ¿‡–Õ
+     */
     public GpsInfoType getGpsInfoType() {
         return gpsInfoType;
     }
 
+    /**
+     * …Ë÷√gps–≈œ¢µƒ¿‡–Õ
+     *
+     * @param gpsInfoType gps–≈œ¢µƒ¿‡–Õ
+     */
     public void setGpsInfoType(GpsInfoType gpsInfoType) {
         this.gpsInfoType = gpsInfoType;
     }
 
     /**
-     * ÁªèÂ∫¶
+     * ªÒ»°æ≠∂»
+     *
+     * @return æ≠∂»
      */
     public double getLongitude() {
         return longitude;
     }
 
+    /**
+     * …Ë÷√æ≠∂»
+     *
+     * @param longitude æ≠∂»
+     */
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
     /**
-     * Á∫¨Â∫¶
+     * ªÒ»°Œ≥∂»
+     *
+     * @return Œ≥∂»
      */
     public double getLatitude() {
         return latitude;
     }
 
+    /**
+     * …Ë÷√Œ≥∂»
+     *
+     * @param latitude Œ≥∂»
+     */
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
     /**
-     * Êµ∑ÊãîÔºàW84Ê§≠ÁêÉÔºâ
+     * ªÒ»°∫£∞Œ∏ﬂ∂»£®W84Õ÷«Ú£©
+     *
+     * @return ∫£∞Œ∏ﬂ∂»
      */
     public double getAltitude() {
         return altitude;
     }
 
+    /**
+     * …Ë÷√∫£∞Œ∏ﬂ∂»
+     *
+     * @param altitude ∫£∞Œ∏ﬂ∂»
+     */
     public void setAltitude(double altitude) {
         this.altitude = altitude;
     }
 
     /**
-     * Á≤æÂ∫¶
+     * ªÒ»°æ´∂»
+     *
+     * @return æ´∂»
      */
     public float getAccuracy() {
         return accuracy;
     }
 
+    /**
+     * …Ë÷√æ´∂»
+     *
+     * @param accuracy æ´∂»
+     */
     public void setAccuracy(float accuracy) {
         this.accuracy = accuracy;
     }
 
     /**
-     * ÈÄüÂ∫¶
+     * ªÒ»°ÀŸ∂»
+     *
+     * @return ÀŸ∂»
      */
     public float getSpeed() {
         return speed;
     }
 
-
+    /**
+     * …Ë÷√ÀŸ∂»
+     *
+     * @param speed ÀŸ∂»
+     */
     public void setSpeed(float speed) {
         this.speed = speed;
     }
 
     /**
-     * ËΩ¥Â∫¶(0-360)
+     * ªÒ»°÷·∂»(0-360)
+     *
+     * @return ÷·∂»
      */
     public float getBearing() {
         return bearing;
     }
 
+    /**
+     * …Ë÷√÷·∂»
+     *
+     * @param bearing ÷·∂»
+     */
     public void setBearing(float bearing) {
         this.bearing = bearing;
     }
 
+    /**
+     * ªÒ»°∂®Œªµ„ªÒ»° ±º‰
+     *
+     * @return ∂®Œªµ„ªÒ»° ±º‰
+     */
     public long getTime() {
         return time;
     }
 
+    /**
+     * …Ë÷√∂®Œªµ„ªÒ»° ±º‰
+     *
+     * @param time ∂®Œªµ„ªÒ»° ±º‰
+     */
     public void setTime(long time) {
         this.time = time;
     }
+
 }

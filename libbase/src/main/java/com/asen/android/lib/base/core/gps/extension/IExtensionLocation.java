@@ -3,34 +3,33 @@ package com.asen.android.lib.base.core.gps.extension;
 import android.location.Location;
 
 /**
- * Simple to Introduction
- * æ‰©å±•å®šä½æ¥å£
+ * À©Õ¹¶¨Î»½Ó¿Ú
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:11
  */
 public interface IExtensionLocation {
 
     /**
-     * å¼€å§‹å®šä½
+     * ¿ªÊ¼¶¨Î»
      */
     void start();
 
     /**
-     * ç»“æŸå®šä½
+     * ½áÊø¶¨Î»
      */
     void stop();
 
     /**
-     * è·å¾—å®šä½ä¿¡æ¯
+     * »ñµÃ¶¨Î»ĞÅÏ¢
      *
-     * @return
+     * @return ¶¨Î»ĞÅÏ¢
      */
     Location getLocation();
 
     /**
-     * åˆ·æ–°å®šä½ä¿¡æ¯
+     * Ë¢ĞÂ¶¨Î»ĞÅÏ¢
      */
     void refreshLocation(Location location);
 

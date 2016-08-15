@@ -1,10 +1,9 @@
 package com.asen.android.lib.base.core.gps.extension;
 
 /**
- * Simple to Introduction
- * 鎵╁睍鐨勫崟娆″畾浣嶏紝鐢卞畾浣嶄富浣撲富鍔ㄨ皟鐢ㄥ畾浣嶆柟娉曪紝鏃堕棿闂撮殧鍥哄畾
+ * 扩展的单次定位，由定位主体主动调用{@link IExtensionLocation#getLocation()}定位方法获取最新的坐标信息进行定位，时间间隔固定
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:11
  */

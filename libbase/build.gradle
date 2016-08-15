@@ -15,7 +15,7 @@ ext {
 
     libraryVersion = '0.0.1'
 
-    developerId = 'houlian'
+    developerId = 'asen'
     developerName = 'HouLian'
     developerEmail = '597356831@qq.com'
 

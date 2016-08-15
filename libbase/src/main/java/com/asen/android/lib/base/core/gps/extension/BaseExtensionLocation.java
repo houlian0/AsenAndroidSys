@@ -7,20 +7,33 @@ import com.asen.android.lib.base.core.gps.GpsLocationMain;
 import com.asen.android.lib.base.core.gps.GpsInfoType;
 
 /**
- * Simple to Introduction
+ * 扩展第三方定位基类
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:11
  */
 public abstract class BaseExtensionLocation implements IExtensionLocation {
 
+    /**
+     * GPS定位主对象
+     */
     protected GpsLocation mGpsLocation;
 
+    /**
+     * 获取GPS定位主对象
+     *
+     * @return GPS定位主对象
+     */
     public GpsLocation getGpsLocation() {
         return mGpsLocation;
     }
 
+    /**
+     * 设置GPS定位主对象
+     *
+     * @param gpsLocation GPS定位主对象
+     */
     public void setGpsLocation(GpsLocation gpsLocation) {
         mGpsLocation = gpsLocation;
     }
