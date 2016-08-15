@@ -1,6 +1,6 @@
 package com.asen.android.lib.base.core.gps.bean;
 
-import com.asen.android.lib.base.core.gps.LocationType;
+import com.asen.android.lib.base.core.gps.GpsInfoType;
 
 /**
  * Simple to Introduction
@@ -51,7 +51,7 @@ public class GpsPoint {
     /**
      * 定位点类型
      */
-    private LocationType locationType;
+    private GpsInfoType gpsInfoType;
 
     public GpsPoint() {
     }
@@ -62,12 +62,12 @@ public class GpsPoint {
         this.altitude = altitude;
     }
 
-    public LocationType getLocationType() {
-        return locationType;
+    public GpsInfoType getGpsInfoType() {
+        return gpsInfoType;
     }
 
-    public void setLocationType(LocationType locationType) {
-        this.locationType = locationType;
+    public void setGpsInfoType(GpsInfoType gpsInfoType) {
+        this.gpsInfoType = gpsInfoType;
     }
 
     /**

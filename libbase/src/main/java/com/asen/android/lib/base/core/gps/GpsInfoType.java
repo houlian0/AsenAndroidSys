@@ -7,7 +7,7 @@ package com.asen.android.lib.base.core.gps;
  * @version v1.0
  * @date 2016/3/31 17:11
  */
-public enum LocationType {
+public enum GpsInfoType {
 
 //    static final int TYPE_FIRST = 0x01; // 首次刷新
 //

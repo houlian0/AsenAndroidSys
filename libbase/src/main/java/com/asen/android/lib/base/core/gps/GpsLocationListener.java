@@ -15,9 +15,9 @@ public class GpsLocationListener implements LocationListener {
 
     private GpsLocationMain mGpsLocation;
 
-    private LocationType mType;
+    private GpsInfoType mType;
 
-    public GpsLocationListener(GpsLocationMain gpsLocation, LocationType type) {
+    public GpsLocationListener(GpsLocationMain gpsLocation, GpsInfoType type) {
         mGpsLocation = gpsLocation;
         mType = type;
     }

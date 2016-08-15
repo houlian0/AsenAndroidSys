@@ -4,7 +4,7 @@ import android.location.Location;
 
 import com.asen.android.lib.base.core.gps.GpsLocation;
 import com.asen.android.lib.base.core.gps.GpsLocationMain;
-import com.asen.android.lib.base.core.gps.LocationType;
+import com.asen.android.lib.base.core.gps.GpsInfoType;
 
 /**
  * Simple to Introduction
@@ -27,7 +27,7 @@ public abstract class BaseExtensionLocation implements IExtensionLocation {
 
     @Override
     public final void refreshLocation(Location location) {
-        ((GpsLocationMain) mGpsLocation).refreshLocation(LocationType.TYPE_EXTENSION, location);
+        ((GpsLocationMain) mGpsLocation).refreshLocation(GpsInfoType.TYPE_EXTENSION, location);
     }
 
 }
