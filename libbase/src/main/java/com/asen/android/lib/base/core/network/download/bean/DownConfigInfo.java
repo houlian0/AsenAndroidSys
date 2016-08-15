@@ -1,42 +1,64 @@
 package com.asen.android.lib.base.core.network.download.bean;
 
 /**
- * Simple to Introduction
- * ä¸‹è½½é…ç½®ç­‰ä¿¡æ¯
+ * ÏÂÔØÅäÖÃµÈĞÅÏ¢
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
 public class DownConfigInfo {
 
     /**
-     * æ˜¯å¦åŸæ–‡ä»¶åè¾“å‡º
+     * ÊÇ·ñÔ­ÎÄ¼şÃûÊä³ö
      */
     private boolean isOriginal;
 
     /**
-     * çº¿ç¨‹æ•°é‡ï¼Œé»˜è®¤3ä¸ªçº¿ç¨‹æ•°
+     * Ïß³ÌÊıÁ¿£¬Ä¬ÈÏ3¸öÏß³ÌÊı
      */
     private int threadNumber;
 
+    /**
+     * ¿Õ¹¹Ôìº¯Êı£¬Ä¬ÈÏisOriginal = true£¬threadNumber = 3
+     */
     public DownConfigInfo() {
         isOriginal = true;
         threadNumber = 3;
     }
 
+    /**
+     * »ñÈ¡ÊÇ·ñÔ­ÎÄ¼şÃûÊä³öµÄ×´Ì¬
+     *
+     * @return true£ºÔ­ÎÄ¼şÃûÊä³ö£»false£ºÎ¨Ò»µÄÎÄ¼şÃû
+     */
     public boolean isOriginal() {
         return isOriginal;
     }
 
+    /**
+     * ÉèÖÃÊÇ·ñÔ­ÎÄ¼şÃûÊä³öµÄ×´Ì¬
+     *
+     * @param original true£ºÔ­ÎÄ¼şÃûÊä³ö£»false£ºÎ¨Ò»µÄÎÄ¼şÃû
+     */
     public void setOriginal(boolean original) {
         isOriginal = original;
     }
 
+    /**
+     * »ñÈ¡Í¬Ê±ÏÂÔØµÄÏß³ÌÊıÁ¿
+     *
+     * @return Í¬Ê±ÏÂÔØµÄÏß³ÌÊıÁ¿
+     */
     public int getThreadNumber() {
         return threadNumber;
     }
 
+    /**
+     * ÉèÖÃÍ¬Ê±ÏÂÔØµÄÏß³ÌÊıÁ¿
+     *
+     * @param threadNumber Ïß³ÌÊıÁ¿
+     */
     public void setThreadNumber(int threadNumber) {
         this.threadNumber = threadNumber;
     }

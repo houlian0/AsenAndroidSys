@@ -10,51 +10,66 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Simple to Introduction
- * ä¸‹è½½è¿‡ç¨‹çš„ä¿¡æ¯ï¼ˆè¿›åº¦ç­‰ä¿¡æ¯ï¼‰
+ * ÏÂÔØ¹ı³ÌµÄĞÅÏ¢£¨½ø¶ÈµÈĞÅÏ¢£©
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
 public class DownProgressInfo {
 
     /**
-     * ä¸‹è½½çš„URLåœ°å€
+     * ÏÂÔØµÄURLµØÖ·
      */
     private URL url;
 
     /**
-     * æ–‡ä»¶ä¿¡æ¯
+     * ÎÄ¼şĞÅÏ¢
      */
     private FileInfo fileInfo;
 
     /**
-     * ä¸´æ—¶æ–‡ä»¶
+     * ÁÙÊ±ÎÄ¼ş
      */
     private File tmpFile;
 
     /**
-     * å½“å‰ä¸‹è½½çº¿ç¨‹æ€»å…±åˆ†é…çš„å­—èŠ‚é•¿åº¦
+     * µ±Ç°ÏÂÔØÏß³Ì×Ü¹²·ÖÅäµÄ×Ö½Ú³¤¶È
      */
     private long currentLength;
 
     /**
-     * å½“å‰ä¸‹è½½å·²ç»ä¸‹è½½çš„æ–‡ä»¶æ€»å¤§å°
+     * µ±Ç°ÏÂÔØÒÑ¾­ÏÂÔØµÄÎÄ¼ş×Ü´óĞ¡
      */
     private long downloadLength;
 
     /**
-     * ä¸‹è½½çš„å„ä¸ªçº¿ç¨‹æ®µçš„ä¿¡æ¯
+     * ÏÂÔØµÄ¸÷¸öÏß³Ì¶ÎµÄĞÅÏ¢
      */
     private List<DownProgressItem> progressItems;
 
+    /**
+     * ÎÄ¼şÊä³öÁ÷
+     */
     private RandomAccessFile fileOutputStream;
 
+    /**
+     * »ñÈ¡ÎÄ¼şÊä³öÁ÷
+     *
+     * @return ÎÄ¼şÊä³öÁ÷
+     */
     public RandomAccessFile getFileOutputStream() {
         return fileOutputStream;
     }
 
+    /**
+     * ¹¹Ôìº¯Êı
+     *
+     * @param url      ÏÂÔØµÄURLµØÖ·
+     * @param fileInfo ÏÂÔØµÄÎÄ¼şĞÅÏ¢
+     * @param tmpFile  ÁÙÊ±ÎÄ¼şFile£¨ÏÂÔØÊ±£¬ÏÈÏÂÔØ³ÉÁÙÊ±ÎÄ¼ş£¬ÏÂÔØÍêÖ®ºó¶ÔÆä½øĞĞÖØÃüÃû£©
+     * @throws IOException
+     */
     public DownProgressInfo(URL url, FileInfo fileInfo, File tmpFile) throws IOException {
         this.url = url;
         this.fileInfo = fileInfo;
@@ -66,90 +81,90 @@ public class DownProgressInfo {
     }
 
     /**
-     * è·å–ä¸‹è½½çš„URLåœ°å€
+     * »ñÈ¡ÏÂÔØµÄURLµØÖ·
      *
-     * @return URLåœ°å€
+     * @return URLµØÖ·
      */
     public URL getUrl() {
         return url;
     }
 
     /**
-     * è·å–æ–‡ä»¶çš„ä¿¡æ¯
+     * »ñÈ¡ÎÄ¼şµÄĞÅÏ¢
      *
-     * @return æ–‡ä»¶çš„ä¿¡æ¯
+     * @return ÎÄ¼şµÄĞÅÏ¢
      */
     public FileInfo getFileInfo() {
         return fileInfo;
     }
 
     /**
-     * ä¸´æ—¶æ–‡ä»¶
+     * ÁÙÊ±ÎÄ¼ş
      *
-     * @return ä¸´æ—¶æ–‡ä»¶
+     * @return ÁÙÊ±ÎÄ¼ş
      */
     public File getTmpFile() {
         return tmpFile;
     }
 
     /**
-     * è·å–å½“å‰æ‰€æœ‰çº¿ç¨‹æ‰§è¡Œå®Œæ—¶ï¼Œæ–‡ä»¶çš„å¤§å°
+     * »ñÈ¡µ±Ç°ËùÓĞÏß³ÌÖ´ĞĞÍêÊ±£¬ÎÄ¼şµÄ´óĞ¡
      *
-     * @return æ–‡ä»¶çš„å¤§å°
+     * @return ÎÄ¼şµÄ´óĞ¡
      */
     public long getCurrentLength() {
         return currentLength;
     }
 
     /**
-     * è·å–å½“å‰å·²ä¸‹è½½å®Œæˆçš„æ–‡ä»¶å¤§å°
+     * »ñÈ¡µ±Ç°ÒÑÏÂÔØÍê³ÉµÄÎÄ¼ş´óĞ¡
      *
-     * @return æ–‡ä»¶å¤§å°
+     * @return ÎÄ¼ş´óĞ¡
      */
     public long getDownloadLength() {
         return downloadLength;
     }
 
     /**
-     * è®¾ç½®å½“å‰æ‰€æœ‰çº¿ç¨‹æ‰§è¡Œå®Œæ—¶ï¼Œæ–‡ä»¶çš„å¤§å°
+     * ÉèÖÃµ±Ç°ËùÓĞÏß³ÌÖ´ĞĞÍêÊ±£¬ÎÄ¼şµÄ´óĞ¡
      *
-     * @param currentLength æ–‡ä»¶çš„å¤§å°
+     * @param currentLength ÎÄ¼şµÄ´óĞ¡
      */
     public void setCurrentLength(long currentLength) {
         this.currentLength = currentLength;
     }
 
     /**
-     * è®¾ç½®å½“å‰å·²ä¸‹è½½å®Œæˆçš„æ–‡ä»¶å¤§å°
+     * ÉèÖÃµ±Ç°ÒÑÏÂÔØÍê³ÉµÄÎÄ¼ş´óĞ¡
      *
-     * @param downloadLength æ–‡ä»¶å¤§å°
+     * @param downloadLength ÎÄ¼ş´óĞ¡
      */
     public void setDownloadLength(long downloadLength) {
         this.downloadLength = downloadLength;
     }
 
     /**
-     * æ·»åŠ æ–‡ä»¶è¿›åº¦ä¿¡æ¯
+     * Ìí¼ÓÎÄ¼ş½ø¶ÈĞÅÏ¢
      *
-     * @param item æ–‡ä»¶è¿›åº¦ä¿¡æ¯
+     * @param item ÎÄ¼ş½ø¶ÈĞÅÏ¢
      */
     public void addDownProgressItem(DownProgressItem item) {
         this.progressItems.add(item);
     }
 
     /**
-     * åˆ¤æ–­è¿›åº¦ä¿¡æ¯åˆ—è¡¨æ˜¯å¦ä¸ºç©º
+     * ÅĞ¶Ï½ø¶ÈĞÅÏ¢ÁĞ±íÊÇ·ñÎª¿Õ
      *
-     * @return ç©ºçš„è¯ï¼Œè¿”å›trueï¼Œå¦åˆ™è¿”å›false
+     * @return ¿ÕµÄ»°£¬·µ»Øtrue£¬·ñÔò·µ»Øfalse
      */
     public boolean isProgressItemsEmpty() {
         return progressItems.isEmpty();
     }
 
     /**
-     * è·å–è¿›åº¦ä¿¡æ¯åˆ—è¡¨
+     * »ñÈ¡½ø¶ÈĞÅÏ¢ÁĞ±í
      *
-     * @return è¿›åº¦ä¿¡æ¯åˆ—è¡¨
+     * @return ½ø¶ÈĞÅÏ¢ÁĞ±í
      */
     public List<DownProgressItem> getProgressItems() {
         return progressItems;

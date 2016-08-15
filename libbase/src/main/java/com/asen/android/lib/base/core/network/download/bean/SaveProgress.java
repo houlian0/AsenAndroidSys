@@ -3,40 +3,69 @@ package com.asen.android.lib.base.core.network.download.bean;
 import java.util.List;
 
 /**
- * Simple to Introduction
- * ä¸‹è½½æ–‡ä»¶çš„è¿›åº¦ä¿¡æ¯
+ * ÏÂÔØÎÄ¼şµÄ½ø¶ÈĞÅÏ¢
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
 public class SaveProgress {
 
     /**
-     * å½“å‰ä¸‹è½½çš„å¤§å°
+     * µ±Ç°ÏÂÔØµÄ´óĞ¡
      */
     private long downloadLength;
 
+    /**
+     * ËùÓĞÏÂÔØÏß³ÌµÄ½ø¶ÈĞÅÏ¢¼¯ºÏ
+     */
     private List<DownProgressItem> mProgressInfoList;
 
+    /**
+     * ¹¹Ôìº¯Êı
+     *
+     * @param downloadLength   µ±Ç°ÏÂÔØµÄ´óĞ¡
+     * @param progressInfoList ËùÓĞÏÂÔØÏß³ÌµÄ½ø¶ÈĞÅÏ¢¼¯ºÏ
+     */
     public SaveProgress(long downloadLength, List<DownProgressItem> progressInfoList) {
         this.downloadLength = downloadLength;
         mProgressInfoList = progressInfoList;
     }
 
+    /**
+     * »ñÈ¡µ±Ç°ÏÂÔØµÄ´óĞ¡
+     *
+     * @return µ±Ç°ÏÂÔØµÄ´óĞ¡
+     */
     public long getDownloadLength() {
         return downloadLength;
     }
 
+    /**
+     * ÉèÖÃµ±Ç°ÏÂÔØµÄ´óĞ¡
+     *
+     * @param downloadLength µ±Ç°ÏÂÔØµÄ´óĞ¡
+     */
     public void setDownloadLength(long downloadLength) {
         this.downloadLength = downloadLength;
     }
 
+    /**
+     * »ñÈ¡ËùÓĞÏÂÔØÏß³ÌµÄ½ø¶ÈĞÅÏ¢¼¯ºÏ
+     *
+     * @return ËùÓĞÏÂÔØÏß³ÌµÄ½ø¶ÈĞÅÏ¢¼¯ºÏ
+     */
     public List<DownProgressItem> getProgressInfoList() {
         return mProgressInfoList;
     }
 
+    /**
+     * ÉèÖÃËùÓĞÏÂÔØÏß³ÌµÄ½ø¶ÈĞÅÏ¢¼¯ºÏ
+     *
+     * @param progressInfoList ËùÓĞÏÂÔØÏß³ÌµÄ½ø¶ÈĞÅÏ¢¼¯ºÏ
+     */
     public void setProgressInfoList(List<DownProgressItem> progressInfoList) {
         mProgressInfoList = progressInfoList;
     }
+
 }

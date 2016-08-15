@@ -1,63 +1,108 @@
 package com.asen.android.lib.base.core.network.download.bean;
 
 /**
- * Simple to Introduction
- * ä¸‹è½½å•çº¿ç¨‹çš„è¿›åº¦ä¿¡æ¯
+ * ÏÂÔØµ¥Ïß³ÌµÄ½ø¶ÈĞÅÏ¢
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
 public class DownProgressItem {
 
     /**
-     * å½“å‰çº¿ç¨‹çš„æ–‡ä»¶ä¸‹è½½èµ·å§‹ä½ç½®
+     * µ±Ç°Ïß³ÌµÄÎÄ¼şÏÂÔØÆğÊ¼Î»ÖÃ
      */
     private long startSeek;
 
     /**
-     * å½“å‰çº¿ç¨‹çš„æ–‡ä»¶ä¸‹è½½ç»ˆç‚¹ä½ç½®
+     * µ±Ç°Ïß³ÌµÄÎÄ¼şÏÂÔØÖÕµãÎ»ÖÃ
      */
     private long endSeek;
 
     /**
-     * è¯¥è¿›åº¦ä¸­å·²ç»ä¸‹è½½å­—èŠ‚å¤§å°
+     * ¸Ã½ø¶ÈÖĞÒÑ¾­ÏÂÔØ×Ö½Ú´óĞ¡
      */
     private long downSize;
 
+    /**
+     * µ±Ç°Ïß³ÌÊÇ·ñÕıÔÚÔËĞĞ
+     */
     private boolean isRunning = false;
 
+    /**
+     * ¹¹Ôìº¯Êı
+     *
+     * @param startSeek ÎÄ¼şÏÂÔØµÄÆğÊ¼Î»ÖÃ
+     * @param endSeek   ÎÄ¼şÏÂÔØµÄÖÕÖ¹Î»ÖÃ
+     */
     public DownProgressItem(long startSeek, long endSeek) {
         this.startSeek = startSeek;
         this.endSeek = endSeek;
     }
 
+    /**
+     * ¹¹Ôìº¯Êı
+     *
+     * @param startSeek ÎÄ¼şÏÂÔØµÄÆğÊ¼Î»ÖÃ
+     * @param endSeek   ÎÄ¼şÏÂÔØµÄÖÕÖ¹Î»ÖÃ
+     * @param downSize  µ±Ç°Ïß³ÌÒÑ¾­ÏÂÔØµÄÎÄ¼şÎ»ÖÃ
+     */
     public DownProgressItem(long startSeek, long endSeek, long downSize) {
         this.startSeek = startSeek;
         this.endSeek = endSeek;
         this.downSize = downSize;
     }
 
+    /**
+     * »ñÈ¡ÎÄ¼şÏÂÔØµÄÆğÊ¼Î»ÖÃ
+     *
+     * @return ÎÄ¼şÏÂÔØµÄÆğÊ¼Î»ÖÃ
+     */
     public long getStartSeek() {
         return startSeek;
     }
 
+    /**
+     * »ñÈ¡ÎÄ¼şÏÂÔØµÄÖÕÖ¹Î»ÖÃ
+     *
+     * @return ÎÄ¼şÏÂÔØµÄÖÕÖ¹Î»ÖÃ
+     */
     public long getEndSeek() {
         return endSeek;
     }
 
+    /**
+     * »ñÈ¡µ±Ç°Ïß³ÌÒÑ¾­ÏÂÔØµÄÎÄ¼şÎ»ÖÃ
+     *
+     * @return µ±Ç°Ïß³ÌÒÑ¾­ÏÂÔØµÄÎÄ¼şÎ»ÖÃ
+     */
     public long getDownSize() {
         return downSize;
     }
 
+    /**
+     * ÉèÖÃµ±Ç°Ïß³ÌÒÑ¾­ÏÂÔØµÄÎÄ¼şÎ»ÖÃ
+     *
+     * @param downSize µ±Ç°Ïß³ÌÒÑ¾­ÏÂÔØµÄÎÄ¼şÎ»ÖÃ
+     */
     public void setDownSize(long downSize) {
         this.downSize = downSize;
     }
 
+    /**
+     * »ñÈ¡µ±Ç°Ïß³ÌÊÇ·ñÕıÔÚÔËĞĞµÄ×´Ì¬
+     *
+     * @return µ±Ç°Ïß³ÌÊÇ·ñÕıÔÚÔËĞĞ
+     */
     public synchronized boolean isRunning() {
         return isRunning;
     }
 
+    /**
+     * ÉèÖÃµ±Ç°Ïß³ÌÊÇ·ñÕıÔÚÔËĞĞµÄ×´Ì¬
+     *
+     * @param running µ±Ç°Ïß³ÌÊÇ·ñÕıÔÚÔËĞĞ
+     */
     public synchronized void setRunning(boolean running) {
         isRunning = running;
     }
