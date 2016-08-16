@@ -26,165 +26,166 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
 /**
- * Simple to Introduction
- * æ–‡ä»¶ä¸‹è½½æœåŠ¡
+ * ÎÄ¼şÏÂÔØ·şÎñ
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
 public class DownloadFileService implements IDownloadFileService {
 
     /**
-     * å•æ–‡ä»¶èŠ‚ç‚¹çš„å¤§å°ï¼Œæ¯ä¸ªçº¿ç¨‹ä¸€æ¬¡æ€§åˆ†é…ä¸‹è½½ä»»åŠ¡çš„æœ€å¤§å€¼
+     * µ¥ÎÄ¼ş½ÚµãµÄ´óĞ¡£¬Ã¿¸öÏß³ÌÒ»´ÎĞÔ·ÖÅäÏÂÔØÈÎÎñµÄ×î´óÖµ
      */
     public static final int SINGLE_NODE_BYTE_SIZE = 1024 * 1024;
 
     /**
-     * æ–­ç‚¹æœ€å¤šæ”¯æŒ30å¤©çš„æ–‡ä»¶ä¸‹è½½ï¼Œè¶…è¿‡è¿™ä¸ªæ—¶é—´ä¼šé‡æ–°ä¸‹è½½
+     * ¶Ïµã×î¶àÖ§³Ö30ÌìµÄÎÄ¼şÏÂÔØ£¬³¬¹ıÕâ¸öÊ±¼ä»áÖØĞÂÏÂÔØ
      */
-    public static final long REDOWNLOAD_TIME_INTERVAL = 30 * 28800000; // 30å¤©
+    public static final long REDOWNLOAD_TIME_INTERVAL = 30 * 28800000; // 30Ìì
 
     /**
-     * è¿æ¥å¤±è´¥çš„æœ€å¤§ å¤±è´¥æ¬¡æ•°ï¼ŒæˆåŠŸæ—¶æ¬¡æ•°æ¸…é›¶
+     * Á¬½ÓÊ§°ÜµÄ×î´ó Ê§°Ü´ÎÊı£¬³É¹¦Ê±´ÎÊıÇåÁã
      */
     public static final int CONN_ERROR_MAX_NUMBER = 10;
 
     /**
-     * ä¸‹è½½æ–‡ä»¶çš„ä¸Šä¸‹æ–‡
+     * ÏÂÔØÎÄ¼şµÄÉÏÏÂÎÄ
      */
     public static final String DOWNLOAD_CONTEXT_FILENAME = "download.context";
 
     /**
-     * ä¸‹è½½ç¼“å­˜æ–‡ä»¶åç¼€
+     * ÏÂÔØ»º´æÎÄ¼şºó×º
      */
     public static final String DOWNLOAD_TMP_SUFFIX = ".tmp~";
 
     /**
-     * ä¸‹è½½æ–‡ä»¶çš„æ–­ç‚¹ä¿¡æ¯ æ–‡ä»¶åç¼€
+     * ÏÂÔØÎÄ¼şµÄ¶ÏµãĞÅÏ¢ ÎÄ¼şºó×º
      */
     public static final String DOWNLOAD_BREAKPOINT_SUFFIX = ".config";
 
     /**
-     * å¼€å§‹ä¸‹è½½
+     * ¿ªÊ¼ÏÂÔØ
      */
     public static final int STATUS_START = 0x01;
 
     /**
-     * ç»“æŸçŠ¶æ€
+     * ½áÊø×´Ì¬
      */
     public static final int STATUS_STOP = 0x02;
 
     /**
-     * å®ŒæˆçŠ¶æ€
+     * Íê³É×´Ì¬
      */
     public static final int STATUS_FINISH = 0x03;
 
     /**
-     * ä¸‹è½½çš„çŠ¶æ€
+     * ÏÂÔØµÄ×´Ì¬
      */
     private int downStatus = STATUS_STOP;
 
     /**
-     * å¤±è´¥æ¬¡æ•°
+     * Ê§°Ü´ÎÊı
      */
     private int failureNumber = 0;
 
+    // »ñÈ¡Ê§°Ü´ÎÊı
     synchronized int getFailureNumber() {
         return failureNumber;
     }
 
+    // ÉèÖÃÊ§°Ü´ÎÊı
     synchronized void setFailureNumber(int failureNumber) {
         this.failureNumber = failureNumber;
     }
 
     /**
-     * è®¾ç½®ä¸‹è½½çŠ¶æ€
+     * ÉèÖÃÏÂÔØ×´Ì¬
      *
-     * @param downStatus ä¸‹è½½çŠ¶æ€
+     * @param downStatus ÏÂÔØ×´Ì¬
      */
     synchronized void setDownStatus(int downStatus) {
         this.downStatus = downStatus;
     }
 
     /**
-     * è·å–ä¸‹è½½çŠ¶æ€
+     * »ñÈ¡ÏÂÔØ×´Ì¬
      *
-     * @return ä¸‹è½½çŠ¶æ€
+     * @return ÏÂÔØ×´Ì¬
      */
     public synchronized int getDownStatus() {
         return downStatus;
     }
 
     /**
-     * ä¸‹è½½çš„è¿›åº¦ä¿¡æ¯
+     * ÏÂÔØµÄ½ø¶ÈĞÅÏ¢
      */
     private DownProgressInfo mDownProgressInfo;
 
     /**
-     * ä¸‹è½½çš„åŸºæœ¬é…ç½®ä¿¡æ¯
+     * ÏÂÔØµÄ»ù±¾ÅäÖÃĞÅÏ¢
      */
     private DownConfigInfo mDownConfig;
 
     /**
-     * ä¸‹è½½åœ°å€
+     * ÏÂÔØµØÖ·
      */
     private String mUrlStr;
 
     /**
-     * ä¸‹è½½ä¿å­˜çš„æ–‡ä»¶å¤¹ä½ç½®
+     * ÏÂÔØ±£´æµÄÎÄ¼ş¼ĞÎ»ÖÃ
      */
     private File mSaveFolder;
 
     private DownloadContextXml downloadContextXml;
 
-    /**
-     * ä¸‹è½½çš„è¿›åº¦ä¿¡æ¯
-     *
-     * @return è¿›åº¦ä¿¡æ¯
-     */
-    public DownProgressInfo getDownProgressInfo() {
-        return mDownProgressInfo;
-    }
+//    /**
+//     * ÏÂÔØµÄ½ø¶ÈĞÅÏ¢
+//     *
+//     * @return ½ø¶ÈĞÅÏ¢
+//     */
+//    DownProgressInfo getDownProgressInfo() {
+//        return mDownProgressInfo;
+//    }
 
     /**
-     * è·å–é…ç½®ä¿¡æ¯
+     * »ñÈ¡ÅäÖÃĞÅÏ¢
      *
-     * @return é…ç½®ä¿¡æ¯
+     * @return ÅäÖÃĞÅÏ¢
      */
     public DownConfigInfo getDownConfig() {
         return mDownConfig;
     }
 
     /**
-     * ä¸‹è½½çš„åœ°å€
+     * ÏÂÔØµÄµØÖ·
      *
-     * @return ä¸‹è½½çš„åœ°å€
+     * @return ÏÂÔØµÄµØÖ·
      */
     public String getUrlStr() {
         return mUrlStr;
     }
 
     /**
-     * ä¸‹è½½ç›‘å¬æ¥å£
+     * ÏÂÔØ¼àÌı½Ó¿Ú
      */
     private OnDownloadFileListener mOnDownloadFileListener;
 
     /**
-     * è·å–ä¸‹è½½ç›‘å¬æ¥å£
+     * »ñÈ¡ÏÂÔØ¼àÌı½Ó¿Ú
      *
-     * @return ä¸‹è½½ç›‘å¬æ¥å£
+     * @return ÏÂÔØ¼àÌı½Ó¿Ú
      */
     public OnDownloadFileListener getOnDownloadFileListener() {
         return mOnDownloadFileListener;
     }
 
     /**
-     * æ„é€ å‡½æ•°
+     * ¹¹Ôìº¯Êı
      *
-     * @param urlStr     ä¸‹è½½åœ°å€
-     * @param saveFolder ä¸‹è½½ä¿å­˜çš„æ–‡ä»¶å¤¹ä½ç½®
-     * @param listener   ä¸‹è½½ç›‘å¬æ¥å£
+     * @param urlStr     ÏÂÔØµØÖ·
+     * @param saveFolder ÏÂÔØ±£´æµÄÎÄ¼ş¼ĞÎ»ÖÃ
+     * @param listener   ÏÂÔØ¼àÌı½Ó¿Ú
      */
     public DownloadFileService(String urlStr, File saveFolder, OnDownloadFileListener listener) {
         this.mUrlStr = urlStr;
@@ -193,23 +194,23 @@ public class DownloadFileService implements IDownloadFileService {
         mDownConfig = new DownConfigInfo();
     }
 
-    DownFileCalculateThread calculateThread; // è®¡ç®—é€Ÿåº¦ç­‰çš„çº¿ç¨‹
+    DownFileCalculateThread calculateThread; // ¼ÆËãËÙ¶ÈµÈµÄÏß³Ì
 
     /**
-     * å¼€å§‹ä¸‹è½½ï¼Œè¯¥å¤„æœ‰ç½‘ç»œè¯·æ±‚ï¼Œä¸€å®šè¦æ”¾åˆ°éUIçº¿ç¨‹é‡Œ
+     * ¿ªÊ¼ÏÂÔØ£¬¸Ã´¦ÓĞÍøÂçÇëÇó£¬Ò»¶¨Òª·Åµ½·ÇUIÏß³ÌÀï
      */
     @Override
     public void startDownload() {
         if (!mSaveFolder.exists()) {
-            if (!mSaveFolder.mkdirs()) { // æ–‡ä»¶åˆ›å»ºå¤±è´¥å¼‚å¸¸
+            if (!mSaveFolder.mkdirs()) { // ÎÄ¼ş´´½¨Ê§°ÜÒì³£
                 if (mOnDownloadFileListener != null)
                     mOnDownloadFileListener.error(IErrorCode.FILE_CREATE_ERROR, new DownloadFileException("SaveFolder [" + mSaveFolder.getPath() + "] is create error!!!"));
                 return;
             }
         }
-        if (getDownStatus() != STATUS_STOP) { // å¦‚æœå·²ç»åœ¨ä¸‹è½½ æˆ– å·²ç»å®Œæˆçš„ï¼ŒæŠ›å‡ºå¼‚å¸¸
+        if (getDownStatus() != STATUS_STOP) { // Èç¹ûÒÑ¾­ÔÚÏÂÔØ »ò ÒÑ¾­Íê³ÉµÄ£¬Å×³öÒì³£
             if (mOnDownloadFileListener != null) {
-                mOnDownloadFileListener.error(IErrorCode.DOWNLOAD_IS_STARTED, new DownloadFileException("DownLoad is started or finish!!!")); // æ­£åœ¨ä¸‹è½½å¼‚å¸¸
+                mOnDownloadFileListener.error(IErrorCode.DOWNLOAD_IS_STARTED, new DownloadFileException("DownLoad is started or finish!!!")); // ÕıÔÚÏÂÔØÒì³£
             }
             return;
         }
@@ -245,10 +246,10 @@ public class DownloadFileService implements IDownloadFileService {
 
             initContext(fileInfo, url);
 
-            // å¯åŠ¨ä¸‹è½½ç®¡ç†çº¿ç¨‹
+            // Æô¶¯ÏÂÔØ¹ÜÀíÏß³Ì
             DownFileManagerThread downFileManagerThread = new DownFileManagerThread(this, mDownProgressInfo, mDownConfig);
             downFileManagerThread.start();
-            // å¯åŠ¨è®¡ç®—ä¿å­˜ç®¡ç†çº¿ç¨‹ï¼ˆæ­¤å¤„åœ¨å½“å‰çº¿ç¨‹å†…æ‰§è¡Œï¼‰
+            // Æô¶¯¼ÆËã±£´æ¹ÜÀíÏß³Ì£¨´Ë´¦ÔÚµ±Ç°Ïß³ÌÄÚÖ´ĞĞ£©
             calculateThread = new DownFileCalculateThread(this, mDownProgressInfo, mDownConfig, downloadContextXml);
             calculateThread.run();
 
@@ -267,28 +268,28 @@ public class DownloadFileService implements IDownloadFileService {
         }
     }
 
-
+    // ³õÊ¼»¯ÉÏÏÂÎÄĞÅÏ¢
     private void initContext(FileInfo fileInfo, URL url) throws IOException, SAXException, ParserConfigurationException, TransformerException {
-        // è·å–ä¸‹è½½çš„ä¸Šä¸‹æ–‡ä¿¡æ¯
+        // »ñÈ¡ÏÂÔØµÄÉÏÏÂÎÄĞÅÏ¢
         SaveContext context = downloadContextXml.getDownloadContext(mUrlStr);
 
         List<DownProgressItem> downProgressItems = null;
-        long downloadLength = 0; // ä¸‹è½½çš„æ€»å¤§å°
+        long downloadLength = 0; // ÏÂÔØµÄ×Ü´óĞ¡
         String featid;
-        if (context == null) { // æ–°çš„æ–‡ä»¶
+        if (context == null) { // ĞÂµÄÎÄ¼ş
             featid = AppUtil.getUUid();
             context = new SaveContext(mUrlStr, featid, new Date().getTime(), fileInfo.getFileLength(), 0, mDownConfig.isOriginal(), mDownConfig.getThreadNumber());
         } else {
             featid = context.getFeatid();
             long time = new Date().getTime();
-            if (fileInfo.getFileLength() != context.getFileSize() || time - context.getTime() > REDOWNLOAD_TIME_INTERVAL) { // æ–‡ä»¶å¤§å°ä¸ä¸€è‡´æˆ–è€…é•¿æ—¶é—´æœªç»§ç»­ä¸‹è½½
+            if (fileInfo.getFileLength() != context.getFileSize() || time - context.getTime() > REDOWNLOAD_TIME_INTERVAL) { // ÎÄ¼ş´óĞ¡²»Ò»ÖÂ»òÕß³¤Ê±¼äÎ´¼ÌĞøÏÂÔØ
                 downloadContextXml.deleteDownConfig(featid);
                 context = new SaveContext(mUrlStr, featid, time, fileInfo.getFileLength(), 0, mDownConfig.isOriginal(), mDownConfig.getThreadNumber());
             } else {
                 SaveProgress saveProgress = downloadContextXml.queryDownConfig(featid);
                 downloadLength = saveProgress.getDownloadLength();
                 downProgressItems = saveProgress.getProgressInfoList();
-                if (downloadLength == 0 || downProgressItems.size() == 0) {  // ä¸‹è½½è¿‡ç¨‹ä¸­ ä¿è¯è‚¯å®šæœ‰å­è¿›ç¨‹åœ¨ä¸‹è½½ï¼Œå¦åˆ™é‡ä¸‹
+                if (downloadLength == 0 || downProgressItems.size() == 0) {  // ÏÂÔØ¹ı³ÌÖĞ ±£Ö¤¿Ï¶¨ÓĞ×Ó½ø³ÌÔÚÏÂÔØ£¬·ñÔòÖØÏÂ
                     context.setCurrentLength(0);
                     downProgressItems = null;
                 }
@@ -297,7 +298,7 @@ public class DownloadFileService implements IDownloadFileService {
                 context.setTime(time);
             }
         }
-        // ä¿å­˜ä¸Šä¸‹æ–‡ä¿¡æ¯
+        // ±£´æÉÏÏÂÎÄĞÅÏ¢
         downloadContextXml.setDownloadContext(context);
 
         File tmpFile = new File(mSaveFolder, featid + DOWNLOAD_TMP_SUFFIX);
@@ -317,21 +318,21 @@ public class DownloadFileService implements IDownloadFileService {
     }
 
     /**
-     * ç»“æŸä¸‹è½½ï¼Œæ–­ç‚¹è®°å½•å°†è¢«åˆ é™¤
+     * ½áÊøÏÂÔØ£¬¶Ïµã¼ÇÂ¼½«±»É¾³ı
      */
     @Override
     public void stopDownload() {
         isStop = true;
-        setDownStatus(STATUS_STOP); // ç»ˆæ­¢
+        setDownStatus(STATUS_STOP); // ÖÕÖ¹
     }
 
     /**
-     * æš‚åœä¸‹è½½ï¼Œæ–­ç‚¹è®°å½•ä¸ä¼šè¢«åˆ é™¤
+     * ÔİÍ£ÏÂÔØ£¬¶Ïµã¼ÇÂ¼²»»á±»É¾³ı
      */
     @Override
     public void pauseDownload() {
         isStop = false;
-        setDownStatus(STATUS_STOP); // ä¸­æ–­
+        setDownStatus(STATUS_STOP); // ÖĞ¶Ï
     }
 
 }

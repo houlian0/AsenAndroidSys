@@ -1,6 +1,7 @@
 package com.asen.android.lib.base.core.gps;
 
 import android.content.Context;
+import android.location.GpsSatellite;
 import android.support.annotation.Nullable;
 
 import com.asen.android.lib.base.core.gps.bean.GpsPoint;
@@ -15,6 +16,8 @@ import com.asen.android.lib.base.core.gps.listener.OnAddressChangedListener;
 import com.asen.android.lib.base.core.gps.listener.OnLocationChangedListener;
 import com.asen.android.lib.base.core.gps.listener.OnSatelliteChangedListener;
 
+import java.util.List;
+
 /**
  * GPS定位类（纯Android原生）
  * GPS定位主要类（入口类）
@@ -26,6 +29,31 @@ import com.asen.android.lib.base.core.gps.listener.OnSatelliteChangedListener;
 public abstract class GpsLocation {
 
     private static volatile GpsLocation g = null;
+
+    /**
+     * 定位状态
+     */
+    public enum LocationType {
+        /**
+         * 原生定位
+         */
+        ORIGINAL,
+        /**
+         * 扩展定位
+         */
+        EXTENSION,
+        /**
+         * 原生+扩展定位
+         */
+        ORIGINAL_EXTENSION
+    }
+
+    /**
+     * 设置定位的类型
+     *
+     * @param locationType 定位的类型
+     */
+    public abstract void setLocationType(LocationType locationType);
 
     /**
      * 获得GPS定位实例
@@ -86,6 +114,13 @@ public abstract class GpsLocation {
      * @return 地址定位信息
      */
     public abstract LocationInfo getLocationInfo();
+
+    /**
+     * 获取GPS搜到的卫星信息
+     *
+     * @return 卫星信息集合，可能为null
+     */
+    public abstract List<GpsSatellite> getGpsSatellites();
 
     /**
      * 设置第三方扩展性定位，单次定位

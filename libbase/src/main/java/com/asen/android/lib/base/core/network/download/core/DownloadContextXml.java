@@ -1,5 +1,6 @@
 package com.asen.android.lib.base.core.network.download.core;
 
+
 import com.asen.android.lib.base.core.network.download.bean.DownProgressItem;
 import com.asen.android.lib.base.core.network.download.bean.SaveContext;
 import com.asen.android.lib.base.core.network.download.bean.SaveProgress;
@@ -13,7 +14,6 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,31 +33,30 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 /**
- * Simple to Introduction
- * ä¸‹è½½æ–‡ä»¶ä¸Šä¸‹æ–‡ ç®¡ç†ç±»
+ * ÏÂÔØÎÄ¼şÉÏÏÂÎÄ ¹ÜÀíÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
-public class DownloadContextXml {
+class DownloadContextXml {
 
-    private File parentFile;
+    private File parentFile; // Ëù±£´æµ½µÄÎÄ¼ş¼Ğ
 
-    private File contextFile;
+    private File contextFile; // ÏÂÔØµÄcontextÎÄ¼ş£¨Ò»¸ö±£´æ¶ÏµãĞÅÏ¢µÄÎÄ¼ş£©
 
     private Document contextDocument;
 
-    public DownloadContextXml(File folder) {
+    DownloadContextXml(File folder) {
         parentFile = folder;
         contextFile = new File(parentFile, DownloadFileService.DOWNLOAD_CONTEXT_FILENAME);
     }
 
     /**
-     * è¯»å–XML
+     * ¶ÁÈ¡XML
      *
-     * @param file æ–‡ä»¶
-     * @return Documentå¯¹è±¡
+     * @param file ÎÄ¼ş
+     * @return Document¶ÔÏó
      * @throws ParserConfigurationException
      * @throws IOException
      * @throws SAXException
@@ -68,18 +67,18 @@ public class DownloadContextXml {
             file = new File(file.getParent(), tmpName);
         }
 
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); // è·å¾—ä¸€ä¸ªDocumentBuilderFactory
-        DocumentBuilder builder = factory.newDocumentBuilder(); // è·å¾—ä¸€ä¸ªDocumentBuilder
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); // »ñµÃÒ»¸öDocumentBuilderFactory
+        DocumentBuilder builder = factory.newDocumentBuilder(); // »ñµÃÒ»¸öDocumentBuilder
         Document document = null;
         if (file.exists()) {
             try {
                 document = builder.parse(file);
             } catch (SAXException e) {
-                FileUtil.delete(file); // xmlæ–‡ä»¶æœ‰è¯¯ï¼Œåˆ é™¤é‡æ–°ç”Ÿæˆ
+                FileUtil.delete(file); // xmlÎÄ¼şÓĞÎó£¬É¾³ıÖØĞÂÉú³É
             }
         }
         if (document == null) {
-            FileUtil.createFile(file); // åˆ›å»ºæ–‡ä»¶
+            FileUtil.createFile(file); // ´´½¨ÎÄ¼ş
             document = builder.newDocument();
 
         }
@@ -87,26 +86,27 @@ public class DownloadContextXml {
     }
 
     /**
-     * ä¿å­˜XML
+     * ±£´æXML
      *
-     * @param file     æ–‡ä»¶
-     * @param document Documentå¯¹è±¡
+     * @param file     ÎÄ¼ş
+     * @param document Document¶ÔÏó
      * @throws TransformerException
      */
-    private void saveXml(File file, Document document) throws TransformerException, FileNotFoundException {
+    private void saveXml(File file, Document document) throws TransformerException, IOException {
         String tmpName = "." + file.getName();
         File tmpFile = new File(file.getParent(), tmpName);
+        FileUtil.createFile(tmpFile);
 
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();//è·å¾—ä¸€ä¸ªTransformerFactoryå¯¹è±¡
-        Transformer transformer = transformerFactory.newTransformer(); //è·å¾—ä¸€ä¸ªTransformerå¯¹è±¡
-        Source xmlSource = new DOMSource(document);   //æŠŠdocumentå¯¹è±¡ç”¨ä¸€ä¸ªDOMSourceå¯¹è±¡åŒ…è£…èµ·æ¥
-        Result outputTarget = new StreamResult(new FileOutputStream(tmpFile));   //å»ºç«‹ä¸€ä¸ªå­˜å‚¨ç›®æ ‡å¯¹è±¡
-        transformer.setOutputProperty("encoding", "UTF-8");//è®¾å®šæ–‡æ¡£ç¼–ç ï¼Œå±æ€§ä¹Ÿå¯ä»¥ä½¿ç”¨OutputKeysçš„é™æ€å¸¸é‡å±æ€§è®¾å®š
-        transformer.setOutputProperty(OutputKeys.METHOD, "xml");//è¾“å‡ºæ–¹å¼ï¼Œå¯ä»¥æ˜¯xmlã€htmlå’Œtext
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();//»ñµÃÒ»¸öTransformerFactory¶ÔÏó
+        Transformer transformer = transformerFactory.newTransformer(); //»ñµÃÒ»¸öTransformer¶ÔÏó
+        Source xmlSource = new DOMSource(document);   //°Ñdocument¶ÔÏóÓÃÒ»¸öDOMSource¶ÔÏó°ü×°ÆğÀ´
+        Result outputTarget = new StreamResult(new FileOutputStream(tmpFile));   //½¨Á¢Ò»¸ö´æ´¢Ä¿±ê¶ÔÏó
+        transformer.setOutputProperty("encoding", "UTF-8");//Éè¶¨ÎÄµµ±àÂë£¬ÊôĞÔÒ²¿ÉÒÔÊ¹ÓÃOutputKeysµÄ¾²Ì¬³£Á¿ÊôĞÔÉè¶¨
+        transformer.setOutputProperty(OutputKeys.METHOD, "xml");//Êä³ö·½Ê½£¬¿ÉÒÔÊÇxml¡¢htmlºÍtext
         transformer.setOutputProperty(OutputKeys.CDATA_SECTION_ELEMENTS, "yes");
-//        transformer.setOutputProperty(OutputKeys.INDENT, "yes"); // æ˜¯å¦ç¼©è¿›
-//        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2"); // ç¼©è¿›å¤„ç†å¤šå°‘ä¸ªå­—èŠ‚
-        transformer.transform(xmlSource, outputTarget);  //ç”Ÿæˆç›¸åº”çš„xmlæ–‡ä»¶
+//        transformer.setOutputProperty(OutputKeys.INDENT, "yes"); // ÊÇ·ñËõ½ø
+//        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2"); // Ëõ½ø´¦Àí¶àÉÙ¸ö×Ö½Ú
+        transformer.transform(xmlSource, outputTarget);  //Éú³ÉÏàÓ¦µÄxmlÎÄ¼ş
 
         FileUtil.deleteFile(file);
         FileUtil.rename(tmpFile, file);
@@ -118,26 +118,25 @@ public class DownloadContextXml {
     }
 
     /**
-     * è·å–ä¸‹è½½çš„ä¸Šä¸‹æ–‡ï¼Œå¹¶ç§»é™¤
+     * »ñÈ¡ÏÂÔØµÄÉÏÏÂÎÄ£¬²¢ÒÆ³ı
      *
-     * @param url ä¸‹è½½çš„urlåœ°å€
-     * @return ä¸‹è½½å½“å‰urlçš„ä¿¡æ¯
+     * @param url ÏÂÔØµÄurlµØÖ·
+     * @return ÏÂÔØµ±Ç°urlµÄĞÅÏ¢
      * @throws ParserConfigurationException
      * @throws IOException
      * @throws SAXException
      */
-    public SaveContext getDownloadContext(String url) throws ParserConfigurationException, IOException, SAXException {
+    SaveContext getDownloadContext(String url) throws ParserConfigurationException, IOException, SAXException {
         initContextDocument();
         NodeList nodeList = contextDocument.getElementsByTagName("file");
         for (int i = 0; i < nodeList.getLength(); i++) {
             Element item = (Element) nodeList.item(i);
             String urlItem = item.getElementsByTagName("url").item(0).getTextContent();
-            if (urlItem.equals(url)) { // å­˜åœ¨ä¸‹è½½åœ°å€
+            if (urlItem.equals(url)) { // ´æÔÚÏÂÔØµØÖ·
                 long time = DateUtil.getDateByFormat(item.getElementsByTagName("time").item(0).getTextContent(), DateUtil.dateFormatYMDHMS).getTime();
                 String featid = item.getElementsByTagName("featid").item(0).getTextContent();
                 long fileSize = ConvertUtil.stringToLong(item.getElementsByTagName("fileSize").item(0).getTextContent());
                 long currentLength = ConvertUtil.stringToLong(item.getElementsByTagName("currentLength").item(0).getTextContent());
-//                long downloadLength = ConvertUtil.stringToLong(item.getElementsByTagName("downloadLength").item(0).getTextContent());
                 boolean isOriginal = ConvertUtil.stringToBoolean(item.getElementsByTagName("isOriginal").item(0).getTextContent(), false);
                 int threadNumber = ConvertUtil.stringToInt(item.getElementsByTagName("threadNumber").item(0).getTextContent(), 3);
                 return new SaveContext(url, featid, time, fileSize, currentLength, isOriginal, threadNumber);
@@ -147,15 +146,15 @@ public class DownloadContextXml {
     }
 
     /**
-     * å¢åŠ ä¸‹è½½çš„Contextï¼Œå¹¶ä¿å­˜
+     * Ôö¼ÓÏÂÔØµÄContext£¬²¢±£´æ
      *
-     * @param context ä¸‹è½½çš„ä¸Šä¸‹æ–‡
+     * @param context ÏÂÔØµÄÉÏÏÂÎÄ
      * @throws ParserConfigurationException
      * @throws SAXException
      * @throws IOException
      * @throws TransformerException
      */
-    public void setDownloadContext(SaveContext context) throws ParserConfigurationException, SAXException, IOException, TransformerException {
+    void setDownloadContext(SaveContext context) throws ParserConfigurationException, SAXException, IOException, TransformerException {
         initContextDocument();
 
         NodeList nodeList = contextDocument.getElementsByTagName("files");
@@ -163,12 +162,12 @@ public class DownloadContextXml {
         if (nodeList.getLength() == 0) {
             element = contextDocument.createElement("files");
             contextDocument.appendChild(element);
-            element.appendChild(createContextElement(context)); // é¦–æ¬¡è‚¯å®šæ˜¯åˆ›å»ºæ–°çš„
+            element.appendChild(createContextElement(context)); // Ê×´Î¿Ï¶¨ÊÇ´´½¨ĞÂµÄ
         } else {
             element = (Element) nodeList.item(0);
             Element child = getChildElementByUrl(context.getUrl());
             if (child == null) {
-                element.appendChild(createContextElement(context)); // é¦–æ¬¡è‚¯å®šæ˜¯åˆ›å»ºæ–°çš„
+                element.appendChild(createContextElement(context)); // Ê×´Î¿Ï¶¨ÊÇ´´½¨ĞÂµÄ
             } else {
                 updateContextElement(child, context);
             }
@@ -177,12 +176,12 @@ public class DownloadContextXml {
         saveXml(contextFile, contextDocument);
     }
 
-    private Element getChildElementByUrl(String url) { // æ ¹æ®ä¸‹è½½åœ°å€æ‰¾å‡ºå¯¹åº”çš„èŠ‚ç‚¹
+    private Element getChildElementByUrl(String url) { // ¸ù¾İÏÂÔØµØÖ·ÕÒ³ö¶ÔÓ¦µÄ½Úµã
         NodeList nodeList = contextDocument.getElementsByTagName("file");
         for (int i = 0; i < nodeList.getLength(); i++) {
             Element item = (Element) nodeList.item(i);
             String urlItem = item.getElementsByTagName("url").item(0).getTextContent();
-            if (urlItem.equals(url)) { // å­˜åœ¨ä¸‹è½½åœ°å€
+            if (urlItem.equals(url)) { // ´æÔÚÏÂÔØµØÖ·
                 return item;
             }
         }
@@ -190,11 +189,11 @@ public class DownloadContextXml {
     }
 
     /**
-     * æ ¹æ®æ–‡ä»¶ä¸‹è½½åœ°å€ ç§»é™¤ä¸‹è½½æ–‡ä»¶ä¸Šä¸‹æ–‡
+     * ¸ù¾İÎÄ¼şÏÂÔØµØÖ· ÒÆ³ıÏÂÔØÎÄ¼şÉÏÏÂÎÄ
      *
-     * @param url ä¸‹è½½åœ°å€
+     * @param url ÏÂÔØµØÖ·
      */
-    public void removeContextElement(String url) throws TransformerException, FileNotFoundException {
+    void removeContextElement(String url) throws TransformerException, IOException {
         Element child = getChildElementByUrl(url);
         if (child != null) {
             contextDocument.getElementsByTagName("files").item(0).removeChild(child);
@@ -203,21 +202,17 @@ public class DownloadContextXml {
     }
 
     private void updateContextElement(Element element, SaveContext context) {
-//        element.setAttribute("url", context.getUrl());
         element.getElementsByTagName("url").item(0).setTextContent(context.getUrl());
         element.getElementsByTagName("time").item(0).setTextContent(DateUtil.getStringByFormat(new Date(context.getTime()), DateUtil.dateFormatYMDHMS));
         element.getElementsByTagName("featid").item(0).setTextContent(context.getFeatid());
         element.getElementsByTagName("fileSize").item(0).setTextContent(context.getFileSize() + "");
         element.getElementsByTagName("currentLength").item(0).setTextContent(context.getCurrentLength() + "");
-//        element.getElementsByTagName("downloadLength").item(0).setTextContent(context.getDownloadLength() + "");
         element.getElementsByTagName("isOriginal").item(0).setTextContent(context.isOriginal() + "");
         element.getElementsByTagName("threadNumber").item(0).setTextContent(context.getThreadNumber() + "");
     }
 
-    private Element createContextElement(SaveContext context) { // åˆ›å»ºæ–°çš„Element
+    private Element createContextElement(SaveContext context) { // ´´½¨ĞÂµÄElement
         Element child = contextDocument.createElement("file");
-//        child.setAttribute("url", context.getUrl());
-//        child.setIdAttribute("url", true);
 
         Element url = contextDocument.createElement("url");
         url.setTextContent(context.getUrl());
@@ -239,10 +234,6 @@ public class DownloadContextXml {
         currentLength.setTextContent(context.getCurrentLength() + "");
         child.appendChild(currentLength);
 
-//        Element downloadLength = contextDocument.createElement("downloadLength");
-//        downloadLength.setTextContent(context.getDownloadLength() + "");
-//        child.appendChild(downloadLength);
-
         Element isOriginal = contextDocument.createElement("isOriginal");
         isOriginal.setTextContent(context.isOriginal() + "");
         child.appendChild(isOriginal);
@@ -255,36 +246,36 @@ public class DownloadContextXml {
     }
 
     /**
-     * æ ¹æ®featidåˆ é™¤é…ç½®ä¿¡æ¯
+     * ¸ù¾İfeatidÉ¾³ıÅäÖÃĞÅÏ¢
      *
-     * @param featid ä¸‹è½½ç¼–å·
+     * @param featid ÏÂÔØ±àºÅ
      */
-    public void deleteDownConfig(String featid) {
+    void deleteDownConfig(String featid) {
         File file = new File(parentFile, featid + DownloadFileService.DOWNLOAD_BREAKPOINT_SUFFIX);
         FileUtil.deleteFile(file);
     }
 
     /**
-     * ä¿å­˜ä¸æ›´æ–°æ–­ç‚¹ä¿¡æ¯
+     * ±£´æÓë¸üĞÂ¶ÏµãĞÅÏ¢
      *
-     * @param featid   æ–­ç‚¹æ–‡ä»¶ç¼–å·
-     * @param itemList æ–­ç‚¹ä¿¡æ¯é›†åˆ
+     * @param featid   ¶ÏµãÎÄ¼ş±àºÅ
+     * @param itemList ¶ÏµãĞÅÏ¢¼¯ºÏ
      */
-    public void createOrUpdateDownConfig(String featid, long downloadLength, List<DownProgressItem> itemList) throws ParserConfigurationException, IOException, SAXException, TransformerException {
+    void createOrUpdateDownConfig(String featid, long downloadLength, List<DownProgressItem> itemList) throws ParserConfigurationException, IOException, SAXException, TransformerException {
         File file = new File(parentFile, featid + DownloadFileService.DOWNLOAD_BREAKPOINT_SUFFIX);
 
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); // è·å¾—ä¸€ä¸ªDocumentBuilderFactory
-        DocumentBuilder builder = factory.newDocumentBuilder(); // è·å¾—ä¸€ä¸ªDocumentBuilder
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); // »ñµÃÒ»¸öDocumentBuilderFactory
+        DocumentBuilder builder = factory.newDocumentBuilder(); // »ñµÃÒ»¸öDocumentBuilder
 
         Document document;
         if (file.exists()) {
             document = builder.parse(file);
             NodeList childNodes = document.getChildNodes();
-            for (int i = 0; i < childNodes.getLength(); i++) { // ç§»é™¤æ‰€æœ‰çš„èŠ‚ç‚¹
+            for (int i = 0; i < childNodes.getLength(); i++) { // ÒÆ³ıËùÓĞµÄ½Úµã
                 document.removeChild(childNodes.item(i));
             }
         } else {
-            FileUtil.createFile(file); // åˆ›å»ºæ–‡ä»¶
+            FileUtil.createFile(file); // ´´½¨ÎÄ¼ş
             document = builder.newDocument();
         }
 
@@ -314,19 +305,19 @@ public class DownloadContextXml {
     }
 
     /**
-     * æŸ¥è¯¢å½“å‰æ–‡ä»¶çš„æ–­ç‚¹ä¿¡æ¯
+     * ²éÑ¯µ±Ç°ÎÄ¼şµÄ¶ÏµãĞÅÏ¢
      *
-     * @param featid æ–‡ä»¶ä¸‹è½½ç¼–å·
-     * @return æ–­ç‚¹ä¿¡æ¯é›†åˆ
+     * @param featid ÎÄ¼şÏÂÔØ±àºÅ
+     * @return ¶ÏµãĞÅÏ¢¼¯ºÏ
      */
-    public SaveProgress queryDownConfig(String featid) throws IOException, SAXException, ParserConfigurationException {
+    SaveProgress queryDownConfig(String featid) throws IOException, SAXException, ParserConfigurationException {
         List<DownProgressItem> result = new ArrayList<>();
         long downLength = 0;
 
         File file = new File(parentFile, featid + DownloadFileService.DOWNLOAD_BREAKPOINT_SUFFIX);
         if (file.exists()) {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); // è·å¾—ä¸€ä¸ªDocumentBuilderFactory
-            DocumentBuilder builder = factory.newDocumentBuilder(); // è·å¾—ä¸€ä¸ªDocumentBuilder
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); // »ñµÃÒ»¸öDocumentBuilderFactory
+            DocumentBuilder builder = factory.newDocumentBuilder(); // »ñµÃÒ»¸öDocumentBuilder
             Document document = builder.parse(file);
 
             NodeList items = document.getElementsByTagName("items");

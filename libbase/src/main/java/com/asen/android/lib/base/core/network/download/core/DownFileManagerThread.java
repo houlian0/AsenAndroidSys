@@ -12,14 +12,13 @@ import java.io.IOException;
 import java.util.ListIterator;
 
 /**
- * Simple to Introduction
- * ä¸‹è½½æ–‡ä»¶ç®¡ç†çº¿ç¨‹
+ * ÏÂÔØÎÄ¼ş¹ÜÀíÏß³Ì
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
-public class DownFileManagerThread extends Thread {
+class DownFileManagerThread extends Thread {
 
     private SenThreadPool senThreadPool;
 
@@ -30,13 +29,13 @@ public class DownFileManagerThread extends Thread {
     private DownloadFileService mFileService;
 
     /**
-     * æ„é€ å‡½æ•°
+     * ¹¹Ôìº¯Êı
      *
-     * @param service      ä¸‹è½½æœåŠ¡
-     * @param progressInfo æ€»è¿›åº¦ä¿¡æ¯
-     * @param configInfo   ä¸‹è½½é…ç½®ä¿¡æ¯
+     * @param service      ÏÂÔØ·şÎñ
+     * @param progressInfo ×Ü½ø¶ÈĞÅÏ¢
+     * @param configInfo   ÏÂÔØÅäÖÃĞÅÏ¢
      */
-    public DownFileManagerThread(DownloadFileService service, DownProgressInfo progressInfo, DownConfigInfo configInfo) {
+    DownFileManagerThread(DownloadFileService service, DownProgressInfo progressInfo, DownConfigInfo configInfo) {
         mFileService = service;
         mProgressInfo = progressInfo;
         mConfigInfo = configInfo;
@@ -49,13 +48,13 @@ public class DownFileManagerThread extends Thread {
 
         int downStatus = DownloadFileService.STATUS_START;
 
-        while (mFileService.getDownStatus() == DownloadFileService.STATUS_START) { // å¼€å§‹ä¸‹è½½
-            if (mProgressInfo.getDownloadLength() >= mProgressInfo.getFileInfo().getFileLength()) { // å·²ç»ä¸‹è½½å®Œæˆ
+        while (mFileService.getDownStatus() == DownloadFileService.STATUS_START) { // ¿ªÊ¼ÏÂÔØ
+            if (mProgressInfo.getDownloadLength() >= mProgressInfo.getFileInfo().getFileLength()) { // ÒÑ¾­ÏÂÔØÍê³É
                 downStatus = DownloadFileService.STATUS_FINISH;
                 break;
             }
-            if (mFileService.getFailureNumber() >= DownloadFileService.CONN_ERROR_MAX_NUMBER) { // è¿æ¥å¤±è´¥æ¬¡æ•°åˆ¤å®š
-                downStatus = DownloadFileService.STATUS_STOP; // å…³é—­ä¸‹è½½
+            if (mFileService.getFailureNumber() >= DownloadFileService.CONN_ERROR_MAX_NUMBER) { // Á¬½ÓÊ§°Ü´ÎÊıÅĞ¶¨
+                downStatus = DownloadFileService.STATUS_STOP; // ¹Ø±ÕÏÂÔØ
                 break;
             }
 
@@ -67,10 +66,10 @@ public class DownFileManagerThread extends Thread {
                     ListIterator<DownProgressItem> iterator = mProgressInfo.getProgressItems().listIterator();
                     while (iterator.hasNext()) {
                         DownProgressItem next = iterator.next();
-                        if (next.getDownSize() >= next.getEndSeek() - next.getStartSeek()) { // è¯¥è¿›åº¦å·²ç»ä¸‹è½½å®Œæˆ
+                        if (next.getDownSize() >= next.getEndSeek() - next.getStartSeek()) { // ¸Ã½ø¶ÈÒÑ¾­ÏÂÔØÍê³É
                             iterator.remove();
                         } else {
-                            if (!next.isRunning()) { // å¦‚æœæŸä¸ªæœªä¸‹å®Œçš„çº¿ç¨‹æ–­æ‰äº†ï¼Œé‡æ–°è¿æ¥
+                            if (!next.isRunning()) { // Èç¹ûÄ³¸öÎ´ÏÂÍêµÄÏß³Ì¶ÏµôÁË£¬ÖØĞÂÁ¬½Ó
                                 senThreadPool.execute(new DownFileSingleThread(mFileService, mProgressInfo, next));
                             }
                             number++;
@@ -88,7 +87,7 @@ public class DownFileManagerThread extends Thread {
             }
         }
 
-        // å…¨éƒ¨ä¸‹è½½å®Œæˆï¼Œå…³é—­æ–‡ä»¶æµ
+        // È«²¿ÏÂÔØÍê³É£¬¹Ø±ÕÎÄ¼şÁ÷
         synchronized (mProgressInfo) {
             try {
 //                mProgressInfo.getFileOutputStream().flush();
@@ -98,27 +97,27 @@ public class DownFileManagerThread extends Thread {
             }
         }
 
-        senThreadPool.getPool().shutdown(); // å…³é—­çº¿ç¨‹æ± 
+        senThreadPool.getPool().shutdown(); // ¹Ø±ÕÏß³Ì³Ø
 
-        if (downStatus == DownloadFileService.STATUS_FINISH) { // å¦‚æœå·²ç»ä¸‹è½½å®Œæˆ
-            mFileService.setDownStatus(DownloadFileService.STATUS_FINISH); // ä¸‹è½½å®Œæˆ
-        } else if (downStatus == DownloadFileService.STATUS_STOP) { // å¼‚å¸¸ä¸­æ–­ä¸‹è½½æ—¶æ‰§è¡Œ
+        if (downStatus == DownloadFileService.STATUS_FINISH) { // Èç¹ûÒÑ¾­ÏÂÔØÍê³É
+            mFileService.setDownStatus(DownloadFileService.STATUS_FINISH); // ÏÂÔØÍê³É
+        } else if (downStatus == DownloadFileService.STATUS_STOP) { // Òì³£ÖĞ¶ÏÏÂÔØÊ±Ö´ĞĞ
             OnDownloadFileListener onDownloadFileListener = mFileService.getOnDownloadFileListener();
             if (onDownloadFileListener != null) {
                 onDownloadFileListener.error(IErrorCode.NETWORK_CONN_ERROR, new DownloadFileException("Network conn error in center!!!"));
             }
-            mFileService.setDownStatus(DownloadFileService.STATUS_STOP); // ä¸‹è½½ä¸­æ–­
+            mFileService.setDownStatus(DownloadFileService.STATUS_STOP); // ÏÂÔØÖĞ¶Ï
         }
 
     }
 
     /**
-     * è·å¾—DownProgressItem
+     * »ñµÃDownProgressItem
      *
-     * @return è·å¾—ä¸‹ä¸€ä¸ªDownProgressItemï¼Œå¦‚æœæ²¡æœ‰åˆ™è¿”å›null
+     * @return »ñµÃÏÂÒ»¸öDownProgressItem£¬Èç¹ûÃ»ÓĞÔò·µ»Ønull
      */
     private DownProgressItem getNextProgressItem() {
-        if (mProgressInfo.getCurrentLength() >= mProgressInfo.getFileInfo().getFileLength()) { // å·²ç»æ²¡æœ‰éœ€è¦å†å¼€è¾Ÿçº¿ç¨‹çš„äº†
+        if (mProgressInfo.getCurrentLength() >= mProgressInfo.getFileInfo().getFileLength()) { // ÒÑ¾­Ã»ÓĞĞèÒªÔÙ¿ª±ÙÏß³ÌµÄÁË
             return null;
         }
 

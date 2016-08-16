@@ -12,7 +12,6 @@ import com.asen.android.lib.base.tool.util.FileUtil;
 import org.xml.sax.SAXException;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,37 +21,37 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
 /**
- * Simple to Introduction
- * é€Ÿåº¦ç­‰è®¡ç®—ä¸ä¿å­˜ä¿¡æ¯çš„çº¿ç¨‹
+ * ËÙ¶ÈµÈ¼ÆËãÓë±£´æĞÅÏ¢µÄÏß³Ì
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
-public class DownFileCalculateThread extends Thread {
+class DownFileCalculateThread extends Thread {
 
-    private DownloadFileService mFileService;
+    private DownloadFileService mFileService; // ÏÂÔØµÄÖ÷¹¦ÄÜÀà
 
-    private final DownProgressInfo mProgressInfo;
+    private final DownProgressInfo mProgressInfo; // ÏÂÔØµÄ½ø¶ÈĞÅÏ¢
 
-    private DownConfigInfo mConfigInfo;
+    private DownConfigInfo mConfigInfo; // ÏÂÔØµÄÅäÖÃĞÅÏ¢
 
-    private OnDownloadFileListener onDownloadFileListener;
+    private OnDownloadFileListener onDownloadFileListener; // ÏÂÔØµÄ¼àÌı½Ó¿Ú
 
-    private DownloadContextXml downloadContextXml;
+    private DownloadContextXml downloadContextXml; // ÏÂÔØµÄÅäÖÃĞÅÏ¢¶ÁĞ´²Ù×÷
 
-    private String featid;
+    private String featid; // Î¨Ò»±àÂë
 
-    private SenThreadPool pool = null;
+    private SenThreadPool pool = null; // JAVAµÄÏß³Ì³Ø£¬ÓÃÓÚ±£´æxml
 
     /**
-     * æ„é€ å‡½æ•°
+     * ¹¹Ôìº¯Êı
      *
-     * @param service      ä¸‹è½½æœåŠ¡
-     * @param progressInfo æ€»è¿›åº¦ä¿¡æ¯
-     * @param configInfo   ä¸‹è½½é…ç½®ä¿¡æ¯
+     * @param service            ÏÂÔØ·şÎñ
+     * @param progressInfo       ×Ü½ø¶ÈĞÅÏ¢
+     * @param configInfo         ÏÂÔØÅäÖÃĞÅÏ¢
+     * @param downloadContextXml ÏÂÔØµÄÅäÖÃĞÅÏ¢¶ÁĞ´²Ù×÷
      */
-    public DownFileCalculateThread(DownloadFileService service, DownProgressInfo progressInfo, DownConfigInfo configInfo, DownloadContextXml downloadContextXml) {
+    DownFileCalculateThread(DownloadFileService service, DownProgressInfo progressInfo, DownConfigInfo configInfo, DownloadContextXml downloadContextXml) {
         mFileService = service;
         mProgressInfo = progressInfo;
         mConfigInfo = configInfo;
@@ -83,7 +82,7 @@ public class DownFileCalculateThread extends Thread {
         while (mFileService.getDownStatus() == DownloadFileService.STATUS_START) {
             long prevTime = new Date().getTime();
 
-            if (count == 5) { // ä¸€æ®µæ—¶é—´ä¿å­˜ä¸€æ¬¡ä¿¡æ¯
+            if (count == 5) { // Ò»¶ÎÊ±¼ä±£´æÒ»´ÎĞÅÏ¢
                 pool.execute(saveRunnable);
                 count = 0;
             }
@@ -106,27 +105,27 @@ public class DownFileCalculateThread extends Thread {
 
         pool.getPool().shutdown();
 
-        if (mFileService.getDownStatus() == DownloadFileService.STATUS_FINISH) { // ä¸‹è½½å®Œæˆ
-            // è¿”å›æœ€ç»ˆçš„æ–‡ä»¶å
+        if (mFileService.getDownStatus() == DownloadFileService.STATUS_FINISH) { // ÏÂÔØÍê³É
+            // ·µ»Ø×îÖÕµÄÎÄ¼şÃû
             if (onDownloadFileListener != null) {
-                File lastFile; // æœ€ç»ˆçš„æ–‡ä»¶å
-                boolean isRenameSuccess; // æ”¹åæ˜¯å¦æˆåŠŸ
+                File lastFile; // ×îÖÕµÄÎÄ¼şÃû
+                boolean isRenameSuccess; // ¸ÄÃûÊÇ·ñ³É¹¦
                 synchronized (mProgressInfo) {
                     File folder = mProgressInfo.getTmpFile().getParentFile();
-                    if (mConfigInfo.isOriginal()) { // æ”¹ä¸ºåŸæ–‡ä»¶å
+                    if (mConfigInfo.isOriginal()) { // ¸ÄÎªÔ­ÎÄ¼şÃû
                         lastFile = new File(folder, mProgressInfo.getFileInfo().getFileName());
                         isRenameSuccess = FileUtil.rename(mProgressInfo.getTmpFile(), lastFile);
-                    } else { // ä¸ç”¨åŸæ–‡ä»¶å
+                    } else { // ²»ÓÃÔ­ÎÄ¼şÃû
                         File saveFile = mProgressInfo.getTmpFile();
                         lastFile = new File(folder, saveFile.getName().substring(0, saveFile.getName().lastIndexOf(".") + 1) + mProgressInfo.getFileInfo().getFileSuffix());
                         isRenameSuccess = FileUtil.rename(saveFile, lastFile);
                     }
                 }
 
-                if (lastFile.exists()) { // å¦‚æœæœ€ç»ˆæ–‡ä»¶å­˜åœ¨
+                if (lastFile.exists()) { // Èç¹û×îÖÕÎÄ¼ş´æÔÚ
                     int i = 0;
                     String fileName = lastFile.getName().substring(0, lastFile.getName().lastIndexOf("."));
-                    while (!isRenameSuccess) { // å¹¶ä¸”æ”¹åå¤±è´¥
+                    while (!isRenameSuccess) { // ²¢ÇÒ¸ÄÃûÊ§°Ü
                         i++;
                         lastFile = new File(mProgressInfo.getTmpFile().getParentFile(), fileName + "(" + i + ")." + mProgressInfo.getFileInfo().getFileSuffix());
                         isRenameSuccess = FileUtil.rename(mProgressInfo.getTmpFile(), lastFile);
@@ -135,24 +134,25 @@ public class DownFileCalculateThread extends Thread {
 
                 onDownloadFileListener.success(isRenameSuccess ? lastFile : mProgressInfo.getTmpFile());
             }
-            // åˆ é™¤æ–­ç‚¹ä¿¡æ¯
+            // É¾³ı¶ÏµãĞÅÏ¢
             try {
                 deleteMessage();
-            } catch (TransformerException | FileNotFoundException e) {
+            } catch (TransformerException | IOException e) {
+                if (onDownloadFileListener != null) {
+                    onDownloadFileListener.error(IErrorCode.FILE_CONFIG_ERROR, e);
+                }
+            }
+        } else if (mFileService.getDownStatus() == DownloadFileService.STATUS_STOP && mFileService.isStop()) { // Í¨¹ıµ÷ÓÃstopDownload·½·¨Ê±Ö´ĞĞ
+            // É¾³ı¶ÏµãĞÅÏ¢
+            try {
+                deleteMessage();
+            } catch (TransformerException | IOException e) {
                 if (onDownloadFileListener != null) {
                     onDownloadFileListener.error(IErrorCode.FILE_CONFIG_ERROR, e);
                 }
             }
         }
-//        else if (mFileService.getDownStatus() == DownloadFileService.STATUS_STOP && !mFileService.isStop()) { // ä¸‹è½½ä¸­æ–­ï¼ˆå«ä¸»åŠ¨ä¸­æ–­ã€æ„å¤–ä¸­æ–­ï¼‰ï¼Œä¸å«ç»“æŸä¸­æ–­
-//            try {
-//                saveMessage();
-//            } catch (SAXException | TransformerException | IOException | ParserConfigurationException e) {
-//                if (onDownloadFileListener != null) {
-//                    onDownloadFileListener.error(IErrorCode.FILE_CONFIG_ERROR, e);
-//                }
-//            }
-//        }
+
     }
 
     private SaveRunnable saveRunnable = new SaveRunnable();
@@ -161,14 +161,15 @@ public class DownFileCalculateThread extends Thread {
         @Override
         public void run() {
             try {
-                saveMessage(); // ä¿å­˜æ–­ç‚¹ä¿¡æ¯
+                saveMessage(); // ±£´æ¶ÏµãĞÅÏ¢
             } catch (SAXException | TransformerException | IOException | ParserConfigurationException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    protected void saveMessage() throws SAXException, TransformerException, ParserConfigurationException, IOException { // ä¿å­˜æ–­ç‚¹ç­‰ä¿¡æ¯
+    // ±£´æ¶ÏµãµÈĞÅÏ¢
+    protected void saveMessage() throws SAXException, TransformerException, ParserConfigurationException, IOException {
         long currentLength;
         long downloadLength;
         List<DownProgressItem> progressItems = new ArrayList<>();
@@ -185,11 +186,10 @@ public class DownFileCalculateThread extends Thread {
     }
 
     private void updateContext(long currentLength) throws IOException, SAXException, ParserConfigurationException, TransformerException {
-        // è·å–ä¸‹è½½çš„ä¸Šä¸‹æ–‡ä¿¡æ¯
+        // »ñÈ¡ÏÂÔØµÄÉÏÏÂÎÄĞÅÏ¢
         SaveContext context = downloadContextXml.getDownloadContext(mFileService.getUrlStr());
         context.setCurrentLength(currentLength);
-//        context.setDownloadLength(downloadLength);
-        // ä¿å­˜ä¸Šä¸‹æ–‡ä¿¡æ¯
+        // ±£´æÉÏÏÂÎÄĞÅÏ¢
         downloadContextXml.setDownloadContext(context);
     }
 
@@ -197,7 +197,8 @@ public class DownFileCalculateThread extends Thread {
         downloadContextXml.createOrUpdateDownConfig(featid, downloadLength, progressItems);
     }
 
-    protected void deleteMessage() throws TransformerException, FileNotFoundException { // åˆ é™¤æ–­ç‚¹ä¿¡æ¯
+    // É¾³ı¶ÏµãĞÅÏ¢
+    protected void deleteMessage() throws TransformerException, IOException {
         synchronized (mProgressInfo) {
             downloadContextXml.removeContextElement(mFileService.getUrlStr());
             downloadContextXml.deleteDownConfig(featid);
