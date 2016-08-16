@@ -12,24 +12,23 @@ import com.asen.android.lib.base.tool.manage.action.IActionManager;
 import com.asen.android.lib.base.tool.manage.action.OperActionManager;
 
 /**
- * Created by ASEN on 2016/3/31.
- * åŸºç¡€çš„Activityï¼ŒåŸºäºv7åŒ…çš„æ–°ç‰¹æ€§
+ * »ù´¡µÄActivity£¬»ùÓÚv7°üµÄĞÂÌØĞÔ
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:57
  */
 public class BaseActivity extends AppCompatActivity {
 
     /**
-     * åˆ·æ–°å‰ä¸€ä¸ªé¡µé¢çš„è¿”å›å€¼
+     * Ë¢ĞÂÇ°Ò»¸öÒ³ÃæµÄ·µ»ØÖµ
      */
-    public static final int RESULT_REFRESH = 2; // åˆ·æ–°é¡µé¢
+    public static final int RESULT_REFRESH = 2; // Ë¢ĞÂÒ³Ãæ
 
     /**
-     * é”€æ¯å‰ä¸€ä¸ªé¡µé¢çš„è¿”å›å€¼
+     * Ïú»ÙÇ°Ò»¸öÒ³ÃæµÄ·µ»ØÖµ
      */
-    public static final int RESULT_EXIT = -2; // é€€å‡º
+    public static final int RESULT_EXIT = -2; // ÍË³ö
 
     public Context mContext;
 
@@ -59,36 +58,41 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * æ‰§è¡ŒAction
+     * Ö´ĞĞAction
      *
-     * @param actionIntent
+     * @param actionIntent µ±Ç°µÄActionÒâÍ¼
      */
     public void executeIntent(ActionIntent actionIntent) {
         mActionManager.executeIntent(actionIntent);
     }
 
     /**
-     * é”€æ¯å½“å‰çš„Action
+     * Ïú»Ùµ±Ç°µÄAction
      */
     public void cancelCurrentIntent() {
         mActionManager.cancelCurrentIntent();
     }
 
     /**
-     * è·å¾—å½“å‰çš„Action
-     * @param cls
-     * @param <T>
-     * @return
+     * »ñµÃµ±Ç°µÄAction
+     *
+     * @param cls ActionÀà
+     * @param <T> ·ºĞÍ
+     * @return Èç¹ûµ±Ç°µÄActionÊÇËù´«ÈëµÄÀà£¬Ôò·µ»ØAction¶ÔÏó£»·ñÔò·µ»Ønull
      */
-    public<T extends BaseAction> T getAction(Class<T> cls) {
+    public <T extends BaseAction> T getAction(Class<T> cls) {
         ActionIntent intent = mActionManager.getCurrentIntent();
 
-        if(intent == null) return null;
+        if (intent == null) return null;
 
         try {
             BaseAction action = intent.getAction();
-            if(action.getClass().getName().equals(cls.getName())) {
-                return (T)action;
+            Class<?> currentCls = action.getClass(); // µ±Ç°ÏÔÊ¾µÄAction
+            while (currentCls != null) {
+                if (currentCls.getName().equals(cls.getName())) {
+                    return (T) action;
+                }
+                currentCls = currentCls.getSuperclass();
             }
         } catch (Exception e) {
             e.printStackTrace();

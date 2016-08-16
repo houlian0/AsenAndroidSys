@@ -7,31 +7,31 @@ import com.asen.android.lib.base.tool.util.SdCardUtil;
 import java.io.File;
 
 /**
- * Created by HL_SEN on 2015/9/22.
+ * ³ÌĞòÎÄ¼şÂ·¾¶½á¹¹»ñÈ¡Àà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
 public class AppPath {
 
     /**
-     * é»˜è®¤çŠ¶æ€ï¼Œæœ‰å¤–ç½®è¯»å¤–ç½®ï¼Œæ²¡å¤–ç½®è¯»å†…ç½®
+     * Ä¬ÈÏ×´Ì¬£¬ÓĞÍâÖÃ¶ÁÍâÖÃ£¬Ã»ÍâÖÃ¶ÁÄÚÖÃ
      */
     public static final byte TYPE_DEFAULT = 0x01;
 
     /**
-     * åè½¬çŠ¶æ€ï¼Œæœ‰å†…ç½®å¡è¯»å†…ç½®ï¼Œæ— å†…ç½®å¡è¯»å¤–ç½®ï¼ˆéƒ¨åˆ†è®¾å¤‡è·å–å†…ç½®å¡æ—¶ï¼Œä¼šç›¸åï¼‰
+     * ·´×ª×´Ì¬£¬ÓĞÄÚÖÃ¿¨¶ÁÄÚÖÃ£¬ÎŞÄÚÖÃ¿¨¶ÁÍâÖÃ£¨²¿·ÖÉè±¸»ñÈ¡ÄÚÖÃ¿¨Ê±£¬»áÏà·´£©
      */
     public static final byte TYPE_REVERSAL = 0x02;
 
     /**
-     * internal SD Card ä»…å–å†…ç½®å¡
+     * internal SD Card ½öÈ¡ÄÚÖÃ¿¨
      */
     public static final byte TYPE_INTERNAL_SD_CARD = 0x03;
 
     /**
-     * External SD Card ä»…å–å¤–ç½®å¡
+     * External SD Card ½öÈ¡ÍâÖÃ¿¨
      */
     public static final byte TYPE_EXTERNAL_SD_CARD = 0x04;
 
@@ -45,25 +45,25 @@ public class AppPath {
     }
 
     /**
-     * åˆå§‹åŒ–SDå¡è·¯å¾„ï¼Œæ¯æ¬¡æ‰§è¡Œéƒ½è·å–ä¸€æ¬¡ï¼Œæœ‰å¤–ç½®æ‹¿å¤–ç½®å¡ã€æ²¡å¤–ç½®æ‹¿å†…ç½®ã€‚4.4åŠä»¥ä¸Šçš„ç‰ˆæœ¬ï¼Œå¤–ç½®SDå¡è·¯å¾„ä¸ºAndroidæŒ‡å®šè·¯å¾„
+     * ³õÊ¼»¯SD¿¨Â·¾¶£¬Ã¿´ÎÖ´ĞĞ¶¼»ñÈ¡Ò»´Î£¬ÓĞÍâÖÃÄÃÍâÖÃ¿¨¡¢Ã»ÍâÖÃÄÃÄÚÖÃ¡£4.4¼°ÒÔÉÏµÄ°æ±¾£¬ÍâÖÃSD¿¨Â·¾¶ÎªAndroidÖ¸¶¨Â·¾¶
      *
-     * @param context Androidä¸Šä¸‹æ–‡
+     * @param context AndroidÉÏÏÂÎÄ
      * @return
      */
     private static String initSdCard(Context context) {
         if (mType == TYPE_INTERNAL_SD_CARD) {
-            // å†…ç½®å¡
+            // ÄÚÖÃ¿¨
             path = SdCardUtil.getFirstExterPath();
         } else if (mType == TYPE_EXTERNAL_SD_CARD) {
-            // å¤–ç½®å¡
+            // ÍâÖÃ¿¨
             path = SdCardUtil.getSecondExterPath(context);
         } else if (mType == TYPE_REVERSAL) {
-            // æœ‰å†…ç½®å¡è¯»å†…ç½®ï¼Œæ— å†…ç½®å¡è¯»å¤–ç½®
+            // ÓĞÄÚÖÃ¿¨¶ÁÄÚÖÃ£¬ÎŞÄÚÖÃ¿¨¶ÁÍâÖÃ
             path = SdCardUtil.getFirstExterPath();
             if (path == null)
                 path = SdCardUtil.getSecondExterPath(context);
         } else {
-            // æœ‰å¤–ç½®è¯»å¤–ç½®ï¼Œæ²¡å¤–ç½®è¯»å†…ç½®
+            // ÓĞÍâÖÃ¶ÁÍâÖÃ£¬Ã»ÍâÖÃ¶ÁÄÚÖÃ
             path = SdCardUtil.getSecondExterPath(context);
             if (path == null)
                 path = SdCardUtil.getFirstExterPath();
@@ -72,9 +72,9 @@ public class AppPath {
     }
 
     /**
-     * è·å¾—SDå¡è·¯å¾„
+     * »ñµÃSD¿¨Â·¾¶
      *
-     * @param context Androidä¸Šä¸‹æ–‡
+     * @param context AndroidÉÏÏÂÎÄ
      * @return
      */
     private static String getSdCard(Context context) {
@@ -85,9 +85,9 @@ public class AppPath {
     }
 
     /**
-     * è·å–é¡¹ç›®æ–‡ä»¶å¤¹è·¯å¾„
+     * »ñÈ¡ÏîÄ¿ÎÄ¼ş¼ĞÂ·¾¶
      *
-     * @param context Androidä¸Šä¸‹æ–‡
+     * @param context AndroidÉÏÏÂÎÄ
      * @return
      */
     public static File getAppProjectFile(Context context) {
@@ -96,9 +96,9 @@ public class AppPath {
     }
 
     /**
-     * è·å¾—é”™è¯¯ä¿¡æ¯ä¿å­˜çš„æ–‡ä»¶å¤¹è·¯å¾„(error)
+     * »ñµÃ´íÎóĞÅÏ¢±£´æµÄÎÄ¼ş¼ĞÂ·¾¶(error)
      *
-     * @param context Androidä¸Šä¸‹æ–‡
+     * @param context AndroidÉÏÏÂÎÄ
      * @return
      */
     public static File getAppErrorFile(Context context) {
@@ -107,9 +107,9 @@ public class AppPath {
     }
 
     /**
-     * è·å¾—Sqliteæ•°æ®åº“æ–‡ä»¶å¤¹è·¯å¾„(db)
+     * »ñµÃSqliteÊı¾İ¿âÎÄ¼ş¼ĞÂ·¾¶(db)
      *
-     * @param context Androidä¸Šä¸‹æ–‡
+     * @param context AndroidÉÏÏÂÎÄ
      * @return
      */
     public static File getAppSqliteFile(Context context) {
@@ -118,9 +118,9 @@ public class AppPath {
     }
 
     /**
-     * è·å¾—Perstæ•°æ®åº“æ–‡ä»¶å¤¹è·¯å¾„(dbs)
+     * »ñµÃPerstÊı¾İ¿âÎÄ¼ş¼ĞÂ·¾¶(dbs)
      *
-     * @param context Androidä¸Šä¸‹æ–‡
+     * @param context AndroidÉÏÏÂÎÄ
      * @return
      */
     public static File getAppPerstFile(Context context) {
@@ -129,9 +129,9 @@ public class AppPath {
     }
 
     /**
-     * è·å¾—åœ°å›¾æ–‡ä»¶å¤¹è·¯å¾„(map)
+     * »ñµÃµØÍ¼ÎÄ¼ş¼ĞÂ·¾¶(map)
      *
-     * @param context Androidä¸Šä¸‹æ–‡
+     * @param context AndroidÉÏÏÂÎÄ
      * @return
      */
     public static File getAppMapFile(Context context) {
@@ -140,9 +140,9 @@ public class AppPath {
     }
 
     /**
-     * è·å¾—åœ°å›¾ç¼“å­˜æ–‡ä»¶å¤¹è·¯å¾„(map)
+     * »ñµÃµØÍ¼»º´æÎÄ¼ş¼ĞÂ·¾¶(map)
      *
-     * @param context Androidä¸Šä¸‹æ–‡
+     * @param context AndroidÉÏÏÂÎÄ
      * @return
      */
     public static File getAppMapCacheFile(Context context) {
@@ -151,9 +151,9 @@ public class AppPath {
     }
 
     /**
-     * ä¸‹è½½ä¸“ç”¨æ–‡ä»¶å¤¹(download)
+     * ÏÂÔØ×¨ÓÃÎÄ¼ş¼Ğ(download)
      *
-     * @param context Androidä¸Šä¸‹æ–‡
+     * @param context AndroidÉÏÏÂÎÄ
      * @return
      */
     public static File getAppDownlaodFile(Context context) {
@@ -162,9 +162,9 @@ public class AppPath {
     }
 
     /**
-     * è·å¾—æ‹ç…§ç…§ç‰‡çš„æ–‡ä»¶å¤¹è·¯å¾„
+     * »ñµÃÅÄÕÕÕÕÆ¬µÄÎÄ¼ş¼ĞÂ·¾¶
      *
-     * @param context Androidä¸Šä¸‹æ–‡
+     * @param context AndroidÉÏÏÂÎÄ
      * @return
      */
     public static File getAppPictureFile(Context context) {
@@ -173,9 +173,9 @@ public class AppPath {
     }
 
     /**
-     * è·å¾—æ‹æ‘„è§†é¢‘çš„æ–‡ä»¶å¤¹è·¯å¾„
+     * »ñµÃÅÄÉãÊÓÆµµÄÎÄ¼ş¼ĞÂ·¾¶
      *
-     * @param context Androidä¸Šä¸‹æ–‡
+     * @param context AndroidÉÏÏÂÎÄ
      * @return
      */
     public static File getAppVideoFile(Context context) {
@@ -184,9 +184,9 @@ public class AppPath {
     }
 
     /**
-     * è·å¾—éŸ³ä¹çš„æ–‡ä»¶å¤¹è·¯å¾„
+     * »ñµÃÒôÀÖµÄÎÄ¼ş¼ĞÂ·¾¶
      *
-     * @param context Androidä¸Šä¸‹æ–‡
+     * @param context AndroidÉÏÏÂÎÄ
      * @return
      */
     public static File getAppMusicFile(Context context) {

@@ -15,10 +15,9 @@ import com.asen.android.lib.base.tool.manage.action.IActionManager;
 import com.asen.android.lib.base.tool.manage.action.OperActionManager;
 
 /**
- * Created by ASEN on 2016/3/31.
- * é‡‡ç”¨çš„v4åŒ…çš„Fragment
+ * »ù±¾µÄFragment£¬²ÉÓÃµÄv4°üµÄFragment
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:57
  */
@@ -33,7 +32,7 @@ public class BaseFragment extends Fragment implements OnFragmentHideListener, On
     private IActionManager mActionManager;
 
     /**
-     * çˆ¶Fragmentï¼Œåœ¨onShowä¸­èƒ½è·å¾—ç›¸åº”çš„å€¼
+     * ¸¸Fragment£¬ÔÚonShowÖĞÄÜ»ñµÃÏàÓ¦µÄÖµ
      */
     protected Fragment mParentFragment;
 
@@ -47,54 +46,74 @@ public class BaseFragment extends Fragment implements OnFragmentHideListener, On
         mActionManager = new OperActionManager(this);
     }
 
+    private boolean isFirstShow = true; // ÊÇ·ñÊ×´ÎÖ´ĞĞonShow
+
     @Override
     public final void onRefresh(Object parent, Bundle data) {
         if (mParentFragment == null && parent instanceof Fragment) {
             mParentFragment = (Fragment) parent;
         }
-        onShow(data);
+        if (data != null) {
+            isFirstShow = false; // ¸Ä±äÊ×´ÎÖ´ĞĞµÄ×´Ì¬
+        }
+        onShow(data, isFirstShow);
     }
 
-    public void onShow(Bundle data) {
+    /**
+     * ÀûÓÃ{@link com.asen.android.lib.base.tool.manage.FragmentManager}ÏÔÊ¾FragmentÊ±Ö´ĞĞ
+     *
+     * @param data    ´«ÈëµÄ²ÎÊı
+     * @param isFirst Ä¬ÈÏisFirstÊÇtrue£¬Èç¹ûdata²»ÎªnullÊ±£¬isFirst±»Éè³Éfalse
+     */
+    public void onShow(Bundle data, boolean isFirst) {
 
     }
 
+    /**
+     * ÀûÓÃ {@link com.asen.android.lib.base.tool.manage.FragmentManager}Òş²ØFragmentÊ±Ö´ĞĞ
+     */
     @Override
     public void onHide() {
 
     }
 
+
     /**
-     * æ‰§è¡ŒAction
+     * Ö´ĞĞAction
      *
-     * @param actionIntent
+     * @param actionIntent µ±Ç°µÄActionÒâÍ¼
      */
     public void executeIntent(ActionIntent actionIntent) {
         mActionManager.executeIntent(actionIntent);
     }
 
     /**
-     * é”€æ¯å½“å‰çš„Action
+     * Ïú»Ùµ±Ç°µÄAction
      */
     public void cancelCurrentIntent() {
         mActionManager.cancelCurrentIntent();
     }
 
     /**
-     * è·å¾—å½“å‰Fragmentä¸Šçš„Action
+     * »ñµÃµ±Ç°FragmentµÄAction
      *
-     * @param cls
-     * @param <T>
-     * @return
+     * @param cls ActionÀà
+     * @param <T> ·ºĞÍ
+     * @return Èç¹ûµ±Ç°FragmentµÄActionÊÇËù´«ÈëµÄÀà£¬Ôò·µ»ØAction¶ÔÏó£»·ñÔò·µ»Ønull
      */
     public <T extends BaseAction> T getFragmentAction(Class<T> cls) {
         ActionIntent intent = mActionManager.getCurrentIntent();
 
         if (intent == null) return null;
+
         try {
             BaseAction action = intent.getAction();
-            if (action.getClass().getName().equals(cls.getName())) {
-                return (T) action;
+            Class<?> currentCls = action.getClass(); // µ±Ç°ÏÔÊ¾µÄAction
+            while (currentCls != null) {
+                if (currentCls.getName().equals(cls.getName())) {
+                    return (T) action;
+                }
+                currentCls = currentCls.getSuperclass();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -104,11 +123,11 @@ public class BaseFragment extends Fragment implements OnFragmentHideListener, On
     }
 
     /**
-     * è·å¾—å½“å‰Activityä¸Šçš„Action
+     * »ñµÃµ±Ç°ActivityÉÏµÄAction
      *
-     * @param cls
-     * @param <T>
-     * @return
+     * @param cls ActionÀà
+     * @param <T> ·ºĞÍ
+     * @return Èç¹ûµ±Ç°ActivityÉÏµÄActionÊÇËù´«ÈëµÄÀà£¬Ôò·µ»ØAction¶ÔÏó£»·ñÔò·µ»Ønull
      */
     public <T extends BaseAction> T getActivityAction(Class<T> cls) {
         if (mActivity instanceof BaseActivity) {

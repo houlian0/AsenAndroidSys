@@ -3,71 +3,67 @@ package com.asen.android.lib.base.core.util;
 import java.util.List;
 
 /**
- * Simple to Introduction
- * æœ€å¤§æ•°é‡æ ˆ å®šä¹‰ æ¥å£
+ * ×î´óÊıÁ¿Õ» ¶¨Òå ½Ó¿Ú
  *
- * @ProjectName: GisinfoAndroidSys
- * @Description:
- * @Author: Asen
- * @CreateDate: 2016-01-12
- * @Time: 11:12
- * @Version: [v1.0]
+ * @author Asen
+ * @version v1.0
+ * @date 2016/7/12 16:57
  */
 public interface IMaxStack<E> {
 
     /**
-     * æ¸…ç©ºæ ˆæ•°æ®
+     * Çå¿ÕÕ»Êı¾İ
      */
     public void clear();
 
     /**
-     * æ ˆä¸­å½“å‰æ•°æ®çš„æ•°é‡
+     * Õ»ÖĞµ±Ç°Êı¾İµÄÊıÁ¿
      *
      * @return size
      */
     public int size();
 
     /**
-     * åˆ¤æ–­å½“å‰æ ˆæ˜¯å¦ä¸ºç©º
+     * ÅĞ¶Ïµ±Ç°Õ»ÊÇ·ñÎª¿Õ
      *
-     * @return trueä¸ºç©º
+     * @return trueÎª¿Õ
      */
     public boolean isEmpty();
 
     /**
-     * å‹æ ˆ
+     * Ñ¹Õ»
      *
-     * @param object å¯¹è±¡
+     * @param object ¶ÔÏó
      */
     public void push(E object);
 
     /**
-     * è·å–æœ€åä¸€æ¡è®°å½•
+     * »ñÈ¡×îºóÒ»Ìõ¼ÇÂ¼
      *
-     * @return object å¯¹è±¡
+     * @return object ¶ÔÏó
      */
     public E getLastData();
 
     /**
-     * è·å–æœ€ä¼˜æ•°æ®
+     * »ñÈ¡×îÓÅÊı¾İ
      *
-     * @param compareListener æœ€ä¼˜æ•°æ®åˆ¤æ–­æ¥å£
-     * @return æœ€ä¼˜å¯¹è±¡
+     * @param compareListener ×îÓÅÊı¾İÅĞ¶Ï½Ó¿Ú
+     * @return ×îÓÅ¶ÔÏó
      */
     public E getGood(IGoodCompareListener<E> compareListener);
 
     /**
-     * æœ€ä¼˜æ•°æ®åˆ¤æ–­æ¥å£
+     * ×îÓÅÊı¾İÅĞ¶Ï½Ó¿Ú
      *
      * @param <E>
      */
     public interface IGoodCompareListener<E> {
 
         /**
-         * ä»é›†åˆä¸­å–å‡ºæœ€ä¼˜æ•°æ®
+         * ´Ó¼¯ºÏÖĞÈ¡³ö×îÓÅÊı¾İ
          *
-         * @param dataList æ•°æ®é›†åˆ
-         * @return æœ€ä¼˜æ•°æ®
+         * @param dataList Êı¾İ¼¯ºÏ
+         * @return ×îÓÅÊı¾İ
          */
         public E getGood(List<E> dataList);
     }

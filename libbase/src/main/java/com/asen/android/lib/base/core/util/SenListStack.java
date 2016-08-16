@@ -5,10 +5,9 @@ import java.util.EmptyStackException;
 import java.util.List;
 
 /**
- * Simple to Introduction
- * 鐢ˋrrayList鏉ュ畾涔夋爤
+ * 用ArrayList来定义栈
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 15:12
  */

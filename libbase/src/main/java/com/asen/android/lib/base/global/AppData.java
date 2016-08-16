@@ -1,67 +1,66 @@
 package com.asen.android.lib.base.global;
 
 /**
- * Created by HL_SEN on 2015/9/21.
- * ç¨‹åºå…¨å±€å˜é‡å­˜æ”¾å¤„
+ * ³ÌÐòÈ«¾Ö±äÁ¿´æ·Å´¦
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
 public class AppData {
 
     /**
-     * APPåº”ç”¨æ˜¯å¦å¤„äºŽDEBUGçŠ¶æ€ï¼ŒDEBUGçŠ¶æ€ä¸‹ï¼Œç¨‹åºæ‰“å°çš„LOGæ›´å…¨é¢
+     * APPÓ¦ÓÃÊÇ·ñ´¦ÓÚDEBUG×´Ì¬£¬DEBUG×´Ì¬ÏÂ£¬³ÌÐò´òÓ¡µÄLOG¸üÈ«Ãæ
      */
     public static boolean DEBUG = false;
 
     /**
-     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°
+     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ
      */
-    public static String APP_PROJECT = "gisinfo";
+    public static String APP_PROJECT = "asen";
 
     /**
-     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--é”™è¯¯ä¿¡æ¯
+     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--´íÎóÐÅÏ¢
      */
     static String APP_ERROR = "error";
 
     /**
-     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--SQLITEæ•°æ®æ–‡ä»¶å¤¹
+     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--SQLITEÊý¾ÝÎÄ¼þ¼Ð
      */
     static String APP_SQLITE = "db";
 
     /**
-     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--PERSTæ•°æ®æ–‡ä»¶å¤¹
+     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--PERSTÊý¾ÝÎÄ¼þ¼Ð
      */
     static String APP_PERST = "dbs";
 
     /**
-     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--åœ°å›¾æ–‡ä»¶å¤¹
+     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--µØÍ¼ÎÄ¼þ¼Ð
      */
     static String APP_MAP = "map";
 
     /**
-     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--åœ°å›¾ç¼“å­˜æ–‡ä»¶å¤¹
+     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--µØÍ¼»º´æÎÄ¼þ¼Ð
      */
     static String APP_MAP_CACHE = "map/cache";
 
     /**
-     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--ä¸‹è½½ä¸“ç”¨æ–‡ä»¶å¤¹
+     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--ÏÂÔØ×¨ÓÃÎÄ¼þ¼Ð
      */
     static String APP_DOWNLOAD = "download";
 
     /**
-     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--ç…§ç‰‡å­˜æ”¾æ–‡ä»¶å¤¹
+     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--ÕÕÆ¬´æ·ÅÎÄ¼þ¼Ð
      */
     static String APP_PICTURE = "multi/picture";
 
     /**
-     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--è§†é¢‘å­˜æ”¾æ–‡ä»¶å¤¹
+     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--ÊÓÆµ´æ·ÅÎÄ¼þ¼Ð
      */
     static String APP_VIDEO = "multi/video";
 
     /**
-     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--éŸ³ä¹å­˜æ”¾æ–‡ä»¶å¤¹
+     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--ÒôÀÖ´æ·ÅÎÄ¼þ¼Ð
      */
     static String APP_MUSIC = "multi/music";
 
