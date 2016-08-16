@@ -8,21 +8,26 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 /**
- * Simple to Introduction
- * ç½‘ç»œçŠ¶æ€ç›‘å¬å¹¿æ’­
+ * ÍøÂç×´Ì¬¼àÌı¹ã²¥
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 15:12
  */
 public class NetworkStatusBroadcast implements IBroadcastDefinition {
 
-    private Context mContext;
+    private Context mContext; // AndroidÉÏÏÂÎÄ
 
-    private OnNetworkStatusListener mOnNetworkStatusListener;
+    private OnNetworkStatusListener mOnNetworkStatusListener; // ÍøÂç×´Ì¬µÄ¼àÌı½Ó¿Ú
 
-    private NetworkRecevier mRecevier;
+    private NetworkRecevier mRecevier; // ¹ã²¥
 
+    /**
+     * ¹¹Ôìº¯Êı
+     *
+     * @param context                 AndroidÉÏÏÂÎÄ
+     * @param onNetworkStatusListener ÍøÂç×´Ì¬µÄ¼àÌı½Ó¿Ú
+     */
     public NetworkStatusBroadcast(Context context, OnNetworkStatusListener onNetworkStatusListener) {
         mContext = context;
         mOnNetworkStatusListener = onNetworkStatusListener;
@@ -30,28 +35,28 @@ public class NetworkStatusBroadcast implements IBroadcastDefinition {
     }
 
     /**
-     * ç½‘ç»œçŠ¶æ€ç›‘å¬çš„ç›‘å¬æ¥å£
+     * ÍøÂç×´Ì¬¼àÌıµÄ¼àÌı½Ó¿Ú
      */
     public interface OnNetworkStatusListener {
 
         /**
-         * è¿æ¥åˆ°wifiç½‘ç»œ
+         * Á¬½Óµ½wifiÍøÂç
          */
         public void connToWifi();
 
         /**
-         * è¿æ¥åˆ°ç§»åŠ¨ç½‘ç»œ
+         * Á¬½Óµ½ÒÆ¶¯ÍøÂç
          */
         public void connToMobile();
 
         /**
-         * æœªè¿æ¥ç½‘ç»œ
+         * Î´Á¬½ÓÍøÂç
          */
         public void unConnNetwork();
     }
 
     /**
-     * å¼€å§‹ç›‘å¬å¹¿æ’­
+     * ¿ªÊ¼¼àÌı¹ã²¥
      */
     @Override
     public void startWatch() {
@@ -61,7 +66,7 @@ public class NetworkStatusBroadcast implements IBroadcastDefinition {
     }
 
     /**
-     * åœæ­¢ç›‘å¬ï¼Œæ³¨é”€å¹¿æ’­
+     * Í£Ö¹¼àÌı£¬×¢Ïú¹ã²¥
      */
     @Override
     public void stopWatch() {
@@ -75,7 +80,7 @@ public class NetworkStatusBroadcast implements IBroadcastDefinition {
     }
 
     /**
-     * å¹¿æ’­æ¥æ”¶è€…
+     * ¹ã²¥½ÓÊÕÕß
      */
     class NetworkRecevier extends BroadcastReceiver {
 

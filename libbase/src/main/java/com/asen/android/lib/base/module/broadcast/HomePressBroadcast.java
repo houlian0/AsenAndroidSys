@@ -6,21 +6,26 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 /**
- * Simple to Introduction
- * Homeé”®æŒ‰ä¸‹åçš„å¹¿æ’­ç›‘å¬
+ * Home¼ü°´ÏÂºóµÄ¹ã²¥¼àÌı
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 15:12
  */
 public class HomePressBroadcast implements IBroadcastDefinition {
 
-    private Context mContext;
+    private Context mContext; // AndroidÉÏÏÂÎÄ
 
-    private OnHomePressedListener mOnHomePressedListener;
+    private OnHomePressedListener mOnHomePressedListener; // Home¼ü°´ÏÂºóµÄ¼àÌı
 
-    private HomeRecevier mRecevier;
+    private HomeRecevier mRecevier; // ¹ã²¥
 
+    /**
+     * ¹¹Ôìº¯Êı
+     *
+     * @param context               AndroidÉÏÏÂÎÄ
+     * @param onHomePressedListener Home¼ü°´ÏÂºóµÄ¼àÌı
+     */
     public HomePressBroadcast(Context context, OnHomePressedListener onHomePressedListener) {
         mContext = context;
         mOnHomePressedListener = onHomePressedListener;
@@ -29,23 +34,23 @@ public class HomePressBroadcast implements IBroadcastDefinition {
     }
 
     /**
-     * Homeé”®æŒ‰ä¸‹æ—¶çš„ç›‘å¬æ¥å£
+     * Home¼ü°´ÏÂÊ±µÄ¼àÌı½Ó¿Ú
      */
     public interface OnHomePressedListener {
 
         /**
-         * çŸ­æŒ‰Homeé”®
+         * ¶Ì°´Home¼ü
          */
         public void onHomePressed();
 
         /**
-         * é•¿æŒ‰Homeé”®
+         * ³¤°´Home¼ü
          */
         public void onHomeLongPressed();
     }
 
     /**
-     * å¼€å§‹ç›‘å¬å¹¿æ’­
+     * ¿ªÊ¼¼àÌı¹ã²¥
      */
     @Override
     public void startWatch() {
@@ -55,7 +60,7 @@ public class HomePressBroadcast implements IBroadcastDefinition {
     }
 
     /**
-     * åœæ­¢ç›‘å¬ï¼Œæ³¨é”€å¹¿æ’­
+     * Í£Ö¹¼àÌı£¬×¢Ïú¹ã²¥
      */
     @Override
     public void stopWatch() {
@@ -69,7 +74,7 @@ public class HomePressBroadcast implements IBroadcastDefinition {
     }
 
     /**
-     * å¹¿æ’­æ¥æ”¶è€…
+     * ¹ã²¥½ÓÊÕÕß
      */
     class HomeRecevier extends BroadcastReceiver {
         final String SYSTEM_DIALOG_REASON_KEY = "reason";
@@ -84,9 +89,9 @@ public class HomePressBroadcast implements IBroadcastDefinition {
                 String reason = intent.getStringExtra(SYSTEM_DIALOG_REASON_KEY);
                 if (reason != null) {
                     if (mOnHomePressedListener != null) {
-                        if (reason.equals(SYSTEM_DIALOG_REASON_HOME_KEY)) {  // çŸ­æŒ‰homeé”®
+                        if (reason.equals(SYSTEM_DIALOG_REASON_HOME_KEY)) {  // ¶Ì°´home¼ü
                             mOnHomePressedListener.onHomePressed();
-                        } else if (reason.equals(SYSTEM_DIALOG_REASON_RECENT_APPS)) { // é•¿æŒ‰homeé”®
+                        } else if (reason.equals(SYSTEM_DIALOG_REASON_RECENT_APPS)) { // ³¤°´home¼ü
                             mOnHomePressedListener.onHomeLongPressed();
                         }
                     }
