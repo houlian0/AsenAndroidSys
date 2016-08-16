@@ -21,9 +21,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 需要自行控制参数特殊字符问题
+ * 网络请求类，需要自行控制参数特殊字符问题（此类不开放给外部使用）
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */

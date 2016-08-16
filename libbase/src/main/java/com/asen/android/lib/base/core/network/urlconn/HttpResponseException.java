@@ -1,9 +1,9 @@
 package com.asen.android.lib.base.core.network.urlconn;
 
 /**
- * ç½‘ç»œè¿æ¥ å¼‚å¸¸
+ * ÍøÂçÁ¬½Ó Òì³£
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
