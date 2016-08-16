@@ -7,10 +7,9 @@ import com.asen.android.lib.base.tool.util.FileUtil;
 import java.io.File;
 
 /**
- * Simple to Introduction
- * ä¸‹è½½å•ä»»åŠ¡ï¼ˆæ”¯æŒå¼‚æ­¥ï¼‰
+ * ÏÂÔØµ¥ÈÎÎñ£¨Ö§³ÖÒì²½£©
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
@@ -20,22 +19,21 @@ public class SenAsyncDownTask extends SenAsyncTask<Void, Object, File> implement
 
     private OnDownloadFileListener mOnDownloadFileListener;
 
-    private File resultFile; // ç»“æœæ–‡ä»¶
+    private File resultFile; // ½á¹ûÎÄ¼ş
 
     /**
-     * æ„é€ å‡½æ•°
+     * ¹¹Ôìº¯Êı
      *
-     * @param url      ä¸‹è½½åœ°å€
-     * @param folder   æ–‡ä»¶å¤¹
-     * @param listener ä¸‹è½½ç›‘å¬
+     * @param url      ÏÂÔØµØÖ·
+     * @param folder   ÎÄ¼ş¼Ğ
+     * @param listener ÏÂÔØ¼àÌı
      */
     public SenAsyncDownTask(String url, File folder, OnDownloadFileListener listener) {
         mDownloadFileService = new DownloadFileService(url, folder, this);
         mDownloadFileService.getDownConfig().setThreadNumber(1);
         this.mOnDownloadFileListener = listener;
-        FileUtil.createFolder(folder); // åˆ›å»ºæ–‡ä»¶å¤¹
+        FileUtil.createFolder(folder); // ´´½¨ÎÄ¼ş¼Ğ
     }
-
 
     @Override
     protected File doInBackground(Void... params) throws RuntimeException {
@@ -73,7 +71,6 @@ public class SenAsyncDownTask extends SenAsyncTask<Void, Object, File> implement
         publishProgress(new ProgressInfo(downloadSize, totalSize, progress, speed));
     }
 
-
     @Override
     public void success(File file) {
         resultFile = file;
@@ -85,7 +82,7 @@ public class SenAsyncDownTask extends SenAsyncTask<Void, Object, File> implement
     }
 
     /**
-     * è¿›åº¦ä¿¡æ¯
+     * ½ø¶ÈĞÅÏ¢
      */
     class ProgressInfo {
 
@@ -94,49 +91,49 @@ public class SenAsyncDownTask extends SenAsyncTask<Void, Object, File> implement
         private float progress;
         private float speed;
 
-        public ProgressInfo(long downloadSize, long totalSize, float progress, float speed) {
+        ProgressInfo(long downloadSize, long totalSize, float progress, float speed) {
             this.downloadSize = downloadSize;
             this.totalSize = totalSize;
             this.progress = progress;
             this.speed = speed;
         }
 
-        public long getDownloadSize() {
+        long getDownloadSize() {
             return downloadSize;
         }
 
-        public long getTotalSize() {
+        long getTotalSize() {
             return totalSize;
         }
 
-        public float getProgress() {
+        float getProgress() {
             return progress;
         }
 
-        public float getSpeed() {
+        float getSpeed() {
             return speed;
         }
 
     }
 
     /**
-     * é”™è¯¯ä¿¡æ¯
+     * ´íÎóĞÅÏ¢
      */
     class ErrorInfo {
 
         private int errorCode;
         private Exception exception;
 
-        public ErrorInfo(int errorCode, Exception exception) {
+        ErrorInfo(int errorCode, Exception exception) {
             this.errorCode = errorCode;
             this.exception = exception;
         }
 
-        public int getErrorCode() {
+        int getErrorCode() {
             return errorCode;
         }
 
-        public Exception getException() {
+        Exception getException() {
             return exception;
         }
 

@@ -3,38 +3,70 @@ package com.asen.android.lib.base.core.network.urlconn.bean;
 import java.io.File;
 
 /**
- * Simple to Introduction
+ * 键值对上传文件的信息
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
 public class HttpFileEntity {
 
-	private String name;
+    /**
+     * 键名称
+     */
+    private String name;
 
-	private File value;
+    /**
+     * 文件File
+     */
+    private File value;
 
-	public HttpFileEntity(String name, File value) {
-		super();
-		this.name = name;
-		this.value = value;
-	}
+    /**
+     * 构造函数
+     *
+     * @param name  键名称
+     * @param value 文件File
+     */
+    public HttpFileEntity(String name, File value) {
+        super();
+        this.name = name;
+        this.value = value;
+    }
 
-	public String getName() {
-		return name;
-	}
+    /**
+     * 获取键名称
+     *
+     * @return 键名称
+     */
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * 设置键名称
+     *
+     * @param name 键名称
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public File getValue() {
-		return value;
-	}
+    /**
+     * 获取文件File
+     *
+     * @return 文件File
+     */
+    public File getValue() {
+        return value;
+    }
 
-	public void setValue(File value) {
-		this.value = value;
-	}
+    /**
+     * 设置文件File
+     *
+     * @param value 文件File
+     */
+    public void setValue(File value) {
+        this.value = value;
+    }
 
 }

@@ -74,7 +74,7 @@ class DownFileCalculateThread extends Thread {
 
         if (onDownloadFileListener != null) {
             long downloadLength = mProgressInfo.getDownloadLength();
-            long fileLength = mProgressInfo.getFileInfo().getFileLength();
+            long fileLength = mProgressInfo.getDownFileInfo().getFileLength();
             onDownloadFileListener.progress(downloadLength, fileLength, downloadLength * 100.0f / fileLength, 0);
             prevLength = downloadLength;
         }
@@ -96,7 +96,7 @@ class DownFileCalculateThread extends Thread {
 
             if (onDownloadFileListener != null && mFileService.getDownStatus() == DownloadFileService.STATUS_START) {
                 long downloadLength = mProgressInfo.getDownloadLength();
-                long fileLength = mProgressInfo.getFileInfo().getFileLength();
+                long fileLength = mProgressInfo.getDownFileInfo().getFileLength();
                 long time = new Date().getTime() - prevTime;
                 onDownloadFileListener.progress(downloadLength, fileLength, downloadLength * 100.0f / fileLength, (downloadLength - prevLength) * 1f / time * 1000);
                 prevLength = downloadLength;
@@ -113,11 +113,11 @@ class DownFileCalculateThread extends Thread {
                 synchronized (mProgressInfo) {
                     File folder = mProgressInfo.getTmpFile().getParentFile();
                     if (mConfigInfo.isOriginal()) { // 改为原文件名
-                        lastFile = new File(folder, mProgressInfo.getFileInfo().getFileName());
+                        lastFile = new File(folder, mProgressInfo.getDownFileInfo().getFileName());
                         isRenameSuccess = FileUtil.rename(mProgressInfo.getTmpFile(), lastFile);
                     } else { // 不用原文件名
                         File saveFile = mProgressInfo.getTmpFile();
-                        lastFile = new File(folder, saveFile.getName().substring(0, saveFile.getName().lastIndexOf(".") + 1) + mProgressInfo.getFileInfo().getFileSuffix());
+                        lastFile = new File(folder, saveFile.getName().substring(0, saveFile.getName().lastIndexOf(".") + 1) + mProgressInfo.getDownFileInfo().getFileSuffix());
                         isRenameSuccess = FileUtil.rename(saveFile, lastFile);
                     }
                 }
@@ -127,7 +127,7 @@ class DownFileCalculateThread extends Thread {
                     String fileName = lastFile.getName().substring(0, lastFile.getName().lastIndexOf("."));
                     while (!isRenameSuccess) { // 并且改名失败
                         i++;
-                        lastFile = new File(mProgressInfo.getTmpFile().getParentFile(), fileName + "(" + i + ")." + mProgressInfo.getFileInfo().getFileSuffix());
+                        lastFile = new File(mProgressInfo.getTmpFile().getParentFile(), fileName + "(" + i + ")." + mProgressInfo.getDownFileInfo().getFileSuffix());
                         isRenameSuccess = FileUtil.rename(mProgressInfo.getTmpFile(), lastFile);
                     }
                 }

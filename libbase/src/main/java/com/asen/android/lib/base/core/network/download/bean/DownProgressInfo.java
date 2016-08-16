@@ -1,6 +1,6 @@
 package com.asen.android.lib.base.core.network.download.bean;
 
-import com.asen.android.lib.base.core.network.urlconn.bean.FileInfo;
+import com.asen.android.lib.base.core.network.urlconn.bean.DownFileInfo;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class DownProgressInfo {
     /**
      * 文件信息
      */
-    private FileInfo fileInfo;
+    private DownFileInfo downFileInfo;
 
     /**
      * 临时文件
@@ -66,13 +66,13 @@ public class DownProgressInfo {
      * 构造函数
      *
      * @param url      下载的URL地址
-     * @param fileInfo 下载的文件信息
+     * @param downFileInfo 下载的文件信息
      * @param tmpFile  临时文件File（下载时，先下载成临时文件，下载完之后对其进行重命名）
      * @throws IOException
      */
-    public DownProgressInfo(URL url, FileInfo fileInfo, File tmpFile) throws IOException {
+    public DownProgressInfo(URL url, DownFileInfo downFileInfo, File tmpFile) throws IOException {
         this.url = url;
-        this.fileInfo = fileInfo;
+        this.downFileInfo = downFileInfo;
         this.tmpFile = tmpFile;
         progressItems = new ArrayList<>();
 
@@ -94,8 +94,8 @@ public class DownProgressInfo {
      *
      * @return 文件的信息
      */
-    public FileInfo getFileInfo() {
-        return fileInfo;
+    public DownFileInfo getDownFileInfo() {
+        return downFileInfo;
     }
 
     /**

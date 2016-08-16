@@ -9,9 +9,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
 /**
- * å¼‚æ­¥ä»»åŠ¡ç±»
+ * Òì²½ÈÎÎñÀà - ²ÉÓÃHandlerµÄ·½Ê½£¬·ÂÕÕAsyncTaskĞ´µÄÒì²½ÈÎÎñÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
@@ -53,22 +53,31 @@ public abstract class SenAsyncTask<Params, Progress, Result> {
     };
 
     /**
-     * @param msg
-     * @Title: errorMessge
-     * @Description: é”™è¯¯ä¿¡æ¯
+     * ÔÚºóÌ¨Ö´ĞĞ²Ù×÷
+     *
+     * @param params Í¨¹ı{@link SenAsyncTask#execute(Object[])} ·½·¨´«µİµÄ²ÎÊı
+     * @return ·µ»Ø¶¨ÒåµÄ½á¹û
+     * @throws RuntimeException
      */
-    protected void errorMessge(String msg) throws RuntimeException {
-        throw new RuntimeException(msg);
-    }
-
     protected abstract Result doInBackground(Params... params) throws RuntimeException;
 
+    /**
+     * ÔÚÖ÷Ïß³ÌÖĞÖ´ĞĞ²Ù×÷
+     *
+     * @param values Í¨¹ı{@link SenAsyncTask#publishProgress(Object[])}·½·¨´«µİµÄ²ÎÊı
+     */
     protected void onProgressUpdate(Progress... values) {
     }
 
+    /**
+     * ÏòÖ÷Ïß³ÌÖĞ´«µİ²ÎÊıĞÅÏ¢
+     *
+     * @param values ²ÎÊıĞÅÏ¢
+     */
     protected void publishProgress(Progress... values) {
         mHandler.obtainMessage(HANDLER_PROGRESS, values).sendToTarget();
     }
+
 
     private void resultOK(Result result) {
         mHandler.obtainMessage(HANDLER_FINISH_OK, result).sendToTarget();
@@ -78,28 +87,41 @@ public abstract class SenAsyncTask<Params, Progress, Result> {
         mHandler.obtainMessage(HANDLER_FINISH_ERROR, message).sendToTarget();
     }
 
+    /**
+     * ·¢ËÍ´íÎóÒì³£µÄĞÅÏ¢
+     *
+     * @param msg ĞèÒª´«µİµ½{@link SenAsyncTask#onResultError(String)}·½·¨ÖĞ×÷Îª²ÎÊıµÄĞÅÏ¢
+     * @throws RuntimeException
+     */
+    protected void errorMessge(String msg) throws RuntimeException {
+        throw new RuntimeException(msg);
+    }
+
+    /**
+     * Òì²½ÈÎÎñÀàÖ´ĞĞÇ°£¬µ÷ÓÃ´Ë·½·¨£¨¸Ã·½·¨ÔÚÖ÷Ïß³ÌÖĞÖ´ĞĞ£©
+     */
     protected void onPreExecute() {
 
     }
 
     /**
-     * @param result
-     * @Title: onResultOK
-     * @Description: è¿”å›æ­£ç¡®ç»“æœ
+     * ºóÌ¨Ö´ĞĞÍê³Éºó£¬´¦Àí½á¹ûĞÅÏ¢
+     *
+     * @param result {@link SenAsyncTask#doInBackground(Object[])} ·µ»ØµÄ½á¹ûĞÅÏ¢
      */
     protected abstract void onResultOK(Result result);
 
     /**
-     * @param msg
-     * @Title: onResultError
-     * @Description: ä»å¼‚å¸¸ä¸­æ‹¿å€¼
+     * ºóÌ¨Ö´ĞĞ±¨´íÊ±£¬´¦Àí´íÎóĞÅÏ¢
+     *
+     * @param msg ´ÓÒì³£ÖĞÄÃµ½µÄmessageĞÅÏ¢
      */
     protected abstract void onResultError(String msg);
 
     /**
-     * æ‰§è¡Œ
+     * ¿ªÊ¼Ö´ĞĞÒì²½ÈÎÎñÀà
      *
-     * @param params å‚æ•°
+     * @param params ²ÎÊı
      */
     public void execute(Params... params) {
         onPreExecute();
@@ -128,6 +150,9 @@ public abstract class SenAsyncTask<Params, Progress, Result> {
 
     private Future<Result> submit = null;
 
+    /**
+     * ½áÊøÖ´ĞĞÒì²½ÈÎÎñÀà
+     */
     public void cancel() {
         if (submit != null && !submit.isCancelled()) {
             try {

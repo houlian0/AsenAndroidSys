@@ -1,5 +1,4 @@
-package com.asen.android.lib.base.core.network.ksoap;
-
+package com.asen.android.lib.base.core.network.wsdl;
 
 import com.asen.android.lib.base.tool.util.Base64Util;
 
@@ -11,19 +10,15 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
- * Simple to Introduction
- * Ksoap å¤§æ–‡ä»¶ä¼ è¾“æ‰€æœ‰çš„ Saxè§£æ
+ * Í¨¹ı Ksoap ½«´óÎÄ¼ş×ª³ÉBase64µÄĞÎÊ½½øĞĞ´«ÊäÊ±£¬½âÎö ´óÎÄ¼ş´«ÊäµÄÄÚÈİ -- Sax½âÎö
  *
- * @ProjectName: HelloWorld
- * @Description:
- * @Author: Asen
- * @CreateDate: 2016-01-28
- * @Time: 14:52
- * @Version: [v1.0]
+ * @author Asen
+ * @version v1.0
+ * @date 2016-01-28 17:20
  */
 public class KsoapFileHandler extends DefaultHandler {
 
-    private OutputStream outputStream;
+    private OutputStream outputStream; // ÎÄ¼şÊä³öÁ÷
 
     private boolean isStartRecord = false;
 
@@ -62,15 +57,15 @@ public class KsoapFileHandler extends DefaultHandler {
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
         super.characters(ch, start, length);
-        if (isStartRecord) { // å¼€å§‹è®°å½•
+        if (isStartRecord) { // ¿ªÊ¼¼ÇÂ¼
             try {
                 byte[] decode = null;
 
-                String content = new String(ch, start, length).trim(); // å½“å‰è·å¾—çš„å­—ç¬¦ä¸²
+                String content = new String(ch, start, length).trim(); // µ±Ç°»ñµÃµÄ×Ö·û´®
                 if (content.length() == 0) return;
 
                 if (sb == null) {
-                    if (content.length() % 4 == 0) { // æ˜¯4çš„å€æ•°
+                    if (content.length() % 4 == 0) { // ÊÇ4µÄ±¶Êı
                         decode = Base64Util.decode(content, "UTF-8");
                     } else {
                         sb = new StringBuilder(content);

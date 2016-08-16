@@ -1,60 +1,101 @@
 package com.asen.android.lib.base.core.network.urlconn.bean;
 
 /**
- * Simple to Introduction
- * ä¸‹è½½çš„æ–‡ä»¶ä¿¡æ¯
+ * ÏÂÔØµÄÎÄ¼şĞÅÏ¢
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
-public class FileInfo {
+public class DownFileInfo {
 
     /**
-     * æ–‡ä»¶åç§°
+     * ÎÄ¼şÃû³Æ
      */
     private String fileName;
 
     /**
-     * æ–‡ä»¶å¤§å°
+     * ÎÄ¼ş´óĞ¡
      */
     private long fileLength;
 
     /**
-     * æ–‡ä»¶ç±»å‹
+     * ÎÄ¼şÀàĞÍ
      */
     private String fileType;
 
-    public FileInfo(String fileName, long fileLength, String fileType) {
+    /**
+     * ¹¹Ôìº¯Êı
+     *
+     * @param fileName   ÎÄ¼şµÄÃû³Æ
+     * @param fileLength ÎÄ¼şµÄ´óĞ¡
+     * @param fileType   ÎÄ¼şµÄÀàĞÍ
+     */
+    public DownFileInfo(String fileName, long fileLength, String fileType) {
         this.fileName = fileName;
         this.fileLength = fileLength;
         this.fileType = fileType;
     }
 
+    /**
+     * »ñÈ¡ÎÄ¼şµÄÀàĞÍ
+     *
+     * @return ÎÄ¼şµÄÀàĞÍ
+     */
     public String getFileType() {
         return fileType;
     }
 
+    /**
+     * ÉèÖÃÎÄ¼şµÄÀàĞÍ
+     *
+     * @param fileType ÎÄ¼şµÄÀàĞÍ
+     */
     public void setFileType(String fileType) {
         this.fileType = fileType;
     }
 
+    /**
+     * »ñÈ¡ÎÄ¼şµÄÃû³Æ
+     *
+     * @return ÎÄ¼şµÄÃû³Æ
+     */
     public String getFileName() {
         return fileName;
     }
 
+    /**
+     * ÉèÖÃÎÄ¼şµÄÃû³Æ
+     *
+     * @param fileName ÎÄ¼şµÄÃû³Æ
+     */
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
 
+    /**
+     * »ñÈ¡ÎÄ¼şµÄ´óĞ¡
+     *
+     * @return ÎÄ¼şµÄ´óĞ¡
+     */
     public long getFileLength() {
         return fileLength;
     }
 
+    /**
+     * ÉèÖÃÎÄ¼şµÄ´óĞ¡
+     *
+     * @param fileLength ÎÄ¼şµÄ´óĞ¡
+     */
     public void setFileLength(long fileLength) {
         this.fileLength = fileLength;
     }
 
+    /**
+     * »ñÈ¡ÎÄ¼şµÄºó×ºÃû
+     *
+     * @return ÎÄ¼şµÄºó×ºÃû
+     */
     public String getFileSuffix() {
         if (fileName != null) {
             if (fileName.contains(".")) {

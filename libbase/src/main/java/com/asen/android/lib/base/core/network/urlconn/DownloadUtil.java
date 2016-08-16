@@ -1,6 +1,6 @@
 package com.asen.android.lib.base.core.network.urlconn;
 
-import com.asen.android.lib.base.core.network.urlconn.bean.FileInfo;
+import com.asen.android.lib.base.core.network.urlconn.bean.DownFileInfo;
 import com.asen.android.lib.base.tool.util.AppUtil;
 import com.asen.android.lib.base.tool.util.FileUtil;
 
@@ -17,58 +17,57 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Simple to Introduction
- * ç®€æ˜“ç‰ˆçš„æ–‡ä»¶ä¸‹è½½
+ * ¼òÒ×°æµÄÎÄ¼şÏÂÔØ
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
 public class DownloadUtil {
 
     /**
-     * è§£æ Content-Disposition ä¸­çš„æ–‡ä»¶å†…å®¹
+     * ½âÎö Content-Disposition ÖĞµÄÎÄ¼şÄÚÈİ
      */
     private static final String CONTENT_DISPOSITION = "content-disposition";
 
     /**
-     * è§£æ Content-Length ä¸­çš„æ–‡ä»¶å†…å®¹
+     * ½âÎö Content-Length ÖĞµÄÎÄ¼şÄÚÈİ
      */
     private static final String CONTENT_LENGTH = "content-length";
 
     /**
-     * è§£æ Content-Type ä¸­çš„æ–‡ä»¶å†…å®¹
+     * ½âÎö Content-Type ÖĞµÄÎÄ¼şÄÚÈİ
      */
     private static final String CONTENT_TYPE = "content-type";
 
     /**
-     * ç¼–ç æ–¹å¼ ISO8859_1
+     * ±àÂë·½Ê½ ISO8859_1
      */
     private static final String CHARSET_ISO8859_1 = "ISO8859_1";
 
     /**
-     * ç¼–ç æ–¹å¼ GB2312
+     * ±àÂë·½Ê½ GB2312
      */
     private static final String CHARSET_GB2312 = "GB2312";
 
     /**
-     * ç¼–ç æ–¹å¼ UTF-8
+     * ±àÂë·½Ê½ UTF-8
      */
     private static final String CHARSET_UTF_8 = "UTF-8";
 
     /**
-     * ç¼“å­˜å¤§å°
+     * »º´æ´óĞ¡
      */
     private static final int BUFFER_SIZE = 2048;
 
     /**
-     * ä»ç½‘ç»œè¿æ¥ä¸­è·å–æ–‡ä»¶ä¿¡æ¯
+     * ´ÓÍøÂçÁ¬½ÓÖĞ»ñÈ¡ÎÄ¼şĞÅÏ¢
      *
-     * @param connection ç½‘ç»œè¿æ¥
-     * @return æ–‡ä»¶ä¿¡æ¯
+     * @param connection ÍøÂçÁ¬½Ó
+     * @return ÎÄ¼şĞÅÏ¢
      * @throws UnsupportedEncodingException
      */
-    public static FileInfo getFileInfoByConn(HttpURLConnection connection) throws UnsupportedEncodingException {
+    public static DownFileInfo getFileInfoByConn(HttpURLConnection connection) throws UnsupportedEncodingException {
         String fileName = null;
         long fileLength = 0;
         String fileType = null;
@@ -78,20 +77,20 @@ public class DownloadUtil {
             String key = connection.getHeaderFieldKey(i);
             if (mine == null && key == null) break;
 
-            // è§£æ Content-Disposition ä¸­çš„æ–‡ä»¶åç§°
+            // ½âÎö Content-Disposition ÖĞµÄÎÄ¼şÃû³Æ
             if (CONTENT_DISPOSITION.equalsIgnoreCase(key)) {
                 if (mine == null) continue;
                 Matcher m = Pattern.compile(".*filename=(.*)").matcher(mine);
                 if (m.find()) {
                     fileName = URLDecoder.decode(m.group(1).replace("\"", ""), CHARSET_UTF_8);
-                    if (Charset.forName(CHARSET_ISO8859_1).newEncoder().canEncode(fileName)) { // èƒ½é€šè¿‡ISO8859_1å½¢å¼è½¬ç 
+                    if (Charset.forName(CHARSET_ISO8859_1).newEncoder().canEncode(fileName)) { // ÄÜÍ¨¹ıISO8859_1ĞÎÊ½×ªÂë
                         fileName = new String(fileName.getBytes(CHARSET_ISO8859_1), Charset.forName(CHARSET_UTF_8));
-                    } else if (Charset.forName(CHARSET_GB2312).newEncoder().canEncode(fileName)) { // èƒ½é€šè¿‡GB2312å½¢å¼è½¬ç 
+                    } else if (Charset.forName(CHARSET_GB2312).newEncoder().canEncode(fileName)) { // ÄÜÍ¨¹ıGB2312ĞÎÊ½×ªÂë
                         fileName = new String(fileName.getBytes(CHARSET_GB2312), Charset.forName(CHARSET_UTF_8));
                     }
                 }
             }
-            // è§£æ Content-Length ä¸­çš„æ–‡ä»¶å†…å®¹
+            // ½âÎö Content-Length ÖĞµÄÎÄ¼şÄÚÈİ
             else if (CONTENT_LENGTH.equalsIgnoreCase(key)) {
                 if (mine == null) continue;
                 try {
@@ -99,13 +98,13 @@ public class DownloadUtil {
                 } catch (NumberFormatException ignored) {
                 }
             }
-            // è§£æ Content-Type ä¸­çš„æ–‡ä»¶å†…å®¹
+            // ½âÎö Content-Type ÖĞµÄÎÄ¼şÄÚÈİ
             else if (CONTENT_TYPE.equalsIgnoreCase(key)) {
                 fileType = mine;
             }
         }
 
-        if (fileName == null) { // ä»URLç»“å°¾è·å–æ–‡ä»¶å
+        if (fileName == null) { // ´ÓURL½áÎ²»ñÈ¡ÎÄ¼şÃû
             String file = connection.getURL().getPath();
             int index = file.lastIndexOf("/");
             if (index != -1) {
@@ -113,14 +112,14 @@ public class DownloadUtil {
             }
         }
 
-        return new FileInfo(fileName, fileLength, fileType);
+        return new DownFileInfo(fileName, fileLength, fileType);
     }
 
     /**
-     * ä¸‹è½½æ–‡ä»¶ï¼Œé»˜è®¤åŸåè¾“å‡º
+     * ÏÂÔØÎÄ¼ş£¬Ä¬ÈÏÔ­ÃûÊä³ö
      *
-     * @param urlStr ä¸‹è½½æ–‡ä»¶åœ°å€
-     * @param folder ä¸‹è½½ä¿å­˜æ–‡ä»¶çš„è·¯å¾„
+     * @param urlStr ÏÂÔØÎÄ¼şµØÖ·
+     * @param folder ÏÂÔØ±£´æÎÄ¼şµÄÂ·¾¶
      * @throws IOException
      */
     public static File downLoadFile(String urlStr, File folder) throws IOException, HttpResponseException {
@@ -128,45 +127,45 @@ public class DownloadUtil {
     }
 
     /**
-     * ä¸‹è½½æ–‡ä»¶ï¼Œé»˜è®¤åŸåè¾“å‡º
+     * ÏÂÔØÎÄ¼ş£¬Ä¬ÈÏÔ­ÃûÊä³ö
      *
-     * @param urlStr             ä¸‹è½½æ–‡ä»¶åœ°å€
-     * @param folder             ä¸‹è½½ä¿å­˜æ–‡ä»¶çš„è·¯å¾„
-     * @param onDownloadListener ä¸‹è½½ç›‘å¬ï¼Œè¯¥ç›‘å¬åœ¨å½“å‰çš„æ‰§è¡Œçº¿ç¨‹ä¸‹è¿›è¡Œ
-     * @throws IOException
+     * @param urlStr             ÏÂÔØÎÄ¼şµØÖ·
+     * @param folder             ÏÂÔØ±£´æÎÄ¼şµÄÂ·¾¶
+     * @param onDownloadListener ÏÂÔØ¼àÌı£¬¸Ã¼àÌıÔÚµ±Ç°µÄÖ´ĞĞÏß³ÌÏÂ½øĞĞ
+     * @throws IOException,HttpResponseException
      */
     public static File downLoadFile(String urlStr, File folder, OnDownloadListener onDownloadListener) throws IOException, HttpResponseException {
         return downLoadFile(urlStr, folder, true, onDownloadListener);
     }
 
     /**
-     * ä¸‹è½½æ–‡ä»¶
+     * ÏÂÔØÎÄ¼ş
      *
-     * @param urlStr     ä¸‹è½½æ–‡ä»¶åœ°å€
-     * @param folder     ä¸‹è½½ä¿å­˜æ–‡ä»¶çš„è·¯å¾„
-     * @param isOriginal æ˜¯å¦åŸåè¾“å‡º
-     * @throws IOException
+     * @param urlStr     ÏÂÔØÎÄ¼şµØÖ·
+     * @param folder     ÏÂÔØ±£´æÎÄ¼şµÄÂ·¾¶
+     * @param isOriginal ÊÇ·ñÔ­ÃûÊä³ö
+     * @throws IOException,HttpResponseException
      */
     public static File downLoadFile(String urlStr, File folder, boolean isOriginal) throws IOException, HttpResponseException {
         return downLoadFile(urlStr, folder, isOriginal, null);
     }
 
     /**
-     * ä¸‹è½½æ–‡ä»¶
+     * ÏÂÔØÎÄ¼ş
      *
-     * @param urlStr             ä¸‹è½½æ–‡ä»¶åœ°å€
-     * @param folder             ä¸‹è½½ä¿å­˜æ–‡ä»¶çš„è·¯å¾„
-     * @param isOriginal         æ˜¯å¦åŸåè¾“å‡º
-     * @param onDownloadListener ä¸‹è½½ç›‘å¬ï¼Œè¯¥ç›‘å¬åœ¨å½“å‰çš„æ‰§è¡Œçº¿ç¨‹ä¸‹è¿›è¡Œ
-     * @throws IOException
+     * @param urlStr             ÏÂÔØÎÄ¼şµØÖ·
+     * @param folder             ÏÂÔØ±£´æÎÄ¼şµÄÂ·¾¶
+     * @param isOriginal         ÊÇ·ñÔ­ÃûÊä³ö
+     * @param onDownloadListener ÏÂÔØ¼àÌı£¬¸Ã¼àÌıÔÚµ±Ç°µÄÖ´ĞĞÏß³ÌÏÂ½øĞĞ
+     * @throws IOException,HttpResponseException
      */
     public static File downLoadFile(String urlStr, File folder, boolean isOriginal, OnDownloadListener onDownloadListener) throws IOException, HttpResponseException {
         InputStream inputStream = null;
         FileOutputStream outputStream = null;
 
-        boolean success = true; // æ˜¯å¦æˆåŠŸ
+        boolean success = true; // ÊÇ·ñ³É¹¦
         File saveFile = null;
-        FileInfo info = null;
+        DownFileInfo info = null;
         try {
             URL url = new URL(urlStr);
             HttpURLConnection.setFollowRedirects(true);
@@ -211,23 +210,23 @@ public class DownloadUtil {
             success = false;
             throw e;
         } finally {
-            // å…³é—­æ–‡ä»¶æµ
+            // ¹Ø±ÕÎÄ¼şÁ÷
             if (inputStream != null) inputStream.close();
             if (outputStream != null) outputStream.close();
-            // å…³é—­æ–‡ä»¶æµä¹‹åå¯¹æ–‡ä»¶è¿›è¡Œæ“ä½œ
-            if (success) { // æˆåŠŸ
+            // ¹Ø±ÕÎÄ¼şÁ÷Ö®ºó¶ÔÎÄ¼ş½øĞĞ²Ù×÷
+            if (success) { // ³É¹¦
                 if (saveFile != null && saveFile.exists()) {
-                    if (isOriginal && info.getFileName() != null) { // éœ€è¦åŸæ–‡ä»¶åè¾“å‡ºï¼Œä¸”èƒ½è·å¾—åŸæ–‡ä»¶å
+                    if (isOriginal && info.getFileName() != null) { // ĞèÒªÔ­ÎÄ¼şÃûÊä³ö£¬ÇÒÄÜ»ñµÃÔ­ÎÄ¼şÃû
                         File newFile = new File(folder, info.getFileName());
                         FileUtil.rename(saveFile, newFile);
                         saveFile = newFile;
-                    } else { // 32ä½ + çœŸå®åç¼€å
+                    } else { // 32Î» + ÕæÊµºó×ºÃû
                         File newFile = new File(folder, saveFile.getName().substring(0, saveFile.getName().lastIndexOf(".") + 1) + info.getFileSuffix());
                         FileUtil.rename(saveFile, newFile);
                         saveFile = newFile;
                     }
                 }
-            } else { // ä¸æˆåŠŸ
+            } else { // ²»³É¹¦
                 if (saveFile != null && saveFile.exists()) {
                     saveFile.delete();
                 }
@@ -238,26 +237,17 @@ public class DownloadUtil {
     }
 
     /**
-     * Simple to Introduction
-     * ä¸‹è½½æ–‡ä»¶çš„è¿›åº¦ç›‘å¬
-     *
-     * @ProjectName: HelloWorld
-     * @Description:
-     * @Author: Asen
-     * @CreateDate: 2016-02-04
-     * @Time: 17:19
-     * @Version: [v1.0]
+     * ÏÂÔØÎÄ¼şµÄ½ø¶È¼àÌı
      */
     public interface OnDownloadListener {
 
         /**
-         * ä¸‹è½½æ–‡ä»¶çš„è¿›åº¦
+         * ÏÂÔØÎÄ¼şµÄ½ø¶È
          *
-         * @param fileSize æ–‡ä»¶å¤§å°
-         * @param progress å·²ä¸‹è½½çš„æ–‡ä»¶å¤§å°
+         * @param fileSize ÎÄ¼ş´óĞ¡
+         * @param progress ÒÑÏÂÔØµÄÎÄ¼ş´óĞ¡
          */
         void downloadProgress(long fileSize, long progress);
-
     }
 
 

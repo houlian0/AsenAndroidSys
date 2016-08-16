@@ -49,7 +49,7 @@ class DownFileManagerThread extends Thread {
         int downStatus = DownloadFileService.STATUS_START;
 
         while (mFileService.getDownStatus() == DownloadFileService.STATUS_START) { // 开始下载
-            if (mProgressInfo.getDownloadLength() >= mProgressInfo.getFileInfo().getFileLength()) { // 已经下载完成
+            if (mProgressInfo.getDownloadLength() >= mProgressInfo.getDownFileInfo().getFileLength()) { // 已经下载完成
                 downStatus = DownloadFileService.STATUS_FINISH;
                 break;
             }
@@ -117,14 +117,14 @@ class DownFileManagerThread extends Thread {
      * @return 获得下一个DownProgressItem，如果没有则返回null
      */
     private DownProgressItem getNextProgressItem() {
-        if (mProgressInfo.getCurrentLength() >= mProgressInfo.getFileInfo().getFileLength()) { // 已经没有需要再开辟线程的了
+        if (mProgressInfo.getCurrentLength() >= mProgressInfo.getDownFileInfo().getFileLength()) { // 已经没有需要再开辟线程的了
             return null;
         }
 
         long startSeek = mProgressInfo.getCurrentLength();
         long endSeek = startSeek + DownloadFileService.SINGLE_NODE_BYTE_SIZE;
-        if (endSeek > mProgressInfo.getFileInfo().getFileLength())
-            endSeek = mProgressInfo.getFileInfo().getFileLength();
+        if (endSeek > mProgressInfo.getDownFileInfo().getFileLength())
+            endSeek = mProgressInfo.getDownFileInfo().getFileLength();
         mProgressInfo.setCurrentLength(endSeek);
 
         return new DownProgressItem(startSeek, endSeek - 1);

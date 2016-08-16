@@ -10,7 +10,7 @@ import com.asen.android.lib.base.core.network.download.bean.SaveProgress;
 import com.asen.android.lib.base.core.network.download.exception.DownloadFileException;
 import com.asen.android.lib.base.core.network.download.exception.IDownErrorCode;
 import com.asen.android.lib.base.core.network.urlconn.DownloadUtil;
-import com.asen.android.lib.base.core.network.urlconn.bean.FileInfo;
+import com.asen.android.lib.base.core.network.urlconn.bean.DownFileInfo;
 import com.asen.android.lib.base.tool.util.AppUtil;
 
 import org.xml.sax.SAXException;
@@ -239,12 +239,12 @@ public class DownloadFileService implements IDownloadFileService {
             conn.setRequestProperty("Connection", "Keep-Alive");
             conn.connect();
 
-            FileInfo fileInfo = DownloadUtil.getFileInfoByConn(conn);
-            if (fileInfo.getFileLength() == 0) {
+            DownFileInfo downFileInfo = DownloadUtil.getFileInfoByConn(conn);
+            if (downFileInfo.getFileLength() == 0) {
                 throw new DownloadFileException("File length is zero!!!");
             }
 
-            initContext(fileInfo, url);
+            initContext(downFileInfo, url);
 
             // 启动下载管理线程
             DownFileManagerThread downFileManagerThread = new DownFileManagerThread(this, mDownProgressInfo, mDownConfig);
@@ -269,7 +269,7 @@ public class DownloadFileService implements IDownloadFileService {
     }
 
     // 初始化上下文信息
-    private void initContext(FileInfo fileInfo, URL url) throws IOException, SAXException, ParserConfigurationException, TransformerException {
+    private void initContext(DownFileInfo downFileInfo, URL url) throws IOException, SAXException, ParserConfigurationException, TransformerException {
         // 获取下载的上下文信息
         SaveContext context = downloadContextXml.getDownloadContext(mUrlStr);
 
@@ -278,13 +278,13 @@ public class DownloadFileService implements IDownloadFileService {
         String featid;
         if (context == null) { // 新的文件
             featid = AppUtil.getUUid();
-            context = new SaveContext(mUrlStr, featid, new Date().getTime(), fileInfo.getFileLength(), 0, mDownConfig.isOriginal(), mDownConfig.getThreadNumber());
+            context = new SaveContext(mUrlStr, featid, new Date().getTime(), downFileInfo.getFileLength(), 0, mDownConfig.isOriginal(), mDownConfig.getThreadNumber());
         } else {
             featid = context.getFeatid();
             long time = new Date().getTime();
-            if (fileInfo.getFileLength() != context.getFileSize() || time - context.getTime() > REDOWNLOAD_TIME_INTERVAL) { // 文件大小不一致或者长时间未继续下载
+            if (downFileInfo.getFileLength() != context.getFileSize() || time - context.getTime() > REDOWNLOAD_TIME_INTERVAL) { // 文件大小不一致或者长时间未继续下载
                 downloadContextXml.deleteDownConfig(featid);
-                context = new SaveContext(mUrlStr, featid, time, fileInfo.getFileLength(), 0, mDownConfig.isOriginal(), mDownConfig.getThreadNumber());
+                context = new SaveContext(mUrlStr, featid, time, downFileInfo.getFileLength(), 0, mDownConfig.isOriginal(), mDownConfig.getThreadNumber());
             } else {
                 SaveProgress saveProgress = downloadContextXml.queryDownConfig(featid);
                 downloadLength = saveProgress.getDownloadLength();
@@ -302,7 +302,7 @@ public class DownloadFileService implements IDownloadFileService {
         downloadContextXml.setDownloadContext(context);
 
         File tmpFile = new File(mSaveFolder, featid + DOWNLOAD_TMP_SUFFIX);
-        mDownProgressInfo = new DownProgressInfo(url, fileInfo, tmpFile);
+        mDownProgressInfo = new DownProgressInfo(url, downFileInfo, tmpFile);
         mDownProgressInfo.setCurrentLength(context.getCurrentLength());
         mDownProgressInfo.setDownloadLength(downloadLength);
 
