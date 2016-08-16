@@ -1,43 +1,42 @@
 package com.asen.android.lib.base.core.network.download.exception;
 
 /**
- * Simple to Introduction
- * é”™è¯¯ä»£ç ä¿¡æ¯å®ä¾‹
+ * ´íÎó´úÂëĞÅÏ¢ÊµÀı
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
-public class DefaultErrorCode implements IErrorCode {
+public class DefaultDownDownErrorCode implements IDownErrorCode {
 
     @Override
     public String getNetworkConnErrorStr() {
-        return "ç½‘ç»œè¿æ¥å¤±è´¥";
+        return "ÍøÂçÁ¬½ÓÊ§°Ü";
     }
 
     @Override
     public String getFileLengthZeroStr() {
-        return "æ–‡ä»¶å¤§å°ä¸ºé›¶";
+        return "ÎÄ¼ş´óĞ¡ÎªÁã";
     }
 
     @Override
     public String getFileCreateErrorStr() {
-        return "æ–‡ä»¶åˆ›å»ºå¤±è´¥";
+        return "ÎÄ¼ş´´½¨Ê§°Ü";
     }
 
     @Override
     public String getDownloadIsStartedStr() {
-        return "ä¸‹è½½æ­£åœ¨è¿›è¡Œä¸­";
+        return "ÏÂÔØÕıÔÚ½øĞĞÖĞ";
     }
 
     @Override
     public String getFileConfigErrorStr() {
-        return "æ–‡ä»¶é…ç½®ä¿¡æ¯æŠ¥é”™";
+        return "ÎÄ¼şÅäÖÃĞÅÏ¢±¨´í";
     }
 
     @Override
     public String getUnknownErrorStr() {
-        return "æœªçŸ¥çš„é”™è¯¯ä¿¡æ¯";
+        return "Î´ÖªµÄ´íÎóĞÅÏ¢";
     }
 
 }

@@ -1,18 +1,13 @@
 package com.asen.android.lib.base.core.network.download.exception;
 
 /**
- * 鏂囦欢涓嬭浇寮傚父
+ * 文件下载异常
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
 public class DownloadFileException extends RuntimeException {
-
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
 
     public DownloadFileException() {
         super();

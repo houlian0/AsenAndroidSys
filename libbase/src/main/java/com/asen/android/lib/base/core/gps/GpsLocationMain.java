@@ -63,8 +63,6 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
 
     private GpsPoint mGpsPoint = null;
 
-//    private TmpGpsInfo tmpGpsInfo = null; // 临时定位信息
-
     private boolean isNotFirst = false;
 
     private LocationManager locationManager;
@@ -101,11 +99,6 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
         if (locationType != null) mLocationType = locationType;
     }
 
-    /**
-     * 是否获得了GPS点位
-     *
-     * @return
-     */
     @Override
     public boolean hasGpsPoint() {
         return mGpsPoint != null;
@@ -116,21 +109,11 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
         return isNotFirst;
     }
 
-    /**
-     * 获得最后一个转换后得地图上的点
-     *
-     * @return if mGpsPoint is null, return null
-     */
     @Override
     public MapPoint getMapPoint() {
         return mMapPoint;
     }
 
-    /**
-     * 获得最后一个GPS点位
-     *
-     * @return
-     */
     @Override
     public GpsPoint getGpsPoint() {
         return mGpsPoint;
@@ -141,11 +124,6 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
         return isStarted;
     }
 
-    /**
-     * 获得地址定位信息
-     *
-     * @return
-     */
     @Override
     public LocationInfo getLocationInfo() {
         return mGeocodeReverse == null ? null : mGeocodeReverse.getLocationInfo();
@@ -156,21 +134,11 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
         return mGpsSatellites;
     }
 
-    /**
-     * 设置第三方扩展性定位，单次定位
-     *
-     * @param extensionLocation
-     */
     public void setExtensionLocation(ExtensionASingleLocation extensionLocation) {
         extensionLocation.setGpsLocation(this);
         mExtensionLocation = extensionLocation;
     }
 
-    /**
-     * 设置第三方扩展性定位，持续定位
-     *
-     * @param extensionLocation
-     */
     public void setExtensionLocation(ExtensionContinuousLocation extensionLocation) {
         extensionLocation.setGpsLocation(this);
         mExtensionLocation = extensionLocation;
@@ -181,51 +149,26 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
         return mExtensionLocation;
     }
 
-    /**
-     * 增加GPS改变监听（可add多个）
-     *
-     * @param onLocationChangedListener
-     */
     @Override
     public void addOnLocationChangedListener(OnLocationChangedListener onLocationChangedListener) {
         mOnLocationChangedListeners.add(onLocationChangedListener);
     }
 
-    /**
-     * 移除GPS改变监听
-     *
-     * @param onLocationChangedListener
-     */
     @Override
     public void removeOnLocationChangedListener(OnLocationChangedListener onLocationChangedListener) {
         mOnLocationChangedListeners.remove(onLocationChangedListener);
     }
 
-    /**
-     * 增加地址改变时监听
-     *
-     * @param onAddressChangedListener
-     */
     @Override
     public void addOnAddressChangedListener(OnAddressChangedListener onAddressChangedListener) {
         mOnAddressChangedListeners.add(onAddressChangedListener);
     }
 
-    /**
-     * 移除地址改变时监听
-     *
-     * @param onAddressChangedListener
-     */
     @Override
     public void removeOnAddressChangedListener(OnAddressChangedListener onAddressChangedListener) {
         mOnAddressChangedListeners.remove(onAddressChangedListener);
     }
 
-    /**
-     * 设置GPS状态监听
-     *
-     * @param onSatelliteChangedListener
-     */
     @Override
     public void setOnSatelliteChangedListener(OnSatelliteChangedListener onSatelliteChangedListener) {
         mOnSatelliteChangedListener = onSatelliteChangedListener;
@@ -243,22 +186,11 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
 
     private GpsStatusListener mGpsStatusListener = null;
 
-    /**
-     * 开启GPS定位（纯Android原生）
-     *
-     * @return
-     */
     @Override
     public boolean start() {
         return start(null);
     }
 
-    /**
-     * 开启GPS定位（纯Android原生）
-     *
-     * @param {@Nullable} coordinateTransform 坐标转换接口，该类只执行了gpsPoint2MapPoint方法
-     * @return
-     */
     @Override
     @TargetApi(Build.VERSION_CODES.M)
     public boolean start(@Nullable ICoordinateTransform coordinateTransform) {
@@ -319,11 +251,6 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
 
     }
 
-    /**
-     * 结束GPS定位（纯Android原生）
-     *
-     * @return
-     */
     @Override
     @TargetApi(Build.VERSION_CODES.M)
     public boolean stop() {
@@ -372,32 +299,6 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
         mGeocodeReverse.setAddressChangedListeners(mOnAddressChangedListeners);
     }
 
-//    public void refreshLocation(GpsInfoType type, Location location) {
-//        if (GpsInfoType.TYPE_FIRST == type) { // 此处为第一个获得的GPS点位（上回记录的GPS点）
-//            location(type, location);
-//            sendLocationListener();
-//        } else {
-//            boolean flag = !isNotFirst;
-//            isNotFirst = true; // 设为非首次定位状态
-//            if (!hasGpsPoint() || flag) { // 如果没有获得过GPS位置，或者位置为首次定位的点，则重新定位
-//                location(type, location);
-//                sendLocationListener();
-//            } else {
-//                double longitude = location.getLongitude();
-//                double latitude = location.getLatitude();
-//                float accuracy = location.getAccuracy();
-//                int accuracyScale = type == GpsInfoType.TYPE_EXTENSION ? 3 : 2; // 扩展定位，更严格的偏移后才去改变位置
-//                if ((distance(longitude, latitude, mGpsPoint.getLongitude(), mGpsPoint.getLatitude()) > accuracy * accuracyScale)) { // accuracy < mGpsPoint.getAccuracy()
-//                    // 如果两个经纬度间的距离大于精度和
-//                    location(type, location);
-//                } else {
-//                    mGpsPoint.setSpeed(location.getTime() - mGpsPoint.getTime() > STAY_TIME_INTERVAL ? 0 : location.getSpeed());
-//                }
-//                sendLocationListener();
-//            }
-//        }
-//    }
-
     public void refreshLocation(GpsInfoType type, Location location) {
         if (GpsInfoType.TYPE_FIRST == type) { // 此处为第一个获得的GPS点位（上回记录的GPS点）
             TmpGpsInfo tmpGpsInfo = location(type, location);
@@ -419,6 +320,10 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
                 sendLocationListener();
             }
         }
+    }
+
+    public void refreshLocationInfo(double lon, double lat, LocationInfo locationInfo) {
+        if (mGeocodeReverse != null) mGeocodeReverse.refreshLocationInfo(lon, lat, locationInfo);
     }
 
     // 赋值到正式的定位信息上
@@ -477,15 +382,6 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
     // 将最新点位加到集合中
     private void add2MaxListStack(TmpGpsInfo tmpGpsInfo) {
         if (tmpGpsInfo != null) {
-//            GpsPoint currentGps = tmpGpsInfo.getGpsPoint();
-//            TmpGpsInfo lastData = senMaxListStack.getLastData();
-//            if (lastData != null) {
-//                GpsPoint prevGps = lastData.getGpsPoint();
-//                // 计算当前点与上一个点位的距离
-//                mGpsPoint.setPrevDistance(distance(prevGps.getLongitude(), prevGps.getLatitude(), currentGps.getLongitude(), currentGps.getLatitude()));
-//            } else {
-//                mGpsPoint.setPrevDistance(-1);
-//            }
             senMaxListStack.push(tmpGpsInfo);
         }
     }
@@ -537,14 +433,7 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
         }
     }
 
-    /**
-     * When this method is called, the client should call
-     * {@link LocationManager#getGpsStatus} to get additional
-     * status information.
-     *
-     * @param gpsStatus
-     * @param gpsSatellites 可能为null
-     */
+    // 刷新GPS状态和搜到的卫星数量信息
     void refreshGpsStatus(int gpsStatus, List<GpsSatellite> gpsSatellites) {
         this.mGpsSatellites = gpsSatellites;
         if (mOnSatelliteChangedListener != null)

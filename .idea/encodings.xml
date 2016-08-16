@@ -6,6 +6,8 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/asen/android/app/MainActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/test/java/com/asen/android/app/ExampleUnitTest.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/build.gradle" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/libbase/build.gradle" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/GpsInfoType.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/GpsLocation.java" charset="GBK" />
@@ -17,6 +19,7 @@
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/LocationInfo.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/MapPoint.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/TmpGpsInfo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/extension/BaseExtensionLocation.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/extension/ExtensionASingleLocation.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/extension/ExtensionContinuousLocation.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/extension/IExtensionLocation.java" charset="GBK" />
@@ -27,6 +30,8 @@
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/listener/OnAddressChangedListener.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/listener/OnLocationChangedListener.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/listener/OnSatelliteChangedListener.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/download/IDownloadFileService.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/download/OnDownloadFileListener.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/download/bean/DownConfigInfo.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/download/bean/DownProgressInfo.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/download/bean/DownProgressItem.java" charset="GBK" />
@@ -37,8 +42,12 @@
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/download/core/DownFileSingleThread.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/download/core/DownloadContextXml.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/download/core/DownloadFileService.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/download/exception/DefaultDownDownErrorCode.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/download/exception/DownErrorCodeUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/download/exception/DownloadFileException.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/download/exception/IDownErrorCode.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/ksoap" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/AppUtil.java" charset="UTF-8" />
-    <file url="PROJECT" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

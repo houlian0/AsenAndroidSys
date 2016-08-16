@@ -1,66 +1,66 @@
 package com.asen.android.lib.base.core.network.download.exception;
 
 /**
- * Simple to Introduction
+ * ÏÂÔØµÄ´íÎóÀàĞÍ½Ó¿Ú¶¨Òå
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
-public interface IErrorCode {
+public interface IDownErrorCode {
 
     /**
-     * ç½‘ç»œè¿æ¥å¤±è´¥
+     * ÍøÂçÁ¬½ÓÊ§°Ü
      */
     int NETWORK_CONN_ERROR = 0x01;
 
     /**
-     * æ–‡ä»¶å¤§å°ä¸º0
+     * ÎÄ¼ş´óĞ¡Îª0
      */
     int FILE_LENGTH_ZERO = 0x02;
 
     /**
-     * æ–‡ä»¶åˆ›å»ºå¤±è´¥
+     * ÎÄ¼ş´´½¨Ê§°Ü
      */
     int FILE_CREATE_ERROR = 0x03;
 
     /**
-     * ä¸‹è½½æ­£åœ¨è¿›è¡Œä¸­
+     * ÏÂÔØÕıÔÚ½øĞĞÖĞ
      */
     int DOWNLOAD_IS_STARTED = 0x04;
 
     /**
-     * æ–‡ä»¶é…ç½®ä¿¡æ¯æŠ¥é”™
+     * ÎÄ¼şÅäÖÃĞÅÏ¢±¨´í
      */
     int FILE_CONFIG_ERROR = 0x05;
 
     /**
-     * ç½‘ç»œè¿æ¥å¤±è´¥
+     * ÍøÂçÁ¬½ÓÊ§°Ü
      */
     String getNetworkConnErrorStr();
 
     /**
-     * æ–‡ä»¶å¤§å°ä¸ºé›¶
+     * ÎÄ¼ş´óĞ¡ÎªÁã
      */
     String getFileLengthZeroStr();
 
     /**
-     * æ–‡ä»¶åˆ›å»ºå¤±è´¥
+     * ÎÄ¼ş´´½¨Ê§°Ü
      */
     String getFileCreateErrorStr();
 
     /**
-     * ä¸‹è½½æ­£åœ¨è¿›è¡Œä¸­
+     * ÏÂÔØÕıÔÚ½øĞĞÖĞ
      */
     String getDownloadIsStartedStr();
 
     /**
-     * æ–‡ä»¶é…ç½®ä¿¡æ¯æŠ¥é”™
+     * ÎÄ¼şÅäÖÃĞÅÏ¢±¨´í
      */
     String getFileConfigErrorStr();
 
     /**
-     * æœªçŸ¥é”™è¯¯ä¿¡æ¯
+     * Î´Öª´íÎóĞÅÏ¢
      */
     String getUnknownErrorStr();
 

@@ -6,7 +6,7 @@ import com.asen.android.lib.base.core.network.download.bean.DownConfigInfo;
 import com.asen.android.lib.base.core.network.download.bean.DownProgressInfo;
 import com.asen.android.lib.base.core.network.download.bean.DownProgressItem;
 import com.asen.android.lib.base.core.network.download.exception.DownloadFileException;
-import com.asen.android.lib.base.core.network.download.exception.IErrorCode;
+import com.asen.android.lib.base.core.network.download.exception.IDownErrorCode;
 
 import java.io.IOException;
 import java.util.ListIterator;
@@ -104,7 +104,7 @@ class DownFileManagerThread extends Thread {
         } else if (downStatus == DownloadFileService.STATUS_STOP) { // 异常中断下载时执行
             OnDownloadFileListener onDownloadFileListener = mFileService.getOnDownloadFileListener();
             if (onDownloadFileListener != null) {
-                onDownloadFileListener.error(IErrorCode.NETWORK_CONN_ERROR, new DownloadFileException("Network conn error in center!!!"));
+                onDownloadFileListener.error(IDownErrorCode.NETWORK_CONN_ERROR, new DownloadFileException("Network conn error in center!!!"));
             }
             mFileService.setDownStatus(DownloadFileService.STATUS_STOP); // 下载中断
         }

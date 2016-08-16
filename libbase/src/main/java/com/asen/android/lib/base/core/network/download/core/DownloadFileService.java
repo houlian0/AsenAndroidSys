@@ -8,7 +8,7 @@ import com.asen.android.lib.base.core.network.download.bean.DownProgressItem;
 import com.asen.android.lib.base.core.network.download.bean.SaveContext;
 import com.asen.android.lib.base.core.network.download.bean.SaveProgress;
 import com.asen.android.lib.base.core.network.download.exception.DownloadFileException;
-import com.asen.android.lib.base.core.network.download.exception.IErrorCode;
+import com.asen.android.lib.base.core.network.download.exception.IDownErrorCode;
 import com.asen.android.lib.base.core.network.urlconn.DownloadUtil;
 import com.asen.android.lib.base.core.network.urlconn.bean.FileInfo;
 import com.asen.android.lib.base.tool.util.AppUtil;
@@ -204,13 +204,13 @@ public class DownloadFileService implements IDownloadFileService {
         if (!mSaveFolder.exists()) {
             if (!mSaveFolder.mkdirs()) { // 文件创建失败异常
                 if (mOnDownloadFileListener != null)
-                    mOnDownloadFileListener.error(IErrorCode.FILE_CREATE_ERROR, new DownloadFileException("SaveFolder [" + mSaveFolder.getPath() + "] is create error!!!"));
+                    mOnDownloadFileListener.error(IDownErrorCode.FILE_CREATE_ERROR, new DownloadFileException("SaveFolder [" + mSaveFolder.getPath() + "] is create error!!!"));
                 return;
             }
         }
         if (getDownStatus() != STATUS_STOP) { // 如果已经在下载 或 已经完成的，抛出异常
             if (mOnDownloadFileListener != null) {
-                mOnDownloadFileListener.error(IErrorCode.DOWNLOAD_IS_STARTED, new DownloadFileException("DownLoad is started or finish!!!")); // 正在下载异常
+                mOnDownloadFileListener.error(IDownErrorCode.DOWNLOAD_IS_STARTED, new DownloadFileException("DownLoad is started or finish!!!")); // 正在下载异常
             }
             return;
         }
@@ -255,12 +255,12 @@ public class DownloadFileService implements IDownloadFileService {
 
         } catch (IOException | ParserConfigurationException | SAXException | TransformerException e) {
             if (mOnDownloadFileListener != null) {
-                mOnDownloadFileListener.error(IErrorCode.NETWORK_CONN_ERROR, e);
+                mOnDownloadFileListener.error(IDownErrorCode.NETWORK_CONN_ERROR, e);
             }
             setDownStatus(STATUS_STOP);
         } catch (DownloadFileException e) {
             if (mOnDownloadFileListener != null) {
-                mOnDownloadFileListener.error(IErrorCode.FILE_LENGTH_ZERO, e);
+                mOnDownloadFileListener.error(IDownErrorCode.FILE_LENGTH_ZERO, e);
             }
             setDownStatus(STATUS_STOP);
         } finally {

@@ -6,7 +6,7 @@ import com.asen.android.lib.base.core.network.download.bean.DownConfigInfo;
 import com.asen.android.lib.base.core.network.download.bean.DownProgressInfo;
 import com.asen.android.lib.base.core.network.download.bean.DownProgressItem;
 import com.asen.android.lib.base.core.network.download.bean.SaveContext;
-import com.asen.android.lib.base.core.network.download.exception.IErrorCode;
+import com.asen.android.lib.base.core.network.download.exception.IDownErrorCode;
 import com.asen.android.lib.base.tool.util.FileUtil;
 
 import org.xml.sax.SAXException;
@@ -139,7 +139,7 @@ class DownFileCalculateThread extends Thread {
                 deleteMessage();
             } catch (TransformerException | IOException e) {
                 if (onDownloadFileListener != null) {
-                    onDownloadFileListener.error(IErrorCode.FILE_CONFIG_ERROR, e);
+                    onDownloadFileListener.error(IDownErrorCode.FILE_CONFIG_ERROR, e);
                 }
             }
         } else if (mFileService.getDownStatus() == DownloadFileService.STATUS_STOP && mFileService.isStop()) { // 通过调用stopDownload方法时执行
@@ -148,7 +148,7 @@ class DownFileCalculateThread extends Thread {
                 deleteMessage();
             } catch (TransformerException | IOException e) {
                 if (onDownloadFileListener != null) {
-                    onDownloadFileListener.error(IErrorCode.FILE_CONFIG_ERROR, e);
+                    onDownloadFileListener.error(IDownErrorCode.FILE_CONFIG_ERROR, e);
                 }
             }
         }
