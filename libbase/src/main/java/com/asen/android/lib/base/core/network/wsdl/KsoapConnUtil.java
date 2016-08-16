@@ -37,7 +37,7 @@ import javax.xml.parsers.SAXParserFactory;
 public class KsoapConnUtil {
 
     /**
-     * 连接超时的时间
+     * 连接超时的时间（毫秒值）
      */
     public static int CONN_TIMEOUT = 10 * 1000;
 

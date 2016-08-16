@@ -51,6 +51,7 @@
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/task/SenAsyncTask.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/task/SenTimingTask.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/urlconn/DownloadUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/urlconn/HttpRequest.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/urlconn/bean/DownFileInfo.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/urlconn/bean/HttpFileEntity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/urlconn/bean/HttpTextEntity.java" charset="GBK" />

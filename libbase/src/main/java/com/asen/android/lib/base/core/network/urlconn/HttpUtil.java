@@ -10,10 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Simple to Introduction
  * 网络请求工具类
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
  */
@@ -23,6 +22,11 @@ public class HttpUtil {
      * 是否上传的SQL语句
      */
     public static boolean IS_SQL = false;
+
+    /**
+     * Http请求连接超时的时间间隔（毫秒值）
+     */
+    public static int CONN_TIMEOUT = 10 * 1000;
 
     static HttpRequest mHttpRequest;
 
@@ -86,10 +90,9 @@ public class HttpUtil {
      * @param url url地址
      * @return 获得的byte结果
      */
-    public static byte[] getBytes(String url) {
+    public static byte[] getBytes(String url) throws HttpResponseException {
         return mHttpRequest.sendGet2ByteArray(url);
     }
-
 
     /**
      * post请求
@@ -154,6 +157,18 @@ public class HttpUtil {
      */
     public static String post(String url, Map<String, String> params, Map<String, File> files) throws HttpResponseException {
         return mHttpRequest.sendPost(url, params, files);
+    }
+
+    /**
+     * 通过流的方式上传信息
+     *
+     * @param url                      访问的服务器URL
+     * @param httpOutputStreamListener 流信息传递的监听接口
+     * @return 返回远程资源的响应结果
+     * @throws HttpResponseException
+     */
+    public static String postData(String url, OnHttpOutputStreamListener httpOutputStreamListener) throws HttpResponseException {
+        return mHttpRequest.sendPostData(url, httpOutputStreamListener);
     }
 
 }
