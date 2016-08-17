@@ -1,35 +1,34 @@
 package com.asen.android.lib.base.tool.manage.action;
 
 /**
- * Simple to Introduction
- * ActionManagerå®ç°ç±»
+ * ActionManagerÊµÏÖÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:25
  */
-public class OperActionManager<T> implements IActionManager {
+public class OperaActionManager<T> implements IActionManager {
 
     private T mParent;
 
     private ActionIntent currentIntent = null;
 
-    public OperActionManager(T parent) {
+    public OperaActionManager(T parent) {
         mParent = parent;
     }
 
     @Override
     public void executeIntent(ActionIntent intent) {
         BaseAction action = intent.getAction();
-        boolean isExecuteAction = action instanceof ExecuteAction; // æ˜¯å¦æ˜¯æ‰§è¡Œå¼Action
+        boolean isExecuteAction = action instanceof ExecuteAction; // ÊÇ·ñÊÇÖ´ĞĞÊ½Action
 
         boolean isResume = currentIntent != null && currentIntent.getAction().getClass().getName().equals(action.getClass().getName());
-        if (!isResume) { // é¦–æ¬¡ æ‰§è¡Œ
+        if (!isResume) { // Ê×´Î Ö´ĞĞ
             action.setParent(mParent);
-            if (!isExecuteAction) release(); // é”€æ¯ä¸Šä¸€ä¸ªAction(æ‰§è¡Œå¼Actionä¸åšæ­¤æ“ä½œ)
-            action.onCreate(); // é¦–æ¬¡
+            if (!isExecuteAction) release(); // Ïú»ÙÉÏÒ»¸öAction(Ö´ĞĞÊ½Action²»×ö´Ë²Ù×÷)
+            action.onCreate(); // Ê×´Î
             if (!isExecuteAction) currentIntent = intent;
-        }else{ // é‡å¤æ‰§è¡Œï¼Œå–ä¸Šæ¬¡æ‰§è¡Œçš„Action
+        } else { // ÖØ¸´Ö´ĞĞ£¬È¡ÉÏ´ÎÖ´ĞĞµÄAction
             action = currentIntent.getAction();
         }
 

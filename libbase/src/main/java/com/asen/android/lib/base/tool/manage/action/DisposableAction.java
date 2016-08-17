@@ -3,19 +3,13 @@ package com.asen.android.lib.base.tool.manage.action;
 import android.os.Bundle;
 
 /**
- * Simple to Introduction
- * å¯é”€æ¯å¼Action
+ * ¿ÉÏú»ÙÊ½Action
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:25
  */
 public abstract class DisposableAction extends BaseAction {
-
-    /**
-     * åˆ›å»º
-     */
-    public abstract void onCreate();
 
     @Override
     public final void execute(boolean isResume, Object object, Bundle bundle) {
@@ -27,24 +21,19 @@ public abstract class DisposableAction extends BaseAction {
     }
 
     /**
-     * é¦–æ¬¡æ‰§è¡Œ
+     * Ê×´ÎÖ´ĞĞÊ±»áµ÷ÓÃ
      *
-     * @param object objectæ•°æ®
-     * @param bundle bundleæ•°æ®
+     * @param object objectÊı¾İ
+     * @param bundle bundleÊı¾İ
      */
     public abstract void onStart(Object object, Bundle bundle);
 
     /**
-     * å¤šæ¬¡æ‰§è¡Œ
+     * ·ÇÊ×´ÎÖ´ĞĞµÄÆäËû¶à´ÎÖ´ĞĞÊ±»áµ÷ÓÃ
      *
-     * @param object objectæ•°æ®
-     * @param bundle bundleæ•°æ®
+     * @param object objectÊı¾İ
+     * @param bundle bundleÊı¾İ
      */
     public abstract void onResume(Object object, Bundle bundle);
-
-    /**
-     * é”€æ¯
-     */
-    public abstract void onDestroy();
 
 }

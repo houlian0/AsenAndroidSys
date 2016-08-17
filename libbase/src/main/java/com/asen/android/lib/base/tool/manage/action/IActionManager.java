@@ -1,31 +1,30 @@
 package com.asen.android.lib.base.tool.manage.action;
 
 /**
- * Simple to Introduction
- * ActionManager鎺ュ彛瀹氫箟
+ * ActionManager接口定义
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:25
  */
 public interface IActionManager {
 
     /**
-     * 鎵цAction
+     * 执行Action
      *
-     * @param action action鎰忓浘
+     * @param action action意图
      */
     public void executeIntent(ActionIntent action);
 
     /**
-     * 閿�姣佸綋鍓岮ction
+     * 销毁当前Action
      */
     public void cancelCurrentIntent();
 
     /**
-     * 鑾峰緱褰撳墠Action鎰忓浘
+     * 获得当前Action意图
      *
-     * @return 褰撳墠Action鎰忓浘锛宱r null
+     * @return 返回当前Action意图，如果当前没有任何Action执行过，则返回null
      */
     public ActionIntent getCurrentIntent();
 

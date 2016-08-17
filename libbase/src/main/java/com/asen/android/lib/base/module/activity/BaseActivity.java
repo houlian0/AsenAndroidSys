@@ -9,7 +9,7 @@ import com.asen.android.lib.base.BaseApplication;
 import com.asen.android.lib.base.tool.manage.action.ActionIntent;
 import com.asen.android.lib.base.tool.manage.action.BaseAction;
 import com.asen.android.lib.base.tool.manage.action.IActionManager;
-import com.asen.android.lib.base.tool.manage.action.OperActionManager;
+import com.asen.android.lib.base.tool.manage.action.OperaActionManager;
 
 /**
  * 基础的Activity，基于v7包的新特性
@@ -41,7 +41,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         mContext = getApplicationContext();
-        mActionManager = new OperActionManager(this);
+        mActionManager = new OperaActionManager(this);
 
         Application application = getApplication();
         if (application instanceof BaseApplication) {

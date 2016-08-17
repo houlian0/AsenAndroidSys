@@ -12,7 +12,7 @@ import com.asen.android.lib.base.tool.manage.OnFragmentRefreshListener;
 import com.asen.android.lib.base.tool.manage.action.ActionIntent;
 import com.asen.android.lib.base.tool.manage.action.BaseAction;
 import com.asen.android.lib.base.tool.manage.action.IActionManager;
-import com.asen.android.lib.base.tool.manage.action.OperActionManager;
+import com.asen.android.lib.base.tool.manage.action.OperaActionManager;
 
 /**
  * 基本的Fragment，采用的v4包的Fragment
@@ -43,7 +43,7 @@ public class BaseFragment extends Fragment implements OnFragmentHideListener, On
         mContext = mActivity.getApplicationContext();
         mApplication = mActivity.getApplication();
 
-        mActionManager = new OperActionManager(this);
+        mActionManager = new OperaActionManager(this);
     }
 
     private boolean isFirstShow = true; // 是否首次执行onShow

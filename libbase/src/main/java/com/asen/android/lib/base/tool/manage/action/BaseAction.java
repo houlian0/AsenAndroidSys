@@ -6,29 +6,28 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 /**
- * Simple to Introduction
- * åŸºæœ¬çš„Action
+ * »ù±¾µÄAction
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:25
  */
 public abstract class BaseAction<T> {
 
     /**
-     * è°ƒç”¨Actionçš„æ‰§è¡Œç±»ï¼ˆActivityæˆ–Fragmentï¼‰
+     * µ÷ÓÃActionµÄÖ´ĞĞÀà£¨Activity»òFragment£©
      */
-    protected T mParent; // è°ƒç”¨Actionçš„æ‰§è¡Œç±»ï¼ˆActivityæˆ–Fragmentï¼‰
+    protected T mParent; // µ÷ÓÃActionµÄÖ´ĞĞÀà£¨Activity»òFragment£©
 
     /**
-     * Android ä¸Šä¸‹æ–‡
+     * Android ÉÏÏÂÎÄ
      */
-    protected Context mContext; // Android ä¸Šä¸‹æ–‡
+    protected Context mContext; // Android ÉÏÏÂÎÄ
 
     /**
-     * è®¾ç½® è°ƒç”¨Actionçš„æ‰§è¡Œç±»ï¼ˆActivityæˆ–Fragmentï¼‰
+     * ÉèÖÃ µ÷ÓÃActionµÄÖ´ĞĞÀà£¨Activity»òFragment£©
      *
-     * @param parent è°ƒç”¨Actionçš„æ‰§è¡Œç±»ï¼ˆActivityæˆ–Fragmentï¼‰
+     * @param parent µ÷ÓÃActionµÄÖ´ĞĞÀà£¨Activity»òFragment£©
      */
     void setParent(T parent) {
         mParent = parent;
@@ -40,21 +39,21 @@ public abstract class BaseAction<T> {
     }
 
     /**
-     * åˆ›å»º
+     * ´´½¨£º¿ÉÒÔÔÚ´Ë·½·¨ÖĞ³õÊ¼»¯ĞÅÏ¢£¨Ö»Ö´ĞĞÒ»´Î£©
      */
     public abstract void onCreate();
 
     /**
-     * æ‰§è¡Œ
+     * Ö´ĞĞ£¨Ã¿´ÎÖ´ĞĞAction¶¼»áµ÷ÓÃ£¬»áÖØ¸´Ö´ĞĞ£©
      *
-     * @param isResume æ˜¯å¦é‡å¤æ‰§è¡Œ
-     * @param object   objectæ•°æ®
-     * @param bundle   bundleæ•°æ®
+     * @param isResume ÊÇ·ñÖØ¸´Ö´ĞĞ
+     * @param object   objectÊı¾İ
+     * @param bundle   bundleÊı¾İ
      */
     public abstract void execute(boolean isResume, Object object, Bundle bundle);
 
     /**
-     * é”€æ¯
+     * Ïú»Ù£º¿ÉÒÔÔÚ´Ë·½·¨ÖĞÏú»ÙĞÅÏ¢£¨Ö»Ö´ĞĞÒ»´Î£©
      */
     public abstract void onDestroy();
 
