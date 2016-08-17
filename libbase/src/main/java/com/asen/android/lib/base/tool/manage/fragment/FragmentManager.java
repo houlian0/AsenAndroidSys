@@ -7,21 +7,20 @@ import android.support.v4.app.FragmentActivity;
 import java.util.List;
 
 /**
- * Created by ASEN on 2016/3/31.
- * ç®¡ç†Fragmentçš„æŠ½è±¡ç±»
+ * ¹ÜÀíFragmentµÄ³éÏóÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:25
  */
 public abstract class FragmentManager {
 
     /**
-     * åˆ›å»ºFragmentManager
+     * ´´½¨FragmentManager
      *
-     * @param parent æ‰§è¡Œçš„çˆ¶ç±»ï¼ˆFragmentActivity or Fragmentï¼‰
+     * @param parent Ö´ĞĞµÄ¸¸Àà£¨FragmentActivity or Fragment£©
      * @param <T>    FragmentActivity or Fragment
-     * @return åˆ›å»ºFragmentManagerï¼Œä¸å±äºFragmentActivity or Fragmentæ—¶ï¼Œè¿”å›null
+     * @return ´´½¨FragmentManager£¬²»ÊôÓÚFragmentActivity or FragmentÊ±£¬·µ»Ønull
      */
     public static <T> FragmentManager createFragmentManager(T parent) {
         if (parent instanceof FragmentActivity) {
@@ -34,141 +33,140 @@ public abstract class FragmentManager {
     }
 
     /**
-     * è·å¾—æ‰€æœ‰Fragmentçš„é›†åˆ
+     * »ñµÃËùÓĞFragmentµÄ¼¯ºÏ
      *
-     * @return æ‰€æœ‰Fragmentçš„é›†åˆ
+     * @return ËùÓĞFragmentµÄ¼¯ºÏ
      */
     public abstract List<Fragment> getList();
 
     /**
-     * æ·»åŠ Fragment
+     * Ìí¼ÓFragment
      *
-     * @param fragment      è¦æ·»åŠ çš„Fragment
+     * @param fragment      ÒªÌí¼ÓµÄFragment
      * @param frameLayoutId frameLayoutId
      */
     public abstract void add(Fragment fragment, int frameLayoutId);
 
     /**
-     * æ·»åŠ Fragment
+     * Ìí¼ÓFragment
      *
-     * @param fragment      è¦æ·»åŠ çš„Fragment
+     * @param fragment      ÒªÌí¼ÓµÄFragment
      * @param frameLayoutId frameLayoutId
-     * @param visible       æ˜¯å¦å¯è§
+     * @param visible       ÊÇ·ñ¿É¼û
      */
     public abstract void add(Fragment fragment, int frameLayoutId, boolean visible);
 
     /**
-     * æ·»åŠ Fragment
+     * Ìí¼ÓFragment
      *
-     * @param fragment      è¦æ·»åŠ çš„Fragment
+     * @param fragment      ÒªÌí¼ÓµÄFragment
      * @param frameLayoutId frameLayoutId
-     * @param visible       æ˜¯å¦å¯è§
-     * @param data          åˆ·æ–°æ•°æ®
+     * @param visible       ÊÇ·ñ¿É¼û
+     * @param data          Ë¢ĞÂÊı¾İ
      */
     public abstract void add(Fragment fragment, int frameLayoutId, boolean visible, Bundle data);
 
     /**
-     * æ›¿æ¢Fragment
+     * Ìæ»»Fragment
      *
-     * @param fragment      è¦æ›¿æ¢çš„Fragment
+     * @param fragment      ÒªÌæ»»µÄFragment
      * @param frameLayoutId frameLayoutId
-     * @param data          åˆ·æ–°æ•°æ®
+     * @param data          Ë¢ĞÂÊı¾İ
      */
     public abstract void replace(Fragment fragment, int frameLayoutId, Bundle data);
 
     /**
-     * æ·»åŠ Fragmenté›†åˆ
+     * Ìí¼ÓFragment¼¯ºÏ
      *
-     * @param list          è¦æ·»åŠ çš„Fragmenté›†åˆ ï¼ˆåªä¼šæ˜¾ç¤ºé›†åˆä¸­ç¬¬ä¸€ä¸ªFragmentï¼‰
+     * @param list          ÒªÌí¼ÓµÄFragment¼¯ºÏ £¨Ö»»áÏÔÊ¾¼¯ºÏÖĞµÚÒ»¸öFragment£©
      * @param frameLayoutId frameLayoutId
      */
     public abstract void addList(List<Fragment> list, int frameLayoutId);
 
     /**
-     * æ·»åŠ Fragmenté›†åˆ
+     * Ìí¼ÓFragment¼¯ºÏ
      *
-     * @param list          è¦æ·»åŠ çš„Fragmenté›†åˆï¼ˆåªä¼šæ˜¾ç¤ºé›†åˆä¸­ç¬¬ä¸€ä¸ªFragmentï¼‰
+     * @param list          ÒªÌí¼ÓµÄFragment¼¯ºÏ£¨Ö»»áÏÔÊ¾¼¯ºÏÖĞµÚÒ»¸öFragment£©
      * @param frameLayoutId frameLayoutId
-     * @param data          åˆ·æ–°æ•°æ®
+     * @param data          Ë¢ĞÂÊı¾İ
      */
     public abstract void addList(List<Fragment> list, int frameLayoutId, Bundle data);
 
     /**
-     * éšè—Fragment
+     * Òş²ØFragment
      *
-     * @param fragment éšè—çš„Fragment
+     * @param fragment Òş²ØµÄFragment
      */
     public abstract void hide(Fragment fragment);
 
     /**
-     * éšè—Fragment
+     * Òş²ØFragment
      *
-     * @param cla éšè—çš„Fragmentç±»
+     * @param cla Òş²ØµÄFragmentÀà
      */
     public abstract void hide(Class<?> cla);
 
     /**
-     * æ˜¾ç¤ºFragment
+     * ÏÔÊ¾Fragment
      *
-     * @param fragment æ˜¾ç¤ºçš„Fragment
+     * @param fragment ÏÔÊ¾µÄFragment
      */
     public abstract void show(Fragment fragment);
 
     /**
-     * æ˜¾ç¤ºFragment
+     * ÏÔÊ¾Fragment
      *
-     * @param fragment æ˜¾ç¤ºçš„Fragment
-     * @param data     åˆ·æ–°æ•°æ®
+     * @param fragment ÏÔÊ¾µÄFragment
+     * @param data     Ë¢ĞÂÊı¾İ
      */
     public abstract void show(Fragment fragment, Bundle data);
 
     /**
-     * ç§»é™¤Fragment
+     * ÒÆ³ıFragment
      *
-     * @param fragment ç§»é™¤çš„Fragment
+     * @param fragment ÒÆ³ıµÄFragment
      */
     public abstract void remove(Fragment fragment);
 
     /**
-     * ç§»é™¤æ‰€æœ‰Fragment
+     * ÒÆ³ıËùÓĞFragment
      */
     public abstract void removeAll();
 
     /**
-     * æ˜¾ç¤ºFragment
+     * ÏÔÊ¾Fragment
      *
-     * @param cla æ˜¾ç¤ºçš„Fragmentç±»
+     * @param cla ÏÔÊ¾µÄFragmentÀà
      */
     public abstract void showFragment(Class<?> cla);
 
     /**
-     * æ˜¾ç¤ºFragment
+     * ÏÔÊ¾Fragment
      *
-     * @param cla  æ˜¾ç¤ºçš„Fragmentç±»
-     * @param data åˆ·æ–°æ•°æ®
+     * @param cla  ÏÔÊ¾µÄFragmentÀà
+     * @param data Ë¢ĞÂÊı¾İ
      */
     public abstract void showFragment(Class<?> cla, Bundle data);
 
     /**
-     * ä»…æ˜¾ç¤ºFragmentï¼Œä¸éšè—
+     * ½öÏÔÊ¾Fragment£¬²»Òş²Ø
      *
-     * @param cla æ˜¾ç¤ºçš„Fragmentç±»
+     * @param cla ÏÔÊ¾µÄFragmentÀà
      */
     public abstract void showFragmentOnly(Class<?> cla);
 
     /**
-     * ä»…æ˜¾ç¤ºFragmentï¼Œä¸éšè—
+     * ½öÏÔÊ¾Fragment£¬²»Òş²Ø
      *
-     * @param cla  æ˜¾ç¤ºçš„Fragmentç±»
-     * @param data åˆ·æ–°æ•°æ®
+     * @param cla  ÏÔÊ¾µÄFragmentÀà
+     * @param data Ë¢ĞÂÊı¾İ
      */
     public abstract void showFragmentOnly(Class<?> cla, Bundle data);
 
-
     /**
-     * è·å¾—Fragment
+     * »ñµÃFragment
      *
-     * @param cla è¦è·å¾—çš„Fragmentç±»ï¼Œä¸å­˜åœ¨è¿”å›null
+     * @param cla Òª»ñµÃµÄFragmentÀà£¬²»´æÔÚ·µ»Ønull
      */
     public abstract <T extends Fragment> T getFragment(Class<T> cla);
 

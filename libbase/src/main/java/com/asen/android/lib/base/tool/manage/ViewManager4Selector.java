@@ -3,18 +3,18 @@ package com.asen.android.lib.base.tool.manage;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Simple to Introduction
- * View å•é€‰ç®¡ç†ç±»ï¼ŒåŸºäºselector
+ * View µ¥Ñ¡¹ÜÀíÀà£¬»ùÓÚselector
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:25
  */
 public class ViewManager4Selector {
 
-    private ArrayList<View> list = null;
+    private List<View> list = null; // ±£´æView¼¯ºÏ
 
     private int currentPressedIndex = -1;
 
@@ -23,7 +23,7 @@ public class ViewManager4Selector {
     }
 
     /**
-     * æ–°å¢View
+     * ĞÂÔöView
      *
      * @param view view
      */
@@ -36,9 +36,9 @@ public class ViewManager4Selector {
     }
 
     /**
-     * æ–°å¢Viewé›†
+     * ĞÂÔöView¼¯
      *
-     * @param views viewé›†
+     * @param views view¼¯
      */
     public void addView(View... views) {
         for (View v : views) {
@@ -47,27 +47,26 @@ public class ViewManager4Selector {
     }
 
     /**
-     * è·å¾—Viewçš„é›†åˆ
+     * »ñµÃViewµÄ¼¯ºÏ
      *
-     * @return Viewçš„é›†åˆ
+     * @return ViewµÄ¼¯ºÏ
      */
-    public ArrayList<View> getViewList() {
+    public List<View> getViewList() {
         return list;
     }
 
     /**
-     * åˆ¤æ–­æ˜¯å¦åŒ…å«View
+     * ÅĞ¶ÏÊÇ·ñ°üº¬View
      *
      * @param view view
-     * @return true åŒ…å«ï¼Œfalse ä¸åŒ…å«
-     * @Description: åˆ¤æ–­æ˜¯å¦åŒ…å«View
+     * @return true °üº¬£¬false ²»°üº¬
      */
     public boolean contains(View view) {
         return list.contains(view);
     }
 
     /**
-     * å¢åŠ é€‰ä¸­çš„View
+     * Ôö¼ÓÑ¡ÖĞµÄView
      *
      * @param view view
      */
@@ -86,27 +85,27 @@ public class ViewManager4Selector {
     }
 
     /**
-     * ç§»é™¤æ‰€æœ‰View
+     * ÒÆ³ıËùÓĞView
      */
     public void removeAllViews() {
         list.clear();
     }
 
     /**
-     * é€‰ä¸­View
+     * Ñ¡ÖĞView
      *
      * @param view select this view, if it's selected, do nothing.
-     * @return æ˜¯å¦é€‰ä¸­
+     * @return ÊÇ·ñÑ¡ÖĞ
      */
     public boolean selectView(View view) {
         return this.selectView(view, false);
     }
 
     /**
-     * é€‰ä¸­æˆ–å–æ¶ˆé€‰ä¸­View
+     * Ñ¡ÖĞ»òÈ¡ÏûÑ¡ÖĞView
      *
      * @param view select this view, if it's selected, cancel selected;
-     * @return æ˜¯å¦é€‰ä¸­
+     * @return ÊÇ·ñÑ¡ÖĞ
      */
     public boolean selectOrCancel(View view) {
         return this.selectView(view, true);
@@ -130,7 +129,7 @@ public class ViewManager4Selector {
         } else if (!view.isSelected()) {
             view.setSelected(true);
             result = true;
-        } else if (currentPressedIndex == index) {// å½“å‰å·²ç»æŒ‰ä¸‹
+        } else if (currentPressedIndex == index) {// µ±Ç°ÒÑ¾­°´ÏÂ
             if (flag) {
                 list.get(index).setSelected(false);
                 result = false;
@@ -148,29 +147,29 @@ public class ViewManager4Selector {
     }
 
     /**
-     * é€‰ä¸­View
+     * Ñ¡ÖĞView
      *
-     * @param viewid select this view, if it's selected, do nothing.
-     * @return æ˜¯å¦é€‰ä¸­
+     * @param viewId select this view, if it's selected, do nothing.
+     * @return ÊÇ·ñÑ¡ÖĞ
      */
-    public boolean selectView(int viewid) {
-        return this.selectView(viewid, false);
+    public boolean selectView(int viewId) {
+        return this.selectView(viewId, false);
     }
 
     /**
-     * é€‰ä¸­æˆ–å–æ¶ˆé€‰ä¸­View
+     * Ñ¡ÖĞ»òÈ¡ÏûÑ¡ÖĞView
      *
-     * @param viewid select this view, if it's selected, cancel selected;
-     * @return æ˜¯å¦é€‰ä¸­
+     * @param viewId select this view, if it's selected, cancel selected;
+     * @return ÊÇ·ñÑ¡ÖĞ
      */
-    public boolean selectOrCancel(int viewid) {
-        return this.selectView(viewid, true);
+    public boolean selectOrCancel(int viewId) {
+        return this.selectView(viewId, true);
     }
 
-    private boolean selectView(int viewid, boolean flag) {
+    private boolean selectView(int viewId, boolean flag) {
         boolean result = false;
 
-        View view = getViewById(viewid);
+        View view = getViewById(viewId);
         if (view == null) return false;
 
         int index = list.indexOf(view);
@@ -186,7 +185,7 @@ public class ViewManager4Selector {
             addSelectedView(view);
             view.setSelected(true);
             result = true;
-        } else if (currentPressedIndex == index) {// å½“å‰å·²ç»æŒ‰ä¸‹
+        } else if (currentPressedIndex == index) {// µ±Ç°ÒÑ¾­°´ÏÂ
             if (flag) {
                 list.get(index).setSelected(false);
                 result = false;
@@ -212,7 +211,7 @@ public class ViewManager4Selector {
     }
 
     /**
-     * å–æ¶ˆå½“å‰é€‰ä¸­çš„View
+     * È¡Ïûµ±Ç°Ñ¡ÖĞµÄView
      */
     public void cancelSelect() {
         if (currentPressedIndex != -1 && currentPressedIndex < list.size()) {
@@ -222,20 +221,20 @@ public class ViewManager4Selector {
     }
 
     /**
-     * é€‰ä¸­View
+     * Ñ¡ÖĞView
      *
-     * @param tag tagæ ‡ç­¾
-     * @return æ˜¯å¦é€‰ä¸­
+     * @param tag tag±êÇ©
+     * @return ÊÇ·ñÑ¡ÖĞ
      */
     public boolean selectViewByTag(Object tag) {
         return this.selectViewByTag(tag, false);
     }
 
     /**
-     * é€‰ä¸­æˆ–å–æ¶ˆé€‰ä¸­View
+     * Ñ¡ÖĞ»òÈ¡ÏûÑ¡ÖĞView
      *
-     * @param tag tagæ ‡ç­¾
-     * @return æ˜¯å¦é€‰ä¸­
+     * @param tag tag±êÇ©
+     * @return ÊÇ·ñÑ¡ÖĞ
      */
     public boolean selectOrCancelByTag(Object tag) {
         return this.selectViewByTag(tag, true);
@@ -260,7 +259,7 @@ public class ViewManager4Selector {
             addSelectedView(view);
             view.setSelected(true);
             result = true;
-        } else if (currentPressedIndex == index) {// å½“å‰å·²ç»æŒ‰ä¸‹
+        } else if (currentPressedIndex == index) {// µ±Ç°ÒÑ¾­°´ÏÂ
             if (flag) {
                 list.get(index).setSelected(false);
                 result = false;
@@ -285,12 +284,10 @@ public class ViewManager4Selector {
         return null;
     }
 
-
     /**
-     * è·å¾—å½“å‰é€‰ä¸­çš„View
+     * »ñµÃµ±Ç°Ñ¡ÖĞµÄView
      *
-     * @return å½“å‰é€‰ä¸­çš„View or null
-     * @Description: è·å¾—å½“å‰é€‰ä¸­çš„Viewï¼Œæ²¡æœ‰åˆ™è¿”å›null
+     * @return ·µ»Øµ±Ç°Ñ¡ÖĞµÄView£¬Ã»ÓĞÔò·µ»Ønull
      */
     public View getSelectView() {
         if (currentPressedIndex != -1 && currentPressedIndex < list.size()) {

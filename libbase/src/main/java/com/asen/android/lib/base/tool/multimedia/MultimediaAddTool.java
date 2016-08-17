@@ -8,25 +8,22 @@ import java.io.File;
 import java.util.List;
 
 /**
- * Simple to Introduction
- * å¤šåª’ä½“æ·»åŠ å·¥å…·ç±»
+ * ¶àÃ½ÌåÌí¼Ó¹¤¾ßÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:19
  */
 public abstract class MultimediaAddTool {
 
-    static final String ACTION_AUDIO_RECORD = "android.provider.gisinfo.MediaStore.RECORD_SOUND";
-
     /**
      * MultimediaAddTool
      *
-     * @param parent   æ‰§è¡Œçš„çˆ¶ç±»ï¼ˆActivity or Fragmentï¼‰
-     * @param listener é™„ä»¶å¢åŠ ç›‘å¬
-     * @param fileList åˆå§‹åŒ–æ–‡ä»¶é›†åˆ
+     * @param parent   Ö´ĞĞµÄ¸¸Àà£¨Activity or Fragment£©
+     * @param listener ¸½¼şÔö¼Ó¼àÌı
+     * @param fileList ³õÊ¼»¯ÎÄ¼ş¼¯ºÏ
      * @param <T>      Activity or Fragment
-     * @return åˆ›å»ºMultimediaAddToolï¼Œä¸å±äºActivity or Fragmentæ—¶ï¼Œè¿”å›null
+     * @return ´´½¨MultimediaAddTool£¬²»ÊôÓÚActivity or FragmentÊ±£¬·µ»Ønull
      */
     public static <T> MultimediaAddTool createMultimediaAddTool(T parent, IMultimediaAddListener listener, List<File> fileList) {
         if (parent instanceof Activity) {
@@ -41,10 +38,10 @@ public abstract class MultimediaAddTool {
     /**
      * MultimediaAddTool
      *
-     * @param parent   æ‰§è¡Œçš„çˆ¶ç±»ï¼ˆActivity or Fragmentï¼‰
-     * @param listener é™„ä»¶å¢åŠ ç›‘å¬
+     * @param parent   Ö´ĞĞµÄ¸¸Àà£¨Activity or Fragment£©
+     * @param listener ¸½¼şÔö¼Ó¼àÌı
      * @param <T>      Activity or Fragment
-     * @return åˆ›å»ºMultimediaAddToolï¼Œä¸å±äºActivity or Fragmentæ—¶ï¼Œè¿”å›null
+     * @return ´´½¨MultimediaAddTool£¬²»ÊôÓÚActivity or FragmentÊ±£¬·µ»Ønull
      */
     public static <T> MultimediaAddTool createMultimediaAddTool(T parent, IMultimediaAddListener listener) {
         if (parent instanceof Activity) {
@@ -57,7 +54,7 @@ public abstract class MultimediaAddTool {
     }
 
     /**
-     * onActivityResult æ—¶è°ƒç”¨
+     * onActivityResult Ê±µ÷ÓÃ
      *
      * @param requestCode requestCode
      * @param resultCode  resultCode
@@ -66,95 +63,95 @@ public abstract class MultimediaAddTool {
     public abstract void onActivityResult(int requestCode, int resultCode, Intent data);
 
     /**
-     * è®¾ç½®æœ€åä¿å­˜çš„File
+     * ÉèÖÃ×îºó±£´æµÄFile
      *
      * @param lastFile lastFile
      */
     public abstract void setLastFile(File lastFile);
 
     /**
-     * è®¾ç½®Fileé›†åˆ
+     * ÉèÖÃFile¼¯ºÏ
      *
      * @param fileList fileList
      */
     public abstract void setFileList(List<File> fileList);
 
     /**
-     * è·å¾—æœ€åä¸€ä¸ªé™„ä»¶æ–‡ä»¶
+     * »ñµÃ×îºóÒ»¸ö¸½¼şÎÄ¼ş
      *
-     * @return æœ€åä¸€ä¸ªé™„ä»¶æ–‡ä»¶
+     * @return ×îºóÒ»¸ö¸½¼şÎÄ¼ş
      */
     public abstract File getLastFile();
 
 
     /**
-     * è·å¾—æ‰€æœ‰è¯¥ç®¡ç†ç±»ä¸­çš„æ–‡ä»¶
+     * »ñµÃËùÓĞ¸Ã¹ÜÀíÀàÖĞµÄÎÄ¼ş
      *
-     * @return æ‰€æœ‰è¯¥ç®¡ç†ç±»ä¸­çš„æ–‡ä»¶
+     * @return ËùÓĞ¸Ã¹ÜÀíÀàÖĞµÄÎÄ¼ş
      */
     public abstract List<File> getFileList();
 
     /**
-     * å¼€å§‹æ‹ç…§
+     * ¿ªÊ¼ÅÄÕÕ
      *
-     * @return æˆåŠŸä¸å¦
+     * @return ³É¹¦Óë·ñ
      */
     public abstract boolean startPicture();
 
     /**
-     * å¼€å§‹æ‹ç…§
+     * ¿ªÊ¼ÅÄÕÕ
      *
-     * @param name ç…§ç‰‡åç§°ï¼ˆä¸å«åç¼€ï¼‰
-     * @return æˆåŠŸä¸å¦
+     * @param name ÕÕÆ¬Ãû³Æ£¨²»º¬ºó×º£©
+     * @return ³É¹¦Óë·ñ
      */
     public abstract boolean startPicture(String name);
 
     /**
-     * å¼€å§‹å½•è§†é¢‘
+     * ¿ªÊ¼Â¼ÊÓÆµ
      *
-     * @return æˆåŠŸä¸å¦
+     * @return ³É¹¦Óë·ñ
      */
     public abstract boolean startVideo();
 
     /**
-     * å¼€å§‹å½•è§†é¢‘
+     * ¿ªÊ¼Â¼ÊÓÆµ
      *
-     * @param name è§†é¢‘åç§°ï¼ˆä¸å«åç¼€ï¼‰
-     * @return æˆåŠŸä¸å¦
+     * @param name ÊÓÆµÃû³Æ£¨²»º¬ºó×º£©
+     * @return ³É¹¦Óë·ñ
      */
     public abstract boolean startVideo(String name);
 
     /**
-     * å¼€å§‹å½•è§†é¢‘
+     * ¿ªÊ¼Â¼ÊÓÆµ
      *
-     * @param time     æ—¶é—´ç§’  <0 æ—¶ä¸åšé™åˆ¶
-     * @param fileSize å•ä½å­—èŠ‚ <0 æ—¶ä¸åšé™åˆ¶
-     * @return æˆåŠŸä¸å¦
+     * @param time     Ê±¼äÃë  <0 Ê±²»×öÏŞÖÆ
+     * @param fileSize µ¥Î»×Ö½Ú <0 Ê±²»×öÏŞÖÆ
+     * @return ³É¹¦Óë·ñ
      */
     public abstract boolean startVideo(int time, int fileSize);
 
     /**
-     * å¼€å§‹å½•è§†é¢‘
+     * ¿ªÊ¼Â¼ÊÓÆµ
      *
-     * @param name     æ–‡ä»¶åï¼ˆä¸å«åç¼€ï¼‰
-     * @param time     æ—¶é—´ç§’ <0 æ—¶ä¸åšé™åˆ¶
-     * @param fileSize å•ä½å­—èŠ‚ <0 æ—¶ä¸åšé™åˆ¶
-     * @return æˆåŠŸä¸å¦
+     * @param name     ÎÄ¼şÃû£¨²»º¬ºó×º£©
+     * @param time     Ê±¼äÃë <0 Ê±²»×öÏŞÖÆ
+     * @param fileSize µ¥Î»×Ö½Ú <0 Ê±²»×öÏŞÖÆ
+     * @return ³É¹¦Óë·ñ
      */
     public abstract boolean startVideo(String name, int time, int fileSize);
 
     /**
-     * å¼€å§‹å½•éŸ³
+     * ¿ªÊ¼Â¼Òô
      *
-     * @return æˆåŠŸä¸å¦
+     * @return ³É¹¦Óë·ñ
      */
     public abstract boolean startAudio();
 
     /**
-     * å¼€å§‹å½•éŸ³
+     * ¿ªÊ¼Â¼Òô
      *
-     * @param name éŸ³ä¹åç§°ï¼ˆä¸å«åç¼€ï¼‰
-     * @return æˆåŠŸä¸å¦
+     * @param name ÒôÀÖÃû³Æ£¨²»º¬ºó×º£©
+     * @return ³É¹¦Óë·ñ
      */
     public abstract boolean startAudio(String name);
 
