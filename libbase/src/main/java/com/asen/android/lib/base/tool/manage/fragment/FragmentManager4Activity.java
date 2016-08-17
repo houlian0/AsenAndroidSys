@@ -1,25 +1,27 @@
-package com.asen.android.lib.base.tool.manage;
+package com.asen.android.lib.base.tool.manage.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Simple to Introduction
  * 管理Fragment的类
  *
  * @author ASEN
  * @version v1.0
  * @date 2016/3/31 16:25
  */
-class FragmentManager4Fragment extends FragmentManager {
+class FragmentManager4Activity extends FragmentManager {
 
-    private Fragment mParent;
+    private FragmentActivity mActivity;
 
-    private ArrayList<Fragment> fragmentList;
+    private List<Fragment> fragmentList;
 
     private Handler mHandler = null;
 
@@ -28,9 +30,8 @@ class FragmentManager4Fragment extends FragmentManager {
      *
      * @param activity Activity
      */
-
-    public FragmentManager4Fragment(Fragment activity) {
-        mParent = activity;
+    public FragmentManager4Activity(FragmentActivity activity) {
+        mActivity = activity;
         fragmentList = new ArrayList<Fragment>();
         mHandler = new Handler();
     }
@@ -73,11 +74,12 @@ class FragmentManager4Fragment extends FragmentManager {
      */
     @Override
     public void add(final Fragment fragment, int frameLayoutId, boolean visible, final Bundle data) {
-        if (fragment == null || mParent == null)
+        if (fragment == null || mActivity == null)
             return;
 
         if (!fragmentList.contains(fragment)) {
-            FragmentTransaction ft = mParent.getChildFragmentManager().beginTransaction();
+            FragmentTransaction ft = mActivity.getSupportFragmentManager()
+                    .beginTransaction();
             ft.add(frameLayoutId, fragment);
             if (visible) {
                 ft.show(fragment);
@@ -93,7 +95,7 @@ class FragmentManager4Fragment extends FragmentManager {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    ((OnFragmentRefreshListener) fragment).onRefresh(mParent, data);
+                    ((OnFragmentRefreshListener) fragment).onRefresh(mActivity, data);
                 }
             });
         }
@@ -108,10 +110,10 @@ class FragmentManager4Fragment extends FragmentManager {
      */
     @Override
     public void replace(final Fragment fragment, int frameLayoutId, final Bundle data) {
-        if (fragment == null || mParent == null)
+        if (fragment == null || mActivity == null)
             return;
 
-        FragmentTransaction ft = mParent.getChildFragmentManager().beginTransaction();
+        FragmentTransaction ft = mActivity.getSupportFragmentManager().beginTransaction();
         ft.replace(frameLayoutId, fragment);
         ft.commitAllowingStateLoss();
 
@@ -119,11 +121,13 @@ class FragmentManager4Fragment extends FragmentManager {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    ((OnFragmentRefreshListener) fragment).onRefresh(mParent, data);
+                    ((OnFragmentRefreshListener) fragment).onRefresh(mActivity, data);
+
                 }
             });
         }
     }
+
 
     /**
      * 向一个FrameLayout加入多个Fragment，并显示第一个Fragment，其余隐藏
@@ -131,7 +135,7 @@ class FragmentManager4Fragment extends FragmentManager {
      * @param list          Fragment列表
      * @param frameLayoutId FrameLayout的id
      */
-    @Override
+
     public void addList(List<Fragment> list, int frameLayoutId) {
         this.addList(list, frameLayoutId, null);
     }
@@ -143,7 +147,6 @@ class FragmentManager4Fragment extends FragmentManager {
      * @param frameLayoutId FrameLayout的id
      * @param data          数据
      */
-    @Override
     public void addList(List<Fragment> list, int frameLayoutId, final Bundle data) {
         if (list == null)
             return;
@@ -151,7 +154,8 @@ class FragmentManager4Fragment extends FragmentManager {
         this.fragmentList.addAll(list);
 
         Fragment showFragment = null;
-        FragmentTransaction ft = mParent.getChildFragmentManager().beginTransaction();
+        FragmentTransaction ft = mActivity.getSupportFragmentManager()
+                .beginTransaction();
         for (Fragment f : fragmentList) {
             ft.add(frameLayoutId, f);
             if (showFragment == null) {
@@ -169,7 +173,7 @@ class FragmentManager4Fragment extends FragmentManager {
 
                 @Override
                 public void run() {
-                    ((OnFragmentRefreshListener) f).onRefresh(mParent, data);
+                    ((OnFragmentRefreshListener) f).onRefresh(mActivity, data);
                 }
             });
         }
@@ -180,13 +184,12 @@ class FragmentManager4Fragment extends FragmentManager {
      *
      * @param fragment Fragment
      */
-    @Override
     public void hide(final Fragment fragment) {
-        if (fragment == null || mParent == null)
+        if (fragment == null || mActivity == null)
             return;
 
         if (fragmentList.contains(fragment)) {
-            FragmentTransaction ft = mParent.getChildFragmentManager().beginTransaction();
+            FragmentTransaction ft = mActivity.getSupportFragmentManager().beginTransaction();
             ft.hide(fragment);
             ft.commitAllowingStateLoss();
         }
@@ -208,11 +211,10 @@ class FragmentManager4Fragment extends FragmentManager {
      *
      * @param cla
      */
-    @Override
     public void hide(Class<?> cla) {
-        if (mParent == null) return;
+        if (mActivity == null) return;
 
-        FragmentTransaction ft = mParent.getChildFragmentManager().beginTransaction();
+        FragmentTransaction ft = mActivity.getSupportFragmentManager().beginTransaction();
 
         for (Fragment fragment : fragmentList) {
             if (fragment.getClass().getName().equals(cla.getName())) {
@@ -239,7 +241,6 @@ class FragmentManager4Fragment extends FragmentManager {
      *
      * @param fragment Fragment
      */
-    @Override
     public void show(final Fragment fragment) {
         this.show(fragment, null);
     }
@@ -250,13 +251,13 @@ class FragmentManager4Fragment extends FragmentManager {
      * @param fragment Fragment
      * @param data     数据
      */
-    @Override
     public void show(final Fragment fragment, final Bundle data) {
-        if (fragment == null || mParent == null)
+        if (fragment == null || mActivity == null)
             return;
 
         if (fragmentList.contains(fragment)) {
-            FragmentTransaction ft = mParent.getChildFragmentManager().beginTransaction();
+            FragmentTransaction ft = mActivity.getSupportFragmentManager()
+                    .beginTransaction();
             ft.show(fragment);
             ft.commitAllowingStateLoss();
         }
@@ -265,7 +266,7 @@ class FragmentManager4Fragment extends FragmentManager {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    ((OnFragmentRefreshListener) fragment).onRefresh(mParent, data);
+                    ((OnFragmentRefreshListener) fragment).onRefresh(mActivity, data);
                 }
             });
         }
@@ -276,15 +277,14 @@ class FragmentManager4Fragment extends FragmentManager {
      *
      * @param fragment Fragment
      */
-    @Override
     public void remove(Fragment fragment) {
-        if (fragment == null || mParent == null)
+        if (fragment == null || mActivity == null)
             return;
 
         if (fragmentList.contains(fragment)) {
             fragmentList.remove(fragment);
         }
-        FragmentTransaction ft = mParent.getChildFragmentManager().beginTransaction();
+        FragmentTransaction ft = mActivity.getSupportFragmentManager().beginTransaction();
         ft.remove(fragment);
         ft.commitAllowingStateLoss();
     }
@@ -292,12 +292,11 @@ class FragmentManager4Fragment extends FragmentManager {
     /**
      * 移除所有该集合类中的Fragment
      */
-    @Override
     public void removeAll() {
-        if (mParent == null)
+        if (mActivity == null)
             return;
 
-        FragmentTransaction ft = mParent.getChildFragmentManager().beginTransaction();
+        FragmentTransaction ft = mActivity.getSupportFragmentManager().beginTransaction();
         for (Fragment fragment : fragmentList) {
             ft.remove(fragment);
         }
@@ -311,7 +310,6 @@ class FragmentManager4Fragment extends FragmentManager {
      *
      * @param cla 要显示的 Fragment的Class类
      */
-    @Override
     public void showFragment(Class<?> cla) {
         this.showFragment(cla, null);
     }
@@ -322,12 +320,11 @@ class FragmentManager4Fragment extends FragmentManager {
      * @param cla  要显示的 Fragment的Class类
      * @param data 数据
      */
-    @Override
     public void showFragment(Class<?> cla, final Bundle data) {
-        if (cla == null || mParent == null)
+        if (cla == null || mActivity == null)
             return;
 
-        android.support.v4.app.FragmentManager fragmentManager = mParent.getChildFragmentManager();
+        android.support.v4.app.FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
 
         Fragment showFragment = null;
@@ -359,7 +356,7 @@ class FragmentManager4Fragment extends FragmentManager {
 
                 @Override
                 public void run() {
-                    ((OnFragmentRefreshListener) f).onRefresh(mParent, data);
+                    ((OnFragmentRefreshListener) f).onRefresh(mActivity, data);
 
                 }
             });
@@ -371,7 +368,6 @@ class FragmentManager4Fragment extends FragmentManager {
      *
      * @param cla 要显示的 Fragment的Class类
      */
-    @Override
     public void showFragmentOnly(Class<?> cla) {
         this.showFragmentOnly(cla, null);
     }
@@ -382,12 +378,11 @@ class FragmentManager4Fragment extends FragmentManager {
      * @param cla  要显示的 Fragment的Class类
      * @param data 数据
      */
-    @Override
     public void showFragmentOnly(Class<?> cla, final Bundle data) {
-        if (cla == null || mParent == null)
+        if (cla == null || mActivity == null)
             return;
 
-        android.support.v4.app.FragmentManager fragmentManager = mParent.getChildFragmentManager();
+        android.support.v4.app.FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
 
         Fragment showFragment = null;
@@ -406,7 +401,7 @@ class FragmentManager4Fragment extends FragmentManager {
 
                 @Override
                 public void run() {
-                    ((OnFragmentRefreshListener) f).onRefresh(mParent, data);
+                    ((OnFragmentRefreshListener) f).onRefresh(mActivity, data);
 
                 }
             });

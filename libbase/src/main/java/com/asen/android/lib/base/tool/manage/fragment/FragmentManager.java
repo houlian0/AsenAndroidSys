@@ -1,4 +1,4 @@
-package com.asen.android.lib.base.tool.manage;
+package com.asen.android.lib.base.tool.manage.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

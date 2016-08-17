@@ -1,4 +1,4 @@
-package com.asen.android.lib.base.tool.manage;
+package com.asen.android.lib.base.tool.manage.fragment;
 
 /**
  * Fragment隐藏时的监听接口

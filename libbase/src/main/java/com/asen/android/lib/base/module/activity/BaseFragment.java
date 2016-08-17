@@ -7,12 +7,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.asen.android.lib.base.tool.manage.OnFragmentHideListener;
-import com.asen.android.lib.base.tool.manage.OnFragmentRefreshListener;
+import com.asen.android.lib.base.tool.manage.fragment.OnFragmentHideListener;
+import com.asen.android.lib.base.tool.manage.fragment.OnFragmentRefreshListener;
 import com.asen.android.lib.base.tool.manage.action.ActionIntent;
 import com.asen.android.lib.base.tool.manage.action.BaseAction;
 import com.asen.android.lib.base.tool.manage.action.IActionManager;
 import com.asen.android.lib.base.tool.manage.action.OperaActionManager;
+import com.asen.android.lib.base.tool.manage.fragment.FragmentManager;
 
 /**
  * 基本的Fragment，采用的v4包的Fragment
@@ -60,7 +61,7 @@ public class BaseFragment extends Fragment implements OnFragmentHideListener, On
     }
 
     /**
-     * 利用{@link com.asen.android.lib.base.tool.manage.FragmentManager}显示Fragment时执行
+     * 利用{@link FragmentManager}显示Fragment时执行
      *
      * @param data    传入的参数
      * @param isFirst 默认isFirst是true，如果data不为null时，isFirst被设成false
@@ -70,7 +71,7 @@ public class BaseFragment extends Fragment implements OnFragmentHideListener, On
     }
 
     /**
-     * 利用 {@link com.asen.android.lib.base.tool.manage.FragmentManager}隐藏Fragment时执行
+     * 利用 {@link FragmentManager}隐藏Fragment时执行
      */
     @Override
     public void onHide() {
