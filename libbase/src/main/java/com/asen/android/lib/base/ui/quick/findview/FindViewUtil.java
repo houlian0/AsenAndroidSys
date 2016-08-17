@@ -13,9 +13,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * å¿«é€ŸFindViewçš„å·¥å…·ç±»
+ * ¿ìËÙFindViewµÄ¹¤¾ßÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:08
  */
@@ -29,7 +29,13 @@ public class FindViewUtil {
         mContext = context;
     }
 
-    public static final FindViewUtil getInstance(Context context) {
+    /**
+     * »ñÈ¡¿ìËÙFindView¹¤¾ßÀàµÄÊµÀı
+     *
+     * @param context AndroidµÄÉÏÏÂÎÄ
+     * @return FindView¹¤¾ßÀàµÄÊµÀı
+     */
+    public static FindViewUtil getInstance(Context context) {
         if (null == f) {
             synchronized (FindViewUtil.class) {
                 if (null == f) {
@@ -41,10 +47,10 @@ public class FindViewUtil {
     }
 
     /**
-     * @param view å¤–éƒ¨å¸ƒå±€
-     * @param obj  éœ€è¦findçš„å®ä¾‹
-     * @Title: findViews
-     * @Description:
+     * ´ÓViewÖĞ¿ìËÙFindView
+     *
+     * @param view Íâ²¿²¼¾Ö
+     * @param obj  ĞèÒªfindµÄÊµÀı
      */
     public void findViews(View view, final Object obj) {
         Class<?> clazz = obj.getClass();
@@ -69,9 +75,7 @@ public class FindViewUtil {
 
                     try {
                         field.set(obj, v);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    } catch (IllegalArgumentException e) {
+                    } catch (IllegalAccessException | IllegalArgumentException e) {
                         e.printStackTrace();
                     }
                 }
@@ -81,10 +85,10 @@ public class FindViewUtil {
     }
 
     /**
-     * @param activity
-     * @param obj
-     * @Title: findViews
-     * @Description: å½“å‰çš„Activity
+     * ´ÓActivityÖĞ¿ìËÙFindView
+     *
+     * @param activity µ±Ç°µÄActivityÒ³Ãæ
+     * @param obj      ĞèÒªfindµÄÊµÀı
      */
     public void findViews(Activity activity, Object obj) {
         Class<?> clazz = obj.getClass();
@@ -108,9 +112,7 @@ public class FindViewUtil {
 
                     try {
                         field.set(obj, v);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    } catch (IllegalArgumentException e) {
+                    } catch (IllegalAccessException | IllegalArgumentException e) {
                         e.printStackTrace();
                     }
                 }
@@ -119,10 +121,10 @@ public class FindViewUtil {
     }
 
     /**
-     * @param helper å¤–éƒ¨å¸ƒå±€
-     * @param obj    éœ€è¦findçš„å®ä¾‹
-     * @Title: findViews
-     * @Description:
+     * ´ÓHolderHelper{@link HolderHelper}ÖĞ¿ìËÙFindView
+     *
+     * @param helper HolderµÄ°ïÖúÀà
+     * @param obj    ĞèÒªfindµÄÊµÀı
      */
     public void findViews(HolderHelper helper, final Object obj) {
         Class<?> clazz = obj.getClass();

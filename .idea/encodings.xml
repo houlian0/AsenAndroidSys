@@ -123,11 +123,20 @@
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/ToastUtil.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/Version.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/ZipUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/adapter/HolderHelper.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/adapter/QuickBaseAdapter.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/adapter/QuickHolderBaseAdapter.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/adapter/tree/BaseTreeAdapter.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/adapter/tree/TreeNode.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/adapter/tree/TreeNodeHelper.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/adapter/tree/TreeNodeId.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/adapter/tree/TreeNodePid.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/findview/AFindView.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/findview/FindViewUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/view/gridview/BookcaseGridView.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/view/progressbar/VerticalProgressBar.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/view/scroll/GridViewForScroll.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/view/scroll/ListViewForScroll.java" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

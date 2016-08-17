@@ -10,56 +10,55 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Simple to Introduction
- * å¿«é€ŸBaseAdapterï¼ˆéœ€è¦è‡ªå·±å»findViewï¼‰
+ * ¿ìËÙBaseAdapter£¨ĞèÒª×Ô¼ºÈ¥findView£©
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:08
  */
-public abstract class QuickBaseAdapter<T> extends BaseAdapter {
+abstract class QuickBaseAdapter<T> extends BaseAdapter {
 
     /**
-     * Androidä¸Šä¸‹æ–‡
+     * AndroidÉÏÏÂÎÄ
      */
     protected Context mContext;
 
     /**
-     * å¸ƒå±€èµ„æº
+     * ²¼¾Ö×ÊÔ´
      */
     private int mLayoutResId;
 
     /**
-     * æ•°æ®æº
+     * Êı¾İÔ´
      */
-    private List<T> mDataList; // æ•°æ®æº
+    private List<T> mDataList; // Êı¾İÔ´
 
     /**
-     * æ„é€ å‡½æ•°
+     * ¹¹Ôìº¯Êı
      *
-     * @param context     Androidä¸Šä¸‹æ–‡
-     * @param layoutResId å¸ƒå±€èµ„æº
-     * @param data        æ•°æ®æº
+     * @param context     AndroidÉÏÏÂÎÄ
+     * @param layoutResId ²¼¾Ö×ÊÔ´
+     * @param data        Êı¾İÔ´
      */
-    public QuickBaseAdapter(Context context, int layoutResId, List<T> data) {
+    QuickBaseAdapter(Context context, int layoutResId, List<T> data) {
         mContext = context;
         mLayoutResId = layoutResId;
         mDataList = data == null ? new ArrayList<T>() : data;
     }
 
     /**
-     * è·å¾—æ•°æ®é›†
+     * »ñµÃÊı¾İ¼¯
      *
-     * @return æ•°æ®é›†
+     * @return Êı¾İ¼¯
      */
     protected List<T> getData() {
         return mDataList;
     }
 
     /**
-     * æ›¿æ¢æ•°æ®å¹¶åˆ·æ–°
+     * Ìæ»»Êı¾İ²¢Ë¢ĞÂ
      *
-     * @param data æ•°æ®é›†
+     * @param data Êı¾İ¼¯
      */
     public void replaceData(List<T> data) {
         if (data == null) return;
@@ -106,11 +105,11 @@ public abstract class QuickBaseAdapter<T> extends BaseAdapter {
     }
 
     /**
-     * å¡«å……å†…å®¹
+     * Ìî³äÄÚÈİ
      *
-     * @param helper   å¿«é€Ÿholderå¸®åŠ©ç±»
-     * @param info     æ•°æ®ä¿¡æ¯ï¼ˆå½“position > size-1 æ—¶ï¼Œä¸ºnullï¼‰
-     * @param position æ•°æ®ä¸‹æ ‡
+     * @param helper   ¿ìËÙholder°ïÖúÀà
+     * @param info     Êı¾İĞÅÏ¢£¨µ±position > size-1 Ê±£¬Îªnull£©
+     * @param position Êı¾İÏÂ±ê
      */
     public abstract void convert(HolderHelper helper, T info, int position);
 

@@ -5,30 +5,30 @@ import android.util.AttributeSet;
 import android.widget.ListView;
 
 /**
- * Simple to Introduction
+ * ¼æÈÝScrollViewµÄListView
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:04
  */
 public class ListViewForScroll extends ListView {
 
-	public ListViewForScroll(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-	}
+    public ListViewForScroll(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+    }
 
-	public ListViewForScroll(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
+    public ListViewForScroll(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
-	public ListViewForScroll(Context context) {
-		super(context);
-	}
+    public ListViewForScroll(Context context) {
+        super(context);
+    }
 
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
-		super.onMeasure(widthMeasureSpec, expandSpec);
-	}
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
+        super.onMeasure(widthMeasureSpec, expandSpec);
+    }
 
 }

@@ -6,51 +6,49 @@ import android.util.AttributeSet;
 import android.widget.ProgressBar;
 
 /**
- * Created by ASEN on 2016/3/31.
- * å‚ç›´çš„ProgressBar
+ * ´¹Ö±µÄProgressBar
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:04
  */
 public class VerticalProgressBar extends ProgressBar {
 
-	public VerticalProgressBar(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-	}
+    public VerticalProgressBar(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+    }
 
-	public VerticalProgressBar(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
+    public VerticalProgressBar(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
-	public VerticalProgressBar(Context context) {
-		super(context);
-	}
+    public VerticalProgressBar(Context context) {
+        super(context);
+    }
 
-	@Override
-	protected synchronized void onDraw(Canvas canvas) {
-		// canvas.rotate(-90);// åè½¬90åº¦ï¼Œå°†æ°´å¹³ProgressBarç«–èµ·æ¥
-		// canvas.translate(-getHeight(), 0);//
-		// å°†ç»è¿‡æ—‹è½¬åå¾—åˆ°çš„VerticalProgressBarç§»åˆ°æ­£ç¡®çš„ä½ç½®,æ³¨æ„ç»æ—‹è½¬<span
-		// style="white-space: pre;">
-		// </span> åå®½é«˜å€¼äº’æ¢
-		
-		canvas.rotate(90);// æ­£è½¬90åº¦ï¼Œå°†æ°´å¹³ProgressBarç«–èµ·æ¥
-		canvas.translate(0, -getWidth());
+    @Override
+    protected synchronized void onDraw(Canvas canvas) {
+        // canvas.rotate(-90);// ·´×ª90¶È£¬½«Ë®Æ½ProgressBarÊúÆğÀ´
+        // canvas.translate(-getHeight(), 0);//
+        // ½«¾­¹ıĞı×ªºóµÃµ½µÄVerticalProgressBarÒÆµ½ÕıÈ·µÄÎ»ÖÃ,×¢Òâ¾­Ğı×ª<span
+        // style="white-space: pre;">
+        // </span> ºó¿í¸ßÖµ»¥»»
 
-		super.onDraw(canvas);
-	}
+        canvas.rotate(90);// Õı×ª90¶È£¬½«Ë®Æ½ProgressBarÊúÆğÀ´
+        canvas.translate(0, -getWidth());
 
-	@Override
-	protected synchronized void onMeasure(int widthMeasureSpec,
-			int heightMeasureSpec) {
-		super.onMeasure(heightMeasureSpec, widthMeasureSpec);
-		setMeasuredDimension(getMeasuredHeight(), getMeasuredWidth());// äº’æ¢å®½é«˜å€¼
-	}
+        super.onDraw(canvas);
+    }
 
-	@Override
-	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-		super.onSizeChanged(h, w, oldw, oldh);// äº’æ¢å®½é«˜å€¼
-		// super.onSizeChanged(w, h, oldw, oldh);
-	}
+    @Override
+    protected synchronized void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(heightMeasureSpec, widthMeasureSpec);
+        setMeasuredDimension(getMeasuredHeight(), getMeasuredWidth());// »¥»»¿í¸ßÖµ
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(h, w, oldw, oldh);// »¥»»¿í¸ßÖµ
+        // super.onSizeChanged(w, h, oldw, oldh);
+    }
 }

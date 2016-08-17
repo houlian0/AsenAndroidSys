@@ -4,10 +4,9 @@ import android.util.SparseArray;
 import android.view.View;
 
 /**
- * Simple to Introduction
- * å¿«é€Ÿholderå¸®åŠ©ç±»
+ * ¿ìËÙholder°ïÖúÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:08
  */
@@ -27,17 +26,17 @@ public class HolderHelper {
         mTag = tag;
     }
 
-    public HolderHelper(View view) {
+    HolderHelper(View view) {
         mView = view;
         mViewArray = new SparseArray<>();
     }
 
     /**
-     * æ ¹æ®Idæ‰¾åˆ°å¯¹åº”çš„View
+     * ¸ù¾İIdÕÒµ½¶ÔÓ¦µÄView
      *
-     * @param viewId æ§ä»¶id
-     * @param <T>    è¿”å›ç»“æœå®šä¹‰
-     * @return è¿”å›View
+     * @param viewId ¿Ø¼şid
+     * @param <T>    ·µ»Ø½á¹û¶¨Òå
+     * @return ·µ»ØView
      */
     public <T extends View> T findViewById(int viewId) {
         View view = mViewArray.get(viewId);

@@ -11,10 +11,9 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * Created by ASEN on 2016/3/31.
  * 基础的Application
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 15:12
  */
@@ -41,7 +40,7 @@ public abstract class BaseApplication extends Application {
     /**
      * Activity关闭时，删除Activity列表中的Activity对象
      *
-     * @param a
+     * @param a 要移除的activity
      */
     public void removeActivity(Activity a) {
         list.remove(a);
@@ -50,7 +49,7 @@ public abstract class BaseApplication extends Application {
     /**
      * 向Activity列表中添加Activity对象
      *
-     * @param a
+     * @param a 要添加的activity
      */
     public void addActivity(Activity a) {
         list.add(a);
