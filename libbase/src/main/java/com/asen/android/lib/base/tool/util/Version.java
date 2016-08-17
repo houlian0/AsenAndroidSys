@@ -74,11 +74,11 @@ public class Version {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
     }
 
-    /**
-     * API level is higher than 24
-     */
-    public static boolean hasNougat() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
-    }
+//    /**
+//     * API level is higher than 24
+//     */
+//    public static boolean hasNougat() {
+//        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
+//    }
 
 }
