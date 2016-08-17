@@ -6,7 +6,6 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/asen/android/app/MainActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/test/java/com/asen/android/app/ExampleUnitTest.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/build.gradle" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/libbase/build.gradle" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/BaseApplication.java" charset="GBK" />
@@ -55,6 +54,7 @@
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/urlconn/HttpRequest.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/urlconn/HttpResponseException.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/urlconn/HttpUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/urlconn/OnHttpOutputStreamListener.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/urlconn/bean/DownFileInfo.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/urlconn/bean/HttpFileEntity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/network/urlconn/bean/HttpTextEntity.java" charset="GBK" />
@@ -138,6 +138,6 @@
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/view/progressbar/VerticalProgressBar.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/view/scroll/GridViewForScroll.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/view/scroll/ListViewForScroll.java" charset="GBK" />
-    <file url="PROJECT" charset="UTF-8" />
+    <file url="PROJECT" charset="GBK" />
   </component>
 </project>
