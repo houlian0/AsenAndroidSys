@@ -14,24 +14,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Simple to Introduction
- * å¤šå®šæ—¶ä»»åŠ¡çš„Service
+ * ¶à¶¨Ê±ÈÎÎñµÄService
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:57
  */
-public abstract class BaseMulitService extends Service {
+public abstract class BaseMultiService extends Service {
 
-    protected Context mContext;
+    protected Context mContext; // AndroidµÄÉÏÏÂÎÄ
 
     protected BaseApplication mApplication;
 
-    // é»˜è®¤é¦–æ¬¡å¯åŠ¨å®šæ—¶ä»»åŠ¡çš„æ—¶é—´é—´éš”
+    // Ä¬ÈÏÊ×´ÎÆô¶¯¶¨Ê±ÈÎÎñµÄÊ±¼ä¼ä¸ô
     private static final int DEFAULT_START_TIME_INTERVAL_ITEM = 100; // 100, 200, 300 .....
 
-    // é»˜è®¤çš„å®šæ—¶ä»»åŠ¡æ—¶é—´é—´éš”
-    private static final int DEFAULT_RUNNABLE_TIME_INTERVEL = 60 * 1000;
+    // Ä¬ÈÏµÄ¶¨Ê±ÈÎÎñÊ±¼ä¼ä¸ô
+    private static final int DEFAULT_RUNNABLE_TIME_INTERVAL = 60 * 1000;
 
     @Override
     public void onCreate() {
@@ -63,14 +62,15 @@ public abstract class BaseMulitService extends Service {
     public void onDestroy() {
         super.onDestroy();
         stopRunnable();
-        stopForeground(true); // å…³æ‰æ‰€æœ‰çš„é€šçŸ¥
+        stopForeground(true); // ¹ØµôËùÓĞµÄÍ¨Öª
     }
 
     private List<SenTimingTask<Void, Object, Void>> mTimingTaskList = null;
 
     private boolean isStart = false;
 
-    private void startRunnable() { // å¼€å¯å®šæ—¶ä»»åŠ¡
+    // ¿ªÆô¶¨Ê±ÈÎÎñ
+    private void startRunnable() {
         if (!isStart) {
             int number = timeTaskNumber();
             long[] startTimeIntervals = startTimeIntervals();
@@ -78,13 +78,13 @@ public abstract class BaseMulitService extends Service {
 
             for (int i = 0; i < number; i++) {
                 final int position = i;
-                final long startTimeInterva = (startTimeIntervals == null || startTimeIntervals.length <= position) ? position * DEFAULT_START_TIME_INTERVAL_ITEM : startTimeIntervals[position];
-                final long runnableTimeInterval = (runnableTimeIntervals == null || runnableTimeIntervals.length <= position) ? DEFAULT_RUNNABLE_TIME_INTERVEL : runnableTimeIntervals[position];
+                final long startTimeInterval = (startTimeIntervals == null || startTimeIntervals.length <= position) ? position * DEFAULT_START_TIME_INTERVAL_ITEM : startTimeIntervals[position];
+                final long runnableTimeInterval = (runnableTimeIntervals == null || runnableTimeIntervals.length <= position) ? DEFAULT_RUNNABLE_TIME_INTERVAL : runnableTimeIntervals[position];
 
                 SenTimingTask<Void, Object, Void> task = new SenTimingTask<Void, Object, Void>() {
                     @Override
                     protected long startTimeInterval() {
-                        return startTimeInterva;
+                        return startTimeInterval;
                     }
 
                     @Override
@@ -100,12 +100,12 @@ public abstract class BaseMulitService extends Service {
                     @Override
                     protected void onProgressUpdate(Object... progresses) {
                         super.onProgressUpdate(progresses);
-                        BaseMulitService.this.onProgressUpdate(position, progresses);
+                        BaseMultiService.this.onProgressUpdate(position, progresses);
                     }
 
                     @Override
                     protected void doInBackground(Void params) throws RuntimeException {
-                        doInBackgroud(position);
+                        BaseMultiService.this.doInBackground(position);
                     }
                 };
                 task.start();
@@ -115,7 +115,8 @@ public abstract class BaseMulitService extends Service {
         }
     }
 
-    private void stopRunnable() { // ç»“æŸå®šæ—¶ä»»åŠ¡
+    // ½áÊø¶¨Ê±ÈÎÎñ
+    private void stopRunnable() {
         if (isStart) {
             for (SenTimingTask task : mTimingTaskList) {
                 task.stop();
@@ -125,67 +126,64 @@ public abstract class BaseMulitService extends Service {
         }
     }
 
-    protected void publishProgress(int positon, Object... progresses) {
-        if (mTimingTaskList.size() <= positon) return;
-        SenTimingTask<Void, Object, Void> senTimingTask = mTimingTaskList.get(positon);
+    /**
+     * ½«Êı¾İ·¢ËÍµ½Ö÷Ïß³ÌÖĞ´¦Àí
+     *
+     * @param position   ¶¨Ê±ÈÎÎñ¼¯ºÏµÄÏÂ±ê£¨¼´µÚ position+1 ¸ö¶¨Ê±ÈÎÎñ£©
+     * @param progresses Òª·¢ËÍµÄÊı¾İĞÅÏ¢
+     */
+    protected void publishProgress(int position, Object... progresses) {
+        if (mTimingTaskList.size() <= position) return;
+        SenTimingTask<Void, Object, Void> senTimingTask = mTimingTaskList.get(position);
         senTimingTask.publishProgress(progresses);
     }
 
     /**
-     * æ›´æ–°æ•°æ®åˆ°UIçº¿ç¨‹
+     * ½ÓÊÕ·¢ËÍµ½Ö÷Ïß³ÌÖĞµÄÊı¾İ£¬²¢ÔÚÖ÷Ïß³ÌÖĞ´¦Àí
      *
-     * @param position
-     * @param progresses
+     * @param position   ¶¨Ê±ÈÎÎñ¼¯ºÏµÄÏÂ±ê£¨¼´µÚ position+1 ¸ö¶¨Ê±ÈÎÎñ£©
+     * @param progresses ½ÓÊÕ·¢ËÍ¹ıÀ´µÄÊı¾İĞÅÏ¢
      */
     protected void onProgressUpdate(int position, Object... progresses) {
 
     }
 
     /**
-     * å‘Serviceè®¾ç½®æ•°æ®
+     * »ñµÃ¶¨Ê±ÈÎÎñ¸öÊı
      *
-     * @param type
-     * @param objects
-     */
-    public abstract void setData(int type, Object... objects);
-
-    /**
-     * è·å¾—å®šæ—¶ä»»åŠ¡ä¸ªæ•°
-     *
-     * @return
+     * @return ¶¨Ê±ÈÎÎñµÄ×Ü¸öÊı
      */
     protected abstract int timeTaskNumber();
 
     /**
-     * èµ·å§‹çš„æ—¶é—´é—´éš”
+     * ÆğÊ¼µÄÊ±¼ä¼ä¸ô
      *
-     * @return
+     * @return ¶àÈÎÎñÆğÊ¼Ö´ĞĞµÄÊ±¼ä¼ä¸ô£¨ºÁÃëÖµ£©
      */
     protected abstract long[] startTimeIntervals();
 
     /**
-     * ä¸­é—´çš„æ—¶é—´é—´éš”
+     * ÖĞ¼äµÄÊ±¼ä¼ä¸ô
      *
-     * @return
+     * @return ¶àÈÎÎñÖĞ¼äÃ¿´ÎÖ´ĞĞµÄÊ±¼ä¼ä¸ô£¨ºÁÃëÖµ£©
      */
     protected abstract long[] initRunnableTimeIntervals();
 
     /**
-     * åå°è¿è¡Œ
+     * ºóÌ¨ÔËĞĞ
      *
-     * @param position
+     * @param position ¶¨Ê±ÈÎÎñ¼¯ºÏµÄÏÂ±ê£¨¼´µÚ position+1 ¸ö¶¨Ê±ÈÎÎñ£©
      */
-    protected abstract void doInBackgroud(int position);
-
+    protected abstract void doInBackground(int position);
 
 //	Intent i = new Intent();
 //	i.setClass(MainActivity.this, MainActivity.class);
-//	//ä¸€å®šè¦Intent.FLAG_ACTIVITY_NEW_TASK
+//	//Ò»¶¨ÒªIntent.FLAG_ACTIVITY_NEW_TASK
 //	i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//	//PendingIntent æ˜¯Intentçš„åŒ…è£…ç±»
+//	//PendingIntent ÊÇIntentµÄ°ü×°Àà
 //	PendingIntent contentIntent = PendingIntent.getActivity(MainActivity.this, 1, i, PendingIntent.FLAG_UPDATE_CURRENT);
 //	NotificationCompat.Builder ncb = new NotificationCompat.Builder(MainActivity.this);
-//	ncb.setTicker("ç¬¬ä¸€ä¸ªNotifiy");
+//	ncb.setTicker("µÚÒ»¸öNotifiy");
 //	ncb.setAutoCancel(true);
 //	ncb.setContentIntent(contentIntent);
 //	ncb.setDefaults(Notification.DEFAULT_ALL);

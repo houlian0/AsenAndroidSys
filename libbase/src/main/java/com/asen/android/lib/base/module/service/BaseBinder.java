@@ -5,10 +5,9 @@ import android.os.Binder;
 
 
 /**
- * Simple to Introduction
- * BaseBinder
+ * BaseBinder »ù´¡µÄBinder
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:57
  */

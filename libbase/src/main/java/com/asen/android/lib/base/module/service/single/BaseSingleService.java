@@ -13,10 +13,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Simple to Introduction
- * 鍗曞畾鏃朵换鍔ervice
+ * 单定时任务Service
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:57
  */
@@ -24,13 +23,13 @@ public abstract class BaseSingleService extends android.app.Service {
 
     static final int HANDLER_RESTART_RUNNABLE = 0x9001;
 
-    protected Context mContext;
+    protected Context mContext; // Android上下文
 
     protected BaseApplication mApplication;
 
-    private ExecutorService pool = Executors.newFixedThreadPool(6);
+    private ExecutorService pool = Executors.newFixedThreadPool(6); // 线程池
 
-    private BaseSingleServiceRunnable runnable;
+    private BaseSingleServiceRunnable runnable; // 定时任务执行的线程
 
     @Override
     public void onCreate() {
@@ -62,11 +61,12 @@ public abstract class BaseSingleService extends android.app.Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        isStart = false;
+        isStart = false; // 结束定时任务
         stopForeground(true);
         mHandler.removeMessages(HANDLER_RESTART_RUNNABLE);
     }
 
+    // 开始定时任务
     private void startRunnable() {
         if (!isStart) {
             isStart = true;
@@ -89,15 +89,35 @@ public abstract class BaseSingleService extends android.app.Service {
 
     Object[] objects;
 
+    /**
+     * 向后台处理的线程，发送数据（设置数据源）
+     *
+     * @param objects 数据源
+     */
     public void setData(Object... objects) {
         this.objects = objects;
     }
 
+    /**
+     * 定时任务的起始时间
+     *
+     * @return 起始时间（毫秒值）
+     */
     protected abstract long startTimeInterval();
 
+    /**
+     * 起始任务的中间间隔时间
+     *
+     * @return 中间间隔时间（毫秒值）
+     */
     protected abstract long initRunnableTimeInterval();
 
-    protected abstract void doInBackgroud(Object... objects);
+    /**
+     * 后台处理数据
+     *
+     * @param objects 数据源
+     */
+    protected abstract void doInBackground(Object... objects);
 
     void sendToRunnable() {
         if (isStart)
@@ -107,12 +127,12 @@ public abstract class BaseSingleService extends android.app.Service {
 
 //	Intent i = new Intent();
 //	i.setClass(MainActivity.this, MainActivity.class);
-//	//涓�瀹氳Intent.FLAG_ACTIVITY_NEW_TASK
+//	//一定要Intent.FLAG_ACTIVITY_NEW_TASK
 //	i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//	//PendingIntent 鏄疘ntent鐨勫寘瑁呯被
+//	//PendingIntent 是Intent的包装类
 //	PendingIntent contentIntent = PendingIntent.getActivity(MainActivity.this, 1, i, PendingIntent.FLAG_UPDATE_CURRENT);
 //	NotificationCompat.Builder ncb = new NotificationCompat.Builder(MainActivity.this);
-//	ncb.setTicker("绗竴涓狽otifiy");
+//	ncb.setTicker("第一个Notifiy");
 //	ncb.setAutoCancel(true);
 //	ncb.setContentIntent(contentIntent);
 //	ncb.setDefaults(Notification.DEFAULT_ALL);
