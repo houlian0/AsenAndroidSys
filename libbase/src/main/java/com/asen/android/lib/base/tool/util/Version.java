@@ -3,9 +3,9 @@ package com.asen.android.lib.base.tool.util;
 import android.os.Build;
 
 /**
- * Created by HL_SEN on 2015/9/21.
+ * AndroidÏµÍ³°æ±¾ÅÐ¶Ï
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
@@ -15,8 +15,6 @@ public class Version {
      * API level is or higher than 8
      */
     public static boolean hasFroyo() {
-        // Can use static final constants like FROYO, declared in later versions
-        // of the OS since they are inlined at compile time. This is guaranteed behavior.
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO;
     }
 
@@ -75,4 +73,12 @@ public class Version {
     public static boolean hasMarshmallow() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
     }
+
+    /**
+     * API level is higher than 24
+     */
+    public static boolean hasNougat() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
+    }
+
 }

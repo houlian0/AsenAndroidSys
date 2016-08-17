@@ -1,4 +1,4 @@
-package com.asen.android.lib.base.ui.quick.adapter.tree.adapter;
+package com.asen.android.lib.base.ui.quick.adapter.tree;
 
 import android.content.Context;
 import android.view.View;
@@ -7,15 +7,12 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
-import com.asen.android.lib.base.ui.quick.adapter.tree.TreeNode;
-
 import java.util.List;
 
 /**
- * Simple to Introduction
- * ä¸ºListViewé€‚é…çš„æ— é™ææ ‘ çš„é€‚é…å™¨
+ * ÎªListViewÊÊÅäµÄÎŞÏŞ¼«Ê÷ µÄÊÊÅäÆ÷
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:04
  */
@@ -32,7 +29,8 @@ public abstract class BaseTreeAdapter<T> extends BaseAdapter {
     private OnTreeNodeClickListener onTreeNodeClickListener = null;
 
     public interface OnTreeNodeClickListener<T> {
-        void onClick(T data, boolean isLeaf);
+
+        void onClick(TreeNode<T> data, boolean isLeaf);
     }
 
     public BaseTreeAdapter(ListView listView, List<T> datas, OnTreeNodeClickListener onTreeNodeClickListener) {
@@ -58,7 +56,7 @@ public abstract class BaseTreeAdapter<T> extends BaseAdapter {
                     notifyDataSetChanged();
                 }
                 if (BaseTreeAdapter.this.onTreeNodeClickListener != null) {
-                    BaseTreeAdapter.this.onTreeNodeClickListener.onClick(node.getObject(), isLeaf);
+                    BaseTreeAdapter.this.onTreeNodeClickListener.onClick(node, isLeaf);
                 }
             }
         });
@@ -88,20 +86,20 @@ public abstract class BaseTreeAdapter<T> extends BaseAdapter {
     }
 
     /**
-     * è®¾ç½®æ¯çº§ç›¸å¯¹äºä¸Šä¸€çº§çš„å·¦ç¼©è¿›å¤§å°
+     * ÉèÖÃÃ¿¼¶Ïà¶ÔÓÚÉÏÒ»¼¶µÄ×óËõ½ø´óĞ¡
      *
-     * @return ç¼©è¿›å¤§å°
+     * @return Ëõ½ø´óĞ¡
      */
     public abstract float paddingLeftSize();
 
     /**
-     * åˆå§‹åŒ–å¸ƒå±€
+     * ³õÊ¼»¯²¼¾Ö
      *
-     * @param node        æ•°æ®æº
-     * @param position    æ•°æ®ä¸‹è¡¨
-     * @param convertView å¸ƒå±€View
+     * @param node        Êı¾İÔ´
+     * @param position    Êı¾İÏÂ±í
+     * @param convertView ²¼¾ÖView
      * @param parent      ViewGroup
-     * @return å¸ƒå±€View
+     * @return ²¼¾ÖView
      */
     public abstract View getConvertView(TreeNode<T> node, int position, View convertView, ViewGroup parent);
 

@@ -4,37 +4,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Simple to Introduction
- * å¤šçº§æ ‘èŠ‚ç‚¹
+ * ¶à¼¶Ê÷½Úµã
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:04
  */
 public class TreeNode<T> {
 
     /**
-     * çˆ¶èŠ‚ç‚¹ï¼ˆä¸ºnullåˆ™æ— çˆ¶èŠ‚ç‚¹ï¼‰
+     * ¸¸½Úµã£¨ÎªnullÔòÎŞ¸¸½Úµã£©
      */
     private TreeNode<T> parent;
 
     /**
-     * å­èŠ‚ç‚¹
+     * ×Ó½Úµã
      */
     private List<TreeNode<T>> childList;
 
     /**
-     * èŠ‚ç‚¹æ•°æ®
+     * ½ÚµãÊı¾İ
      */
     private T object;
 
     /**
-     * æ˜¯å¦å±•å¼€çš„
+     * ÊÇ·ñÕ¹¿ªµÄ
      */
     private boolean isExpanded;
 
     /**
-     * çº§æ•°
+     * ¼¶Êı
      */
     private int level;
 
@@ -44,57 +43,83 @@ public class TreeNode<T> {
     }
 
     /**
-     * æ˜¯å¦ä¸ºè·ŸèŠ‚ç‚¹
+     * ÊÇ·ñÎª¸ú½Úµã
      *
-     * @return
+     * @return Èç¹ûÊÇ¸ù½Úµã£¬·µ»Øtrue£¬·ñÔò·µ»Øfalse
      */
     public boolean isRoot() {
         return parent == null;
     }
 
     /**
-     * åˆ¤æ–­çˆ¶èŠ‚ç‚¹æ˜¯å¦å±•å¼€
+     * ÅĞ¶Ï¸¸½ÚµãÊÇ·ñÕ¹¿ª
      *
-     * @return
+     * @return Èç¹ûÊÇ¸¸½ÚµãÇÒÕ¹¿ª£¬Ôò·µ»Øtrue£¬·ñÔò·µ»Øfalse
      */
     public boolean isParentExpand() {
-        if (parent == null) return false;
-        return parent.isExpanded();
+        return parent != null && parent.isExpanded();
     }
 
     /**
-     * æ˜¯å¦æ˜¯å¶å­ç•Œç‚¹
+     * ÊÇ·ñÊÇÒ¶×Ó½Úµã
      *
-     * @return
+     * @return Èç¹ûÊÇÒ¶×Ó½Úµã£¬·µ»Øtrue£¬·ñÔò·µ»Øfalse
      */
     public boolean isLeaf() {
         return childList.size() == 0;
     }
 
+    /**
+     * »ñÈ¡¸¸½ÚµãµÄ½ÚµãĞÂ
+     *
+     * @return Èç¹û´æÔÚ¸¸½Úµã£¬·µ»Ø¸¸½ÚµãĞÅÏ¢£¬·ñÔò·µ»Ønull
+     */
     public TreeNode<T> getParent() {
         return parent;
     }
 
-    public void setParent(TreeNode<T> parent) {
+    // ÉèÖÃ¸¸½Úµã
+    void setParent(TreeNode<T> parent) {
         this.parent = parent;
     }
 
+    /**
+     * »ñÈ¡ËùÓĞµÄ×Ó½ÚµãĞÅÏ¢
+     *
+     * @return ËùÓĞµÄ×Ó½ÚµãĞÅÏ¢
+     */
     public List<TreeNode<T>> getChildList() {
         return childList;
     }
 
+    /**
+     * »ñÈ¡½ÚµãÖĞµÄ×Ô¶¨ÒåÊı¾İ
+     *
+     * @return ×Ô¶¨ÒåÊı¾İ
+     */
     public T getObject() {
         return object;
     }
 
-    public void setObject(T object) {
+    // ÉèÖÃ½ÚµãÖĞµÄ×Ô¶¨ÒåÊı¾İ
+    void setObject(T object) {
         this.object = object;
     }
 
+    /**
+     * ÅĞ¶Ïµ±Ç°½ÚµãÊÇ·ñÕ¹¿ª
+     *
+     * @return µ±Ç°½ÚµãÊÇ·ñÕ¹¿ª£¬Õ¹¿ª·µ»Øtrue£¬·ñÔò·µ»Øfalse
+     */
     public boolean isExpanded() {
         return isExpanded;
     }
 
+    /**
+     * ÉèÖÃµ±Ç°½ÚµãÊÇ·ñÕ¹¿ª
+     *
+     * @param isExpanded true£¬Õ¹¿ª£»false£¬²»Õ¹¿ª
+     */
     public void setIsExpanded(boolean isExpanded) {
         this.isExpanded = isExpanded;
         if (!isExpanded) {
@@ -104,11 +129,16 @@ public class TreeNode<T> {
         }
     }
 
+    /**
+     * »ñÈ¡µ±Ç°½ÚµãµÄ¼¶Êı
+     *
+     * @return µ±Ç°½ÚµãµÄ¼¶Êı
+     */
     public int getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    void setLevel(int level) {
         this.level = level;
     }
 

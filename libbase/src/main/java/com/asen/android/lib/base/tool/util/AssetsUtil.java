@@ -8,20 +8,20 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Created by HL_SEN on 2015/9/22.
+ * AssetsÎÄ¼ş¼ĞÏÂµÄÏà¹Ø´¦Àí²Ù×÷Àà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
 public class AssetsUtil {
 
     /**
-     * @param context
-     * @param assetPath
-     * @param sdcardPath
-     * @Title: copyFile
-     * @Description: å¤åˆ¶å•ä¸ªæ–‡ä»¶
+     * ¿½±´assetsÖĞµÄµ¥¸öÎÄ¼şµ½sd¿¨µÄÖ¸¶¨Â·¾¶ÏÂ
+     *
+     * @param context    AndroidÉÏÏÂÎÄ
+     * @param assetPath  assetsÖĞµÄÎÄ¼şÂ·¾¶
+     * @param sdcardPath Òª±£´æµ½µÄsd¿¨ÖĞµÄÎÄ¼şÎ»ÖÃ£¨°üº¬ÎÄ¼şÃû³Æ£©
      */
     public static boolean copyFile(Context context, String assetPath, String sdcardPath) {
         InputStream is = null;
@@ -30,12 +30,12 @@ public class AssetsUtil {
         boolean result = false;
 
         try {
-            int byteread = 0;
-            is = context.getAssets().open(assetPath); // è¯»å…¥åŸæ–‡ä»¶
+            int length = 0;
+            is = context.getAssets().open(assetPath); // ¶ÁÈëÔ­ÎÄ¼ş
             fs = new FileOutputStream(sdcardPath);
             byte[] buffer = new byte[1024];
-            while ((byteread = is.read(buffer)) != -1) {
-                fs.write(buffer, 0, byteread);
+            while ((length = is.read(buffer)) != -1) {
+                fs.write(buffer, 0, length);
             }
 
             result = true;
@@ -54,41 +54,37 @@ public class AssetsUtil {
     }
 
     /**
-     * @param context
-     * @param assetPath
-     * @return
-     * @Title: getListFile
-     * @Description:
+     * »ñÈ¡Ëù´«ÈëµÄassetsÂ·¾¶ÏÂµÄ×ÓÎÄ¼şÂ·¾¶ĞÅÏ¢
+     *
+     * @param context   AndroidÉÏÏÂÎÄ
+     * @param assetPath assetsÖĞµÄÎÄ¼şÂ·¾¶
+     * @return Èç¹û´«ÈëµÄassetsÊÇ¸öÎÄ¼ş¼Ğ£¬Ôò·µ»ØÆä×ÓÎÄ¼şµÄÂ·¾¶ĞÅÏ¢¼¯£»·ñÔò·µ»Ønull
      */
     public static String[] getListFile(Context context, String assetPath) {
         try {
-            String[] list = context.getAssets().list(assetPath);
-            return list;
+            return context.getAssets().list(assetPath);
         } catch (IOException e) {
-            e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     /**
-     * @param context
-     * @param assetPath
-     * @param sdcardPath
-     * @Title: copyFolder
-     * @Description: å¤åˆ¶æ–‡ä»¶å¤¹ä¸‹çš„æ‰€æœ‰æ–‡ä»¶
+     * ¸´ÖÆassetsÂ·¾¶ÏÂµÄËùÓĞÎÄ¼şµ½sd¿¨µÄÖ¸¶¨Â·¾¶ÏÂ
+     *
+     * @param context    AndroidÉÏÏÂÎÄ
+     * @param assetPath  assetsÖĞµÄÎÄ¼şÂ·¾¶
+     * @param sdcardPath Òª±£´æµ½µÄsd¿¨ÖĞµÄÎÄ¼ş¼ĞÎ»ÖÃ£¨×¢£º´Ë´¦ÎªÎÄ¼ş¼Ğ£©
      */
     public static void copyFolder(Context context, String assetPath, String sdcardPath) {
-        try {
-            String[] list = context.getAssets().list(assetPath);
-
-            File f = new File(sdcardPath);
-            if (!f.exists()) f.mkdirs();
-
-            for (String s : list) {
-                copyFile(context, assetPath + "/" + s, sdcardPath + "/" + s);
+        FileUtil.createFolder(new File(sdcardPath));
+        String[] listFile = getListFile(context, assetPath);
+        if (listFile == null) {
+            copyFile(context, assetPath, sdcardPath);
+        } else {
+            for (String s : listFile) {
+                copyFolder(context, assetPath + "/" + s, sdcardPath + "/" + s);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
+    
 }

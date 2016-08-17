@@ -4,9 +4,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 
 /**
- * Created by HL_SEN on 2015/9/21.
+ * Base64µÄ¹¤¾ßÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
@@ -29,11 +29,11 @@ public class Base64Util {
             -1, -1, -1, -1};
 
     /**
-     * Base64 ç¼–ç 
+     * Base64 ±àÂë
      *
-     * @param content     æ–‡æœ¬å†…å®¹
-     * @param charsetName ç¼–ç æ–¹å¼ å¦‚ï¼šUTF-8
-     * @return
+     * @param content     ÎÄ±¾ÄÚÈİ
+     * @param charsetName ±àÂë·½Ê½ Èç£ºUTF-8
+     * @return ±àÂëºóµÄ×Ö½ÚÊı×é
      * @throws UnsupportedEncodingException
      */
     public static byte[] encode(String content, String charsetName) throws UnsupportedEncodingException {
@@ -41,11 +41,11 @@ public class Base64Util {
     }
 
     /**
-     * Base64 ç¼–ç 
+     * Base64 ±àÂë
      *
-     * @param bytes       å¾…ç¼–ç çš„å­—èŠ‚æ•°ç»„
-     * @param charsetName ç¼–ç æ–¹å¼ å¦‚ï¼šUTF-8
-     * @return
+     * @param bytes       ´ı±àÂëµÄ×Ö½ÚÊı×é
+     * @param charsetName ±àÂë·½Ê½ Èç£ºUTF-8
+     * @return ±àÂëºóµÄ×Ö½ÚÊı×é
      * @throws UnsupportedEncodingException
      */
     public static byte[] encode(byte[] bytes, String charsetName) throws UnsupportedEncodingException {
@@ -53,11 +53,11 @@ public class Base64Util {
     }
 
     /**
-     * Base64 ç¼–ç 
+     * Base64 ±àÂë
      *
-     * @param content     æ–‡æœ¬å†…å®¹
-     * @param charsetName ç¼–ç æ–¹å¼ å¦‚ï¼šUTF-8
-     * @return ç¼–ç åçš„å­—ç¬¦ä¸²
+     * @param content     ÎÄ±¾ÄÚÈİ
+     * @param charsetName ±àÂë·½Ê½ Èç£ºUTF-8
+     * @return ±àÂëºóµÄ×Ö·û´®
      * @throws UnsupportedEncodingException
      */
     public static String encodeStr(String content, String charsetName) throws UnsupportedEncodingException {
@@ -65,10 +65,10 @@ public class Base64Util {
     }
 
     /**
-     * Base64 ç¼–ç 
+     * Base64 ±àÂë
      *
-     * @param bytes å¾…ç¼–ç çš„å­—èŠ‚æ•°ç»„
-     * @return ç¼–ç åçš„å­—ç¬¦ä¸²
+     * @param bytes ´ı±àÂëµÄ×Ö½ÚÊı×é
+     * @return ±àÂëºóµÄ×Ö·û´®
      */
     public static String encodeStr(byte[] bytes) {
         int length = bytes.length;
@@ -102,11 +102,11 @@ public class Base64Util {
     }
 
     /**
-     * Base64 è§£ç 
+     * Base64 ½âÂë
      *
-     * @param content     æ–‡æœ¬å†…å®¹
-     * @param charsetName ç¼–ç æ–¹å¼ å¦‚ï¼šUTF-8
-     * @return è§£ç åçš„å­—èŠ‚ç»„æˆçš„å­—ç¬¦ä¸²
+     * @param content     ÎÄ±¾ÄÚÈİ
+     * @param charsetName ±àÂë·½Ê½ Èç£ºUTF-8
+     * @return ½âÂëºóµÄ×Ö½Ú×é³ÉµÄ×Ö·û´®
      * @throws UnsupportedEncodingException
      */
     public static String decodeStr(String content, String charsetName) throws UnsupportedEncodingException {
@@ -114,11 +114,11 @@ public class Base64Util {
     }
 
     /**
-     * Base64 è§£ç 
+     * Base64 ½âÂë
      *
-     * @param bytes       å¾…è§£ç çš„å­—èŠ‚æ•°ç»„
-     * @param charsetName ç¼–ç æ–¹å¼ å¦‚ï¼šUTF-8
-     * @return è§£ç åçš„å­—èŠ‚ç»„æˆçš„å­—ç¬¦ä¸²
+     * @param bytes       ´ı½âÂëµÄ×Ö½ÚÊı×é
+     * @param charsetName ±àÂë·½Ê½ Èç£ºUTF-8
+     * @return ½âÂëºóµÄ×Ö½Ú×é³ÉµÄ×Ö·û´®
      * @throws UnsupportedEncodingException
      */
     public static String decodeStr(byte[] bytes, String charsetName) throws UnsupportedEncodingException {
@@ -126,11 +126,11 @@ public class Base64Util {
     }
 
     /**
-     * Base64 è§£ç 
+     * Base64 ½âÂë
      *
-     * @param content     æ–‡æœ¬å†…å®¹
-     * @param charsetName ç¼–ç æ–¹å¼ å¦‚ï¼šUTF-8
-     * @return è§£ç åçš„å­—èŠ‚æ•°ç»„
+     * @param content     ÎÄ±¾ÄÚÈİ
+     * @param charsetName ±àÂë·½Ê½ Èç£ºUTF-8
+     * @return ½âÂëºóµÄ×Ö½ÚÊı×é
      * @throws UnsupportedEncodingException
      */
     public static byte[] decode(String content, String charsetName) throws UnsupportedEncodingException {
@@ -139,10 +139,10 @@ public class Base64Util {
     }
 
     /**
-     * Base64 è§£ç 
+     * Base64 ½âÂë
      *
-     * @param bytes å¾…è§£ç çš„å­—èŠ‚æ•°ç»„
-     * @return è§£ç åçš„å­—èŠ‚æ•°ç»„
+     * @param bytes ´ı½âÂëµÄ×Ö½ÚÊı×é
+     * @return ½âÂëºóµÄ×Ö½ÚÊı×é
      */
     public static byte[] decode(byte[] bytes) {
         int len = bytes.length;

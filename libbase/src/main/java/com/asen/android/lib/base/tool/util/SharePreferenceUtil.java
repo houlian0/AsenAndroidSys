@@ -5,56 +5,57 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 /**
- * Created by HL_SEN on 2015/9/22.
- * æ­¤ç±»æ‰€æœ‰çš„ä¿å­˜éƒ½é‡‡ç”¨ getDefaultSharedPreferences
+ * ´ËÀàËùÓĞµÄ±£´æ¶¼²ÉÓÃ getDefaultSharedPreferences
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
 public class SharePreferenceUtil {
 
     /**
-     * æ˜¯å¦åŒ…å«keyå€¼
+     * ÊÇ·ñ°üº¬keyÖµ
      *
-     * @param context
-     * @param key     keyå€¼
-     * @return
+     * @param context AndroidÉÏÏÂÎÄ
+     * @param key     ¼üÖµ
+     * @return Èç¹û°üº¬Ëù´«ÈëµÄ¼üÖµ£¬·µ»Øtrue£»·ñÔò·µ»Øfalse
      */
     public static boolean hasKey(Context context, String key) {
         return PreferenceManager.getDefaultSharedPreferences(context).contains(key);
     }
 
     /**
-     * æ¸…é™¤SPæ•°æ®
+     * Çå³ıSPÊı¾İ
      *
-     * @param context
+     * @param context AndroidÉÏÏÂÎÄ
      */
     public static void clearPref(Context context) {
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
     /**
-     * ç§»é™¤keyå€¼
+     * ÒÆ³ıkeyÖµ
      *
-     * @param context
-     * @param keys
+     * @param context AndroidÉÏÏÂÎÄ
+     * @param keys    ¼üÖµ¼¯ºÏ
      */
     public static void removePrefKey(Context context, String... keys) {
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
         for (String key : keys) {
             editor.remove(key);
         }
-        editor.commit();
+        editor.apply();
     }
 
     /**
-     * @param context
-     * @param key          keyå€¼
-     * @param defaultValue ä¸å­˜åœ¨æ—¶çš„é»˜è®¤å€¼
-     * @return
+     * »ñÈ¡¶ÔÓ¦¼üÖµµÄ×Ö·û´®
+     *
+     * @param context      AndroidÉÏÏÂÎÄ
+     * @param key          keyÖµ
+     * @param defaultValue ²»´æÔÚÊ±µÄÄ¬ÈÏÖµ
+     * @return ¶ÔÓ¦¼üÖµµÄ×Ö·û´®
      */
     public static String getPrefString(Context context, String key, String defaultValue) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
@@ -62,42 +63,49 @@ public class SharePreferenceUtil {
     }
 
     /**
-     * @param context
-     * @param key     keyå€¼
-     * @param value   å€¼
+     * ±£´æ¶ÔÓ¦¼üÖµµÄ×Ö·û´®
+     *
+     * @param context AndroidÉÏÏÂÎÄ
+     * @param key     keyÖµ
+     * @param value   Öµ
      */
     public static void setPrefString(Context context, String key, String value) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
-        settings.edit().putString(key, value).commit();
+        settings.edit().putString(key, value).apply();
     }
 
     /**
-     * @param context
-     * @param key          keyå€¼
-     * @param defaultValue ä¸å­˜åœ¨æ—¶çš„é»˜è®¤å€¼
-     * @return
+     * »ñÈ¡¶ÔÓ¦¼üÖµµÄbooleanÖµ
+     *
+     * @param context      AndroidÉÏÏÂÎÄ
+     * @param key          keyÖµ
+     * @param defaultValue ²»´æÔÚÊ±µÄÄ¬ÈÏÖµ
+     * @return ¶ÔÓ¦¼üÖµµÄbooleanÖµ
      */
     public static boolean getPrefBoolean(Context context, String key, boolean defaultValue) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         return settings.getBoolean(key, defaultValue);
     }
 
-
     /**
-     * @param context
-     * @param key     keyå€¼
-     * @param value   å€¼
+     * ±£´æ¶ÔÓ¦¼üÖµµÄbooleanÖµ
+     *
+     * @param context AndroidÉÏÏÂÎÄ
+     * @param key     keyÖµ
+     * @param value   Öµ
      */
     public static void setPrefBoolean(Context context, String key, boolean value) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
-        settings.edit().putBoolean(key, value).commit();
+        settings.edit().putBoolean(key, value).apply();
     }
 
     /**
-     * @param context
-     * @param key          keyå€¼
-     * @param defaultValue ä¸å­˜åœ¨æ—¶çš„é»˜è®¤å€¼
-     * @return
+     * »ñÈ¡¶ÔÓ¦¼üÖµµÄintÖµ
+     *
+     * @param context      AndroidÉÏÏÂÎÄ
+     * @param key          keyÖµ
+     * @param defaultValue ²»´æÔÚÊ±µÄÄ¬ÈÏÖµ
+     * @return ¶ÔÓ¦¼üÖµµÄintÖµ
      */
     public static int getPrefInt(Context context, String key, int defaultValue) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
@@ -105,20 +113,24 @@ public class SharePreferenceUtil {
     }
 
     /**
-     * @param context
-     * @param key     keyå€¼
-     * @param value   å€¼
+     * ±£´æ¶ÔÓ¦¼üÖµµÄintÖµ
+     *
+     * @param context AndroidÉÏÏÂÎÄ
+     * @param key     keyÖµ
+     * @param value   Öµ
      */
     public static void setPrefInt(Context context, String key, int value) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
-        settings.edit().putInt(key, value).commit();
+        settings.edit().putInt(key, value).apply();
     }
 
     /**
-     * @param context
-     * @param key          keyå€¼
-     * @param defaultValue ä¸å­˜åœ¨æ—¶çš„é»˜è®¤å€¼
-     * @return
+     * »ñÈ¡¶ÔÓ¦¼üÖµµÄfloatÖµ
+     *
+     * @param context      AndroidÉÏÏÂÎÄ
+     * @param key          keyÖµ
+     * @param defaultValue ²»´æÔÚÊ±µÄÄ¬ÈÏÖµ
+     * @return ¶ÔÓ¦¼üÖµµÄfloatÖµ
      */
     public static float getPrefFloat(Context context, String key, float defaultValue) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
@@ -126,20 +138,24 @@ public class SharePreferenceUtil {
     }
 
     /**
-     * @param context
-     * @param key     keyå€¼
-     * @param value   å€¼
+     * ±£´æ¶ÔÓ¦¼üÖµµÄfloatÖµ
+     *
+     * @param context AndroidÉÏÏÂÎÄ
+     * @param key     keyÖµ
+     * @param value   Öµ
      */
     public static void setPrefFloat(Context context, String key, float value) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
-        settings.edit().putFloat(key, value).commit();
+        settings.edit().putFloat(key, value).apply();
     }
 
     /**
-     * @param context
-     * @param key          keyå€¼
-     * @param defaultValue ä¸å­˜åœ¨æ—¶çš„é»˜è®¤å€¼
-     * @return
+     * »ñÈ¡¶ÔÓ¦¼üÖµµÄlongÖµ
+     *
+     * @param context      AndroidÉÏÏÂÎÄ
+     * @param key          keyÖµ
+     * @param defaultValue ²»´æÔÚÊ±µÄÄ¬ÈÏÖµ
+     * @return ¶ÔÓ¦¼üÖµµÄlongÖµ
      */
     public static long getPrefLong(Context context, String key, long defaultValue) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
@@ -147,14 +163,15 @@ public class SharePreferenceUtil {
     }
 
     /**
-     * @param context
-     * @param key     keyå€¼
-     * @param value   å€¼
+     * ±£´æ¶ÔÓ¦¼üÖµµÄlongÖµ
+     *
+     * @param context AndroidÉÏÏÂÎÄ
+     * @param key     keyÖµ
+     * @param value   Öµ
      */
     public static void setSettingLong(Context context, String key, long value) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
-        settings.edit().putLong(key, value).commit();
+        settings.edit().putLong(key, value).apply();
     }
-
 
 }

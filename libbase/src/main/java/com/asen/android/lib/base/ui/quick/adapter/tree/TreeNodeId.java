@@ -6,10 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Simple to Introduction
- * æ ‘èŠ‚ç‚¹ç¼–å·æ³¨è§£
+ * Ê÷½Úµã±àºÅ×¢½â
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:04
  */

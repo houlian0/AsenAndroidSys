@@ -5,36 +5,36 @@ import android.graphics.Color;
 import java.util.Random;
 
 /**
- * Created by HL_SEN on 2015/9/21.
+ * ÑÕÉ«µÄ¹¤¾ßÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
 public class ColorUtil {
 
     /**
-     * æ‹†åˆ†é¢œè‰²çš„å››ä¸ªå€¼
+     * ²ğ·ÖÑÕÉ«µÄËÄ¸öÖµ£¬Ë³Ğò·Ö±ğÎª£ººì¡¢ÂÌ¡¢À¶¡¢Í¸Ã÷¶È
      *
-     * @param color
-     * @return çº¢ã€ç»¿ã€è“ã€é€æ˜åº¦ å››ä¸ªå€¼å¾—intæ•°ç»„
+     * @param color ÑÕÉ«µÄintÖµ
+     * @return ºì¡¢ÂÌ¡¢À¶¡¢Í¸Ã÷¶È ËÄ¸öÖµµÃintÊı×é
      */
     public static int[] colorToRGBA(int color) {
         int[] result = new int[4];
 
         result[0] = color >> 16 & 0xFF;
         result[1] = color >> 8 & 0xFF;
-        result[2] = color >> 0 & 0xFF;
+        result[2] = color & 0xFF;
         result[3] = color >> 24 & 0xFF;
 
         return result;
     }
 
     /**
-     * ç›¸åçš„é¢œè‰²ï¼ˆä¸é€æ˜çš„è‰²ï¼‰
+     * Ïà·´µÄÑÕÉ«£¨²»Í¸Ã÷µÄÉ«£©
      *
-     * @param color
-     * @return
+     * @param color Ô­Ê¼µÄÑÕÉ«Öµ
+     * @return ×ª»»ºóµÄÔ­É«Öµ
      */
     public static int oppositeOpacityColor(int color) {
         int[] rgba = ColorUtil.colorToRGBA(~color);
@@ -42,10 +42,10 @@ public class ColorUtil {
     }
 
     /**
-     * ç›¸åçš„é¢œè‰²ï¼ˆåŒ…æ‹¬é€æ˜åº¦ï¼‰
+     * Ïà·´µÄÑÕÉ«£¨°üÀ¨Í¸Ã÷¶È£©
      *
-     * @param color
-     * @return
+     * @param color Ô­Ê¼µÄÑÕÉ«Öµ
+     * @return ×ª»»ºóµÄÔ­É«Öµ
      */
     public static int oppositeColor(int color) {
         int[] rgba = ColorUtil.colorToRGBA(~color);
@@ -53,9 +53,9 @@ public class ColorUtil {
     }
 
     /**
-     * è·å–éšæœºçš„é¢œè‰²å€¼
+     * »ñÈ¡Ëæ»úµÄÑÕÉ«Öµ
      *
-     * @return éšæœºé¢œè‰²å€¼ï¼Œä¸å«é€æ˜åº¦
+     * @return Ëæ»úÑÕÉ«Öµ£¬²»º¬Í¸Ã÷¶È
      */
     public static int getRandomColor() {
         Random random = new Random();
@@ -64,4 +64,5 @@ public class ColorUtil {
         int b = random.nextInt(256);
         return r << 16 & g << 8 & b;
     }
+    
 }

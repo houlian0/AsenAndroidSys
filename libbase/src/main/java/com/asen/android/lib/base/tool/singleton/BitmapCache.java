@@ -291,8 +291,8 @@ public class BitmapCache {
         Bitmap bitmapImage = null;
         // 缓存中是否有该Bitmap实例的软引用，如果有，从软引用中取得。
         if (bitmapRefs.containsKey(img)) {
-            BitmapRef ref = (BitmapRef) bitmapRefs.get(img);
-            bitmapImage = (Bitmap) ref.get();
+            BitmapRef ref = bitmapRefs.get(img);
+            bitmapImage = ref.get();
         }
         // 如果没有软引用，或者从软引用中得到的实例是null，重新构建一个实例，
         // 并保存对这个新建实例的软引用

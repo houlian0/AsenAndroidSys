@@ -14,75 +14,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by HL_SEN on 2015/9/22.
+ * Sd¿¨»ñÈ¡µÄ¹¤¾ßÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
 public class SdCardUtil {
 
-//    /**
-//     *
-//     * @return å¤–ç½®sdå¡å­˜åœ¨ï¼Œè¿”å›å¤–ç½®sdå¡è·¯å¾„ï¼›å¤–ç½®ä¸å­˜åœ¨ï¼Œè¿”å›å†…ç½®sdå¡è·¯å¾„ï¼›éƒ½ä¸å¯ç”¨ï¼Œè¿”å›null
-//     */
-//    public static String getExterPath(Context context) {
-//        String path = getSecondExterPath(context);
-//        if (path == null)
-//            path = getFirstExterPath();
-//        return path;
-//    }
-
-//    /**
-//     *
-//     * @return å¤–ç½®sdå¡å­˜åœ¨ï¼Œè¿”å›å¤–ç½®sdå¡è·¯å¾„ï¼›å¤–ç½®ä¸å­˜åœ¨ï¼Œè¿”å›å†…ç½®sdå¡è·¯å¾„ï¼›éƒ½ä¸å¯ç”¨ï¼Œè¿”å›null
-//     */
-//    @Deprecated
-//    public static String getOldExterPath(Context context) {
-//        String path = getOldSecondExterPath(context);
-//        if (path == null)
-//            path = getFirstExterPath();
-//        return path;
-//    }
-
-
-//    /**
-//     * è¿”å›sdå¡è·¯å¾„
-//     *
-//     * @return è¿”å›å€¼ä¸å¸¦File seperater "/", å¦‚æœæ²¡æœ‰å¤–ç½®ç¬¬äºŒä¸ªsdå¡,è¿”å›null
-//     */
-//    @Deprecated
-//    public static String getOldSecondExterPath(Context context) {
-//        List<String> paths = getAllExterSdcardPath();
-//        if (paths.size() == 2) {
-//            for (String path : paths) {
-//                if (path != null && !path.equals(getFirstExterPath())) {
-//                    return path;
-//                }
-//            }
-//            return null;
-//        } else {
-//            return null;
-//        }
-//    }
-
     /**
-     * è·å¾—å†…ç½®sdå¡
-     * æ³¨ï¼šéƒ¨åˆ†æ‰‹æœºï¼Œå¦‚ï¼šå°ç±³1Sï¼Œæœ¬èº«æ˜¯æ²¡æœ‰å†…ç½®sdå¡çš„ï¼Œå¤–éƒ¨æ’å…¥çš„å¡å³ä¸ºå†…ç½®sdå¡ï¼Œå¦‚æœä¸æ’å…¥sdå¡ï¼Œåˆ™å±äºsdå¡ä¸å¯ç”¨
+     * »ñµÃÄÚÖÃsd¿¨
+     * ×¢£º²¿·ÖÊÖ»ú£¬Èç£ºĞ¡Ã×1S£¬±¾ÉíÊÇÃ»ÓĞÄÚÖÃsd¿¨µÄ£¬Íâ²¿²åÈëµÄ¿¨¼´ÎªÄÚÖÃsd¿¨£¬Èç¹û²»²åÈësd¿¨£¬ÔòÊôÓÚsd¿¨²»¿ÉÓÃ
      *
-     * @return è¿”å›å†…ç½®sdå¡è·¯å¾„ï¼Œæ²¡æœ‰çš„è¯ï¼Œè¿”å›null
+     * @return ·µ»ØÄÚÖÃsd¿¨Â·¾¶£¬Ã»ÓĞµÄ»°£¬·µ»Ønull
      */
-    public static String getFirstExterPath() {
+    public static String getFirstExternalPath() {
         return isFirstSdcardMounted() ? Environment.getExternalStorageDirectory().getPath() : null;
     }
 
     /**
-     * è¿”å›sdå¡è·¯å¾„
+     * ·µ»Øsd¿¨Â·¾¶
      *
-     * @return è¿”å›å€¼ä¸å¸¦File seperater "/", å¦‚æœæ²¡æœ‰å¤–ç½®ç¬¬äºŒä¸ªsdå¡,è¿”å›null
+     * @return ·µ»ØÖµ²»´øFile seperater "/", Èç¹ûÃ»ÓĞÍâÖÃµÚ¶ş¸ösd¿¨,·µ»Ønull
      */
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    public static String getSecondExterPath(Context context) {
+    public static String getSecondExternalPath(Context context) {
         if (Version.hasKitKat()) {  // 4.4
             File[] filesDirs = context.getExternalFilesDirs(null);
             if (filesDirs == null || filesDirs.length == 0) return null;
@@ -94,10 +50,10 @@ public class SdCardUtil {
             }
             return null;
         } else {
-            List<String> paths = getAllExterSdcardPath();
+            List<String> paths = getAllExternalSdcardPath();
             if (paths.size() == 2) {
                 for (String path : paths) {
-                    if (path != null && !path.equals(getFirstExterPath())) {
+                    if (path != null && !path.equals(getFirstExternalPath())) {
                         return path;
                     }
                 }
@@ -109,47 +65,41 @@ public class SdCardUtil {
     }
 
     /**
-     * åˆ¤æ–­å†…ç½®sdå¡æ˜¯å¦å¯ç”¨
+     * ÅĞ¶ÏÄÚÖÃsd¿¨ÊÇ·ñ¿ÉÓÃ
      *
-     * @return å¯ç”¨è¿”å›trueï¼Œå¦åˆ™è¿”å›false
+     * @return ¿ÉÓÃ·µ»Øtrue£¬·ñÔò·µ»Øfalse
      */
     public static boolean isFirstSdcardMounted() {
-        if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            return false;
-        }
-        return true;
+        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
     }
 
     /**
-     * åˆ¤æ–­å¤–ç½®sdå¡æ˜¯å¦å¯ç”¨
+     * ÅĞ¶ÏÍâÖÃsd¿¨ÊÇ·ñ¿ÉÓÃ
      *
-     * @return å¯ç”¨è¿”å›trueï¼Œå¦åˆ™è¿”å›false
+     * @return ¿ÉÓÃ·µ»Øtrue£¬·ñÔò·µ»Øfalse
      */
     public static boolean isSecondSDcardMounted(Context context) {
-        String sd2 = getSecondExterPath(context);
-        if (sd2 == null) {
-            return false;
-        }
-        return checkFsWritable(sd2 + File.separator);
+        String sd2 = getSecondExternalPath(context);
+        return sd2 != null && checkFsWritable(sd2 + File.separator);
     }
 
     /**
-     * åˆ¤æ–­æ–‡ä»¶å¤¹æ˜¯å¦å¯å†™
+     * ÅĞ¶ÏÎÄ¼ş¼ĞÊÇ·ñ¿ÉĞ´
      *
-     * @param dir æ–‡ä»¶è·¯å¾„
-     * @return å¯å†™è¿”å›trueï¼Œå¦åˆ™è¿”å›false
+     * @param dir ÎÄ¼şÂ·¾¶
+     * @return ¿ÉĞ´·µ»Øtrue£¬·ñÔò·µ»Øfalse
      */
     public static boolean isWritable(String dir) {
         return checkFsWritable(dir);
     }
 
     /**
-     * æµ‹è¯•å¤–ç½®sdå¡æ˜¯å¦å¸è½½ï¼Œä¸èƒ½ç›´æ¥åˆ¤æ–­å¤–ç½®sdå¡æ˜¯å¦ä¸ºnullï¼Œå› ä¸ºå½“å¤–ç½®sdå¡æ‹”å‡ºæ—¶ï¼Œä»ç„¶èƒ½å¾—åˆ°å¤–ç½®sdå¡è·¯å¾„ã€‚
-     * æˆ‘è¿™ç§æ–¹æ³•æ˜¯æŒ‰ç…§androidè°·æ­Œæµ‹è¯•DICMçš„æ–¹æ³•ï¼Œ åˆ›å»ºä¸€ä¸ªæ–‡ä»¶ï¼Œç„¶åç«‹å³åˆ é™¤ï¼Œçœ‹æ˜¯å¦å¸è½½å¤–ç½®sdå¡
-     * æ³¨æ„è¿™é‡Œæœ‰ä¸€ä¸ªå°bugï¼Œå³ä½¿å¤–ç½®sdå¡æ²¡æœ‰å¸è½½ï¼Œä½†æ˜¯å­˜å‚¨ç©ºé—´ä¸å¤Ÿå¤§ï¼Œæˆ–è€…æ–‡ä»¶æ•°å·²è‡³æœ€å¤§æ•°ï¼Œæ­¤æ—¶ï¼Œä¹Ÿä¸èƒ½åˆ›å»ºæ–°æ–‡ä»¶ã€‚æ­¤æ—¶ï¼Œç»Ÿä¸€æç¤ºç”¨æˆ·æ¸…ç†sdå¡å§
+     * ²âÊÔÍâÖÃsd¿¨ÊÇ·ñĞ¶ÔØ£¬²»ÄÜÖ±½ÓÅĞ¶ÏÍâÖÃsd¿¨ÊÇ·ñÎªnull£¬ÒòÎªµ±ÍâÖÃsd¿¨°Î³öÊ±£¬ÈÔÈ»ÄÜµÃµ½ÍâÖÃsd¿¨Â·¾¶¡£
+     * ÎÒÕâÖÖ·½·¨ÊÇ°´ÕÕandroid¹È¸è²âÊÔDICMµÄ·½·¨£¬ ´´½¨Ò»¸öÎÄ¼ş£¬È»ºóÁ¢¼´É¾³ı£¬¿´ÊÇ·ñĞ¶ÔØÍâÖÃsd¿¨
+     * ×¢ÒâÕâÀïÓĞÒ»¸öĞ¡bug£¬¼´Ê¹ÍâÖÃsd¿¨Ã»ÓĞĞ¶ÔØ£¬µ«ÊÇ´æ´¢¿Õ¼ä²»¹»´ó£¬»òÕßÎÄ¼şÊıÒÑÖÁ×î´óÊı£¬´ËÊ±£¬Ò²²»ÄÜ´´½¨ĞÂÎÄ¼ş¡£´ËÊ±£¬Í³Ò»ÌáÊ¾ÓÃ»§ÇåÀísd¿¨°É
      *
-     * @param dir æ–‡ä»¶è·¯å¾„
-     * @return å¯å†™è¿”å›trueï¼Œå¦åˆ™è¿”å›false
+     * @param dir ÎÄ¼şÂ·¾¶
+     * @return ¿ÉĞ´·µ»Øtrue£¬·ñÔò·µ»Øfalse
      */
     private static boolean checkFsWritable(String dir) {
         if (dir == null)
@@ -175,50 +125,45 @@ public class SdCardUtil {
             return true;
 
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
 
-    private static List<String> getAllExterSdcardPath() {
-        List<String> sdList = new ArrayList<String>();
+    private static List<String> getAllExternalSdcardPath() {
+        List<String> sdList = new ArrayList<>();
 
-        String firstPath = getFirstExterPath();
+        String firstPath = getFirstExternalPath();
 
         Runtime runtime = Runtime.getRuntime();
         InputStream is = null;
         BufferedReader br = null;
-        // å¾—åˆ°è·¯å¾„
+        // µÃµ½Â·¾¶
         try {
-            Process proc = runtime.exec("mount");// æˆ–è€… "cat /proc/mounts"
+            Process proc = runtime.exec("mount");// »òÕß "cat /proc/mounts"
             is = proc.getInputStream();
             br = new BufferedReader(new InputStreamReader(is));
 
             String line;
             while ((line = br.readLine()) != null) {
-                // å°†å¸¸è§çš„linuxåˆ†åŒºè¿‡æ»¤æ‰
+                // ½«³£¼ûµÄlinux·ÖÇø¹ıÂËµô
                 if (line.contains("secure"))
                     continue;
                 if (line.contains("asec"))
                     continue;
                 if (line.contains("media"))
                     continue;
-                if (line.contains("system") || line.contains("cache")
-                        || line.contains("sys") || line.contains("data")
-                        || line.contains("tmpfs") || line.contains("shell")
-                        || line.contains("root") || line.contains("acct")
-                        || line.contains("proc") || line.contains("misc")
-                        || line.contains("obb")) {
+                if (line.contains("system") || line.contains("cache") || line.contains("sys") || line.contains("data")
+                        || line.contains("tmpfs") || line.contains("shell") || line.contains("root") || line.contains("acct")
+                        || line.contains("proc") || line.contains("misc") || line.contains("obb")) {
                     continue;
                 }
 
-                if (line.contains("fat") || line.contains("fuse")
-                        || (line.contains("ntfs"))) {
-
+                if (line.contains("fat") || line.contains("fuse") || (line.contains("ntfs"))) {
                     String columns[] = line.split(" ");
-                    if (columns != null && columns.length > 1) {
+                    if (columns.length > 1) {
                         String path = columns[1];
-                        if (path != null && !sdList.contains(path)
-                                && path.toLowerCase().contains("sd"))
+                        if (path != null && !sdList.contains(path) && path.toLowerCase().contains("sd"))
                             sdList.add(columns[1]);
                     }
                 }
@@ -242,4 +187,5 @@ public class SdCardUtil {
 
         return sdList;
     }
+    
 }

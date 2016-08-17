@@ -53,20 +53,20 @@ public class AppPath {
     private static String initSdCard(Context context) {
         if (mType == TYPE_INTERNAL_SD_CARD) {
             // 内置卡
-            path = SdCardUtil.getFirstExterPath();
+            path = SdCardUtil.getFirstExternalPath();
         } else if (mType == TYPE_EXTERNAL_SD_CARD) {
             // 外置卡
-            path = SdCardUtil.getSecondExterPath(context);
+            path = SdCardUtil.getSecondExternalPath(context);
         } else if (mType == TYPE_REVERSAL) {
             // 有内置卡读内置，无内置卡读外置
-            path = SdCardUtil.getFirstExterPath();
+            path = SdCardUtil.getFirstExternalPath();
             if (path == null)
-                path = SdCardUtil.getSecondExterPath(context);
+                path = SdCardUtil.getSecondExternalPath(context);
         } else {
             // 有外置读外置，没外置读内置
-            path = SdCardUtil.getSecondExterPath(context);
+            path = SdCardUtil.getSecondExternalPath(context);
             if (path == null)
-                path = SdCardUtil.getFirstExterPath();
+                path = SdCardUtil.getFirstExternalPath();
         }
         return path;
     }

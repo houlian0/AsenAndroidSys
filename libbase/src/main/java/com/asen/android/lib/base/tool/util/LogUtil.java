@@ -5,9 +5,9 @@ import android.util.Log;
 import com.asen.android.lib.base.global.AppData;
 
 /**
- * Simple to Introduction
+ * 后台打印信息的工具类
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */

@@ -1,8 +1,7 @@
 package com.asen.android.lib.base.tool.util;
 
 /**
- * Created by HL_SEN on 2015/9/21.
- * åå…­è¿›åˆ¶å·¥å…·ç±»
+ * Ê®Áù½øÖÆ¹¤¾ßÀà
  *
  * @author ASEN
  * @version v1.0
@@ -11,44 +10,44 @@ package com.asen.android.lib.base.tool.util;
 public class HexUtil {
 
     /**
-     * ç”¨äºŽå»ºç«‹åå…­è¿›åˆ¶å­—ç¬¦çš„è¾“å‡ºçš„å°å†™å­—ç¬¦æ•°ç»„
+     * ÓÃÓÚ½¨Á¢Ê®Áù½øÖÆ×Ö·ûµÄÊä³öµÄÐ¡Ð´×Ö·ûÊý×é
      */
     private static final char[] DIGITS_LOWER = {'0', '1', '2', '3', '4', '5',
             '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
     /**
-     * ç”¨äºŽå»ºç«‹åå…­è¿›åˆ¶å­—ç¬¦çš„è¾“å‡ºçš„å¤§å†™å­—ç¬¦æ•°ç»„
+     * ÓÃÓÚ½¨Á¢Ê®Áù½øÖÆ×Ö·ûµÄÊä³öµÄ´óÐ´×Ö·ûÊý×é
      */
     private static final char[] DIGITS_UPPER = {'0', '1', '2', '3', '4', '5',
             '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
     /**
-     * å°†å­—èŠ‚æ•°ç»„è½¬æ¢ä¸ºåå…­è¿›åˆ¶å°å†™å­—ç¬¦æ•°ç»„
+     * ½«×Ö½ÚÊý×é×ª»»ÎªÊ®Áù½øÖÆÐ¡Ð´×Ö·ûÊý×é
      *
      * @param data byte[]
-     * @return åå…­è¿›åˆ¶char[]
+     * @return Ê®Áù½øÖÆchar[]
      */
     public static char[] encodeHex(byte[] data) {
         return encodeHex(data, true);
     }
 
     /**
-     * å°†å­—èŠ‚æ•°ç»„è½¬æ¢ä¸ºåå…­è¿›åˆ¶å­—ç¬¦æ•°ç»„
+     * ½«×Ö½ÚÊý×é×ª»»ÎªÊ®Áù½øÖÆ×Ö·ûÊý×é
      *
      * @param data        byte[]
-     * @param toLowerCase trueä¼ æ¢æˆå°å†™æ ¼å¼ ï¼Œfalseä¼ æ¢æˆå¤§å†™æ ¼å¼
-     * @return åå…­è¿›åˆ¶char[]
+     * @param toLowerCase true´«»»³ÉÐ¡Ð´¸ñÊ½ £¬false´«»»³É´óÐ´¸ñÊ½
+     * @return Ê®Áù½øÖÆchar[]
      */
     public static char[] encodeHex(byte[] data, boolean toLowerCase) {
         return encodeHex(data, toLowerCase ? DIGITS_LOWER : DIGITS_UPPER);
     }
 
     /**
-     * å°†å­—èŠ‚æ•°ç»„è½¬æ¢ä¸ºåå…­è¿›åˆ¶å­—ç¬¦æ•°ç»„
+     * ½«×Ö½ÚÊý×é×ª»»ÎªÊ®Áù½øÖÆ×Ö·ûÊý×é
      *
      * @param data     byte[]
-     * @param toDigits ç”¨äºŽæŽ§åˆ¶è¾“å‡ºçš„char[]
-     * @return åå…­è¿›åˆ¶char[]
+     * @param toDigits ÓÃÓÚ¿ØÖÆÊä³öµÄchar[]
+     * @return Ê®Áù½øÖÆchar[]
      */
     private static char[] encodeHex(byte[] data, char[] toDigits) {
         int l = data.length;
@@ -61,43 +60,43 @@ public class HexUtil {
     }
 
     /**
-     * å°†å­—èŠ‚æ•°ç»„è½¬æ¢ä¸ºåå…­è¿›åˆ¶å°å†™å­—ç¬¦ä¸²
+     * ½«×Ö½ÚÊý×é×ª»»ÎªÊ®Áù½øÖÆÐ¡Ð´×Ö·û´®
      *
      * @param data byte[]
-     * @return åå…­è¿›åˆ¶String
+     * @return Ê®Áù½øÖÆString
      */
     public static String encodeHexStr(byte[] data) {
         return encodeHexStr(data, true);
     }
 
     /**
-     * å°†å­—èŠ‚æ•°ç»„è½¬æ¢ä¸ºåå…­è¿›åˆ¶å­—ç¬¦ä¸²
+     * ½«×Ö½ÚÊý×é×ª»»ÎªÊ®Áù½øÖÆ×Ö·û´®
      *
      * @param data        byte[]
-     * @param toLowerCase true ä¼ æ¢æˆå°å†™æ ¼å¼ ï¼Œ false ä¼ æ¢æˆå¤§å†™æ ¼å¼
-     * @return åå…­è¿›åˆ¶String
+     * @param toLowerCase true ´«»»³ÉÐ¡Ð´¸ñÊ½ £¬ false ´«»»³É´óÐ´¸ñÊ½
+     * @return Ê®Áù½øÖÆString
      */
     public static String encodeHexStr(byte[] data, boolean toLowerCase) {
         return encodeHexStr(data, toLowerCase ? DIGITS_LOWER : DIGITS_UPPER);
     }
 
     /**
-     * å°†å­—èŠ‚æ•°ç»„è½¬æ¢ä¸ºåå…­è¿›åˆ¶å­—ç¬¦ä¸²
+     * ½«×Ö½ÚÊý×é×ª»»ÎªÊ®Áù½øÖÆ×Ö·û´®
      *
      * @param data     byte[]
-     * @param toDigits ç”¨äºŽæŽ§åˆ¶è¾“å‡ºçš„char[]
-     * @return åå…­è¿›åˆ¶String
+     * @param toDigits ÓÃÓÚ¿ØÖÆÊä³öµÄchar[]
+     * @return Ê®Áù½øÖÆString
      */
     private static String encodeHexStr(byte[] data, char[] toDigits) {
         return new String(encodeHex(data, toDigits));
     }
 
     /**
-     * å°†åå…­è¿›åˆ¶å­—ç¬¦ä¸²è½¬æ¢ä¸ºå­—èŠ‚æ•°ç»„
+     * ½«Ê®Áù½øÖÆ×Ö·û´®×ª»»Îª×Ö½ÚÊý×é
      *
-     * @param str åå…­è¿›åˆ¶char[]
+     * @param str Ê®Áù½øÖÆchar[]
      * @return byte[]
-     * @throws RuntimeException å¦‚æžœæºåå…­è¿›åˆ¶å­—ç¬¦æ•°ç»„æ˜¯ä¸€ä¸ªå¥‡æ€ªçš„é•¿åº¦ï¼Œå°†æŠ›å‡ºè¿è¡Œæ—¶å¼‚å¸¸
+     * @throws RuntimeException Èç¹ûÔ´Ê®Áù½øÖÆ×Ö·ûÊý×éÊÇÒ»¸öÆæ¹ÖµÄ³¤¶È£¬½«Å×³öÔËÐÐÊ±Òì³£
      * @see
      */
     public static byte[] decodeHex(String str) {
@@ -105,16 +104,16 @@ public class HexUtil {
     }
 
     /**
-     * å°†åå…­è¿›åˆ¶å­—ç¬¦æ•°ç»„è½¬æ¢ä¸ºå­—èŠ‚æ•°ç»„
+     * ½«Ê®Áù½øÖÆ×Ö·ûÊý×é×ª»»Îª×Ö½ÚÊý×é
      *
-     * @param data åå…­è¿›åˆ¶char[]
+     * @param data Ê®Áù½øÖÆchar[]
      * @return byte[]
-     * @throws RuntimeException å¦‚æžœæºåå…­è¿›åˆ¶å­—ç¬¦æ•°ç»„æ˜¯ä¸€ä¸ªå¥‡æ€ªçš„é•¿åº¦ï¼Œå°†æŠ›å‡ºè¿è¡Œæ—¶å¼‚å¸¸
+     * @throws RuntimeException Èç¹ûÔ´Ê®Áù½øÖÆ×Ö·ûÊý×éÊÇÒ»¸öÆæ¹ÖµÄ³¤¶È£¬½«Å×³öÔËÐÐÊ±Òì³£
      */
     public static byte[] decodeHex(char[] data) {
         int len = data.length;
         if ((len & 0x01) != 0) {
-            throw new RuntimeException("æœªçŸ¥çš„å­—ç¬¦");
+            throw new RuntimeException("Î´ÖªµÄ×Ö·û");
         }
         byte[] out = new byte[len >> 1];
         for (int i = 0, j = 0; j < len; i++) {
@@ -128,33 +127,34 @@ public class HexUtil {
     }
 
     /**
-     * å°†åå…­è¿›åˆ¶å­—ç¬¦è½¬æ¢æˆä¸€ä¸ªæ•´æ•°
+     * ½«Ê®Áù½øÖÆ×Ö·û×ª»»³ÉÒ»¸öÕûÊý
      *
-     * @param ch    åå…­è¿›åˆ¶char
-     * @param index åå…­è¿›åˆ¶å­—ç¬¦åœ¨å­—ç¬¦æ•°ç»„ä¸­çš„ä½ç½®
-     * @return ä¸€ä¸ªæ•´æ•°
-     * @throws RuntimeException å½“chä¸æ˜¯ä¸€ä¸ªåˆæ³•çš„åå…­è¿›åˆ¶å­—ç¬¦æ—¶ï¼ŒæŠ›å‡ºè¿è¡Œæ—¶å¼‚å¸¸
+     * @param ch    Ê®Áù½øÖÆchar
+     * @param index Ê®Áù½øÖÆ×Ö·ûÔÚ×Ö·ûÊý×éÖÐµÄÎ»ÖÃ
+     * @return Ò»¸öÕûÊý
+     * @throws RuntimeException µ±ch²»ÊÇÒ»¸öºÏ·¨µÄÊ®Áù½øÖÆ×Ö·ûÊ±£¬Å×³öÔËÐÐÊ±Òì³£
      */
     protected static int toDigit(char ch, int index) {
         int digit = Character.digit(ch, 16);
         if (digit == -1) {
-            throw new RuntimeException("éžæ³•16è¿›åˆ¶å­—ç¬¦ " + ch + " åœ¨ç´¢å¼• " + index);
+            throw new RuntimeException("·Ç·¨16½øÖÆ×Ö·û " + ch + " ÔÚË÷Òý " + index);
         }
         return digit;
     }
 
     /**
-     * å°†byte[]æ•°ç»„è½¬æ¢ä¸ºStringå­—ç¬¦ä¸²
+     * ½«byte[]Êý×é×ª»»ÎªString×Ö·û´®
      *
-     * @param data byteæ•°ç»„
-     * @return String è½¬æ¢åŽçš„å­—ç¬¦ä¸²
+     * @param data byteÊý×é
+     * @return String ×ª»»ºóµÄ×Ö·û´®
      */
     public static String byteToArray(byte[] data) {
         String result = "";
-        for (int i = 0; i < data.length; i++) {
-            result += Integer.toHexString((data[i] & 0xFF) | 0x100)
+        for (byte aData : data) {
+            result += Integer.toHexString((aData & 0xFF) | 0x100)
                     .toUpperCase().substring(1, 3);
         }
         return result;
     }
+
 }

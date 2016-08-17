@@ -6,209 +6,226 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+import javax.crypto.Cipher;
+import javax.crypto.CipherInputStream;
+import javax.crypto.CipherOutputStream;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.spec.PBEParameterSpec;
+
 /**
- * Created by HL_SEN on 2015/9/22.
+ * Zip��ѹ��������
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
 public class ZipUtil {
 
-    private static final int ZIPUTIL_CACHE = 512 * 1024;
-
     /**
-     * 压缩单个文件
+     * ѹ��
      *
-     * @param filepath 文件位置
-     * @param zippath  压缩后位置
+     * @param directory Ҫѹ�����ļ���File
+     * @param zipFile   �����zip��File
+     * @param password  ѹ��ʱ����
+     * @throws IOException
+     * @throws InvalidKeySpecException
+     * @throws InvalidAlgorithmParameterException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeyException
+     * @throws NoSuchPaddingException
      */
-    public static boolean zipFile(String filepath, String zippath) {
-        boolean result = false;
-
-        InputStream input = null;
-        ZipOutputStream zipOut = null;
-
-
+    public static void zip(File directory, File zipFile, String password) throws IOException, InvalidKeySpecException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {
+        URI base = directory.toURI();
+        Deque<File> queue = new LinkedList<>();
+        queue.push(directory);
+        ZipOutputStream zout = null;
         try {
-            File file = new File(filepath);
-            File zipFile = new File(zippath);
-            input = new FileInputStream(file);
-            zipOut = new ZipOutputStream(new FileOutputStream(zipFile));
-            zipOut.putNextEntry(new ZipEntry(file.getName()));
-
-            byte buffer[] = new byte[ZIPUTIL_CACHE];
-            int temp = 0;
-            while ((temp = input.read(buffer)) != -1) {
-                zipOut.write(buffer, 0, temp);
-            }
-            System.out.println("zip " + filepath + " to " + zippath);
-
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                input.close();
-                zipOut.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return result;
-    }
-
-    /**
-     * 一次性压缩多个文件，文件存放至一个文件夹中
-     *
-     * @param filepath 要被压缩的文件夹
-     * @param zippath  压缩后位置
-     */
-    public static boolean zipMultiFile(String filepath, String zippath) {
-        boolean result = false;
-
-        try {
-            File file = new File(filepath);// 要被压缩的文件夹
-            File zipFile = new File(zippath);
-            InputStream input = null;
-            ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(zipFile));
-
-            byte buffer[] = new byte[ZIPUTIL_CACHE];
-            if (file.isDirectory()) {
-                File[] files = file.listFiles();
-                for (int i = 0; i < files.length; ++i) {
-                    input = new FileInputStream(files[i]);
-                    zipOut.putNextEntry(new ZipEntry(file.getName() + File.separator + files[i].getName()));
-
-                    int temp = 0;
-                    while ((temp = input.read(buffer)) != -1) {
-                        zipOut.write(buffer, 0, temp);
-                    }
-                    input.close();
-                }
-            } else {// 否则,则调用压缩单个文件的方法
-                zipFile(filepath, zippath);
-            }
-            zipOut.close();
-            System.out.println("zip directory is success");
-
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return result;
-    }
-
-    /**
-     * 解压缩（解压缩单个文件）
-     *
-     * @param zippath     压缩文件路径和文件名
-     * @param outfilepath 解压后路径和文件名
-     * @param filename    所解压的文件名
-     */
-    public static boolean zipContraFile(String zippath, String outfilepath, String filename) {
-        boolean result = false;
-
-        try {
-            File file = new File(zippath);// 压缩文件路径和文件名
-            File outFile = new File(outfilepath);// 解压后路径和文件名
-            ZipFile zipFile = new ZipFile(file);
-            ZipEntry entry = zipFile.getEntry(filename);// 所解压的文件名
-            InputStream input = zipFile.getInputStream(entry);
-            OutputStream output = new FileOutputStream(outFile);
-
-            byte buffer[] = new byte[ZIPUTIL_CACHE];
-            int temp = 0;
-            while ((temp = input.read(buffer)) != -1) {
-                output.write(buffer, 0, temp);
-            }
-
-            output.close();
-            input.close();
-            zipFile.close();
-
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return result;
-    }
-
-    /**
-     * 解压缩（压缩文件中包含多个文件）可代替上面的方法使用。 ZipInputStream类
-     * 当我们需要解压缩多个文件的时候，ZipEntry就无法使用了，
-     * 如果想操作更加复杂的压缩文件，我们就必须使用ZipInputStream类
-     * 文件不存在则创建，文件存在则删除原有的再创建
-     *
-     * @param zippath    压缩文件路径和文件名
-     * @param outzippath 解压后保存的文件路径
-     */
-    public static boolean ZipContraMultiFile(String zippath, String outzippath) {
-        boolean result = false;
-
-        ZipInputStream zipInput = null;
-        ZipFile zipFile = null;
-        InputStream input = null;
-        OutputStream output = null;
-        try {
-            File file = new File(zippath);
-            File outFile = null;
-            zipFile = new ZipFile(file);
-            zipInput = new ZipInputStream(new FileInputStream(file));
-            ZipEntry entry = null;
-
-            byte buffer[] = new byte[ZIPUTIL_CACHE];
-
-            while ((entry = zipInput.getNextEntry()) != null) {
-                System.out.println("解压缩" + entry.getName() + "文件");
-                outFile = new File(outzippath + File.separator + entry.getName());
-
-                if (entry.isDirectory()) {
-                    if (!outFile.exists()) {
-                        outFile.mkdirs();
-                    }
-                } else {
-                    if (!outFile.getParentFile().exists()) {
-                        outFile.getParentFile().mkdir();
-                    }
-                    if (!outFile.exists()) {
-                        outFile.createNewFile();
+            zout = new ZipOutputStream(new CipherOutputStream(new FileOutputStream(zipFile), createCipher(1, password)));
+            while (!queue.isEmpty()) {
+                directory = queue.pop();
+                for (File kid : directory.listFiles()) {
+                    String name = base.relativize(kid.toURI()).getPath();
+                    if (kid.isDirectory()) {
+                        queue.push(kid);
+                        name = name + "/";
+                        zout.putNextEntry(new ZipEntry(name));
                     } else {
-                        outFile.delete();
-                        outFile.createNewFile();
-                    }
-                    input = zipFile.getInputStream(entry);
-                    output = new FileOutputStream(outFile);
-
-                    int temp = 0;
-                    while ((temp = input.read(buffer)) != -1) {
-                        output.write(buffer, 0, temp);
+                        zout.putNextEntry(new ZipEntry(name));
+                        copy(kid, zout);
+                        zout.closeEntry();
                     }
                 }
             }
-
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
-            try {
-                input.close();
-                output.close();
-                zipInput.close();
-                zipFile.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            if (null != zout)
+                zout.close();
+        }
+    }
+
+    /**
+     * ��ѹ
+     *
+     * @param zipFile   Ҫ��ѹ��zip��File
+     * @param directory ��ѹ�����ļ���File
+     * @param password  ��ѹ������
+     * @throws IOException
+     * @throws InvalidKeySpecException
+     * @throws InvalidAlgorithmParameterException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeyException
+     * @throws NoSuchPaddingException
+     */
+    public static void unzip(File zipFile, File directory, String password) throws IOException, InvalidKeySpecException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {
+        if (!directory.exists()) {
+            directory.mkdirs();
         }
 
-        return result;
+        ZipInputStream input = null;
+        try {
+            input = new ZipInputStream(new CipherInputStream(new FileInputStream(zipFile), createCipher(2, password)));
+            ZipEntry entry = null;
+            while ((entry = input.getNextEntry()) != null) {
+                File file = new File(directory, entry.getName());
+                if (entry.isDirectory()) {
+                    file.mkdirs();
+                } else {
+                    file.getParentFile().mkdirs();
+                    copy(input, file);
+                }
+                input.closeEntry();
+            }
+        } finally {
+            if (null != input)
+                input.close();
+        }
     }
+
+    private static Cipher createCipher(int mode, String password) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, InvalidKeyException {
+        String alg = "PBEWithMD5AndDES";
+        SecureRandom sr = new SecureRandom();
+
+        PBEKeySpec keySpec = new PBEKeySpec(password.toCharArray());
+        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(alg);
+        SecretKey secretKey = keyFactory.generateSecret(keySpec);
+
+        Cipher cipher = Cipher.getInstance(alg);
+        cipher.init(mode, secretKey, new PBEParameterSpec("saltsalt".getBytes(), 2000));
+
+        return cipher;
+    }
+
+    /**
+     * ѹ��
+     *
+     * @param directory Ҫѹ�����ļ���File
+     * @param zipFile   �����zip��File
+     * @throws IOException
+     */
+    public static void zip(File directory, File zipFile) throws IOException {
+        URI base = directory.toURI();
+        Deque<File> queue = new LinkedList<>();
+        queue.push(directory);
+        ZipOutputStream zout = null;
+        try {
+            zout = new ZipOutputStream(new FileOutputStream(zipFile));
+            while (!queue.isEmpty()) {
+                directory = queue.pop();
+                for (File kid : directory.listFiles()) {
+                    String name = base.relativize(kid.toURI()).getPath();
+                    if (kid.isDirectory()) {
+                        queue.push(kid);
+                        name = name + "/";
+                        zout.putNextEntry(new ZipEntry(name));
+                    } else {
+                        zout.putNextEntry(new ZipEntry(name));
+                        copy(kid, zout);
+                        zout.closeEntry();
+                    }
+                }
+            }
+        } finally {
+            if (null != zout)
+                zout.close();
+        }
+    }
+
+    /**
+     * ��ѹ
+     *
+     * @param zipFile   Ҫ��ѹ��zip��File
+     * @param directory ��ѹ�����ļ���File
+     * @throws IOException
+     */
+    public static void unzip(File zipFile, File directory) throws IOException {
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
+        ZipInputStream input = null;
+        try {
+            input = new ZipInputStream(new FileInputStream(zipFile));
+            ZipEntry entry = null;
+            while ((entry = input.getNextEntry()) != null) {
+                File file = new File(directory, entry.getName());
+                if (entry.isDirectory()) {
+                    file.mkdirs();
+                } else {
+                    file.getParentFile().mkdirs();
+                    copy(input, file);
+                }
+
+                input.closeEntry();
+            }
+        } finally {
+            if (null != input)
+                input.close();
+        }
+    }
+
+    private static void copy(InputStream in, OutputStream out) throws IOException {
+        byte[] buffer = new byte[1024];
+        while (true) {
+            int readCount = in.read(buffer);
+            if (readCount < 0) {
+                break;
+            }
+            out.write(buffer, 0, readCount);
+        }
+    }
+
+    private static void copy(File file, OutputStream out) throws IOException {
+        InputStream in = new FileInputStream(file);
+        try {
+            copy(in, out);
+            in.close();
+        } finally {
+            in.close();
+        }
+    }
+
+    private static void copy(InputStream in, File file) throws IOException {
+        OutputStream out = new FileOutputStream(file);
+        try {
+            copy(in, out);
+            out.close();
+        } finally {
+            out.close();
+        }
+    }
+
 }

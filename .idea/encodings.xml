@@ -98,7 +98,36 @@
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/multimedia/MultimediaAddTool4Activity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/multimedia/MultimediaAddTool4Fragment.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/singleton/BitmapCache.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/AppUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/singleton/CrashHandler.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/singleton/DoubleClickTool.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/singleton/HanziToPinyin.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/AppUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/AssetsUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/Base64Util.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/BitmapUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/ByteUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/ColorUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/ConvertUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/DateUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/DensityUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/DialogUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/EncryptUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/FileUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/GraphicUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/HexUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/LogUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/Md5Util.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/SdCardUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/SharePreferenceUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/StringUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/ToastUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/Version.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/tool/util/ZipUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/adapter/tree/BaseTreeAdapter.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/adapter/tree/TreeNode.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/adapter/tree/TreeNodeHelper.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/adapter/tree/TreeNodeId.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/quick/adapter/tree/TreeNodePid.java" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

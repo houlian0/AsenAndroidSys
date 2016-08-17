@@ -8,20 +8,19 @@ import android.graphics.Rect;
 import android.widget.TextView;
 
 /**
- * Created by HL_SEN on 2015/9/21.
- * æ–‡å­—è½¬å›¾ç‰‡ å·¥å…·ç±»
+ * ÎÄ×Ö×ªÍ¼Æ¬ ¹¤¾ßÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
 public class GraphicUtil {
 
     /**
-     * æ ¹æ®æ–‡å­—å†…å®¹å’Œæ–‡å­—å¤§å° è·å¾—æ–‡å­—çš„é«˜å®½ç­‰ä¿¡æ¯ï¼ˆé€‚ç”¨äºå•è¡Œæ–‡å­—ï¼‰
+     * ¸ù¾İÎÄ×ÖÄÚÈİºÍÎÄ×Ö´óĞ¡ »ñµÃÎÄ×ÖµÄ¸ß¿íµÈĞÅÏ¢£¨ÊÊÓÃÓÚµ¥ĞĞÎÄ×Ö£©
      *
-     * @param textSize æ–‡å­—å¤§å°
-     * @return æ–‡å­—é«˜å®½
+     * @param textSize ÎÄ×Ö´óĞ¡
+     * @return ÎÄ×Ö¸ß¿í
      */
     public static Paint.FontMetrics getFontMetrics(float textSize) {
         Paint paint = new Paint();
@@ -30,32 +29,32 @@ public class GraphicUtil {
     }
 
     /**
-     * æ ¹æ®TextViewè·å¾—æ–‡å­—çš„é«˜å®½ç­‰ä¿¡æ¯ï¼ˆé€‚ç”¨äºå•è¡Œæ–‡å­—ï¼‰
+     * ¸ù¾İTextView»ñµÃÎÄ×ÖµÄ¸ß¿íµÈĞÅÏ¢£¨ÊÊÓÃÓÚµ¥ĞĞÎÄ×Ö£©
      *
-     * @param textView TextView æ§ä»¶
-     * @return æ–‡å­—é«˜å®½
+     * @param textView TextView ¿Ø¼ş
+     * @return ÎÄ×Ö¸ß¿í
      */
     public static Paint.FontMetrics getFontMetrics(TextView textView) {
         return textView.getPaint().getFontMetrics();
     }
 
     /**
-     * æ ¹æ®ç”»ç¬” è·å¾—æ–‡å­—çš„é«˜å®½ç­‰ä¿¡æ¯ï¼ˆé€‚ç”¨äºå•è¡Œæ–‡å­—ï¼‰
+     * ¸ù¾İ»­±Ê »ñµÃÎÄ×ÖµÄ¸ß¿íµÈĞÅÏ¢£¨ÊÊÓÃÓÚµ¥ĞĞÎÄ×Ö£©
      *
-     * @param paint ç”»ç¬”
-     * @return æ–‡å­—é«˜å®½
+     * @param paint »­±Ê
+     * @return ÎÄ×Ö¸ß¿í
      */
     public static Paint.FontMetrics getFontMetrics(Paint paint) {
         return paint.getFontMetrics();
     }
 
     /**
-     * å°†æ–‡å­—è½¬æˆBitmapå›¾ç‰‡ï¼ˆé€‚ç”¨äºå•è¡Œæ–‡å­—ï¼‰
+     * ½«ÎÄ×Ö×ª³ÉBitmapÍ¼Æ¬£¨ÊÊÓÃÓÚµ¥ĞĞÎÄ×Ö£©
      *
-     * @param content   æ–‡å­—å†…å®¹
-     * @param textSize  æ–‡å­—å¤§å°
-     * @param textColor æ–‡å­—é¢œè‰²
-     * @return Bitmapå›¾ç‰‡
+     * @param content   ÎÄ×ÖÄÚÈİ
+     * @param textSize  ÎÄ×Ö´óĞ¡
+     * @param textColor ÎÄ×ÖÑÕÉ«
+     * @return BitmapÍ¼Æ¬
      */
     public static Bitmap getTextBitmap(String content, float textSize, int textColor) {
         Paint paint = new Paint();
@@ -75,12 +74,12 @@ public class GraphicUtil {
     }
 
     /**
-     * å°†æ–‡å­—è½¬æˆBitmapå›¾ç‰‡ï¼ˆæ”¯æŒå¤šè¡Œæ–‡å­—ï¼‰
+     * ½«ÎÄ×Ö×ª³ÉBitmapÍ¼Æ¬£¨Ö§³Ö¶àĞĞÎÄ×Ö£©
      *
-     * @param contents  æ–‡å­—å†…å®¹
-     * @param textSize  æ–‡å­—å¤§å°
-     * @param textColor æ–‡å­—é¢œè‰²
-     * @return Bitmapå›¾ç‰‡
+     * @param contents  ÎÄ×ÖÄÚÈİ
+     * @param textSize  ÎÄ×Ö´óĞ¡
+     * @param textColor ÎÄ×ÖÑÕÉ«
+     * @return BitmapÍ¼Æ¬
      */
     public static Bitmap getTextBitmap(String[] contents, float textSize, int textColor) {
         if (contents == null || contents.length == 0)
@@ -92,8 +91,8 @@ public class GraphicUtil {
         paint.setAntiAlias(true);
         Paint.FontMetrics metrics = getFontMetrics(paint);
 
-        int maxWidth = 0; // å®½åº¦
-        int heigh = 0; // é«˜åº¦
+        int maxWidth = 0; // ¿í¶È
+        int heigh = 0; // ¸ß¶È
         for (String content : contents) {
             if (content == null)
                 content = "";
@@ -120,11 +119,11 @@ public class GraphicUtil {
 
 
 //    /**
-//     * è®¡ç®—å•è¡Œæ–‡å­—é«˜å®½
+//     * ¼ÆËãµ¥ĞĞÎÄ×Ö¸ß¿í
 //     *
-//     * @param text å•è¡Œæ–‡å­—
-//     * @param size æ–‡å­—å¤§å°
-//     * @return å•è¡Œé«˜åº¦ï¼Œæ•´ä½“å®½åº¦
+//     * @param text µ¥ĞĞÎÄ×Ö
+//     * @param size ÎÄ×Ö´óĞ¡
+//     * @return µ¥ĞĞ¸ß¶È£¬ÕûÌå¿í¶È
 //     */
 //    private int[] measureText(String text, float size) {
 //        if (text == null) text = "";
@@ -141,12 +140,12 @@ public class GraphicUtil {
 //    }
 //
 //    /**
-//     * æè¿°ï¼šè·å–å­—ç¬¦çš„æ‰€åœ¨ä½ç½®ï¼ˆæŒ‰åƒç´ è·å–æœ€å¤§èƒ½å®¹çº³çš„ï¼‰.
+//     * ÃèÊö£º»ñÈ¡×Ö·ûµÄËùÔÚÎ»ÖÃ£¨°´ÏñËØ»ñÈ¡×î´óÄÜÈİÄÉµÄ£©.
 //     *
-//     * @param str    æŒ‡å®šçš„å­—ç¬¦ä¸²
-//     * @param maxPix è¦å–åˆ°çš„ä½ç½®ï¼ˆåƒç´ ï¼‰
+//     * @param str    Ö¸¶¨µÄ×Ö·û´®
+//     * @param maxPix ÒªÈ¡µ½µÄÎ»ÖÃ£¨ÏñËØ£©
 //     * @param paint  the paint
-//     * @return å­—ç¬¦çš„æ‰€åœ¨ä½ç½®
+//     * @return ×Ö·ûµÄËùÔÚÎ»ÖÃ
 //     */
 //    public static int subStringLength(String str, int maxPix, Paint paint) {
 //        if (TextUtils.isEmpty(str)) {
@@ -154,7 +153,7 @@ public class GraphicUtil {
 //        }
 //        int currentIndex = 0;
 //        for (int i = 0; i < str.length(); i++) {
-//            //è·å–ä¸€ä¸ªå­—ç¬¦
+//            //»ñÈ¡Ò»¸ö×Ö·û
 //            String temp = str.substring(0, i + 1);
 //            float valueLength = paint.measureText(temp);
 //            if (valueLength > maxPix) {
@@ -165,7 +164,7 @@ public class GraphicUtil {
 //                break;
 //            }
 //        }
-//        //çŸ­äºæœ€å¤§åƒç´ è¿”å›æœ€åä¸€ä¸ªå­—ç¬¦ä½ç½®
+//        //¶ÌÓÚ×î´óÏñËØ·µ»Ø×îºóÒ»¸ö×Ö·ûÎ»ÖÃ
 //        if (currentIndex == 0) {
 //            currentIndex = str.length() - 1;
 //        }
@@ -173,7 +172,7 @@ public class GraphicUtil {
 //    }
 //
 //    /**
-//     * æè¿°ï¼šè·å–æ–‡å­—çš„åƒç´ å®½.
+//     * ÃèÊö£º»ñÈ¡ÎÄ×ÖµÄÏñËØ¿í.
 //     *
 //     * @param str   the str
 //     * @param paint the paint
@@ -184,7 +183,7 @@ public class GraphicUtil {
 //    }
 //
 //    /**
-//     * è·å¾—æ–‡å­—çš„å®½åº¦
+//     * »ñµÃÎÄ×ÖµÄ¿í¶È
 //     *
 //     * @param str   the str
 //     * @param paint the paint
@@ -195,7 +194,7 @@ public class GraphicUtil {
 //    }
 //
 //    /**
-//     * è·å–æ–‡å­—çš„é«˜åº¦
+//     * »ñÈ¡ÎÄ×ÖµÄ¸ß¶È
 //     *
 //     * @param paint the Paint
 //     * @return the string height
@@ -206,7 +205,7 @@ public class GraphicUtil {
 //    }
 //
 //    /**
-//     * è§£ææˆè¡Œ.
+//     * ½âÎö³ÉĞĞ.
 //     *
 //     * @param text    the text
 //     * @param maxWPix the max w pix
@@ -221,14 +220,14 @@ public class GraphicUtil {
 //            texts = new String[1];
 //            texts[0] = text;
 //        }
-//        //å…±å¤šå°‘è¡Œ
+//        //¹²¶àÉÙĞĞ
 //        List<String> mStrList = new ArrayList<String>();
 //
 //        for (int i = 0; i < texts.length; i++) {
 //            String textLine = texts[i];
-//            //è®¡ç®—è¿™ä¸ªæ–‡æœ¬æ˜¾ç¤ºä¸ºå‡ è¡Œ
+//            //¼ÆËãÕâ¸öÎÄ±¾ÏÔÊ¾Îª¼¸ĞĞ
 //            while (true) {
-//                //å¯å®¹çº³çš„æœ€åä¸€ä¸ªå­—çš„ä½ç½®
+//                //¿ÉÈİÄÉµÄ×îºóÒ»¸ö×ÖµÄÎ»ÖÃ
 //                int endIndex = subStringLength(textLine, maxWPix, paint);
 //                if (endIndex <= 0) {
 //                    mStrList.add(textLine);
@@ -240,9 +239,9 @@ public class GraphicUtil {
 //                    }
 //
 //                }
-//                //è·å–å‰©ä¸‹çš„
+//                //»ñÈ¡Ê£ÏÂµÄ
 //                if (textLine.length() > endIndex + 1) {
-//                    //è¿˜æœ‰å‰©ä¸‹çš„
+//                    //»¹ÓĞÊ£ÏÂµÄ
 //                    textLine = textLine.substring(endIndex + 1);
 //                } else {
 //                    break;
@@ -254,7 +253,7 @@ public class GraphicUtil {
 //    }
 //
 //    /**
-//     * æè¿°ï¼šè·å–è¿™æ®µæ–‡æœ¬å¤šå°‘è¡Œ.
+//     * ÃèÊö£º»ñÈ¡Õâ¶ÎÎÄ±¾¶àÉÙĞĞ.
 //     *
 //     * @param text
 //     * @param maxWPix
@@ -269,14 +268,14 @@ public class GraphicUtil {
 //            texts = new String[1];
 //            texts[0] = text;
 //        }
-//        //å…±å¤šå°‘è¡Œ
+//        //¹²¶àÉÙĞĞ
 //        List<String> mStrList = new ArrayList<String>();
 //
 //        for (int i = 0; i < texts.length; i++) {
 //            String textLine = texts[i];
-//            //è®¡ç®—è¿™ä¸ªæ–‡æœ¬æ˜¾ç¤ºä¸ºå‡ è¡Œ
+//            //¼ÆËãÕâ¸öÎÄ±¾ÏÔÊ¾Îª¼¸ĞĞ
 //            while (true) {
-//                //å¯å®¹çº³çš„æœ€åä¸€ä¸ªå­—çš„ä½ç½®
+//                //¿ÉÈİÄÉµÄ×îºóÒ»¸ö×ÖµÄÎ»ÖÃ
 //                int endIndex = subStringLength(textLine, maxWPix, paint);
 //                if (endIndex <= 0) {
 //                    mStrList.add(textLine);
@@ -288,9 +287,9 @@ public class GraphicUtil {
 //                    }
 //
 //                }
-//                //è·å–å‰©ä¸‹çš„
+//                //»ñÈ¡Ê£ÏÂµÄ
 //                if (textLine.length() > endIndex + 1) {
-//                    //è¿˜æœ‰å‰©ä¸‹çš„
+//                    //»¹ÓĞÊ£ÏÂµÄ
 //                    textLine = textLine.substring(endIndex + 1);
 //                } else {
 //                    break;
@@ -302,7 +301,7 @@ public class GraphicUtil {
 //    }
 //
 //    /**
-//     * æè¿°ï¼šç»˜åˆ¶æ–‡æœ¬ï¼Œæ”¯æŒæ¢è¡Œ.
+//     * ÃèÊö£º»æÖÆÎÄ±¾£¬Ö§³Ö»»ĞĞ.
 //     *
 //     * @param canvas  the canvas
 //     * @param text    the text
@@ -316,14 +315,14 @@ public class GraphicUtil {
 //        if (TextUtils.isEmpty(text)) {
 //            return 1;
 //        }
-//        //éœ€è¦æ ¹æ®æ–‡å­—é•¿åº¦æ§åˆ¶æ¢è¡Œ
-//        //æµ‹é‡æ–‡å­—çš„é•¿åº¦
+//        //ĞèÒª¸ù¾İÎÄ×Ö³¤¶È¿ØÖÆ»»ĞĞ
+//        //²âÁ¿ÎÄ×ÖµÄ³¤¶È
 //        List<String> mStrList = getDrawRowStr(text, maxWPix, paint);
 //
 //        int hSize = (int) getDesiredHeight(paint);
 //
 //        for (int i = 0; i < mStrList.size(); i++) {
-//            //è®¡ç®—åæ ‡
+//            //¼ÆËã×ø±ê
 //            int x = left;
 //            int y = top + hSize / 2 + hSize * i;
 //            String textLine = mStrList.get(i);

@@ -1,8 +1,4 @@
-package com.asen.android.lib.base.ui.quick.adapter.tree.adapter;
-
-import com.asen.android.lib.base.ui.quick.adapter.tree.TreeNode;
-import com.asen.android.lib.base.ui.quick.adapter.tree.TreeNodeId;
-import com.asen.android.lib.base.ui.quick.adapter.tree.TreeNodePid;
+package com.asen.android.lib.base.ui.quick.adapter.tree;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -10,14 +6,13 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * Simple to Introduction
- * å¤šçº§æ ‘èŠ‚ç‚¹å¸®åŠ©ç±»ï¼ˆä¸€æ¬¡æ€§è·å–æ‰€æœ‰çš„èŠ‚ç‚¹ä¿¡æ¯ï¼Œæ‰€ä»¥ï¼‰
+ * ¶à¼¶Ê÷½Úµã°ïÖúÀà£¨Ò»´ÎĞÔ»ñÈ¡ËùÓĞµÄ½ÚµãĞÅÏ¢£¬ËùÒÔ£©
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:04
  */
-public class TreeNodeHelper<T> {
+class TreeNodeHelper<T> {
 
     private List<T> datas;
 
@@ -26,21 +21,21 @@ public class TreeNodeHelper<T> {
     private int defaultLevel = 0;
 
     /**
-     * å¤šçº§æ ‘å¸®åŠ©ç±»
+     * ¶à¼¶Ê÷°ïÖúÀà
      *
-     * @param datas        åŸå§‹æ•°æ®
-     * @param defaultLevel é»˜è®¤å±•å¼€çš„å±‚æ•°ï¼Œå°äºç­‰äºè¯¥æ•°å­—å±•å¼€
+     * @param datas        Ô­Ê¼Êı¾İ
+     * @param defaultLevel Ä¬ÈÏÕ¹¿ªµÄ²ãÊı£¬Ğ¡ÓÚµÈÓÚ¸ÃÊı×ÖÕ¹¿ª
      */
-    public TreeNodeHelper(List<T> datas, int defaultLevel) {
+    TreeNodeHelper(List<T> datas, int defaultLevel) {
         this.datas = datas;
         this.defaultLevel = defaultLevel < 0 ? 0 : defaultLevel;
-        treeNodeList = reassemblingNodeList(); // é‡ç»„èŠ‚ç‚¹é›†åˆ
+        treeNodeList = reassemblingNodeList(); // ÖØ×é½Úµã¼¯ºÏ
     }
 
     /**
-     * è·å¾—æ‰€æœ‰å¯è§çš„nodeé›†åˆ
+     * »ñµÃËùÓĞ¿É¼ûµÄnode¼¯ºÏ
      *
-     * @return è¿”å›æ‰€æœ‰å±•çœ‹çš„å¾…æ˜¾ç¤ºçš„é›†åˆ
+     * @return ·µ»ØËùÓĞÕ¹¿´µÄ´ıÏÔÊ¾µÄ¼¯ºÏ
      */
     public List<TreeNode<T>> getExpandedNodeList() {
         List<TreeNode<T>> nodeList = new ArrayList<>();
@@ -52,7 +47,7 @@ public class TreeNodeHelper<T> {
         return nodeList;
     }
 
-    // å‘æ€»é›†åˆä¸Šå¢åŠ æ•°æ®
+    // Ïò×Ü¼¯ºÏÉÏÔö¼ÓÊı¾İ
     private void add2ExpandedNodeList(List<TreeNode<T>> nodeList, TreeNode<T> node) {
         nodeList.add(node);
         if (node.isExpanded()) {
@@ -64,9 +59,9 @@ public class TreeNodeHelper<T> {
     }
 
     /**
-     * é‡æ–°è£…é…èŠ‚ç‚¹é›†åˆ
+     * ÖØĞÂ×°Åä½Úµã¼¯ºÏ
      *
-     * @return é‡æ–°è£…é…åçš„ç»“æœ
+     * @return ÖØĞÂ×°ÅäºóµÄ½á¹û
      */
     private List<TreeNode<T>> reassemblingNodeList() {
         List<TreeNode<T>> nodeList = datas2NodeList();
@@ -76,9 +71,9 @@ public class TreeNodeHelper<T> {
     }
 
     /**
-     * ç»™æ‰€æœ‰çš„èŠ‚ç‚¹è®¾ç½®å±‚çº§ä¿¡æ¯
+     * ¸øËùÓĞµÄ½ÚµãÉèÖÃ²ã¼¶ĞÅÏ¢
      *
-     * @param nodeList æ ¹èŠ‚ç‚¹ä¿¡æ¯
+     * @param nodeList ¸ù½ÚµãĞÅÏ¢
      */
     private void initLevel(List<TreeNode<T>> nodeList) {
         for (TreeNode<T> node : nodeList) {
@@ -98,9 +93,9 @@ public class TreeNodeHelper<T> {
     }
 
     /**
-     * å¤„ç†å‡ºæ ¹èŠ‚ç‚¹
+     * ´¦Àí³ö¸ù½Úµã
      *
-     * @param nodeList æ‰€æœ‰çš„èŠ‚ç‚¹ä¿¡æ¯
+     * @param nodeList ËùÓĞµÄ½ÚµãĞÅÏ¢
      */
     private void initRootNodeList(List<TreeNode<T>> nodeList) {
         ListIterator<TreeNode<T>> iterator = nodeList.listIterator();
@@ -113,9 +108,9 @@ public class TreeNodeHelper<T> {
     }
 
     /**
-     * å°†åŸå§‹æ•°æ®è½¬æˆèŠ‚ç‚¹å‹æ•°æ®
+     * ½«Ô­Ê¼Êı¾İ×ª³É½ÚµãĞÍÊı¾İ
      *
-     * @return èŠ‚ç‚¹å‹æ•°æ®
+     * @return ½ÚµãĞÍÊı¾İ
      */
     private List<TreeNode<T>> datas2NodeList() {
         List<TreeNode<T>> nodeList = new ArrayList<>();
@@ -150,12 +145,12 @@ public class TreeNodeHelper<T> {
         return nodeList;
     }
 
-    // æ¯”è¾ƒä¸¤ä¸ªObjectç±»
+    // ±È½ÏÁ½¸öObjectÀà
     private boolean equals(Object obj1, Object obj2) {
         return obj1 == null ? null == obj2 : obj1.equals(obj2);
     }
 
-    // è·å¾—idå’Œpid
+    // »ñµÃidºÍpid
     private Object[] getObjects(TreeNode<T> node) throws IllegalAccessException {
         T object = node.getObject();
         Field[] fields = object.getClass().getDeclaredFields();

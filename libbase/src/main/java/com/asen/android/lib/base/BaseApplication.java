@@ -22,7 +22,7 @@ public abstract class BaseApplication extends Application {
 
     protected Context mContext;
 
-    private List<Activity> list = new ArrayList<Activity>();
+    private List<Activity> list = new ArrayList<>();
 
     @Override
     public void onCreate() {
@@ -31,12 +31,10 @@ public abstract class BaseApplication extends Application {
         mContext = getApplicationContext();
         CrashHandler crashHandler = CrashHandler.getInstance();
         crashHandler.init(mContext);
-        crashHandler.setOcel(new CrashHandler.OnCaughtExceptionListener() {
-
-            public void onCaughtException() {
-                abnormalExit();
+        crashHandler.setOnCaughtExceptionListener(new CrashHandler.OnCaughtExceptionListener() {
+            public boolean onCaughtException() {
+                return abnormalExit();
             }
-
         });
     }
 
@@ -87,8 +85,12 @@ public abstract class BaseApplication extends Application {
 
     /**
      * 程序异常退出时执行
+     *
+     * @return false，则以系统默认的方式处理异常；true，则不执行系统默认处理异常的方法
      */
-    protected abstract void abnormalExit();
+    protected boolean abnormalExit() {
+        return false;
+    }
 
 }
 

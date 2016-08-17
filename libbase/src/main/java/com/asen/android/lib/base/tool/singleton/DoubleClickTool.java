@@ -7,24 +7,30 @@ import com.asen.android.lib.base.tool.util.ToastUtil;
 import java.util.Date;
 
 /**
- * Created by HL_SEN on 2015/9/22.
- * ä¸¤æ¬¡è¿”å›žé”®é€€å‡ºåº”ç”¨çš„åˆ¤æ–­ç±»ï¼Œè°ƒç”¨isDoubleClick()æ–¹æ³•å³å¯
+ * Á½´Î·µ»Ø¼üÍË³öÓ¦ÓÃµÄÅÐ¶ÏÀà£¬µ÷ÓÃisDoubleClick()·½·¨¼´¿É
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:19
  */
 public class DoubleClickTool {
+
     private static volatile DoubleClickTool tt;
+
     private Context _context;
+
     private long preTime;
-    private long totalTime = 2000;// åŒç‚¹å‡»ï¼Œé—´éš”ä¸¤ç§’
+
+    private long totalTime = 2000;// Ë«µã»÷£¬¼ä¸ôÁ½Ãë
 
     private DoubleClickTool(Context context) {
         _context = context;
         preTime = 0;
     }
 
+    /**
+     * »ñÈ¡DoubleClickToolÊµÀý ,µ¥ÀýÄ£Ê½
+     */
     public static DoubleClickTool getInstance(Context context) {
         if (null == tt) {
             synchronized (DoubleClickTool.class) {
@@ -37,31 +43,35 @@ public class DoubleClickTool {
     }
 
     /**
-     * @param message è¦å±•ç¤ºçš„ä¿¡æ¯å†…å®¹
+     * µ¯³öToastÏÔÊ¾ÐÅÏ¢
+     *
+     * @param message ÒªÕ¹Ê¾µÄÐÅÏ¢ÄÚÈÝ
      */
-    public void showMessage(String message) {
+    void showMessage(String message) {
         ToastUtil.showToast(_context, message);
     }
 
     /**
-     * "å†æŒ‰ä¸€æ¬¡è¿”å›žé”®å…³é—­ç¨‹åº"
+     * ÅÐ¶ÏÊÇ·ñÊÇÁ¬ÐøµÄµÚ¶þ´Îµã»÷£¬Èç¹û²»ÊÇµÄ»°£¬µ¯³ö"ÔÙ°´Ò»´Î·µ»Ø¼ü¹Ø±Õ³ÌÐò"µÄ¶Ô»°¿ò
      *
-     * @return æ˜¯å¦å·²ç»æ˜¯ç¬¬äºŒæ¬¡ç‚¹å‡»
+     * @return ÊÇ·ñÒÑ¾­ÊÇµÚ¶þ´Îµã»÷¡£ÊÇµÄ»°£¬·µ»Øtrue£¬·ñÔò·µ»Øfalse¡£
      */
     public boolean isDoubleClick() {
         long nowTime = new Date().getTime();
         if (nowTime < preTime + totalTime) {
             return true;
         } else {
-            showMessage("å†æŒ‰ä¸€æ¬¡è¿”å›žé”®å…³é—­ç¨‹åº");
+            showMessage("ÔÙ°´Ò»´Î·µ»Ø¼ü¹Ø±Õ³ÌÐò");
             preTime = nowTime;
             return false;
         }
     }
 
     /**
-     * @param message ä¸æ˜¯ç¬¬äºŒæ¬¡ç‚¹å‡»çš„è¯ï¼Œéœ€è¦ä¼ å…¥çš„æç¤ºä¿¡æ¯
-     * @return æ˜¯å¦å·²ç»æ˜¯ç¬¬äºŒæ¬¡ç‚¹å‡»
+     * ÅÐ¶ÏÊÇ·ñÊÇÁ¬ÐøµÄµÚ¶þ´Îµã»÷£¬Èç¹û²»ÊÇµÄ»°£¬µ¯³ö"ÔÙ°´Ò»´Î·µ»Ø¼ü¹Ø±Õ³ÌÐò"µÄ¶Ô»°¿ò
+     *
+     * @param message ´«Èë²»ÊÇµÚ¶þ´Îµã»÷Ê±µÄÌáÊ¾ÐÅÏ¢
+     * @return ÊÇ·ñÒÑ¾­ÊÇµÚ¶þ´Îµã»÷¡£ÊÇµÄ»°£¬·µ»Øtrue£¬·ñÔò·µ»Øfalse¡£
      */
     public boolean isDoubleClick(String message) {
         long nowTime = new Date().getTime();
@@ -73,4 +83,5 @@ public class DoubleClickTool {
             return false;
         }
     }
+    
 }

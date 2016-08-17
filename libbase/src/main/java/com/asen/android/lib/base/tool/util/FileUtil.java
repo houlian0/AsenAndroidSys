@@ -17,70 +17,75 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Simple to Introduction
+ * ÎÄ¼ş²Ù×÷¹¤¾ßÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
 public class FileUtil {
 
     /**
-     * åˆ›å»ºæ–‡ä»¶å¤¹
+     * ´´½¨ÎÄ¼ş¼Ğ
      *
-     * @param folderFile æ–‡ä»¶File
-     * @return æ˜¯å¦æˆåŠŸ
+     * @param folderFile ÎÄ¼şFile
+     * @return ÊÇ·ñ³É¹¦
      */
     public static boolean createFolder(File folderFile) {
         return folderFile.exists() || folderFile.mkdirs();
     }
 
     /**
-     * åˆ›å»ºæ–‡ä»¶
+     * ´´½¨ÎÄ¼ş
      *
-     * @param file æ–‡ä»¶File
-     * @return æ˜¯å¦æˆåŠŸ
+     * @param file ÎÄ¼şFile
+     * @return ÊÇ·ñ³É¹¦
      */
     public static boolean createFile(File file) throws IOException {
         return createFolder(file.getParentFile()) && (file.exists() || file.createNewFile());
     }
 
     /**
-     * åˆ é™¤æ–‡ä»¶ï¼ˆä¸èƒ½åˆ é™¤æ–‡ä»¶å¤¹ï¼‰
+     * É¾³ıÎÄ¼ş£¨²»ÄÜÉ¾³ıÎÄ¼ş¼Ğ£©
      *
-     * @param file æ–‡ä»¶File
-     * @return æ˜¯å¦æˆåŠŸ
+     * @param file ÎÄ¼şFile
+     * @return ÊÇ·ñ³É¹¦
      */
     public static boolean deleteFile(File file) {
         return !file.exists() || file.delete();
     }
 
     /**
-     * åˆ é™¤æ–‡ä»¶å¤¹
+     * É¾³ıÎÄ¼ş¼Ğ
      *
-     * @param folderFile æ–‡ä»¶å¤¹File
-     * @return æ˜¯å¦æˆåŠŸ
+     * @param folderFile ÎÄ¼ş¼ĞFile
+     * @return ÊÇ·ñ³É¹¦
      */
     public static boolean deleteFolder(File folderFile) {
         if (folderFile.exists()) {
-            File[] files = folderFile.listFiles();
-            if (files != null)
-                for (File f : files) {
-                    if (!deleteFolder(f)) {
-                        return false;
+            if (folderFile.isFile()) {
+                return folderFile.delete();
+            } else {
+                File[] files = folderFile.listFiles();
+                if (files != null) {
+                    for (File f : files) {
+                        if (!deleteFolder(f)) {
+                            return false;
+                        }
                     }
                 }
-            return false;
+                return folderFile.delete();
+            }
         } else {
             return true;
         }
     }
 
     /**
-     * åˆ é™¤æ–‡ä»¶ æˆ–è€… æ–‡ä»¶å¤¹
+     * É¾³ıÎÄ¼ş »òÕß ÎÄ¼ş¼Ğ
      *
-     * @param file æ–‡ä»¶File
-     * @return æ˜¯å¦æˆåŠŸ
+     * @param file ÎÄ¼şFile
+     * @return ÊÇ·ñ³É¹¦
      */
     public static boolean delete(File file) {
         return file.isFile() ? deleteFile(file) : deleteFolder(file);
@@ -88,15 +93,15 @@ public class FileUtil {
 
 
     /**
-     * å¤åˆ¶å•ä¸ªæ–‡ä»¶
+     * ¸´ÖÆµ¥¸öÎÄ¼ş
      *
-     * @param oldFile æ—§æ–‡ä»¶
-     * @param newFile æ–°æ–‡ä»¶
+     * @param oldFile ¾ÉÎÄ¼ş
+     * @param newFile ĞÂÎÄ¼ş
      * @throws IOException
      */
     public static void copyFile(File oldFile, File newFile) throws IOException {
         if (oldFile.exists()) {
-            InputStream is = null; // è¯»å…¥åŸæ–‡ä»¶
+            InputStream is = null; // ¶ÁÈëÔ­ÎÄ¼ş
             OutputStream fs = null;
             try {
                 is = new FileInputStream(oldFile);
@@ -118,16 +123,16 @@ public class FileUtil {
     }
 
     /**
-     * å¤åˆ¶æ•´ä¸ªæ–‡ä»¶å¤¹å†…å®¹
+     * ¸´ÖÆÕû¸öÎÄ¼ş¼ĞÄÚÈİ
      *
-     * @param oldFolder æ—§æ–‡ä»¶å¤¹
-     * @param newFolder æ–°æ–‡ä»¶å¤¹
+     * @param oldFolder ¾ÉÎÄ¼ş¼Ğ
+     * @param newFolder ĞÂÎÄ¼ş¼Ğ
      * @throws IOException
      */
     public static void copyFolder(File oldFolder, File newFolder) throws IOException {
         if (oldFolder.exists()) {
             boolean isNewFileCreated = createFolder(newFolder);
-            if (isNewFileCreated) { // æ–°æ–‡ä»¶å¤¹åˆ›å»ºæˆåŠŸ
+            if (isNewFileCreated) { // ĞÂÎÄ¼ş¼Ğ´´½¨³É¹¦
                 if (oldFolder.isFile()) {
                     throw new IOException("Old File [" + oldFolder.getPath() + "] is file!!!");
                 } else {
@@ -153,9 +158,9 @@ public class FileUtil {
     }
 
     /**
-     * å¤åˆ¶æ•´ä¸ªæ–‡ä»¶å¤¹ æˆ– å•ä¸ªæ–‡ä»¶
+     * ¸´ÖÆÕû¸öÎÄ¼ş¼Ğ »ò µ¥¸öÎÄ¼ş
      *
-     * @param oldFile æ—§æ–‡ä»¶
+     * @param oldFile ¾ÉÎÄ¼ş
      * @param newFile
      * @throws IOException
      */
@@ -168,10 +173,10 @@ public class FileUtil {
     }
 
     /**
-     * ç§»åŠ¨å•ä¸ªæ–‡ä»¶
+     * ÒÆ¶¯µ¥¸öÎÄ¼ş
      *
-     * @param oldFile æ—§æ–‡ä»¶
-     * @param newFile æ–°æ–‡ä»¶
+     * @param oldFile ¾ÉÎÄ¼ş
+     * @param newFile ĞÂÎÄ¼ş
      * @throws IOException
      */
     public static void moveFile(File oldFile, File newFile) throws IOException {
@@ -180,7 +185,7 @@ public class FileUtil {
     }
 
     /**
-     * ç§»åŠ¨æ•´ä¸ªæ–‡ä»¶å¤¹
+     * ÒÆ¶¯Õû¸öÎÄ¼ş¼Ğ
      *
      * @param oldFolder
      * @param newFolder
@@ -192,10 +197,10 @@ public class FileUtil {
     }
 
     /**
-     * ç§»åŠ¨å•ä¸ªæ–‡ä»¶ æˆ–è€… æ•´ä¸ªæ–‡ä»¶å¤¹
+     * ÒÆ¶¯µ¥¸öÎÄ¼ş »òÕß Õû¸öÎÄ¼ş¼Ğ
      *
-     * @param oldFile æ—§æ–‡ä»¶
-     * @param newFile æ–°æ–‡ä»¶
+     * @param oldFile ¾ÉÎÄ¼ş
+     * @param newFile ĞÂÎÄ¼ş
      * @throws IOException
      */
     public static void move(File oldFile, File newFile) throws IOException {
@@ -207,22 +212,22 @@ public class FileUtil {
     }
 
     /**
-     * é‡å‘½åæ–‡ä»¶
+     * ÖØÃüÃûÎÄ¼ş
      *
-     * @param oldFile æ—§æ–‡ä»¶
-     * @param newFile æ–°æ–‡ä»¶
-     * @return æ˜¯å¦æˆåŠŸ
+     * @param oldFile ¾ÉÎÄ¼ş
+     * @param newFile ĞÂÎÄ¼ş
+     * @return ÊÇ·ñ³É¹¦
      */
     public static boolean rename(File oldFile, File newFile) {
         return oldFile.renameTo(newFile);
     }
 
     /**
-     * å†™å…¥å°å‹æ•°æ®çš„TXTæ–‡ä»¶
+     * Ğ´ÈëĞ¡ĞÍÊı¾İµÄTXTÎÄ¼ş
      *
-     * @param file     æ–‡ä»¶File
-     * @param content  å†…å®¹
-     * @param isAppend æ˜¯å¦é™„åŠ åœ¨åé¢ç»§ç»­å†™å…¥
+     * @param file     ÎÄ¼şFile
+     * @param content  ÄÚÈİ
+     * @param isAppend ÊÇ·ñ¸½¼ÓÔÚºóÃæ¼ÌĞøĞ´Èë
      * @throws IOException
      */
     public static void writeTxtFile(File file, String content, boolean isAppend) throws IOException {
@@ -242,9 +247,9 @@ public class FileUtil {
     }
 
     /**
-     * è¯»å–å°å‹æ•°æ®çš„TXTæ–‡ä»¶
+     * ¶ÁÈ¡Ğ¡ĞÍÊı¾İµÄTXTÎÄ¼ş
      *
-     * @param file æ–‡ä»¶File
+     * @param file ÎÄ¼şFile
      * @throws IOException
      */
     public static String readTxtFile(File file) throws IOException {
@@ -269,11 +274,11 @@ public class FileUtil {
     }
 
     /**
-     * å†™å…¥å­—èŠ‚ï¼Œé€‚ç”¨äºå°å‹æ–‡ä»¶
+     * Ğ´Èë×Ö½Ú£¬ÊÊÓÃÓÚĞ¡ĞÍÎÄ¼ş
      *
-     * @param file     æ–‡ä»¶File
-     * @param bytes    å­—èŠ‚
-     * @param isAppend æ˜¯å¦é™„åŠ åœ¨åé¢ç»§ç»­å†™å…¥
+     * @param file     ÎÄ¼şFile
+     * @param bytes    ×Ö½Ú
+     * @param isAppend ÊÇ·ñ¸½¼ÓÔÚºóÃæ¼ÌĞøĞ´Èë
      * @throws IOException
      */
     public static void writeBytesFile(File file, byte[] bytes, boolean isAppend) throws IOException {
@@ -292,9 +297,9 @@ public class FileUtil {
     }
 
     /**
-     * è¯»å–å°å‹æ•°æ®çš„å­—èŠ‚æ–‡ä»¶
+     * ¶ÁÈ¡Ğ¡ĞÍÊı¾İµÄ×Ö½ÚÎÄ¼ş
      *
-     * @param file æ–‡ä»¶File
+     * @param file ÎÄ¼şFile
      * @throws IOException
      */
     public static byte[] readBytesFile(File file) throws IOException {
@@ -318,10 +323,10 @@ public class FileUtil {
     }
 
     /**
-     * è®¡ç®—æ–‡ä»¶çš„ MD5 å€¼
+     * ¼ÆËãÎÄ¼şµÄ MD5 Öµ
      *
-     * @param file æ–‡ä»¶File
-     * @return MD5å€¼
+     * @param file ÎÄ¼şFile
+     * @return MD5Öµ
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

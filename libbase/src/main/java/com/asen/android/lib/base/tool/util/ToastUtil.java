@@ -8,9 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * Created by HL_SEN on 2015/9/22.
+ * Toastµ¯³öĞÅÏ¢µÄ¹¤¾ßÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
@@ -19,8 +19,10 @@ public class ToastUtil {
     private static Toast toast = null;
 
     /**
-     * Toastæ˜¾ç¤º Androidé»˜è®¤çš„å±•ç¤ºæ–¹å¼
-     * @param msg
+     * ToastÏÔÊ¾ AndroidÄ¬ÈÏµÄÕ¹Ê¾·½Ê½
+     *
+     * @param context AndroidÉÏÏÂÎÄ
+     * @param msg     ÒªÏÔÊ¾µÄÎÄ×ÖĞÅÏ¢
      */
     public static void showSimpleToast(Context context, String msg) {
         if (toast != null)
@@ -30,10 +32,10 @@ public class ToastUtil {
     }
 
     /**
-     * Toastæ˜¾ç¤º ä¸‹æ–¹æ˜¾ç¤º
+     * ToastÏÔÊ¾ ÏÂ·½ÏÔÊ¾
      *
-     * @param context  Androidä¸Šä¸‹æ–‡
-     * @param msg è¦å±•ç¤ºçš„å†…å®¹
+     * @param context AndroidÉÏÏÂÎÄ
+     * @param msg     ÒªÏÔÊ¾µÄÎÄ×ÖĞÅÏ¢
      */
     public static void showToast(Context context, String msg) {
         TextView textView = new TextView(context);
@@ -52,10 +54,10 @@ public class ToastUtil {
     }
 
     /**
-     * Toastæ˜¾ç¤º å³è¾¹æ˜¾ç¤º
+     * ToastÏÔÊ¾ ÓÒ±ßÏÔÊ¾
      *
-     * @param context  Androidä¸Šä¸‹æ–‡
-     * @param msg è¦å±•ç¤ºçš„å†…å®¹
+     * @param context AndroidÉÏÏÂÎÄ
+     * @param msg     ÒªÏÔÊ¾µÄÎÄ×ÖĞÅÏ¢
      */
     public static void showToastRight(Context context, String msg) {
         TextView textView = new TextView(context);
@@ -75,10 +77,10 @@ public class ToastUtil {
     }
 
     /**
-     * Toastæ˜¾ç¤º ä¸‹æ–¹æ˜¾ç¤ºï¼Œå¿…å®šåœ¨UIçº¿ç¨‹ä¸­æ‰§è¡Œ
+     * ToastÏÔÊ¾ ÏÂ·½ÏÔÊ¾£¬±Ø¶¨ÔÚUIÏß³ÌÖĞÖ´ĞĞ
      *
-     * @param activity Activity
-     * @param msg è¦å±•ç¤ºçš„å†…å®¹
+     * @param context AndroidÉÏÏÂÎÄ
+     * @param msg     ÒªÏÔÊ¾µÄÎÄ×ÖĞÅÏ¢
      */
     public static void showToast(final Activity activity, final String msg) {
         activity.runOnUiThread(new Runnable() {
@@ -103,10 +105,10 @@ public class ToastUtil {
     }
 
     /**
-     * Toastæ˜¾ç¤º å³è¾¹æ˜¾ç¤º
+     * ToastÏÔÊ¾ ÓÒ±ßÏÔÊ¾
      *
-     * @param activity Activity
-     * @param msg è¦å±•ç¤ºçš„å†…å®¹
+     * @param context AndroidÉÏÏÂÎÄ
+     * @param msg     ÒªÏÔÊ¾µÄÎÄ×ÖĞÅÏ¢
      */
     public static void showToastRight(final Activity activity, final String msg) {
         activity.runOnUiThread(new Runnable() {

@@ -2,7 +2,6 @@ package com.asen.android.lib.base.tool.util;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.InvalidKeyException;
@@ -20,17 +19,15 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
 
 /**
- * Created by HL_SEN on 2015/9/21.
+ * ¼ÓÃÜ½âÃÜ ¹¤¾ßÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
 public class EncryptUtil {
 
-    private static int SIZE = 512 * 1024; // åŠ å¯†ç¼“å†²åŒºå¤§å°
-
-    public static final String KEY_STRING = "Gi@sInfo_124";
+    private static int SIZE = 512 * 1024; // ¼ÓÃÜ»º³åÇø´óĞ¡
 
     private static Key getKey(byte[] arrBTmp, String alg) {
         if (!(alg.equals("DES") || alg.equals("DESede") || alg.equals("AES"))) {
@@ -60,12 +57,12 @@ public class EncryptUtil {
     }
 
     /**
-     * æ•´ä¸ªæ–‡ä»¶åŠ å¯†-å¤§æ–‡ä»¶è€—æ—¶è¾ƒé•¿
+     * Õû¸öÎÄ¼ş¼ÓÃÜ-´óÎÄ¼şºÄÊ±½Ï³¤
      *
-     * @param readPath   è¯»å–çš„æ–‡ä»¶ä½ç½®ï¼Œå«æ–‡ä»¶å
-     * @param writePath è¾“å‡ºçš„æ–‡ä»¶ä½ç½®ï¼Œå«æ–‡ä»¶å
-     * @param strKey    KEYå€¼
-     * @return
+     * @param readPath  ¶ÁÈ¡µÄÎÄ¼şÎ»ÖÃ£¬º¬ÎÄ¼şÃû
+     * @param writePath Êä³öµÄÎÄ¼şÎ»ÖÃ£¬º¬ÎÄ¼şÃû
+     * @param strKey    KEYÖµ
+     * @return ³É¹¦Óë·ñ£¬³É¹¦·µ»Øtrue£¬·ñÔò·µ»Øfalse
      */
     public static boolean encryptFile(String readPath, String writePath, String strKey) {
         int result = encryptFile(readPath, writePath, strKey, "DES");
@@ -73,13 +70,13 @@ public class EncryptUtil {
     }
 
     /**
-     * æ•´ä¸ªæ–‡ä»¶åŠ å¯†-å¤§æ–‡ä»¶è€—æ—¶è¾ƒé•¿
+     * Õû¸öÎÄ¼ş¼ÓÃÜ-´óÎÄ¼şºÄÊ±½Ï³¤
      *
-     * @param readPath   è¯»å–çš„æ–‡ä»¶ä½ç½®ï¼Œå«æ–‡ä»¶å
-     * @param writePath è¾“å‡ºçš„æ–‡ä»¶ä½ç½®ï¼Œå«æ–‡ä»¶å
-     * @param strKey    KEYå€¼
+     * @param readPath  ¶ÁÈ¡µÄÎÄ¼şÎ»ÖÃ£¬º¬ÎÄ¼şÃû
+     * @param writePath Êä³öµÄÎÄ¼şÎ»ÖÃ£¬º¬ÎÄ¼şÃû
+     * @param strKey    KEYÖµ
      * @param alg       DES|DESede|AES
-     * @return 0ä»£è¡¨æˆåŠŸï¼Œå…¶ä»–å¤±è´¥
+     * @return 0´ú±í³É¹¦£¬ÆäËûÊ§°Ü
      */
     public static int encryptFile(String readPath, String writePath, String strKey, String alg) {
         if (!(alg.equals("DES") || alg.equals("DESede") || alg.equals("AES"))) {
@@ -130,25 +127,7 @@ public class EncryptUtil {
                     fos.write(c.doFinal(b));
                 }
             }
-        } catch (FileNotFoundException e) {
-            ret = -4;
-            e.printStackTrace();
-        } catch (IOException e) {
-            ret = -4;
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            ret = -4;
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            ret = -4;
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            ret = -4;
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            ret = -4;
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
+        } catch (IOException | NoSuchAlgorithmException | NoSuchPaddingException | IllegalBlockSizeException | InvalidKeyException | BadPaddingException e) {
             ret = -4;
             e.printStackTrace();
         } finally {
@@ -170,12 +149,12 @@ public class EncryptUtil {
     }
 
     /**
-     * æ•´ä¸ªæ–‡ä»¶è§£å¯†-å¤§æ–‡ä»¶è€—æ—¶è¾ƒé•¿
+     * Õû¸öÎÄ¼ş½âÃÜ-´óÎÄ¼şºÄÊ±½Ï³¤
      *
-     * @param readPath   è¯»å–çš„æ–‡ä»¶ä½ç½®ï¼Œå«æ–‡ä»¶å
-     * @param writePath è¾“å‡ºçš„æ–‡ä»¶ä½ç½®ï¼Œå«æ–‡ä»¶å
-     * @param strKey    KEYå€¼
-     * @return
+     * @param readPath  ¶ÁÈ¡µÄÎÄ¼şÎ»ÖÃ£¬º¬ÎÄ¼şÃû
+     * @param writePath Êä³öµÄÎÄ¼şÎ»ÖÃ£¬º¬ÎÄ¼şÃû
+     * @param strKey    KEYÖµ
+     * @return ³É¹¦Óë·ñ£¬³É¹¦·µ»Øtrue£¬·ñÔò·µ»Øfalse
      */
     public static boolean decryptFile(String readPath, String writePath, String strKey) {
         int result = decryptFile(readPath, writePath, strKey, "DES");
@@ -183,13 +162,13 @@ public class EncryptUtil {
     }
 
     /**
-     * æ•´ä¸ªæ–‡ä»¶è§£å¯†-å¤§æ–‡ä»¶è€—æ—¶è¾ƒé•¿
+     * Õû¸öÎÄ¼ş½âÃÜ-´óÎÄ¼şºÄÊ±½Ï³¤
      *
-     * @param readPath   è¯»å–çš„æ–‡ä»¶ä½ç½®ï¼Œå«æ–‡ä»¶å
-     * @param writePath è¾“å‡ºçš„æ–‡ä»¶ä½ç½®ï¼Œå«æ–‡ä»¶å
-     * @param strKey    KEYå€¼
+     * @param readPath  ¶ÁÈ¡µÄÎÄ¼şÎ»ÖÃ£¬º¬ÎÄ¼şÃû
+     * @param writePath Êä³öµÄÎÄ¼şÎ»ÖÃ£¬º¬ÎÄ¼şÃû
+     * @param strKey    KEYÖµ
      * @param alg       DES|DESede|AES
-     * @return 0ä»£è¡¨æˆåŠŸï¼Œå…¶ä»–å¤±è´¥
+     * @return 0´ú±í³É¹¦£¬ÆäËûÊ§°Ü
      */
     public static int decryptFile(String readPath, String writePath, String strKey, String alg) {
         if (!(alg.equals("DES") || alg.equals("DESede") || alg.equals("AES"))) {
@@ -240,25 +219,7 @@ public class EncryptUtil {
                     fos.write(c.doFinal(b));
                 }
             }
-        } catch (FileNotFoundException e) {
-            ret = -4;
-            e.printStackTrace();
-        } catch (IOException e) {
-            ret = -4;
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            ret = -4;
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            ret = -4;
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            ret = -4;
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            ret = -4;
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
+        } catch (IOException | NoSuchAlgorithmException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException | NoSuchPaddingException e) {
             ret = -4;
             e.printStackTrace();
         } finally {
@@ -280,12 +241,12 @@ public class EncryptUtil {
     }
 
     /**
-     * å­—èŠ‚æ–¹å¼åŠ å¯†2
+     * ×Ö½Ú·½Ê½¼ÓÃÜ2
      *
-     * @param bytes
-     * @param strKey åŠ å¯†
+     * @param bytes  Òª¼ÓÃÜµÄ×Ö½ÚÊı×é
+     * @param strKey ¼ÓÃÜ
      * @param alg    DES|DESede|AES
-     * @return
+     * @return ¼ÓÃÜºóµÄ×Ö½ÚÊı×é
      */
     public static byte[] encryptBytes(byte[] bytes, String strKey, String alg) {
         if (!(alg.equals("DES") || alg.equals("DESede") || alg.equals("AES"))) {
@@ -294,22 +255,14 @@ public class EncryptUtil {
         }
 
         byte[] r = null;
-        if (bytes == null) return r;
+        if (bytes == null) return null;
         try {
             Key key = getKey(strKey.getBytes(), alg);
             Cipher c;
             c = Cipher.getInstance(alg);
             c.init(Cipher.ENCRYPT_MODE, key);
             r = c.doFinal(bytes);
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
+        } catch (InvalidKeyException | NoSuchAlgorithmException | IllegalBlockSizeException | NoSuchPaddingException | BadPaddingException e) {
             e.printStackTrace();
         }
 
@@ -317,12 +270,12 @@ public class EncryptUtil {
     }
 
     /**
-     * å­—èŠ‚æ–¹å¼è§£å¯†2
+     * ×Ö½Ú·½Ê½½âÃÜ2
      *
-     * @param code
-     * @param strKey å¯†åŒ™
+     * @param code   Òª½âÃÜµÄ×Ö½ÚÊı×é
+     * @param strKey ÃÜ³×
      * @param alg    DES|DESede|AES
-     * @return
+     * @return ½âÃÜºóµÄ×Ö½ÚÊı×é
      */
     public static byte[] decryptBytes(byte[] code, String strKey, String alg) {
         if (!(alg.equals("DES") || alg.equals("DESede") || alg.equals("AES"))) {
@@ -331,22 +284,14 @@ public class EncryptUtil {
         }
 
         byte[] r = null;
-        if (code == null) return r;
+        if (code == null) return null;
         try {
             Key key = getKey(strKey.getBytes(), alg);
             Cipher c;
             c = Cipher.getInstance(alg);
             c.init(Cipher.DECRYPT_MODE, key);
             r = c.doFinal(code);
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
+        } catch (InvalidKeyException | NoSuchAlgorithmException | IllegalBlockSizeException | NoSuchPaddingException | BadPaddingException e) {
             e.printStackTrace();
         }
 
@@ -354,22 +299,22 @@ public class EncryptUtil {
     }
 
     /**
-     * å­—èŠ‚å½¢å¼çš„ DESåŠ å¯†
+     * ×Ö½ÚĞÎÊ½µÄ DES¼ÓÃÜ
      *
-     * @param bytes
-     * @param strKey å¯†åŒ™
-     * @return
+     * @param bytes  Òª¼ÓÃÜµÄ×Ö½ÚÊı×é
+     * @param strKey ÃÜ³×
+     * @return ¼ÓÃÜºóµÄ×Ö½ÚÊı×é
      */
     public static byte[] encryptBytes(byte[] bytes, String strKey) {
         return encrypt(bytes, strKey.getBytes());
     }
 
     /**
-     * å­—èŠ‚å½¢å¼çš„ DESè§£å¯†
+     * ×Ö½ÚĞÎÊ½µÄ DES½âÃÜ
      *
-     * @param code
-     * @param strKey å¯†åŒ™
-     * @return
+     * @param code   Òª½âÃÜµÄ×Ö½ÚÊı×é
+     * @param strKey ÃÜ³×
+     * @return ½âÃÜºóµÄ×Ö½ÚÊı×é
      */
     public static byte[] decryptBytes(byte[] code, String strKey) {
         return decrypt(code, strKey.getBytes());
@@ -377,42 +322,31 @@ public class EncryptUtil {
 
 
     /**
-     * DESåŠ å¯†
+     * DES¼ÓÃÜ
      *
-     * @param src æ•°æ®æº
-     * @param key å¯†é’¥ï¼Œé•¿åº¦å¿…é¡»æ˜¯8çš„å€æ•°
-     * @return è¿”å›åŠ å¯†åçš„å­—èŠ‚
+     * @param src Êı¾İÔ´
+     * @param key ÃÜÔ¿£¬³¤¶È±ØĞëÊÇ8µÄ±¶Êı
+     * @return ·µ»Ø¼ÓÃÜºóµÄ×Ö½Ú
      */
     private static byte[] encrypt(byte[] src, byte[] key) {
         if (src == null) return null;
         try {
-            // DESç®—æ³•è¦æ±‚æœ‰ä¸€ä¸ªå¯ä¿¡ä»»çš„éšæœºæ•°æº
+            // DESËã·¨ÒªÇóÓĞÒ»¸ö¿ÉĞÅÈÎµÄËæ»úÊıÔ´
             SecureRandom sr = new SecureRandom();
-            // ä»åŸå§‹å¯†åŒ™æ•°æ®åˆ›å»ºDESKeySpecå¯¹è±¡
+            // ´ÓÔ­Ê¼ÃÜ³×Êı¾İ´´½¨DESKeySpec¶ÔÏó
             DESKeySpec dks = new DESKeySpec(key);
-            // åˆ›å»ºä¸€ä¸ªå¯†åŒ™å·¥å‚ï¼Œç„¶åç”¨å®ƒæŠŠDESKeySpecè½¬æ¢æˆ
-            // ä¸€ä¸ªSecretKeyå¯¹è±¡
+            // ´´½¨Ò»¸öÃÜ³×¹¤³§£¬È»ºóÓÃËü°ÑDESKeySpec×ª»»³É
+            // Ò»¸öSecretKey¶ÔÏó
             SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
             SecretKey securekey = keyFactory.generateSecret(dks);
-            // Cipherå¯¹è±¡å®é™…å®ŒæˆåŠ å¯†æ“ä½œ
+            // Cipher¶ÔÏóÊµ¼ÊÍê³É¼ÓÃÜ²Ù×÷
             Cipher cipher = Cipher.getInstance("DES");
-            // ç”¨å¯†åŒ™åˆå§‹åŒ–Cipherå¯¹è±¡
+            // ÓÃÃÜ³×³õÊ¼»¯Cipher¶ÔÏó
             cipher.init(Cipher.ENCRYPT_MODE, securekey, sr);
-            // ç°åœ¨ï¼Œè·å–æ•°æ®å¹¶åŠ å¯†
-            // æ­£å¼æ‰§è¡ŒåŠ å¯†æ“ä½œ
-            byte[] doFinal = cipher.doFinal(src);
-            return doFinal;
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (InvalidKeySpecException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
+            // ÏÖÔÚ£¬»ñÈ¡Êı¾İ²¢¼ÓÃÜ
+            // ÕıÊ½Ö´ĞĞ¼ÓÃÜ²Ù×÷
+            return cipher.doFinal(src);
+        } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IllegalBlockSizeException | InvalidKeySpecException | BadPaddingException e) {
             e.printStackTrace();
         }
         return null;
@@ -420,87 +354,34 @@ public class EncryptUtil {
 
 
     /**
-     * DESè§£å¯†
+     * DES½âÃÜ
      *
-     * @param src æ•°æ®æº
-     * @param key å¯†é’¥ï¼Œé•¿åº¦å¿…é¡»æ˜¯8çš„å€æ•°
-     * @return è¿”å›è§£å¯†åçš„å­—èŠ‚
+     * @param src Êı¾İÔ´
+     * @param key ÃÜÔ¿£¬³¤¶È±ØĞëÊÇ8µÄ±¶Êı
+     * @return ·µ»Ø½âÃÜºóµÄ×Ö½Ú
      */
     private static byte[] decrypt(byte[] src, byte[] key) {
         if (src == null) return null;
         try {
-            // DESç®—æ³•è¦æ±‚æœ‰ä¸€ä¸ªå¯ä¿¡ä»»çš„éšæœºæ•°æº
+            // DESËã·¨ÒªÇóÓĞÒ»¸ö¿ÉĞÅÈÎµÄËæ»úÊıÔ´
             SecureRandom sr = new SecureRandom();
-            // ä»åŸå§‹å¯†åŒ™æ•°æ®åˆ›å»ºä¸€ä¸ªDESKeySpecå¯¹è±¡
+            // ´ÓÔ­Ê¼ÃÜ³×Êı¾İ´´½¨Ò»¸öDESKeySpec¶ÔÏó
             DESKeySpec dks = new DESKeySpec(key);
-            // åˆ›å»ºä¸€ä¸ªå¯†åŒ™å·¥å‚ï¼Œç„¶åç”¨å®ƒæŠŠDESKeySpecå¯¹è±¡è½¬æ¢æˆ
-            // ä¸€ä¸ªSecretKeyå¯¹è±¡
+            // ´´½¨Ò»¸öÃÜ³×¹¤³§£¬È»ºóÓÃËü°ÑDESKeySpec¶ÔÏó×ª»»³É
+            // Ò»¸öSecretKey¶ÔÏó
             SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
             SecretKey securekey = keyFactory.generateSecret(dks);
-            // Cipherå¯¹è±¡å®é™…å®Œæˆè§£å¯†æ“ä½œ
+            // Cipher¶ÔÏóÊµ¼ÊÍê³É½âÃÜ²Ù×÷
             Cipher cipher = Cipher.getInstance("DES");
-            // ç”¨å¯†åŒ™åˆå§‹åŒ–Cipherå¯¹è±¡
+            // ÓÃÃÜ³×³õÊ¼»¯Cipher¶ÔÏó
             cipher.init(Cipher.DECRYPT_MODE, securekey, sr);
-            // ç°åœ¨ï¼Œè·å–æ•°æ®å¹¶è§£å¯†
-            // æ­£å¼æ‰§è¡Œè§£å¯†æ“ä½œ
-            byte[] doFinal = cipher.doFinal(src);
-            return doFinal;
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (InvalidKeySpecException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
+            // ÏÖÔÚ£¬»ñÈ¡Êı¾İ²¢½âÃÜ
+            // ÕıÊ½Ö´ĞĞ½âÃÜ²Ù×÷
+            return cipher.doFinal(src);
+        } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException | InvalidKeySpecException e) {
             e.printStackTrace();
         }
         return null;
     }
-
-//    /**
-//     * äºŒè¡Œåˆ¶è½¬å­—ç¬¦ä¸²
-//     *
-//     * @param b
-//     * @return
-//     */
-//    @Deprecated
-//    public static String byte2hex(byte[] b) {
-//        String hs = "";
-//        String stmp = "";
-//        for (int n = 0; n < b.length; n++) {
-//            stmp = (java.lang.Integer.toHexString(b[n] & 0XFF));
-//            if (stmp.length() == 1)
-//                hs = hs + "0" + stmp;
-//            else
-//                hs = hs + stmp;
-//        }
-//        return hs.toUpperCase();
-//
-//    }
-
-//    /**
-//     * å­—ç¬¦ä¸²è½¬äºŒè¿›åˆ¶
-//     *
-//     * @param s
-//     * @return
-//     */
-//    @Deprecated
-//    public static byte[] hex2byte(String s) {
-//        if (s == null)
-//            return null;
-//        byte[] b = s.getBytes();
-//        if ((b.length % 2) != 0)
-//            throw new IllegalArgumentException("é•¿åº¦ä¸æ˜¯å¶æ•°");
-//        byte[] b2 = new byte[b.length / 2];
-//        for (int n = 0; n < b.length; n += 2) {
-//            String item = new String(b, n, 2);
-//            b2[n / 2] = (byte) Integer.parseInt(item, 16);
-//        }
-//        return b2;
-//    }
 
 }

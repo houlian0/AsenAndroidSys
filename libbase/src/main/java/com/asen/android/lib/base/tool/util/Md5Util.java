@@ -6,50 +6,50 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
 
 /**
- * Created by HL_SEN on 2015/9/21.
+ * MD5¼ÓÃÜ¹¤¾ßÀà
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/3/31 16:09
  */
 public class Md5Util {
 
     /**
-     * MD5åŠ å¯†æ–¹å¼1 - è½¬æ¢æˆå°å†™å­—æ¯
+     * MD5¼ÓÃÜ·½Ê½1 - ×ª»»³ÉĞ¡Ğ´×ÖÄ¸
      *
-     * @param str
-     * @return
+     * @param str Òª¼ÓÃÜµÄ×Ö·û´®
+     * @return ¼ÓÃÜºóµÄ½á¹û
      */
     public static String md5(String str) {
-        char hexDigits[] = { // ç”¨æ¥å°†å­—èŠ‚è½¬æ¢æˆ 16 è¿›åˆ¶è¡¨ç¤ºçš„å­—ç¬¦
+        char hexDigits[] = { // ÓÃÀ´½«×Ö½Ú×ª»»³É 16 ½øÖÆ±íÊ¾µÄ×Ö·û
                 '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
         try {
             byte[] strTemp = str.getBytes();
             MessageDigest mdTemp = MessageDigest.getInstance("MD5");
             mdTemp.update(strTemp);
-            byte tmp[] = mdTemp.digest(); // MD5 çš„è®¡ç®—ç»“æœæ˜¯ä¸€ä¸ª 128 ä½çš„é•¿æ•´æ•°ï¼Œ
-            // ç”¨å­—èŠ‚è¡¨ç¤ºå°±æ˜¯ 16 ä¸ªå­—èŠ‚
-            char strs[] = new char[16 * 2]; // æ¯ä¸ªå­—èŠ‚ç”¨ 16 è¿›åˆ¶è¡¨ç¤ºçš„è¯ï¼Œä½¿ç”¨ä¸¤ä¸ªå­—ç¬¦ï¼Œ
-            // æ‰€ä»¥è¡¨ç¤ºæˆ 16 è¿›åˆ¶éœ€è¦ 32 ä¸ªå­—ç¬¦
-            int k = 0; // è¡¨ç¤ºè½¬æ¢ç»“æœä¸­å¯¹åº”çš„å­—ç¬¦ä½ç½®
-            for (int i = 0; i < 16; i++) { // ä»ç¬¬ä¸€ä¸ªå­—èŠ‚å¼€å§‹ï¼Œå¯¹ MD5 çš„æ¯ä¸€ä¸ªå­—èŠ‚
-                // è½¬æ¢æˆ 16 è¿›åˆ¶å­—ç¬¦çš„è½¬æ¢
-                byte byte0 = tmp[i]; // å–ç¬¬ i ä¸ªå­—èŠ‚
-                strs[k++] = hexDigits[byte0 >>> 4 & 0xf]; // å–å­—èŠ‚ä¸­é«˜ 4 ä½çš„æ•°å­—è½¬æ¢,
-                // >>> ä¸ºé€»è¾‘å³ç§»ï¼Œå°†ç¬¦å·ä½ä¸€èµ·å³ç§»
-                strs[k++] = hexDigits[byte0 & 0xf]; // å–å­—èŠ‚ä¸­ä½ 4 ä½çš„æ•°å­—è½¬æ¢
+            byte tmp[] = mdTemp.digest(); // MD5 µÄ¼ÆËã½á¹ûÊÇÒ»¸ö 128 Î»µÄ³¤ÕûÊı£¬
+            // ÓÃ×Ö½Ú±íÊ¾¾ÍÊÇ 16 ¸ö×Ö½Ú
+            char strs[] = new char[16 * 2]; // Ã¿¸ö×Ö½ÚÓÃ 16 ½øÖÆ±íÊ¾µÄ»°£¬Ê¹ÓÃÁ½¸ö×Ö·û£¬
+            // ËùÒÔ±íÊ¾³É 16 ½øÖÆĞèÒª 32 ¸ö×Ö·û
+            int k = 0; // ±íÊ¾×ª»»½á¹ûÖĞ¶ÔÓ¦µÄ×Ö·ûÎ»ÖÃ
+            for (int i = 0; i < 16; i++) { // ´ÓµÚÒ»¸ö×Ö½Ú¿ªÊ¼£¬¶Ô MD5 µÄÃ¿Ò»¸ö×Ö½Ú
+                // ×ª»»³É 16 ½øÖÆ×Ö·ûµÄ×ª»»
+                byte byte0 = tmp[i]; // È¡µÚ i ¸ö×Ö½Ú
+                strs[k++] = hexDigits[byte0 >>> 4 & 0xf]; // È¡×Ö½ÚÖĞ¸ß 4 Î»µÄÊı×Ö×ª»»,
+                // >>> ÎªÂß¼­ÓÒÒÆ£¬½«·ûºÅÎ»Ò»ÆğÓÒÒÆ
+                strs[k++] = hexDigits[byte0 & 0xf]; // È¡×Ö½ÚÖĞµÍ 4 Î»µÄÊı×Ö×ª»»
             }
-            return new String(strs); // æ¢åçš„ç»“æœè½¬æ¢ä¸ºå­—ç¬¦ä¸²
+            return new String(strs); // »»ºóµÄ½á¹û×ª»»Îª×Ö·û´®
         } catch (Exception e) {
             return null;
         }
     }
 
     /**
-     * MD5åŠ å¯†æ–¹å¼1 - è½¬æ¢æˆå¤§å†™å­—æ¯
+     * MD5¼ÓÃÜ·½Ê½1 - ×ª»»³É´óĞ´×ÖÄ¸
      *
-     * @param str
-     * @return
+     * @param str Òª¼ÓÃÜµÄ×Ö·û´®
+     * @return ¼ÓÃÜºóµÄ½á¹û
      */
     public static String MD5(String str) {
         String result = md5(str);
@@ -57,15 +57,15 @@ public class Md5Util {
     }
 
     /**
-     * MD5åŠ å¯†æ–¹å¼2 - è½¬æ¢æˆå°å†™å­—æ¯
+     * MD5¼ÓÃÜ·½Ê½2 - ×ª»»³ÉĞ¡Ğ´×ÖÄ¸
      *
-     * @param string
-     * @return
+     * @param str Òª¼ÓÃÜµÄ×Ö·û´®
+     * @return ¼ÓÃÜºóµÄ½á¹û
      */
-    public static String md5Second(String string) {
+    public static String md5Second(String str) {
         byte[] hash;
         try {
-            hash = MessageDigest.getInstance("MD5").digest(string.getBytes("UTF-8"));
+            hash = MessageDigest.getInstance("MD5").digest(str.getBytes("UTF-8"));
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("Huh, MD5 should be supported?", e);
         } catch (UnsupportedEncodingException e) {
@@ -81,14 +81,14 @@ public class Md5Util {
     }
 
     /**
-     * MD5åŠ å¯†æ–¹å¼2 - è½¬æ¢æˆå¤§å†™å­—æ¯
+     * MD5¼ÓÃÜ·½Ê½2 - ×ª»»³É´óĞ´×ÖÄ¸
      *
-     * @param str
-     * @return
+     * @param str Òª¼ÓÃÜµÄ×Ö·û´®
+     * @return ¼ÓÃÜºóµÄ½á¹û
      */
     public static String MD5Second(String str) {
         String result = md5Second(str);
-        return result == null ? null : result.toUpperCase(Locale.getDefault());
+        return result.toUpperCase(Locale.getDefault());
     }
 
 }
