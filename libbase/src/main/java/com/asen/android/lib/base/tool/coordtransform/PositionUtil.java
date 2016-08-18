@@ -21,7 +21,7 @@ public class PositionUtil {
     public static double ee = 0.00669342162296594323;
 
     /**
-     * 84 to 火星坐标系 (GCJ-02) World Geodetic System ==> Mars Geodetic System
+     * 84 to 火星坐标系 (GCJ-02) World Geodetic System 转 Mars Geodetic System
      *
      * @param lat 纬度
      * @param lon 经度
@@ -90,7 +90,7 @@ public class PositionUtil {
     }
 
     /**
-     * (BD-09)-->84
+     * (BD-09) 转 84
      *
      * @param bd_lat 纬度
      * @param bd_lon 经度

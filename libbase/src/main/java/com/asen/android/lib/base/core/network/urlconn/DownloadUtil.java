@@ -121,6 +121,7 @@ public class DownloadUtil {
      * @param urlStr 下载文件地址
      * @param folder 下载保存文件的路径
      * @throws IOException
+     * @throws HttpResponseException
      */
     public static File downLoadFile(String urlStr, File folder) throws IOException, HttpResponseException {
         return downLoadFile(urlStr, folder, null);
@@ -132,7 +133,8 @@ public class DownloadUtil {
      * @param urlStr             下载文件地址
      * @param folder             下载保存文件的路径
      * @param onDownloadListener 下载监听，该监听在当前的执行线程下进行
-     * @throws IOException,HttpResponseException
+     * @throws IOException
+     * @throws HttpResponseException
      */
     public static File downLoadFile(String urlStr, File folder, OnDownloadListener onDownloadListener) throws IOException, HttpResponseException {
         return downLoadFile(urlStr, folder, true, onDownloadListener);
@@ -144,7 +146,8 @@ public class DownloadUtil {
      * @param urlStr     下载文件地址
      * @param folder     下载保存文件的路径
      * @param isOriginal 是否原名输出
-     * @throws IOException,HttpResponseException
+     * @throws IOException
+     * @throws HttpResponseException
      */
     public static File downLoadFile(String urlStr, File folder, boolean isOriginal) throws IOException, HttpResponseException {
         return downLoadFile(urlStr, folder, isOriginal, null);
@@ -157,7 +160,8 @@ public class DownloadUtil {
      * @param folder             下载保存文件的路径
      * @param isOriginal         是否原名输出
      * @param onDownloadListener 下载监听，该监听在当前的执行线程下进行
-     * @throws IOException,HttpResponseException
+     * @throws IOException
+     * @throws HttpResponseException
      */
     public static File downLoadFile(String urlStr, File folder, boolean isOriginal, OnDownloadListener onDownloadListener) throws IOException, HttpResponseException {
         InputStream inputStream = null;

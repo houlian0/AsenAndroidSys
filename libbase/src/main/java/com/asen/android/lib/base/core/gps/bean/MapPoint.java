@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.gps.bean;
 
 /**
- * µØÍ¼µãÎ»£¨ÕæÊµµØÍ¼µãÎ»ĞÅÏ¢£©
+ * åœ°å›¾ç‚¹ä½ï¼ˆçœŸå®åœ°å›¾ç‚¹ä½ä¿¡æ¯ï¼‰
  *
  * @author Asen
  * @version v1.0
@@ -10,31 +10,31 @@ package com.asen.android.lib.base.core.gps.bean;
 public class MapPoint {
 
     /**
-     * X×ø±ê
+     * Xåæ ‡
      */
     private double x;
 
     /**
-     * Y×ø±ê
+     * Yåæ ‡
      */
     private double y;
 
     /**
-     * Z×ø±ê
+     * Zåæ ‡
      */
     private double z;
 
     /**
-     * ¿Õ¹¹Ôìº¯Êı
+     * ç©ºæ„é€ å‡½æ•°
      */
     public MapPoint() {
     }
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param x X×ø±ê
-     * @param y Y×ø±ê
+     * @param x Xåæ ‡
+     * @param y Yåæ ‡
      */
     public MapPoint(double x, double y) {
         this.x = x;
@@ -42,11 +42,11 @@ public class MapPoint {
     }
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param x X×ø±ê
-     * @param y Y×ø±ê
-     * @param z Z×ø±ê
+     * @param x Xåæ ‡
+     * @param y Yåæ ‡
+     * @param z Zåæ ‡
      */
     public MapPoint(double x, double y, double z) {
         this.x = x;
@@ -55,54 +55,54 @@ public class MapPoint {
     }
 
     /**
-     * »ñÈ¡X×ø±ê
+     * è·å–Xåæ ‡
      *
-     * @return X×ø±ê
+     * @return Xåæ ‡
      */
     public double getX() {
         return x;
     }
 
     /**
-     * ÉèÖÃX×ø±ê
+     * è®¾ç½®Xåæ ‡
      *
-     * @param x X×ø±ê
+     * @param x Xåæ ‡
      */
     public void setX(double x) {
         this.x = x;
     }
 
     /**
-     * »ñÈ¡Y×ø±ê
+     * è·å–Yåæ ‡
      *
-     * @return Y×ø±ê
+     * @return Yåæ ‡
      */
     public double getY() {
         return y;
     }
 
     /**
-     * ÉèÖÃY×ø±ê
+     * è®¾ç½®Yåæ ‡
      *
-     * @param y Y×ø±ê
+     * @param y Yåæ ‡
      */
     public void setY(double y) {
         this.y = y;
     }
 
     /**
-     * »ñÈ¡Z×ø±ê
+     * è·å–Zåæ ‡
      *
-     * @return Z×ø±ê
+     * @return Zåæ ‡
      */
     public double getZ() {
         return z;
     }
 
     /**
-     * ÉèÖÃZ×ø±ê
+     * è®¾ç½®Zåæ ‡
      *
-     * @param z Z×ø±ê
+     * @param z Zåæ ‡
      */
     public void setZ(double z) {
         this.z = z;

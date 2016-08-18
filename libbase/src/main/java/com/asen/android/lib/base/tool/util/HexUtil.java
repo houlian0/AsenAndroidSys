@@ -97,7 +97,6 @@ public class HexUtil {
      * @param str 十六进制char[]
      * @return byte[]
      * @throws RuntimeException 如果源十六进制字符数组是一个奇怪的长度，将抛出运行时异常
-     * @see
      */
     public static byte[] decodeHex(String str) {
         return decodeHex(str.toCharArray());

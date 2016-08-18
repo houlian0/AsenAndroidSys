@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.gps.bean;
 
 /**
- * ÁÙÊ±¶¨Î»ĞÅÏ¢
+ * ä¸´æ—¶å®šä½ä¿¡æ¯
  *
  * @author Asen
  * @version v1.0
@@ -10,20 +10,20 @@ package com.asen.android.lib.base.core.gps.bean;
 public class TmpGpsInfo {
 
     /**
-     * GPSµãÎ»ĞÅÏ¢
+     * GPSç‚¹ä½ä¿¡æ¯
      */
     private GpsPoint gpsPoint;
 
     /**
-     * µØÍ¼µãÎ»ĞÅÏ¢
+     * åœ°å›¾ç‚¹ä½ä¿¡æ¯
      */
     private MapPoint mapPoint;
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param gpsPoint GPSµãÎ»ĞÅÏ¢
-     * @param mapPoint µØÍ¼µãÎ»ĞÅÏ¢
+     * @param gpsPoint GPSç‚¹ä½ä¿¡æ¯
+     * @param mapPoint åœ°å›¾ç‚¹ä½ä¿¡æ¯
      */
     public TmpGpsInfo(GpsPoint gpsPoint, MapPoint mapPoint) {
         this.gpsPoint = gpsPoint;
@@ -31,36 +31,36 @@ public class TmpGpsInfo {
     }
 
     /**
-     * »ñÈ¡GPSµãÎ»ĞÅÏ¢
+     * è·å–GPSç‚¹ä½ä¿¡æ¯
      *
-     * @return GPSµãÎ»ĞÅÏ¢
+     * @return GPSç‚¹ä½ä¿¡æ¯
      */
     public GpsPoint getGpsPoint() {
         return gpsPoint;
     }
 
     /**
-     * ÉèÖÃGPSµãÎ»ĞÅÏ¢
+     * è®¾ç½®GPSç‚¹ä½ä¿¡æ¯
      *
-     * @param gpsPoint GPSµãÎ»ĞÅÏ¢
+     * @param gpsPoint GPSç‚¹ä½ä¿¡æ¯
      */
     public void setGpsPoint(GpsPoint gpsPoint) {
         this.gpsPoint = gpsPoint;
     }
 
     /**
-     * »ñÈ¡µØÍ¼µãÎ»ĞÅÏ¢
+     * è·å–åœ°å›¾ç‚¹ä½ä¿¡æ¯
      *
-     * @return µØÍ¼µãÎ»ĞÅÏ¢
+     * @return åœ°å›¾ç‚¹ä½ä¿¡æ¯
      */
     public MapPoint getMapPoint() {
         return mapPoint;
     }
 
     /**
-     * ÉèÖÃµØÍ¼µãÎ»ĞÅÏ¢
+     * è®¾ç½®åœ°å›¾ç‚¹ä½ä¿¡æ¯
      *
-     * @param mapPoint µØÍ¼µãÎ»ĞÅÏ¢
+     * @param mapPoint åœ°å›¾ç‚¹ä½ä¿¡æ¯
      */
     public void setMapPoint(MapPoint mapPoint) {
         this.mapPoint = mapPoint;

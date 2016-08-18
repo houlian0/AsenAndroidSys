@@ -548,7 +548,6 @@ public class DateUtil {
 
     /**
      * 描述：判断是否是闰年()
-     * <p/>
      * (year能被4整除 并且 不能被100整除) 或者 year能被400整除,则该年为闰年.
      *
      * @param year 年代（如2012）

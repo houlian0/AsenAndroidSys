@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" defaultCharsetForPropertiesFiles="GBK">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="GBK">
+    <file url="file://$PROJECT_DIR$/.gitignore" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/build.gradle" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/androidTest/java/com/asen/android/app/ApplicationTest.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/asen/android/app/MainActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/test/java/com/asen/android/app/ExampleUnitTest.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/build.gradle" charset="GBK" />
     <file url="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libbase/.gitignore" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/build.gradle" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/proguard-rules.pro" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/BaseApplication.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/GpsInfoType.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/GpsLocation.java" charset="GBK" />
@@ -15,10 +18,10 @@
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/GpsLocationTimingTask.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/GpsStatusListener.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/ICoordinateTransform.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/GpsPoint.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/LocationInfo.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/MapPoint.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/TmpGpsInfo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/GpsPoint.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/LocationInfo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/MapPoint.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/bean/TmpGpsInfo.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/extension/BaseExtensionLocation.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/extension/ExtensionASingleLocation.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/core/gps/extension/ExtensionContinuousLocation.java" charset="GBK" />
@@ -138,6 +141,6 @@
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/view/progressbar/VerticalProgressBar.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/view/scroll/GridViewForScroll.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/libbase/src/main/java/com/asen/android/lib/base/ui/view/scroll/ListViewForScroll.java" charset="GBK" />
-    <file url="PROJECT" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

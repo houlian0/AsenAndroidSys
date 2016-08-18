@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.gps.bean;
 
 /**
- * Î»ÖÃµØÖ·³ÇÊĞĞÅÏ¢
+ * ä½ç½®åœ°å€åŸå¸‚ä¿¡æ¯
  *
  * @author Asen
  * @version v1.0
@@ -10,20 +10,20 @@ package com.asen.android.lib.base.core.gps.bean;
 public class LocationInfo {
 
     /**
-     * µØÖ·
+     * åœ°å€
      */
     private String address;
 
     /**
-     * ³ÇÊĞ
+     * åŸå¸‚
      */
     private String city;
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param address µØÖ·
-     * @param city    ³ÇÊĞ
+     * @param address åœ°å€
+     * @param city    åŸå¸‚
      */
     public LocationInfo(String address, String city) {
         this.address = address;
@@ -31,36 +31,36 @@ public class LocationInfo {
     }
 
     /**
-     * »ñÈ¡µØÖ·ĞÅÏ¢
+     * è·å–åœ°å€ä¿¡æ¯
      *
-     * @return µØÖ·ĞÅÏ¢
+     * @return åœ°å€ä¿¡æ¯
      */
     public String getAddress() {
         return address;
     }
 
     /**
-     * ÉèÖÃµØÖ·ĞÅÏ¢
+     * è®¾ç½®åœ°å€ä¿¡æ¯
      *
-     * @param address µØÖ·ĞÅÏ¢
+     * @param address åœ°å€ä¿¡æ¯
      */
     public void setAddress(String address) {
         this.address = address;
     }
 
     /**
-     * »ñÈ¡³ÇÊĞĞÅÏ¢
+     * è·å–åŸå¸‚ä¿¡æ¯
      *
-     * @return ³ÇÊĞĞÅÏ¢
+     * @return åŸå¸‚ä¿¡æ¯
      */
     public String getCity() {
         return city;
     }
 
     /**
-     * ÉèÖÃ³ÇÊĞĞÅÏ¢
+     * è®¾ç½®åŸå¸‚ä¿¡æ¯
      *
-     * @param city ³ÇÊĞĞÅÏ¢
+     * @param city åŸå¸‚ä¿¡æ¯
      */
     public void setCity(String city) {
         this.city = city;

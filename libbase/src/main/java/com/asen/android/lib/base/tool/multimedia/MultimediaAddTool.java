@@ -124,8 +124,8 @@ public abstract class MultimediaAddTool {
     /**
      * 开始录视频
      *
-     * @param time     时间秒  <0 时不做限制
-     * @param fileSize 单位字节 <0 时不做限制
+     * @param time     时间秒  小于0 时不做限制
+     * @param fileSize 单位字节 小于0 时不做限制
      * @return 成功与否
      */
     public abstract boolean startVideo(int time, int fileSize);
@@ -134,8 +134,8 @@ public abstract class MultimediaAddTool {
      * 开始录视频
      *
      * @param name     文件名（不含后缀）
-     * @param time     时间秒 <0 时不做限制
-     * @param fileSize 单位字节 <0 时不做限制
+     * @param time     时间秒 小于0 时不做限制
+     * @param fileSize 单位字节 小于0 时不做限制
      * @return 成功与否
      */
     public abstract boolean startVideo(String name, int time, int fileSize);

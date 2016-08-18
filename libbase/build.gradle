@@ -2,18 +2,18 @@ apply plugin: 'com.android.library'
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'asen-lib-base'
+    bintrayName = 'libbase'
 
     publishedGroupId = 'com.asen.android.lib.base'
     libraryName = 'libbase'
-    artifact = 'asen-lib-base'
+    artifact = 'libbase'
 
     libraryDescription = 'Android Lib'
 
     siteUrl = 'https://github.com/houlian0/AsenAndroidSys'
     gitUrl = 'https://github.com/houlian0/AsenAndroidSys.git'
 
-    libraryVersion = '0.0.1'
+    libraryVersion = '0.0.2'
 
     developerId = 'asen'
     developerName = 'HouLian'
@@ -25,7 +25,7 @@ ext {
 }
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "23.0.3"
 
     defaultConfig {
@@ -46,6 +46,19 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.1'
+}
+
+//Solution by the second link
+allprojects {
+    tasks.withType(Javadoc).all { enabled = false }
+}
+//Solution by the first link
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
 }
 
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
