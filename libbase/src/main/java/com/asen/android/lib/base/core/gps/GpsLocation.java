@@ -19,8 +19,8 @@ import com.asen.android.lib.base.core.gps.listener.OnSatelliteChangedListener;
 import java.util.List;
 
 /**
- * GPS¶¨Î»Àà£¨´¿AndroidÔ­Éú£©
- * GPS¶¨Î»Ö÷ÒªÀà£¨Èë¿ÚÀà£©
+ * GPSå®šä½ç±»ï¼ˆçº¯AndroidåŸç”Ÿï¼‰
+ * GPSå®šä½ä¸»è¦ç±»ï¼ˆå…¥å£ç±»ï¼‰
  *
  * @author Asen
  * @version v1.0
@@ -31,35 +31,35 @@ public abstract class GpsLocation {
     private static volatile GpsLocation g = null;
 
     /**
-     * ¶¨Î»×´Ì¬
+     * å®šä½çŠ¶æ€
      */
     public enum LocationType {
         /**
-         * Ô­Éú¶¨Î»
+         * åŸç”Ÿå®šä½
          */
         ORIGINAL,
         /**
-         * À©Õ¹¶¨Î»
+         * æ‰©å±•å®šä½
          */
         EXTENSION,
         /**
-         * Ô­Éú+À©Õ¹¶¨Î»
+         * åŸç”Ÿ+æ‰©å±•å®šä½
          */
         ORIGINAL_EXTENSION
     }
 
     /**
-     * ÉèÖÃ¶¨Î»µÄÀàĞÍ
+     * è®¾ç½®å®šä½çš„ç±»å‹
      *
-     * @param locationType ¶¨Î»µÄÀàĞÍ
+     * @param locationType å®šä½çš„ç±»å‹
      */
     public abstract void setLocationType(LocationType locationType);
 
     /**
-     * »ñµÃGPS¶¨Î»ÊµÀı
+     * è·å¾—GPSå®šä½å®ä¾‹
      *
-     * @param context Android ÉÏÏÂÎÄ
-     * @return GPS¶¨Î»ÊµÀı
+     * @param context Android ä¸Šä¸‹æ–‡
+     * @return GPSå®šä½å®ä¾‹
      */
     public static GpsLocation getInstance(Context context) {
         if (null == g) {
@@ -74,134 +74,134 @@ public abstract class GpsLocation {
 
 
     /**
-     * ÊÇ·ñ»ñµÃÁËGPSµãÎ»
+     * æ˜¯å¦è·å¾—äº†GPSç‚¹ä½
      *
-     * @return ÊÇ·ñ»ñµÃÁËGPSµãÎ»
+     * @return æ˜¯å¦è·å¾—äº†GPSç‚¹ä½
      */
     public abstract boolean hasGpsPoint();
 
     /**
-     * ²»ÊÇÊ×¸öGPSµãÎ»£¨Ê×¸öGPSµãÎ»¿ÉÄÜÊÇÄÃµÄÉÏ´Î¹Ø±ÕÏµÍ³Ê±µÄµãÎ»ĞÅÏ¢£©
+     * ä¸æ˜¯é¦–ä¸ªGPSç‚¹ä½ï¼ˆé¦–ä¸ªGPSç‚¹ä½å¯èƒ½æ˜¯æ‹¿çš„ä¸Šæ¬¡å…³é—­ç³»ç»Ÿæ—¶çš„ç‚¹ä½ä¿¡æ¯ï¼‰
      *
-     * @return ÊÇ·ñ²»ÊÇÊ×¸öGPSµãÎ»
+     * @return æ˜¯å¦ä¸æ˜¯é¦–ä¸ªGPSç‚¹ä½
      */
     public abstract boolean isNotFirst();
 
     /**
-     * ÊÇ·ñ¿ªÊ¼¶¨Î»
+     * æ˜¯å¦å¼€å§‹å®šä½
      *
-     * @return ÅĞ¶ÏÊÇ·ñ¿ªÊ¼¶¨Î»
+     * @return åˆ¤æ–­æ˜¯å¦å¼€å§‹å®šä½
      */
     public abstract boolean isStarted();
 
     /**
-     * »ñµÃ×îºóÒ»¸ö×ª»»ºóµÃµØÍ¼ÉÏµÄµã
+     * è·å¾—æœ€åä¸€ä¸ªè½¬æ¢åå¾—åœ°å›¾ä¸Šçš„ç‚¹
      *
      * @return if mGpsPoint is null, return null
      */
     public abstract MapPoint getMapPoint();
 
     /**
-     * »ñµÃ×îºóÒ»¸öGPSµãÎ»
+     * è·å¾—æœ€åä¸€ä¸ªGPSç‚¹ä½
      *
      * @return mGpsPoint
      */
     public abstract GpsPoint getGpsPoint();
 
     /**
-     * »ñµÃµØÖ·¶¨Î»ĞÅÏ¢
+     * è·å¾—åœ°å€å®šä½ä¿¡æ¯
      *
-     * @return µØÖ·¶¨Î»ĞÅÏ¢
+     * @return åœ°å€å®šä½ä¿¡æ¯
      */
     public abstract LocationInfo getLocationInfo();
 
     /**
-     * »ñÈ¡GPSËÑµ½µÄÎÀĞÇĞÅÏ¢
+     * è·å–GPSæœåˆ°çš„å«æ˜Ÿä¿¡æ¯
      *
-     * @return ÎÀĞÇĞÅÏ¢¼¯ºÏ£¬¿ÉÄÜÎªnull
+     * @return å«æ˜Ÿä¿¡æ¯é›†åˆï¼Œå¯èƒ½ä¸ºnull
      */
     public abstract List<GpsSatellite> getGpsSatellites();
 
     /**
-     * ÉèÖÃµÚÈı·½À©Õ¹ĞÔ¶¨Î»£¬µ¥´Î¶¨Î»
+     * è®¾ç½®ç¬¬ä¸‰æ–¹æ‰©å±•æ€§å®šä½ï¼Œå•æ¬¡å®šä½
      *
-     * @param extensionLocation µ¥´Î¶¨Î»
+     * @param extensionLocation å•æ¬¡å®šä½
      */
     public abstract void setExtensionLocation(ExtensionASingleLocation extensionLocation);
 
     /**
-     * ÉèÖÃµÚÈı·½À©Õ¹ĞÔ¶¨Î»£¬³ÖĞø¶¨Î»
+     * è®¾ç½®ç¬¬ä¸‰æ–¹æ‰©å±•æ€§å®šä½ï¼ŒæŒç»­å®šä½
      *
-     * @param extensionLocation ³ÖĞø¶¨Î»
+     * @param extensionLocation æŒç»­å®šä½
      */
     public abstract void setExtensionLocation(ExtensionContinuousLocation extensionLocation);
 
     /**
-     * »ñµÃµÚÈı·½À©Õ¹ĞÔ¶¨Î»
+     * è·å¾—ç¬¬ä¸‰æ–¹æ‰©å±•æ€§å®šä½
      */
     abstract IExtensionLocation getExtensionLocation();
 
     /**
-     * Ôö¼ÓGPS¸Ä±ä¼àÌı£¨¿Éadd¶à¸ö£©
+     * å¢åŠ GPSæ”¹å˜ç›‘å¬ï¼ˆå¯addå¤šä¸ªï¼‰
      *
-     * @param onLocationChangedListener ¶¨Î»¼àÌı
+     * @param onLocationChangedListener å®šä½ç›‘å¬
      */
     public abstract void addOnLocationChangedListener(OnLocationChangedListener onLocationChangedListener);
 
     /**
-     * ÒÆ³ıGPS¸Ä±ä¼àÌı
+     * ç§»é™¤GPSæ”¹å˜ç›‘å¬
      *
-     * @param onLocationChangedListener ¶¨Î»¼àÌı
+     * @param onLocationChangedListener å®šä½ç›‘å¬
      */
     public abstract void removeOnLocationChangedListener(OnLocationChangedListener onLocationChangedListener);
 
     /**
-     * Ôö¼ÓµØÖ·¸Ä±äÊ±¼àÌı
+     * å¢åŠ åœ°å€æ”¹å˜æ—¶ç›‘å¬
      *
-     * @param onAddressChangedListener µØÖ·¼àÌı
+     * @param onAddressChangedListener åœ°å€ç›‘å¬
      */
     public abstract void addOnAddressChangedListener(OnAddressChangedListener onAddressChangedListener);
 
     /**
-     * ÒÆ³ıµØÖ·¸Ä±äÊ±¼àÌı
+     * ç§»é™¤åœ°å€æ”¹å˜æ—¶ç›‘å¬
      *
-     * @param onAddressChangedListener µØÖ·¼àÌı
+     * @param onAddressChangedListener åœ°å€ç›‘å¬
      */
     public abstract void removeOnAddressChangedListener(OnAddressChangedListener onAddressChangedListener);
 
     /**
-     * ÉèÖÃGPS×´Ì¬¼àÌı
+     * è®¾ç½®GPSçŠ¶æ€ç›‘å¬
      *
-     * @param onSatelliteChangedListener GPS×´Ì¬¼àÌı
+     * @param onSatelliteChangedListener GPSçŠ¶æ€ç›‘å¬
      */
     public abstract void setOnSatelliteChangedListener(OnSatelliteChangedListener onSatelliteChangedListener);
 
     /**
-     * ¿ªÆôGPS¶¨Î»£¨´¿AndroidÔ­Éú£©
+     * å¼€å¯GPSå®šä½ï¼ˆçº¯AndroidåŸç”Ÿï¼‰
      *
-     * @return ³É¹¦Óë·ñ
+     * @return æˆåŠŸä¸å¦
      */
     public abstract boolean start();
 
     /**
-     * ¿ªÆôGPS¶¨Î»£¨´¿AndroidÔ­Éú£©
+     * å¼€å¯GPSå®šä½ï¼ˆçº¯AndroidåŸç”Ÿï¼‰
      *
-     * @param coordinateTransform ×ø±ê×ª»»½Ó¿Ú£¬¸ÃÀàÖ»Ö´ĞĞÁËgpsPoint2MapPoint·½·¨ {@link ICoordinateTransform#gpsPoint2MapPoint(GpsPoint)}
-     * @return ³É¹¦Óë·ñ
+     * @param coordinateTransform åæ ‡è½¬æ¢æ¥å£ï¼Œè¯¥ç±»åªæ‰§è¡Œäº†gpsPoint2MapPointæ–¹æ³• {@link ICoordinateTransform#gpsPoint2MapPoint(GpsPoint)}
+     * @return æˆåŠŸä¸å¦
      */
     public abstract boolean start(@Nullable ICoordinateTransform coordinateTransform);
 
     /**
-     * ½áÊøGPS¶¨Î»£¨´¿AndroidÔ­Éú£©
+     * ç»“æŸGPSå®šä½ï¼ˆçº¯AndroidåŸç”Ÿï¼‰
      *
-     * @return ³É¹¦Óë·ñ
+     * @return æˆåŠŸä¸å¦
      */
     public abstract boolean stop();
 
     /**
-     * ÉèÖÃ×Ô¶¨ÒåÄæµØÀí±àÂëµÄÊµÏÖ£¨Ä¬ÈÏ²ÉÓÃ{@link TianDTGeocodeReverse} ÌìµØÍ¼ÄæµØÀí±àÂë£©
+     * è®¾ç½®è‡ªå®šä¹‰é€†åœ°ç†ç¼–ç çš„å®ç°ï¼ˆé»˜è®¤é‡‡ç”¨{@link TianDTGeocodeReverse} å¤©åœ°å›¾é€†åœ°ç†ç¼–ç ï¼‰
      *
-     * @param geocodeReverse ÄæµØÀí±àÂë³éÏóÀà µÄ ÊµÏÖ
+     * @param geocodeReverse é€†åœ°ç†ç¼–ç æŠ½è±¡ç±» çš„ å®ç°
      */
     public abstract void setGeocodeReverse(GeocodeReverse geocodeReverse);
 

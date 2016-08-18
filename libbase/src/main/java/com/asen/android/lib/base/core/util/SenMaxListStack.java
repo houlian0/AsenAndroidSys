@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ÓÃListÀ´¶¨Òå×î´ó¼¯ºÏ£¬¼´´Ë¼¯ºÏÖĞ£¬Ö»´æ·ÅÖ¸¶¨ÉÏÏŞµÄÊı¾İ£¬µ±Êı¾İ³¬¹ıÖ¸¶¨ÊıÁ¿Ê±£¬ÒÆ³ı³ö×îÔç½øÀ´µÄÊı¾İ
+ * ç”¨Listæ¥å®šä¹‰æœ€å¤§é›†åˆï¼Œå³æ­¤é›†åˆä¸­ï¼Œåªå­˜æ”¾æŒ‡å®šä¸Šé™çš„æ•°æ®ï¼Œå½“æ•°æ®è¶…è¿‡æŒ‡å®šæ•°é‡æ—¶ï¼Œç§»é™¤å‡ºæœ€æ—©è¿›æ¥çš„æ•°æ®
  *
  * @author Asen
  * @version v1.0
@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class SenMaxListStack<T> implements IMaxStack<T> {
 
-    private static final int MIN_MAX_SIZE = 1; // ×îÉÙµÄ×î´ó¼¯ºÏÊı
+    private static final int MIN_MAX_SIZE = 1; // æœ€å°‘çš„æœ€å¤§é›†åˆæ•°
 
     private List<T> dataList;
 
@@ -40,11 +40,11 @@ public class SenMaxListStack<T> implements IMaxStack<T> {
 
     @Override
     public void push(T object) {
-        // ÊıÁ¿´ïµ½ÉÏÏŞÊ±£¬ÒÆ³ı³öÊ×¸öÊı¾İ
+        // æ•°é‡è¾¾åˆ°ä¸Šé™æ—¶ï¼Œç§»é™¤å‡ºé¦–ä¸ªæ•°æ®
         if (dataList.size() == maxSize) {
             dataList.remove(0);
         }
-        // Ôö¼ÓĞÂÊı¾İ
+        // å¢åŠ æ–°æ•°æ®
         dataList.add(object);
     }
 

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * 基础的Application
+ * 鍩虹鐨凙pplication
  *
  * @author Asen
  * @version v1.0
@@ -38,25 +38,25 @@ public abstract class BaseApplication extends Application {
     }
 
     /**
-     * Activity关闭时，删除Activity列表中的Activity对象
+     * Activity鍏抽棴鏃讹紝鍒犻櫎Activity鍒楄〃涓殑Activity瀵硅薄
      *
-     * @param a 要移除的activity
+     * @param a 瑕佺Щ闄ょ殑activity
      */
     public void removeActivity(Activity a) {
         list.remove(a);
     }
 
     /**
-     * 向Activity列表中添加Activity对象
+     * 鍚慉ctivity鍒楄〃涓坊鍔燗ctivity瀵硅薄
      *
-     * @param a 要添加的activity
+     * @param a 瑕佹坊鍔犵殑activity
      */
     public void addActivity(Activity a) {
         list.add(a);
     }
 
     /**
-     * 关闭Activity列表中的所有Activity
+     * 鍏抽棴Activity鍒楄〃涓殑鎵�鏈堿ctivity
      */
     public void finishActivity() {
         for (Activity activity : list) {
@@ -67,7 +67,7 @@ public abstract class BaseApplication extends Application {
     }
 
     /**
-     * 关闭Activity列表中的除最后一个Activity之外的所有Activity
+     * 鍏抽棴Activity鍒楄〃涓殑闄ゆ渶鍚庝竴涓狝ctivity涔嬪鐨勬墍鏈堿ctivity
      */
     public void finishActivityWithoutLastActivity() {
         ListIterator<Activity> listIterator = list.listIterator();
@@ -83,9 +83,9 @@ public abstract class BaseApplication extends Application {
     }
 
     /**
-     * 程序异常退出时执行
+     * 绋嬪簭寮傚父閫�鍑烘椂鎵ц
      *
-     * @return false，则以系统默认的方式处理异常；true，则不执行系统默认处理异常的方法
+     * @return false锛屽垯浠ョ郴缁熼粯璁ょ殑鏂瑰紡澶勭悊寮傚父锛泃rue锛屽垯涓嶆墽琛岀郴缁熼粯璁ゅ鐞嗗紓甯哥殑鏂规硶
      */
     protected boolean abnormalExit() {
         return false;

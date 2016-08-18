@@ -17,7 +17,7 @@ import java.lang.ref.SoftReference;
 import java.util.Hashtable;
 
 /**
- * Bitmap»º´æÀà£¨·ÀÖ¹ÄÚ´æÒç³ö£©£¬UIÏß³ÌÖĞ²Ù×÷
+ * Bitmapç¼“å­˜ç±»ï¼ˆé˜²æ­¢å†…å­˜æº¢å‡ºï¼‰ï¼ŒUIçº¿ç¨‹ä¸­æ“ä½œ
  *
  * @author Asen
  * @version v1.0
@@ -27,16 +27,16 @@ public class BitmapCache {
 
     static private volatile BitmapCache cache;
     /**
-     * ÓÃÓÚCacheÄÚÈİµÄ´æ´¢
+     * ç”¨äºCacheå†…å®¹çš„å­˜å‚¨
      */
     private Hashtable<String, BitmapRef> bitmapRefs;
     /**
-     * À¬»øReferenceµÄ¶ÓÁĞ£¨ËùÒıÓÃµÄ¶ÔÏóÒÑ¾­±»»ØÊÕ£¬Ôò½«¸ÃÒıÓÃ´æÈë¶ÓÁĞÖĞ£©
+     * åƒåœ¾Referenceçš„é˜Ÿåˆ—ï¼ˆæ‰€å¼•ç”¨çš„å¯¹è±¡å·²ç»è¢«å›æ”¶ï¼Œåˆ™å°†è¯¥å¼•ç”¨å­˜å…¥é˜Ÿåˆ—ä¸­ï¼‰
      */
     private ReferenceQueue<Bitmap> q;
 
     /**
-     * ¼Ì³ĞSoftReference£¬Ê¹µÃÃ¿Ò»¸öÊµÀı¶¼¾ßÓĞ¿ÉÊ¶±ğµÄ±êÊ¶¡£
+     * ç»§æ‰¿SoftReferenceï¼Œä½¿å¾—æ¯ä¸€ä¸ªå®ä¾‹éƒ½å…·æœ‰å¯è¯†åˆ«çš„æ ‡è¯†ã€‚
      */
     class BitmapRef extends SoftReference<Bitmap> {
         private String _key = "";
@@ -53,7 +53,7 @@ public class BitmapCache {
     }
 
     /**
-     * È¡µÃ»º´æÆ÷ÊµÀı
+     * å–å¾—ç¼“å­˜å™¨å®ä¾‹
      */
     public static BitmapCache getInstance() {
         if (cache == null) {
@@ -67,10 +67,10 @@ public class BitmapCache {
     }
 
     /**
-     * ÒÔÈíÒıÓÃµÄ·½Ê½¶ÔÒ»¸öBitmap¶ÔÏóµÄÊµÀı½øĞĞÒıÓÃ²¢±£´æ¸ÃÒıÓÃ
+     * ä»¥è½¯å¼•ç”¨çš„æ–¹å¼å¯¹ä¸€ä¸ªBitmapå¯¹è±¡çš„å®ä¾‹è¿›è¡Œå¼•ç”¨å¹¶ä¿å­˜è¯¥å¼•ç”¨
      */
     private void addCacheBitmap(Bitmap bmp, String key) {
-        cleanCache();// Çå³ıÀ¬»øÒıÓÃ
+        cleanCache();// æ¸…é™¤åƒåœ¾å¼•ç”¨
         if (bmp == null)
             return;
         BitmapRef ref = new BitmapRef(bmp, q, key);
@@ -85,7 +85,7 @@ public class BitmapCache {
     }
 
     /**
-     * Çå³ıCacheÄÚµÄÈ«²¿ÄÚÈİ
+     * æ¸…é™¤Cacheå†…çš„å…¨éƒ¨å†…å®¹
      */
     public void clearCache() {
         cleanCache();
@@ -94,7 +94,7 @@ public class BitmapCache {
         System.runFinalization();
     }
 
-    // »ñÈ¡sd¿¨ÖĞÍ¼Æ¬µÄĞı×ª½Ç¶È
+    // è·å–sdå¡ä¸­å›¾ç‰‡çš„æ—‹è½¬è§’åº¦
     int getPictureDegree(String path) {
         int degree = 0;
         try {
@@ -122,22 +122,22 @@ public class BitmapCache {
         return degree;
     }
 
-    // Ğı×ªÍ¼Æ¬
+    // æ—‹è½¬å›¾ç‰‡
     private Bitmap rotatingBitmap(int angle, Bitmap bitmap) {
-        // Ğı×ªÍ¼Æ¬ ¶¯×÷
+        // æ—‹è½¬å›¾ç‰‡ åŠ¨ä½œ
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
-        // ´´½¨ĞÂµÄÍ¼Æ¬
+        // åˆ›å»ºæ–°çš„å›¾ç‰‡
         Bitmap resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
         bitmap.recycle();
         return resizedBitmap;
     }
 
     /**
-     * ´Ósd¿¨ÖĞ»ñµÃÍ¼Æ¬
+     * ä»sdå¡ä¸­è·å¾—å›¾ç‰‡
      *
-     * @param filePath ÎÄ¼şÂ·¾¶
-     * @return ·µ»ØÍ¼Æ¬µÄBitmap
+     * @param filePath æ–‡ä»¶è·¯å¾„
+     * @return è¿”å›å›¾ç‰‡çš„Bitmap
      */
     public Bitmap getSdBitmap(String filePath) {
         if (TextUtils.isEmpty(filePath)) {
@@ -185,22 +185,22 @@ public class BitmapCache {
     }
 
     /**
-     * ´ÓassetsÎÄ¼ş¼ĞÖĞ´ò¿ªÍ¼Æ¬
+     * ä»assetsæ–‡ä»¶å¤¹ä¸­æ‰“å¼€å›¾ç‰‡
      *
-     * @param context    AndroidÉÏÏÂÎÄ
-     * @param assetsFile assetsÖĞµÄÎÄ¼şÂ·¾¶
-     * @return ·µ»ØÍ¼Æ¬µÄBitmap
+     * @param context    Androidä¸Šä¸‹æ–‡
+     * @param assetsFile assetsä¸­çš„æ–‡ä»¶è·¯å¾„
+     * @return è¿”å›å›¾ç‰‡çš„Bitmap
      */
     public Bitmap getAssetBitmap(Context context, String assetsFile) {
 
         Bitmap bitmapImage = null;
-        // »º´æÖĞÊÇ·ñÓĞ¸ÃBitmapÊµÀıµÄÈíÒıÓÃ£¬Èç¹ûÓĞ£¬´ÓÈíÒıÓÃÖĞÈ¡µÃ¡£
+        // ç¼“å­˜ä¸­æ˜¯å¦æœ‰è¯¥Bitmapå®ä¾‹çš„è½¯å¼•ç”¨ï¼Œå¦‚æœæœ‰ï¼Œä»è½¯å¼•ç”¨ä¸­å–å¾—ã€‚
         if (bitmapRefs.containsKey(assetsFile)) {
             BitmapRef ref = bitmapRefs.get(assetsFile);
             bitmapImage = ref.get();
         }
-        // Èç¹ûÃ»ÓĞÈíÒıÓÃ£¬»òÕß´ÓÈíÒıÓÃÖĞµÃµ½µÄÊµÀıÊÇnull£¬ÖØĞÂ¹¹½¨Ò»¸öÊµÀı£¬
-        // ²¢±£´æ¶ÔÕâ¸öĞÂ½¨ÊµÀıµÄÈíÒıÓÃ
+        // å¦‚æœæ²¡æœ‰è½¯å¼•ç”¨ï¼Œæˆ–è€…ä»è½¯å¼•ç”¨ä¸­å¾—åˆ°çš„å®ä¾‹æ˜¯nullï¼Œé‡æ–°æ„å»ºä¸€ä¸ªå®ä¾‹ï¼Œ
+        // å¹¶ä¿å­˜å¯¹è¿™ä¸ªæ–°å»ºå®ä¾‹çš„è½¯å¼•ç”¨
         if (bitmapImage == null) {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inTempStorage = new byte[16 * 1024];
@@ -241,23 +241,23 @@ public class BitmapCache {
     }
 
     /**
-     * ´ÓR×ÊÔ´ÎÄ¼şÖĞÄÃµ½Í¼Æ¬
+     * ä»Rèµ„æºæ–‡ä»¶ä¸­æ‹¿åˆ°å›¾ç‰‡
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @param resId   ×ÊÔ´ID
-     * @return ·µ»ØÍ¼Æ¬µÄBitmap
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @param resId   èµ„æºID
+     * @return è¿”å›å›¾ç‰‡çš„Bitmap
      */
     public Bitmap getResourceBitmap(Context context, int resId) {
         String resName = AppUtil.getResourceNameById(context, resId);
 
         Bitmap bitmapImage = null;
-        // »º´æÖĞÊÇ·ñÓĞ¸ÃBitmapÊµÀıµÄÈíÒıÓÃ£¬Èç¹ûÓĞ£¬´ÓÈíÒıÓÃÖĞÈ¡µÃ¡£
+        // ç¼“å­˜ä¸­æ˜¯å¦æœ‰è¯¥Bitmapå®ä¾‹çš„è½¯å¼•ç”¨ï¼Œå¦‚æœæœ‰ï¼Œä»è½¯å¼•ç”¨ä¸­å–å¾—ã€‚
         if (bitmapRefs.containsKey(resName)) {
             BitmapRef ref = bitmapRefs.get(resName);
             bitmapImage = ref.get();
         }
-        // Èç¹ûÃ»ÓĞÈíÒıÓÃ£¬»òÕß´ÓÈíÒıÓÃÖĞµÃµ½µÄÊµÀıÊÇnull£¬ÖØĞÂ¹¹½¨Ò»¸öÊµÀı£¬
-        // ²¢±£´æ¶ÔÕâ¸öĞÂ½¨ÊµÀıµÄÈíÒıÓÃ
+        // å¦‚æœæ²¡æœ‰è½¯å¼•ç”¨ï¼Œæˆ–è€…ä»è½¯å¼•ç”¨ä¸­å¾—åˆ°çš„å®ä¾‹æ˜¯nullï¼Œé‡æ–°æ„å»ºä¸€ä¸ªå®ä¾‹ï¼Œ
+        // å¹¶ä¿å­˜å¯¹è¿™ä¸ªæ–°å»ºå®ä¾‹çš„è½¯å¼•ç”¨
         if (bitmapImage == null) {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inTempStorage = new byte[16 * 1024];
@@ -281,21 +281,21 @@ public class BitmapCache {
     }
 
     /**
-     * ´ÓsrcÖĞ»ñµÃÍ¼Æ¬
+     * ä»srcä¸­è·å¾—å›¾ç‰‡
      *
-     * @param cla Í¨¹ıClassÎÄ¼ş»ñµÃ×ÊÔ´ÎÄ¼şËùÔÚÂ·¾¶
-     * @param img Ïà¶ÔclassËùÔÚ°üÎÄ¼şµÄÂ·¾¶£¨Ïà¶ÔÂ·¾¶£©
-     * @return ·µ»ØÍ¼Æ¬µÄBitmap
+     * @param cla é€šè¿‡Classæ–‡ä»¶è·å¾—èµ„æºæ–‡ä»¶æ‰€åœ¨è·¯å¾„
+     * @param img ç›¸å¯¹classæ‰€åœ¨åŒ…æ–‡ä»¶çš„è·¯å¾„ï¼ˆç›¸å¯¹è·¯å¾„ï¼‰
+     * @return è¿”å›å›¾ç‰‡çš„Bitmap
      */
     public Bitmap getSrcBitmap(Class<?> cla, String img) {
         Bitmap bitmapImage = null;
-        // »º´æÖĞÊÇ·ñÓĞ¸ÃBitmapÊµÀıµÄÈíÒıÓÃ£¬Èç¹ûÓĞ£¬´ÓÈíÒıÓÃÖĞÈ¡µÃ¡£
+        // ç¼“å­˜ä¸­æ˜¯å¦æœ‰è¯¥Bitmapå®ä¾‹çš„è½¯å¼•ç”¨ï¼Œå¦‚æœæœ‰ï¼Œä»è½¯å¼•ç”¨ä¸­å–å¾—ã€‚
         if (bitmapRefs.containsKey(img)) {
             BitmapRef ref = bitmapRefs.get(img);
             bitmapImage = ref.get();
         }
-        // Èç¹ûÃ»ÓĞÈíÒıÓÃ£¬»òÕß´ÓÈíÒıÓÃÖĞµÃµ½µÄÊµÀıÊÇnull£¬ÖØĞÂ¹¹½¨Ò»¸öÊµÀı£¬
-        // ²¢±£´æ¶ÔÕâ¸öĞÂ½¨ÊµÀıµÄÈíÒıÓÃ
+        // å¦‚æœæ²¡æœ‰è½¯å¼•ç”¨ï¼Œæˆ–è€…ä»è½¯å¼•ç”¨ä¸­å¾—åˆ°çš„å®ä¾‹æ˜¯nullï¼Œé‡æ–°æ„å»ºä¸€ä¸ªå®ä¾‹ï¼Œ
+        // å¹¶ä¿å­˜å¯¹è¿™ä¸ªæ–°å»ºå®ä¾‹çš„è½¯å¼•ç”¨
         if (bitmapImage == null) {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inTempStorage = new byte[16 * 1024];

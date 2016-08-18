@@ -4,8 +4,8 @@ import android.location.Location;
 
 /**
  * Simple to Introduction
- * ��չ�ĳ�����λ��������ö�λ��Ϣ�����������ö�λ�����еĶ�λ����
- * ��λ�����ڵ���start�󣬵�ǰ����ֻҪ������Ϣ�ı䣬�͵���{@link IExtensionLocation#refreshLocation(Location)}����������ˢ�¶�λ��Ϣ
+ * 扩展的持续定位，持续获得定位信息，并主动调用定位主体中的定位方法
+ * 定位主体在调用start后，当前类中只要坐标信息改变，就调用{@link IExtensionLocation#refreshLocation(Location)}方法，进行刷新定位信息
  *
  * @author Asen
  * @version v1.0

@@ -12,7 +12,7 @@ import com.asen.android.lib.base.tool.manage.action.IActionManager;
 import com.asen.android.lib.base.tool.manage.action.OperaActionManager;
 
 /**
- * »ù´¡µÄActivity£¬»ùÓÚv7°üµÄĞÂÌØĞÔ
+ * åŸºç¡€çš„Activityï¼ŒåŸºäºv7åŒ…çš„æ–°ç‰¹æ€§
  *
  * @author Asen
  * @version v1.0
@@ -21,14 +21,14 @@ import com.asen.android.lib.base.tool.manage.action.OperaActionManager;
 public class BaseActivity extends AppCompatActivity {
 
     /**
-     * Ë¢ĞÂÇ°Ò»¸öÒ³ÃæµÄ·µ»ØÖµ
+     * åˆ·æ–°å‰ä¸€ä¸ªé¡µé¢çš„è¿”å›å€¼
      */
-    public static final int RESULT_REFRESH = 2; // Ë¢ĞÂÒ³Ãæ
+    public static final int RESULT_REFRESH = 2; // åˆ·æ–°é¡µé¢
 
     /**
-     * Ïú»ÙÇ°Ò»¸öÒ³ÃæµÄ·µ»ØÖµ
+     * é”€æ¯å‰ä¸€ä¸ªé¡µé¢çš„è¿”å›å€¼
      */
-    public static final int RESULT_EXIT = -2; // ÍË³ö
+    public static final int RESULT_EXIT = -2; // é€€å‡º
 
     public Context mContext;
 
@@ -58,27 +58,27 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * Ö´ĞĞAction
+     * æ‰§è¡ŒAction
      *
-     * @param actionIntent µ±Ç°µÄActionÒâÍ¼
+     * @param actionIntent å½“å‰çš„Actionæ„å›¾
      */
     public void executeIntent(ActionIntent actionIntent) {
         mActionManager.executeIntent(actionIntent);
     }
 
     /**
-     * Ïú»Ùµ±Ç°µÄAction
+     * é”€æ¯å½“å‰çš„Action
      */
     public void cancelCurrentIntent() {
         mActionManager.cancelCurrentIntent();
     }
 
     /**
-     * »ñµÃµ±Ç°µÄAction
+     * è·å¾—å½“å‰çš„Action
      *
-     * @param cls ActionÀà
-     * @param <T> ·ºĞÍ
-     * @return Èç¹ûµ±Ç°µÄActionÊÇËù´«ÈëµÄÀà£¬Ôò·µ»ØAction¶ÔÏó£»·ñÔò·µ»Ønull
+     * @param cls Actionç±»
+     * @param <T> æ³›å‹
+     * @return å¦‚æœå½“å‰çš„Actionæ˜¯æ‰€ä¼ å…¥çš„ç±»ï¼Œåˆ™è¿”å›Actionå¯¹è±¡ï¼›å¦åˆ™è¿”å›null
      */
     public <T extends BaseAction> T getAction(Class<T> cls) {
         ActionIntent intent = mActionManager.getCurrentIntent();
@@ -87,7 +87,7 @@ public class BaseActivity extends AppCompatActivity {
 
         try {
             BaseAction action = intent.getAction();
-            Class<?> currentCls = action.getClass(); // µ±Ç°ÏÔÊ¾µÄAction
+            Class<?> currentCls = action.getClass(); // å½“å‰æ˜¾ç¤ºçš„Action
             while (currentCls != null) {
                 if (currentCls.getName().equals(cls.getName())) {
                     return (T) action;

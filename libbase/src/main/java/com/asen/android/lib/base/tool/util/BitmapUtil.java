@@ -21,7 +21,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * Í¼Æ¬´¦ÀíµÄ¹¤¾ßÀà
+ * å›¾ç‰‡å¤„ç†çš„å·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -32,23 +32,23 @@ public class BitmapUtil {
     public static final String TAG = BitmapUtil.class.getSimpleName();
 
     /**
-     * ³¤¿í µÈ±ÈÀıËõ·Å
+     * é•¿å®½ ç­‰æ¯”ä¾‹ç¼©æ”¾
      *
-     * @param bitmap Î»Í¼
-     * @param zf     Ëõ·ÅµÄ±ÈÀı
-     * @return ·µ»ØËõ·ÅºóµÄÎ»Í¼
+     * @param bitmap ä½å›¾
+     * @param zf     ç¼©æ”¾çš„æ¯”ä¾‹
+     * @return è¿”å›ç¼©æ”¾åçš„ä½å›¾
      */
     public static Bitmap zoom(Bitmap bitmap, float zf) {
         return zoom(bitmap, zf, zf);
     }
 
     /**
-     * ³¤¿í Ëõ·Å
+     * é•¿å®½ ç¼©æ”¾
      *
-     * @param bitmap Î»Í¼
-     * @param wf     ¿í¶ÈËõ·Å±ÈÀı
-     * @param hf     ¸ß¶ÈËõ·Å±ÈÀı
-     * @return ·µ»ØËõ·ÅºóµÄÎ»Í¼
+     * @param bitmap ä½å›¾
+     * @param wf     å®½åº¦ç¼©æ”¾æ¯”ä¾‹
+     * @param hf     é«˜åº¦ç¼©æ”¾æ¯”ä¾‹
+     * @return è¿”å›ç¼©æ”¾åçš„ä½å›¾
      */
     public static Bitmap zoom(Bitmap bitmap, float wf, float hf) {
         if (bitmap == null) {
@@ -60,17 +60,17 @@ public class BitmapUtil {
     }
 
     /**
-     * ÃèÊö£ºËõ·ÅÍ¼Æ¬.²»Ñ¹ËõµÄËõ·Å
+     * æè¿°ï¼šç¼©æ”¾å›¾ç‰‡.ä¸å‹ç¼©çš„ç¼©æ”¾
      *
-     * @param file      File¶ÔÏó
-     * @param newWidth  ĞÂÍ¼Æ¬µÄ¿í
-     * @param newHeight ĞÂÍ¼Æ¬µÄ¸ß
-     * @return Ëõ·ÅºóµÄÎ»Í¼
+     * @param file      Fileå¯¹è±¡
+     * @param newWidth  æ–°å›¾ç‰‡çš„å®½
+     * @param newHeight æ–°å›¾ç‰‡çš„é«˜
+     * @return ç¼©æ”¾åçš„ä½å›¾
      */
     public static Bitmap scaleImg(File file, int newWidth, int newHeight) {
         Bitmap resizeBmp = null;
         if (newWidth <= 0 || newHeight <= 0) {
-            throw new IllegalArgumentException("Ëõ·ÅÍ¼Æ¬µÄ¿í¸ßÉèÖÃ²»ÄÜĞ¡ÓÚ0");
+            throw new IllegalArgumentException("ç¼©æ”¾å›¾ç‰‡çš„å®½é«˜è®¾ç½®ä¸èƒ½å°äº0");
         }
         BitmapFactory.Options opts = new BitmapFactory.Options();
         opts.inJustDecodeBounds = true;
@@ -117,12 +117,12 @@ public class BitmapUtil {
     }
 
     /**
-     * ÃèÊö£ºËõ·ÅÍ¼Æ¬,²»Ñ¹ËõµÄËõ·Å.
+     * æè¿°ï¼šç¼©æ”¾å›¾ç‰‡,ä¸å‹ç¼©çš„ç¼©æ”¾.
      *
-     * @param bitmap    Ô­Ê¼Î»Í¼
-     * @param newWidth  ĞÂÍ¼Æ¬µÄ¿í
-     * @param newHeight ĞÂÍ¼Æ¬µÄ¸ß
-     * @return Ëõ·ÅºóµÄÎ»Í¼
+     * @param bitmap    åŸå§‹ä½å›¾
+     * @param newWidth  æ–°å›¾ç‰‡çš„å®½
+     * @param newHeight æ–°å›¾ç‰‡çš„é«˜
+     * @return ç¼©æ”¾åçš„ä½å›¾
      */
     public static Bitmap scaleImg(Bitmap bitmap, int newWidth, int newHeight) {
 
@@ -131,7 +131,7 @@ public class BitmapUtil {
             return null;
         }
         if (newWidth <= 0 || newHeight <= 0) {
-            throw new IllegalArgumentException("Ëõ·ÅÍ¼Æ¬µÄ¿í¸ßÉèÖÃ²»ÄÜĞ¡ÓÚ0");
+            throw new IllegalArgumentException("ç¼©æ”¾å›¾ç‰‡çš„å®½é«˜è®¾ç½®ä¸èƒ½å°äº0");
         }
         int srcWidth = bitmap.getWidth();
         int srcHeight = bitmap.getHeight();
@@ -154,36 +154,36 @@ public class BitmapUtil {
     }
 
     /**
-     * ÃèÊö£º²Ã¼ôÍ¼Æ¬.
+     * æè¿°ï¼šè£å‰ªå›¾ç‰‡.
      *
-     * @param file      File¶ÔÏó
-     * @param newWidth  ĞÂÍ¼Æ¬µÄ¿í
-     * @param newHeight ĞÂÍ¼Æ¬µÄ¸ß
-     * @return ²Ã¼ôºóµÄÎ»Í¼
+     * @param file      Fileå¯¹è±¡
+     * @param newWidth  æ–°å›¾ç‰‡çš„å®½
+     * @param newHeight æ–°å›¾ç‰‡çš„é«˜
+     * @return è£å‰ªåçš„ä½å›¾
      */
     public static Bitmap cutImg(File file, int newWidth, int newHeight) {
         Bitmap resizeBmp = null;
         if (newWidth <= 0 || newHeight <= 0) {
-            throw new IllegalArgumentException("²Ã¼ôÍ¼Æ¬µÄ¿í¸ßÉèÖÃ²»ÄÜĞ¡ÓÚ0");
+            throw new IllegalArgumentException("è£å‰ªå›¾ç‰‡çš„å®½é«˜è®¾ç½®ä¸èƒ½å°äº0");
         }
 
         BitmapFactory.Options opts = new BitmapFactory.Options();
-        // ÉèÖÃÎªtrue,decodeFileÏÈ²»´´½¨ÄÚ´æ Ö»»ñÈ¡Ò»Ğ©½âÂë±ß½çĞÅÏ¢¼´Í¼Æ¬´óĞ¡ĞÅÏ¢
+        // è®¾ç½®ä¸ºtrue,decodeFileå…ˆä¸åˆ›å»ºå†…å­˜ åªè·å–ä¸€äº›è§£ç è¾¹ç•Œä¿¡æ¯å³å›¾ç‰‡å¤§å°ä¿¡æ¯
         opts.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(file.getPath(), opts);
-        // inSampleSize=2±íÊ¾Í¼Æ¬¿í¸ß¶¼ÎªÔ­À´µÄ¶ş·ÖÖ®Ò»£¬¼´Í¼Æ¬ÎªÔ­À´µÄËÄ·ÖÖ®Ò»
-        // Ëõ·Å¿ÉÒÔ½«ÏñËØµã´ò±¡,²Ã¼ôÇ°½«Í¼Æ¬Ëõ·Åµ½Ä¿±êÍ¼2±¶´óĞ¡
-        int srcWidth = opts.outWidth; // »ñÈ¡Í¼Æ¬µÄÔ­Ê¼¿í¶È
-        int srcHeight = opts.outHeight;// »ñÈ¡Í¼Æ¬Ô­Ê¼¸ß¶È
+        // inSampleSize=2è¡¨ç¤ºå›¾ç‰‡å®½é«˜éƒ½ä¸ºåŸæ¥çš„äºŒåˆ†ä¹‹ä¸€ï¼Œå³å›¾ç‰‡ä¸ºåŸæ¥çš„å››åˆ†ä¹‹ä¸€
+        // ç¼©æ”¾å¯ä»¥å°†åƒç´ ç‚¹æ‰“è–„,è£å‰ªå‰å°†å›¾ç‰‡ç¼©æ”¾åˆ°ç›®æ ‡å›¾2å€å¤§å°
+        int srcWidth = opts.outWidth; // è·å–å›¾ç‰‡çš„åŸå§‹å®½åº¦
+        int srcHeight = opts.outHeight;// è·å–å›¾ç‰‡åŸå§‹é«˜åº¦
         int destWidth = 0;
         int destHeight = 0;
 
         int cutSrcWidth = newWidth * 2;
         int cutSrcHeight = newHeight * 2;
 
-        // Ëõ·ÅµÄ±ÈÀı,ÎªÁË´óÍ¼µÄËõĞ¡µ½2±¶±»²Ã¼ôµÄ´óĞ¡ÔÚ²Ã¼ô
+        // ç¼©æ”¾çš„æ¯”ä¾‹,ä¸ºäº†å¤§å›¾çš„ç¼©å°åˆ°2å€è¢«è£å‰ªçš„å¤§å°åœ¨è£å‰ª
         double ratio = 0.0;
-        // ÈÎÒâÒ»¸ö²»¹»³¤¾Í²»Ëõ·Å
+        // ä»»æ„ä¸€ä¸ªä¸å¤Ÿé•¿å°±ä¸ç¼©æ”¾
         if (srcWidth < cutSrcWidth || srcHeight < cutSrcHeight) {
             ratio = 0.0;
             destWidth = srcWidth;
@@ -218,12 +218,12 @@ public class BitmapUtil {
     }
 
     /**
-     * ÃèÊö£º²Ã¼ôÍ¼Æ¬.
+     * æè¿°ï¼šè£å‰ªå›¾ç‰‡.
      *
-     * @param bitmap    Ô­Ê¼Î»Í¼
-     * @param newWidth  ĞÂÍ¼Æ¬µÄ¿í
-     * @param newHeight ĞÂÍ¼Æ¬µÄ¸ß
-     * @return ²Ã¼ôºóµÄÎ»Í¼
+     * @param bitmap    åŸå§‹ä½å›¾
+     * @param newWidth  æ–°å›¾ç‰‡çš„å®½
+     * @param newHeight æ–°å›¾ç‰‡çš„é«˜
+     * @return è£å‰ªåçš„ä½å›¾
      */
     public static Bitmap cutImg(Bitmap bitmap, int newWidth, int newHeight) {
         if (bitmap == null) {
@@ -231,7 +231,7 @@ public class BitmapUtil {
         }
 
         if (newWidth <= 0 || newHeight <= 0) {
-            throw new IllegalArgumentException("²Ã¼ôÍ¼Æ¬µÄ¿í¸ßÉèÖÃ²»ÄÜĞ¡ÓÚ0");
+            throw new IllegalArgumentException("è£å‰ªå›¾ç‰‡çš„å®½é«˜è®¾ç½®ä¸èƒ½å°äº0");
         }
 
         Bitmap resizeBmp = null;
@@ -270,14 +270,14 @@ public class BitmapUtil {
         return resizeBmp;
     }
 
-    /******************************** Í¼Æ¬ÌØĞ§ ************************************/
+    /******************************** å›¾ç‰‡ç‰¹æ•ˆ ************************************/
 
     /**
-     * Í¼Æ¬ÉèÖÃÔ²½Ç
+     * å›¾ç‰‡è®¾ç½®åœ†è§’
      *
-     * @param bitmap  Ô­Ê¼Î»Í¼
-     * @param roundPX Ô²½Ç»¡¶ÈµÄÏñËØÖµ
-     * @return ×ª»»ºóµÄÍ¼Æ¬Î»Í¼
+     * @param bitmap  åŸå§‹ä½å›¾
+     * @param roundPX åœ†è§’å¼§åº¦çš„åƒç´ å€¼
+     * @return è½¬æ¢åçš„å›¾ç‰‡ä½å›¾
      */
     public static Bitmap roundedCornerBitmap(Bitmap bitmap, float roundPX) {
         if (bitmap == null)
@@ -299,10 +299,10 @@ public class BitmapUtil {
     }
 
     /**
-     * ×ª»»Í¼Æ¬×ª»»³ÉÔ²ĞÎ.
+     * è½¬æ¢å›¾ç‰‡è½¬æ¢æˆåœ†å½¢.
      *
-     * @param bitmap Ô­Ê¼Î»Í¼
-     * @return ×ª»»ºóµÄÎ»Í¼
+     * @param bitmap åŸå§‹ä½å›¾
+     * @return è½¬æ¢åçš„ä½å›¾
      */
     public static Bitmap roundBitmap(Bitmap bitmap) {
         if (bitmap == null) {
@@ -356,11 +356,11 @@ public class BitmapUtil {
     }
 
     /**
-     * ÃèÊö£ºĞı×ªBitmapÎªÒ»¶¨µÄ½Ç¶È.
+     * æè¿°ï¼šæ—‹è½¬Bitmapä¸ºä¸€å®šçš„è§’åº¦.
      *
-     * @param bitmap  Ô­Ê¼Î»Í¼
-     * @param degrees ĞèÒªĞı×ªµÄ½Ç¶È
-     * @return Ğı×ªºóµÄÎ»Í¼
+     * @param bitmap  åŸå§‹ä½å›¾
+     * @param degrees éœ€è¦æ—‹è½¬çš„è§’åº¦
+     * @return æ—‹è½¬åçš„ä½å›¾
      */
     public static Bitmap rotateBitmap(Bitmap bitmap, float degrees) {
         Bitmap mBitmap = null;
@@ -376,10 +376,10 @@ public class BitmapUtil {
     }
 
     /**
-     * ×ª»»Í¼Æ¬×ª»»³É¾µÃæĞ§¹ûµÄÍ¼Æ¬.
+     * è½¬æ¢å›¾ç‰‡è½¬æ¢æˆé•œé¢æ•ˆæœçš„å›¾ç‰‡.
      *
-     * @param bitmap Ô­Ê¼Î»Í¼
-     * @return ×ª»»ºóµÄÎ»Í¼
+     * @param bitmap åŸå§‹ä½å›¾
+     * @return è½¬æ¢åçš„ä½å›¾
      */
     public static Bitmap reflectionBitmap(Bitmap bitmap) {
         if (bitmap == null) {
@@ -423,11 +423,11 @@ public class BitmapUtil {
     }
 
     /**
-     * Ïà·´
+     * ç›¸å
      *
-     * @param bmp  Ô­Ê¼Î»Í¼
+     * @param bmp  åŸå§‹ä½å›¾
      * @param flag 0 or 1
-     * @return ×ª»»ºóµÄÎ»Í¼
+     * @return è½¬æ¢åçš„ä½å›¾
      */
     public static Bitmap reverseBitmap(Bitmap bmp, int flag) {
         float[] floats = null;
@@ -450,13 +450,13 @@ public class BitmapUtil {
     }
 
     /**
-     * ¶Ô src Ìí¼ÓË®Ó¡£¨watermark£©
+     * å¯¹ src æ·»åŠ æ°´å°ï¼ˆwatermarkï¼‰
      *
-     * @param src       Ô­Ê¼Î»Í¼
-     * @param watermark Ë®Ó¡µÄÎ»Í¼
-     * @param x         Ë®Ó¡·ÅÖÃÎ»ÖÃµÄX×ø±ê
-     * @param y         Ë®Ó¡·ÅÖÃÎ»ÖÃµÄY×ø±ê
-     * @return ´¦ÀíºóµÄÎ»Í¼
+     * @param src       åŸå§‹ä½å›¾
+     * @param watermark æ°´å°çš„ä½å›¾
+     * @param x         æ°´å°æ”¾ç½®ä½ç½®çš„Xåæ ‡
+     * @param y         æ°´å°æ”¾ç½®ä½ç½®çš„Yåæ ‡
+     * @return å¤„ç†åçš„ä½å›¾
      */
     public static Bitmap doodleBitmap(Bitmap src, Bitmap watermark, int x, int y) {
         Bitmap newb = Bitmap.createBitmap(src.getWidth(), src.getHeight(),
@@ -474,13 +474,13 @@ public class BitmapUtil {
     }
 
     /**
-     * src ÉÏÌí¼ÓÎÄ×Ö
+     * src ä¸Šæ·»åŠ æ–‡å­—
      *
-     * @param src Ô­Ê¼Î»Í¼
-     * @param msg ÒªÌí¼ÓµÄÎÄ×Ö
-     * @param x   Ë®Ó¡·ÅÖÃÎ»ÖÃµÄX×ø±ê
-     * @param y   Ë®Ó¡·ÅÖÃÎ»ÖÃµÄY×ø±ê
-     * @return ´¦ÀíºóµÄÎ»Í¼
+     * @param src åŸå§‹ä½å›¾
+     * @param msg è¦æ·»åŠ çš„æ–‡å­—
+     * @param x   æ°´å°æ”¾ç½®ä½ç½®çš„Xåæ ‡
+     * @param y   æ°´å°æ”¾ç½®ä½ç½®çš„Yåæ ‡
+     * @return å¤„ç†åçš„ä½å›¾
      */
     public static Bitmap doodleText(Bitmap src, String msg, int x, int y) {
         Canvas canvas = new Canvas(src);
@@ -493,10 +493,10 @@ public class BitmapUtil {
     }
 
     /**
-     * »³¾ÉµÄ bitmap
+     * æ€€æ—§çš„ bitmap
      *
-     * @param bmp Ô­Ê¼Î»Í¼
-     * @return ´¦ÀíºóµÄÎ»Í¼
+     * @param bmp åŸå§‹ä½å›¾
+     * @return å¤„ç†åçš„ä½å›¾
      */
     public static Bitmap oldBitmap(Bitmap bmp) {
         int width = bmp.getWidth();
@@ -532,10 +532,10 @@ public class BitmapUtil {
     }
 
     /**
-     * Ä£ºıbitmap
+     * æ¨¡ç³Šbitmap
      *
-     * @param bmp Ô­Ê¼Î»Í¼
-     * @return ´¦ÀíºóµÄÎ»Í¼
+     * @param bmp åŸå§‹ä½å›¾
+     * @return å¤„ç†åçš„ä½å›¾
      */
     public static Bitmap blurImage(Bitmap bmp) {
         int width = bmp.getWidth();
@@ -620,10 +620,10 @@ public class BitmapUtil {
     }
 
     /**
-     * Ä£ºıbitmap2
+     * æ¨¡ç³Šbitmap2
      *
-     * @param bmp Ô­Ê¼Î»Í¼
-     * @return ´¦ÀíºóµÄÎ»Í¼
+     * @param bmp åŸå§‹ä½å›¾
+     * @return å¤„ç†åçš„ä½å›¾
      */
     public static Bitmap blurImageAmeliorate(Bitmap bmp) {
         int[] gauss = new int[]{1, 2, 1, 2, 4, 2, 1, 2, 1};
@@ -676,10 +676,10 @@ public class BitmapUtil {
     }
 
     /**
-     * ËØÃè
+     * ç´ æ
      *
-     * @param bmp Ô­Ê¼Î»Í¼
-     * @return ´¦ÀíºóµÄÎ»Í¼
+     * @param bmp åŸå§‹ä½å›¾
+     * @return å¤„ç†åçš„ä½å›¾
      */
     public static Bitmap sketchBitmap(Bitmap bmp) {
         int pos, row, col, clr;
@@ -713,10 +713,10 @@ public class BitmapUtil {
     }
 
     /**
-     * ¸¡µñ
+     * æµ®é›•
      *
-     * @param bmp Ô­Ê¼Î»Í¼
-     * @return ´¦ÀíºóµÄÎ»Í¼
+     * @param bmp åŸå§‹ä½å›¾
+     * @return å¤„ç†åçš„ä½å›¾
      */
     public static Bitmap embossBitmap(Bitmap bmp) {
         int width = bmp.getWidth();
@@ -760,10 +760,10 @@ public class BitmapUtil {
     }
 
     /**
-     * Èñ»¯
+     * é”åŒ–
      *
-     * @param bmp Ô­Ê¼Î»Í¼
-     * @return ´¦ÀíºóµÄÎ»Í¼
+     * @param bmp åŸå§‹ä½å›¾
+     * @return å¤„ç†åçš„ä½å›¾
      */
     public static Bitmap sharpenImageAmeliorate(Bitmap bmp) {
         int[] laplacian = new int[]{-1, -1, -1, -1, 9, -1, -1, -1, -1};
@@ -816,10 +816,10 @@ public class BitmapUtil {
     }
 
     /**
-     * µçÓ°
+     * ç”µå½±
      *
-     * @param bmp Ô­Ê¼Î»Í¼
-     * @return ´¦ÀíºóµÄÎ»Í¼
+     * @param bmp åŸå§‹ä½å›¾
+     * @return å¤„ç†åçš„ä½å›¾
      */
     public static Bitmap filmBitmap(Bitmap bmp) {
         final int MAX_VALUE = 255;
@@ -866,12 +866,12 @@ public class BitmapUtil {
     }
 
     /**
-     * Ñô¹â
+     * é˜³å…‰
      *
-     * @param bmp     Ô­Ê¼Î»Í¼
-     * @param centerX Ñô¹âÖĞĞÄÎ»ÖÃµÄX×ø±ê
-     * @param centerY Ñô¹âÖĞĞÄÎ»ÖÃµÄY×ø±ê
-     * @return ´¦ÀíºóµÄÎ»Í¼
+     * @param bmp     åŸå§‹ä½å›¾
+     * @param centerX é˜³å…‰ä¸­å¿ƒä½ç½®çš„Xåæ ‡
+     * @param centerY é˜³å…‰ä¸­å¿ƒä½ç½®çš„Yåæ ‡
+     * @return å¤„ç†åçš„ä½å›¾
      */
     public static Bitmap sunshineBitmap(Bitmap bmp, int centerX, int centerY) {
         final int width = bmp.getWidth();
@@ -1146,7 +1146,7 @@ public class BitmapUtil {
     }
 
     /**********************************
-     * ÆäËûÍ¼ĞÎ
+     * å…¶ä»–å›¾å½¢
      **********************************/
     private static final float RADIUS_FACTOR = 8.0f;
     private static final int TRIANGLE_WIDTH = 120;
@@ -1154,10 +1154,10 @@ public class BitmapUtil {
     private static final int TRIANGLE_OFFSET = 300;
 
     /**
-     * ½«Í¼Æ¬´¦Àí³ÉÆøÅİ
+     * å°†å›¾ç‰‡å¤„ç†æˆæ°”æ³¡
      *
-     * @param bitmap Ô­Ê¼Î»Í¼
-     * @return ´¦ÀíºóµÄÎ»Í¼
+     * @param bitmap åŸå§‹ä½å›¾
+     * @return å¤„ç†åçš„ä½å›¾
      */
     public static Bitmap processImage(Bitmap bitmap) {
         Bitmap bmp = null;
@@ -1193,13 +1193,13 @@ public class BitmapUtil {
      ******************************************/
 
     /**
-     * ±£´æÎ»Í¼³ÉÎÄ¼ş
+     * ä¿å­˜ä½å›¾æˆæ–‡ä»¶
      *
-     * @param bmp     Òª±£´æµÄÎ»Í¼
-     * @param path    ±£´æµÄÎÄ¼şÂ·¾¶
-     * @param name    ±£´æµÄÎÄ¼şÃû
-     * @param quality ±£´æµÄÍ¼Æ¬ÖÊÁ¿£¨0-100£©
-     * @return ±£´æ³É¹¦·µ»Øtrue£¬·ñÔò·µ»Øfalse
+     * @param bmp     è¦ä¿å­˜çš„ä½å›¾
+     * @param path    ä¿å­˜çš„æ–‡ä»¶è·¯å¾„
+     * @param name    ä¿å­˜çš„æ–‡ä»¶å
+     * @param quality ä¿å­˜çš„å›¾ç‰‡è´¨é‡ï¼ˆ0-100ï¼‰
+     * @return ä¿å­˜æˆåŠŸè¿”å›trueï¼Œå¦åˆ™è¿”å›false
      */
     public static boolean saveBitmap(Bitmap bmp, String path, String name, int quality) {
         boolean result = false;
@@ -1233,9 +1233,9 @@ public class BitmapUtil {
     /************************************ release **************************************/
 
     /**
-     * ÊÍ·ÅBitmap¶ÔÏó.
+     * é‡Šæ”¾Bitmapå¯¹è±¡.
      *
-     * @param bitmap ÒªÊÍ·ÅµÄÎ»Í¼
+     * @param bitmap è¦é‡Šæ”¾çš„ä½å›¾
      */
     public static void releaseBitmap(Bitmap bitmap) {
         if (bitmap != null) {
@@ -1251,9 +1251,9 @@ public class BitmapUtil {
     }
 
     /**
-     * ÊÍ·ÅBitmapÊı×é.
+     * é‡Šæ”¾Bitmapæ•°ç»„.
      *
-     * @param bitmaps ÒªÊÍ·ÅµÄÎ»Í¼Êı×é
+     * @param bitmaps è¦é‡Šæ”¾çš„ä½å›¾æ•°ç»„
      */
     public static void releaseBitmapArray(Bitmap[] bitmaps) {
         if (bitmaps != null) {

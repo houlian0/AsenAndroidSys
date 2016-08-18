@@ -8,7 +8,7 @@ import com.asen.android.lib.base.core.gps.GpsInfoType;
 import com.asen.android.lib.base.core.gps.bean.LocationInfo;
 
 /**
- * À©Õ¹µÚÈı·½¶¨Î»»ùÀà
+ * æ‰©å±•ç¬¬ä¸‰æ–¹å®šä½åŸºç±»
  *
  * @author Asen
  * @version v1.0
@@ -17,23 +17,23 @@ import com.asen.android.lib.base.core.gps.bean.LocationInfo;
 public abstract class BaseExtensionLocation implements IExtensionLocation {
 
     /**
-     * GPS¶¨Î»Ö÷¶ÔÏó
+     * GPSå®šä½ä¸»å¯¹è±¡
      */
     protected GpsLocation mGpsLocation;
 
     /**
-     * »ñÈ¡GPS¶¨Î»Ö÷¶ÔÏó
+     * è·å–GPSå®šä½ä¸»å¯¹è±¡
      *
-     * @return GPS¶¨Î»Ö÷¶ÔÏó
+     * @return GPSå®šä½ä¸»å¯¹è±¡
      */
     public GpsLocation getGpsLocation() {
         return mGpsLocation;
     }
 
     /**
-     * ÉèÖÃGPS¶¨Î»Ö÷¶ÔÏó
+     * è®¾ç½®GPSå®šä½ä¸»å¯¹è±¡
      *
-     * @param gpsLocation GPS¶¨Î»Ö÷¶ÔÏó
+     * @param gpsLocation GPSå®šä½ä¸»å¯¹è±¡
      */
     public void setGpsLocation(GpsLocation gpsLocation) {
         mGpsLocation = gpsLocation;

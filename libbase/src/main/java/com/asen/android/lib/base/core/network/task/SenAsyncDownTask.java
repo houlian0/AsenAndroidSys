@@ -7,7 +7,7 @@ import com.asen.android.lib.base.tool.util.FileUtil;
 import java.io.File;
 
 /**
- * ÏÂÔØµ¥ÈÎÎñ£¨Ö§³ÖÒì²½£©
+ * ä¸‹è½½å•ä»»åŠ¡ï¼ˆæ”¯æŒå¼‚æ­¥ï¼‰
  *
  * @author Asen
  * @version v1.0
@@ -19,20 +19,20 @@ public class SenAsyncDownTask extends SenAsyncTask<Void, Object, File> implement
 
     private OnDownloadFileListener mOnDownloadFileListener;
 
-    private File resultFile; // ½á¹ûÎÄ¼ş
+    private File resultFile; // ç»“æœæ–‡ä»¶
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param url      ÏÂÔØµØÖ·
-     * @param folder   ÎÄ¼ş¼Ğ
-     * @param listener ÏÂÔØ¼àÌı
+     * @param url      ä¸‹è½½åœ°å€
+     * @param folder   æ–‡ä»¶å¤¹
+     * @param listener ä¸‹è½½ç›‘å¬
      */
     public SenAsyncDownTask(String url, File folder, OnDownloadFileListener listener) {
         mDownloadFileService = new DownloadFileService(url, folder, this);
         mDownloadFileService.getDownConfig().setThreadNumber(1);
         this.mOnDownloadFileListener = listener;
-        FileUtil.createFolder(folder); // ´´½¨ÎÄ¼ş¼Ğ
+        FileUtil.createFolder(folder); // åˆ›å»ºæ–‡ä»¶å¤¹
     }
 
     @Override
@@ -82,7 +82,7 @@ public class SenAsyncDownTask extends SenAsyncTask<Void, Object, File> implement
     }
 
     /**
-     * ½ø¶ÈĞÅÏ¢
+     * è¿›åº¦ä¿¡æ¯
      */
     class ProgressInfo {
 
@@ -117,7 +117,7 @@ public class SenAsyncDownTask extends SenAsyncTask<Void, Object, File> implement
     }
 
     /**
-     * ´íÎóĞÅÏ¢
+     * é”™è¯¯ä¿¡æ¯
      */
     class ErrorInfo {
 

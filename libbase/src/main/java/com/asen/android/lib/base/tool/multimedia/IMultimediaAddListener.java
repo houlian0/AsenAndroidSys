@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.List;
 
 /**
- * ¶àÃ½ÌåÌí¼Ó½Ó¿Ú
+ * å¤šåª’ä½“æ·»åŠ æ¥å£
  *
  * @author Asen
  * @version v1.0
@@ -13,10 +13,10 @@ import java.util.List;
 public interface IMultimediaAddListener {
 
     /**
-     * ¶àÃ½ÌåÌí¼Ó
+     * å¤šåª’ä½“æ·»åŠ 
      *
-     * @param lastFile ×îºóÒ»¸öÎÄ¼ş
-     * @param fileList ËùÓĞµÄÎÄ¼ş¼¯ºÏ
+     * @param lastFile æœ€åä¸€ä¸ªæ–‡ä»¶
+     * @param fileList æ‰€æœ‰çš„æ–‡ä»¶é›†åˆ
      */
     public void multimediaAdd(File lastFile, List<File> fileList);
 }

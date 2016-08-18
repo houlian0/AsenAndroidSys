@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Simple to Introduction
- * GPS×´Ì¬¼àÌı½Ó¿Ú
+ * GPSçŠ¶æ€ç›‘å¬æ¥å£
  *
  * @author ASEN
  * @version v1.0
@@ -20,8 +20,8 @@ public interface OnSatelliteChangedListener {
      * {@link LocationManager#getGpsStatus} to get additional
      * status information.
      *
-     * @param gpsStatus     GSP×´Ì¬
-     * @param gpsSatellites ¿ÉÄÜÎªnull
+     * @param gpsStatus     GSPçŠ¶æ€
+     * @param gpsSatellites å¯èƒ½ä¸ºnull
      */
     void satelliteChanged(int gpsStatus, List<GpsSatellite> gpsSatellites);
 }

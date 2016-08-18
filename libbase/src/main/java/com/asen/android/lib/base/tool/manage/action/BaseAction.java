@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 /**
- * »ù±¾µÄAction
+ * åŸºæœ¬çš„Action
  *
  * @author Asen
  * @version v1.0
@@ -15,19 +15,19 @@ import android.support.v4.app.Fragment;
 public abstract class BaseAction<T> {
 
     /**
-     * µ÷ÓÃActionµÄÖ´ĞĞÀà£¨Activity»òFragment£©
+     * è°ƒç”¨Actionçš„æ‰§è¡Œç±»ï¼ˆActivityæˆ–Fragmentï¼‰
      */
-    protected T mParent; // µ÷ÓÃActionµÄÖ´ĞĞÀà£¨Activity»òFragment£©
+    protected T mParent; // è°ƒç”¨Actionçš„æ‰§è¡Œç±»ï¼ˆActivityæˆ–Fragmentï¼‰
 
     /**
-     * Android ÉÏÏÂÎÄ
+     * Android ä¸Šä¸‹æ–‡
      */
-    protected Context mContext; // Android ÉÏÏÂÎÄ
+    protected Context mContext; // Android ä¸Šä¸‹æ–‡
 
     /**
-     * ÉèÖÃ µ÷ÓÃActionµÄÖ´ĞĞÀà£¨Activity»òFragment£©
+     * è®¾ç½® è°ƒç”¨Actionçš„æ‰§è¡Œç±»ï¼ˆActivityæˆ–Fragmentï¼‰
      *
-     * @param parent µ÷ÓÃActionµÄÖ´ĞĞÀà£¨Activity»òFragment£©
+     * @param parent è°ƒç”¨Actionçš„æ‰§è¡Œç±»ï¼ˆActivityæˆ–Fragmentï¼‰
      */
     void setParent(T parent) {
         mParent = parent;
@@ -39,21 +39,21 @@ public abstract class BaseAction<T> {
     }
 
     /**
-     * ´´½¨£º¿ÉÒÔÔÚ´Ë·½·¨ÖĞ³õÊ¼»¯ĞÅÏ¢£¨Ö»Ö´ĞĞÒ»´Î£©
+     * åˆ›å»ºï¼šå¯ä»¥åœ¨æ­¤æ–¹æ³•ä¸­åˆå§‹åŒ–ä¿¡æ¯ï¼ˆåªæ‰§è¡Œä¸€æ¬¡ï¼‰
      */
     public abstract void onCreate();
 
     /**
-     * Ö´ĞĞ£¨Ã¿´ÎÖ´ĞĞAction¶¼»áµ÷ÓÃ£¬»áÖØ¸´Ö´ĞĞ£©
+     * æ‰§è¡Œï¼ˆæ¯æ¬¡æ‰§è¡ŒActionéƒ½ä¼šè°ƒç”¨ï¼Œä¼šé‡å¤æ‰§è¡Œï¼‰
      *
-     * @param isResume ÊÇ·ñÖØ¸´Ö´ĞĞ
-     * @param object   objectÊı¾İ
-     * @param bundle   bundleÊı¾İ
+     * @param isResume æ˜¯å¦é‡å¤æ‰§è¡Œ
+     * @param object   objectæ•°æ®
+     * @param bundle   bundleæ•°æ®
      */
     public abstract void execute(boolean isResume, Object object, Bundle bundle);
 
     /**
-     * Ïú»Ù£º¿ÉÒÔÔÚ´Ë·½·¨ÖĞÏú»ÙĞÅÏ¢£¨Ö»Ö´ĞĞÒ»´Î£©
+     * é”€æ¯ï¼šå¯ä»¥åœ¨æ­¤æ–¹æ³•ä¸­é”€æ¯ä¿¡æ¯ï¼ˆåªæ‰§è¡Œä¸€æ¬¡ï¼‰
      */
     public abstract void onDestroy();
 

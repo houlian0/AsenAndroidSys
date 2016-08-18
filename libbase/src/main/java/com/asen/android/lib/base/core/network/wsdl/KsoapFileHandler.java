@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
- * Í¨¹ı Ksoap ½«´óÎÄ¼ş×ª³ÉBase64µÄĞÎÊ½½øĞĞ´«ÊäÊ±£¬½âÎö ´óÎÄ¼ş´«ÊäµÄÄÚÈİ -- Sax½âÎö
+ * é€šè¿‡ Ksoap å°†å¤§æ–‡ä»¶è½¬æˆBase64çš„å½¢å¼è¿›è¡Œä¼ è¾“æ—¶ï¼Œè§£æ å¤§æ–‡ä»¶ä¼ è¾“çš„å†…å®¹ -- Saxè§£æ
  *
  * @author Asen
  * @version v1.0
@@ -18,7 +18,7 @@ import java.io.OutputStream;
  */
 public class KsoapFileHandler extends DefaultHandler {
 
-    private OutputStream outputStream; // ÎÄ¼şÊä³öÁ÷
+    private OutputStream outputStream; // æ–‡ä»¶è¾“å‡ºæµ
 
     private boolean isStartRecord = false;
 
@@ -57,15 +57,15 @@ public class KsoapFileHandler extends DefaultHandler {
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
         super.characters(ch, start, length);
-        if (isStartRecord) { // ¿ªÊ¼¼ÇÂ¼
+        if (isStartRecord) { // å¼€å§‹è®°å½•
             try {
                 byte[] decode = null;
 
-                String content = new String(ch, start, length).trim(); // µ±Ç°»ñµÃµÄ×Ö·û´®
+                String content = new String(ch, start, length).trim(); // å½“å‰è·å¾—çš„å­—ç¬¦ä¸²
                 if (content.length() == 0) return;
 
                 if (sb == null) {
-                    if (content.length() % 4 == 0) { // ÊÇ4µÄ±¶Êı
+                    if (content.length() % 4 == 0) { // æ˜¯4çš„å€æ•°
                         decode = Base64Util.decode(content, "UTF-8");
                     } else {
                         sb = new StringBuilder(content);

@@ -11,7 +11,7 @@ import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 
 /**
- * ÎÄ¼şÏÂÔØÏß³Ì
+ * æ–‡ä»¶ä¸‹è½½çº¿ç¨‹
  *
  * @author Asen
  * @version v1.0
@@ -19,20 +19,20 @@ import java.nio.channels.FileChannel;
  */
 class DownFileSingleThread extends Thread {
 
-    private static final int BUFFER_SIZE = 16 * 1024; // »º³åÇø´óĞ¡
+    private static final int BUFFER_SIZE = 16 * 1024; // ç¼“å†²åŒºå¤§å°
 
-    private final DownProgressInfo mProgressInfo; // ÏÂÔØµÄ×Ü½ø¶ÈĞÅÏ¢
+    private final DownProgressInfo mProgressInfo; // ä¸‹è½½çš„æ€»è¿›åº¦ä¿¡æ¯
 
-    private DownProgressItem mProgressItem; // µ±Ç°Ïß³ÌÏÂÔØµÄ½ø¶ÈĞÅÏ¢
+    private DownProgressItem mProgressItem; // å½“å‰çº¿ç¨‹ä¸‹è½½çš„è¿›åº¦ä¿¡æ¯
 
-    private DownloadFileService downloadFileService; // ÏÂÔØµÄÖ÷·şÎñÀà
+    private DownloadFileService downloadFileService; // ä¸‹è½½çš„ä¸»æœåŠ¡ç±»
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param service      ÏÂÔØ·şÎñ
-     * @param progressInfo ×Ü½ø¶ÈĞÅÏ¢
-     * @param progressItem µ±Ç°Ïß³ÌµÄ½ø¶ÈĞÅÏ¢
+     * @param service      ä¸‹è½½æœåŠ¡
+     * @param progressInfo æ€»è¿›åº¦ä¿¡æ¯
+     * @param progressItem å½“å‰çº¿ç¨‹çš„è¿›åº¦ä¿¡æ¯
      */
     DownFileSingleThread(DownloadFileService service, DownProgressInfo progressInfo, DownProgressItem progressItem) {
         downloadFileService = service;
@@ -58,7 +58,7 @@ class DownFileSingleThread extends Thread {
             conn.setRequestProperty("Accept-Language", "zh-CN");
             conn.setRequestProperty("Referer", downloadFileService.getUrlStr());
             conn.setRequestProperty("Charset", "UTF-8");
-            conn.setRequestProperty("Range", "bytes=" + (mProgressItem.getStartSeek() + mProgressItem.getDownSize()) + "-" + mProgressItem.getEndSeek());// ÉèÖÃ»ñÈ¡ÊµÌåÊı¾İµÄ·¶Î§
+            conn.setRequestProperty("Range", "bytes=" + (mProgressItem.getStartSeek() + mProgressItem.getDownSize()) + "-" + mProgressItem.getEndSeek());// è®¾ç½®è·å–å®ä½“æ•°æ®çš„èŒƒå›´
             conn.setRequestProperty(
                     "User-Agent",
                     "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.2; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)");
@@ -68,11 +68,11 @@ class DownFileSingleThread extends Thread {
             byte[] buffer = new byte[BUFFER_SIZE];
             inputStream = conn.getInputStream();
 
-            downloadFileService.setFailureNumber(0); // Á¬½Ó³É¹¦£¬½«Ê§°Ü´ÎÊıÉèÎª0
+            downloadFileService.setFailureNumber(0); // è¿æ¥æˆåŠŸï¼Œå°†å¤±è´¥æ¬¡æ•°è®¾ä¸º0
 
             int offset;
             while (downloadFileService.getDownStatus() == DownloadFileService.STATUS_START && (offset = inputStream.read(buffer, 0, BUFFER_SIZE)) != -1) {
-                synchronized (mProgressInfo) { // ÉèÖÃÎÄ¼şÏÂÔØ´óĞ¡
+                synchronized (mProgressInfo) { // è®¾ç½®æ–‡ä»¶ä¸‹è½½å¤§å°
                     if (offset == 0) continue;
                     MappedByteBuffer map = mProgressInfo.getFileOutputStream().getChannel().map(FileChannel.MapMode.READ_WRITE, mProgressItem.getStartSeek() + mProgressItem.getDownSize(), offset);
                     map.put(ByteBuffer.wrap(buffer, 0, offset));
@@ -82,10 +82,10 @@ class DownFileSingleThread extends Thread {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            downloadFileService.setFailureNumber(downloadFileService.getFailureNumber() + 1); // Ôö¼ÓÊ§°Ü´ÎÊı
+            downloadFileService.setFailureNumber(downloadFileService.getFailureNumber() + 1); // å¢åŠ å¤±è´¥æ¬¡æ•°
         } finally {
             try {
-//                    mProgressInfo.getFileOutputStream().flush(); // ½«»º´æµÄĞÅÏ¢Ğ´ÈëÎÄ¼ş
+//                    mProgressInfo.getFileOutputStream().flush(); // å°†ç¼“å­˜çš„ä¿¡æ¯å†™å…¥æ–‡ä»¶
                 if (inputStream != null) inputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();

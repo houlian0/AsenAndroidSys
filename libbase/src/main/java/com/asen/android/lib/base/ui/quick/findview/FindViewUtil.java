@@ -13,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * ¿ìËÙFindViewµÄ¹¤¾ßÀà
+ * å¿«é€ŸFindViewçš„å·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -30,10 +30,10 @@ public class FindViewUtil {
     }
 
     /**
-     * »ñÈ¡¿ìËÙFindView¹¤¾ßÀàµÄÊµÀı
+     * è·å–å¿«é€ŸFindViewå·¥å…·ç±»çš„å®ä¾‹
      *
-     * @param context AndroidµÄÉÏÏÂÎÄ
-     * @return FindView¹¤¾ßÀàµÄÊµÀı
+     * @param context Androidçš„ä¸Šä¸‹æ–‡
+     * @return FindViewå·¥å…·ç±»çš„å®ä¾‹
      */
     public static FindViewUtil getInstance(Context context) {
         if (null == f) {
@@ -47,10 +47,10 @@ public class FindViewUtil {
     }
 
     /**
-     * ´ÓViewÖĞ¿ìËÙFindView
+     * ä»Viewä¸­å¿«é€ŸFindView
      *
-     * @param view Íâ²¿²¼¾Ö
-     * @param obj  ĞèÒªfindµÄÊµÀı
+     * @param view å¤–éƒ¨å¸ƒå±€
+     * @param obj  éœ€è¦findçš„å®ä¾‹
      */
     public void findViews(View view, final Object obj) {
         Class<?> clazz = obj.getClass();
@@ -85,10 +85,10 @@ public class FindViewUtil {
     }
 
     /**
-     * ´ÓActivityÖĞ¿ìËÙFindView
+     * ä»Activityä¸­å¿«é€ŸFindView
      *
-     * @param activity µ±Ç°µÄActivityÒ³Ãæ
-     * @param obj      ĞèÒªfindµÄÊµÀı
+     * @param activity å½“å‰çš„Activityé¡µé¢
+     * @param obj      éœ€è¦findçš„å®ä¾‹
      */
     public void findViews(Activity activity, Object obj) {
         Class<?> clazz = obj.getClass();
@@ -121,10 +121,10 @@ public class FindViewUtil {
     }
 
     /**
-     * ´ÓHolderHelper{@link HolderHelper}ÖĞ¿ìËÙFindView
+     * ä»HolderHelper{@link HolderHelper}ä¸­å¿«é€ŸFindView
      *
-     * @param helper HolderµÄ°ïÖúÀà
-     * @param obj    ĞèÒªfindµÄÊµÀı
+     * @param helper Holderçš„å¸®åŠ©ç±»
+     * @param obj    éœ€è¦findçš„å®ä¾‹
      */
     public void findViews(HolderHelper helper, final Object obj) {
         Class<?> clazz = obj.getClass();

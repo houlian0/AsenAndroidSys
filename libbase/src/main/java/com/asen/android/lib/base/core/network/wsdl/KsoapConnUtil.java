@@ -28,7 +28,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 /**
- * Í¨¹ıKsoapÁ¬½ÓWSDLµÄ¹¤¾ßÀà
+ * é€šè¿‡Ksoapè¿æ¥WSDLçš„å·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -37,19 +37,19 @@ import javax.xml.parsers.SAXParserFactory;
 public class KsoapConnUtil {
 
     /**
-     * Á¬½Ó³¬Ê±µÄÊ±¼ä£¨ºÁÃëÖµ£©
+     * è¿æ¥è¶…æ—¶çš„æ—¶é—´ï¼ˆæ¯«ç§’å€¼ï¼‰
      */
     public static int CONN_TIMEOUT = 10 * 1000;
 
     /**
-     * Í¨¹ıwebserviceÁ¬½Ó»ñÈ¡½á¹û£¨µ¥²ÎÊı£©
+     * é€šè¿‡webserviceè¿æ¥è·å–ç»“æœï¼ˆå•å‚æ•°ï¼‰
      *
-     * @param serviceUrl Á¬½ÓµØÖ·
-     * @param namespace  µ÷ÓÃµÄwebserviceÃüÁî¿Õ¼ä
-     * @param modelName  ·½·¨Ãû
-     * @param key        ¼üµÄÃû³Æ
-     * @param value      ÖµµÄÄÚÈİ
-     * @return ·µ»Ø×Ö·û´®½á¹û
+     * @param serviceUrl è¿æ¥åœ°å€
+     * @param namespace  è°ƒç”¨çš„webserviceå‘½ä»¤ç©ºé—´
+     * @param modelName  æ–¹æ³•å
+     * @param key        é”®çš„åç§°
+     * @param value      å€¼çš„å†…å®¹
+     * @return è¿”å›å­—ç¬¦ä¸²ç»“æœ
      * @throws IOException
      * @throws XmlPullParserException
      */
@@ -60,21 +60,21 @@ public class KsoapConnUtil {
     }
 
     /**
-     * Í¨¹ıwebserviceÁ¬½Ó»ñÈ¡½á¹û
+     * é€šè¿‡webserviceè¿æ¥è·å–ç»“æœ
      *
-     * @param serviceUrl Á¬½ÓµØÖ·
-     * @param modelName  ·½·¨Ãû
-     * @param params     ²ÎÊı¼¯ºÏ
-     * @return ·µ»Ø×Ö·û´®½á¹û
+     * @param serviceUrl è¿æ¥åœ°å€
+     * @param modelName  æ–¹æ³•å
+     * @param params     å‚æ•°é›†åˆ
+     * @return è¿”å›å­—ç¬¦ä¸²ç»“æœ
      * @throws IOException
      * @throws XmlPullParserException
      */
     public static String getWsdlConnResult(String serviceUrl, String namespace, String modelName, Map<String, String> params) throws IOException, XmlPullParserException {
         HttpTransportSE httpSE = new HttpTransportSE(serviceUrl);
         httpSE.debug = true;
-        // ´´½¨soapObject¶ÔÏó²¢´«ÈëÃüÃû¿Õ¼äºÍ·½·¨Ãû
+        // åˆ›å»ºsoapObjectå¯¹è±¡å¹¶ä¼ å…¥å‘½åç©ºé—´å’Œæ–¹æ³•å
         SoapObject soapObject = new SoapObject(namespace, modelName);
-        // Ìí¼Ó²ÎÊı
+        // æ·»åŠ å‚æ•°
         if (params != null) {
             Set<Map.Entry<String, String>> entries = params.entrySet();
             for (Map.Entry<String, String> e : entries) {
@@ -82,16 +82,16 @@ public class KsoapConnUtil {
             }
         }
 
-        // ´´½¨SoapSerializationEnvelope¶ÔÏó²¢´«ÈëSOAPĞ­ÒéµÄ°æ±¾ºÅ
+        // åˆ›å»ºSoapSerializationEnvelopeå¯¹è±¡å¹¶ä¼ å…¥SOAPåè®®çš„ç‰ˆæœ¬å·
         SoapSerializationEnvelope soapserial = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapserial.bodyOut = soapObject;
-        // ÉèÖÃÓë.NETÌá¹©µÄWeb service±£³ÖÓĞÁ¼ºÃµÄ¼æÈİĞÔ
+        // è®¾ç½®ä¸.NETæä¾›çš„Web serviceä¿æŒæœ‰è‰¯å¥½çš„å…¼å®¹æ€§
         soapserial.dotNet = true;
 
-        // µ÷ÓÃHttpTransportSE¶ÔÏóµÄcall·½·¨À´µ÷ÓÃ webserice
+        // è°ƒç”¨HttpTransportSEå¯¹è±¡çš„callæ–¹æ³•æ¥è°ƒç”¨ webserice
         httpSE.call(namespace + modelName, soapserial);
         if (soapserial.getResponse() != null) {
-            // »ñÈ¡·şÎñÆ÷ÏìÓ¦·µ»ØµÄSOAPÏûÏ¢
+            // è·å–æœåŠ¡å™¨å“åº”è¿”å›çš„SOAPæ¶ˆæ¯
             SoapObject result = (SoapObject) soapserial.bodyIn;
             Object property = result.getProperty(0);
             return property.toString();
@@ -101,14 +101,14 @@ public class KsoapConnUtil {
     }
 
     /**
-     * Í¨¹ıwebserviceÁ¬½Ó»ñÈ¡ÎÄ¼ş£¬ÎÄ¼şÒÔBase64ĞÎÊ½×÷Îª½á¹û´«Êä
+     * é€šè¿‡webserviceè¿æ¥è·å–æ–‡ä»¶ï¼Œæ–‡ä»¶ä»¥Base64å½¢å¼ä½œä¸ºç»“æœä¼ è¾“
      *
-     * @param serviceUrl Á¬½ÓµØÖ·
-     * @param modelName  ·½·¨Ãû
-     * @param key        ¼üµÄÃû³Æ
-     * @param value      ÖµµÄÄÚÈİ
-     * @param folder     ±£´æÎÄ¼şµÄÎÄ¼ş¼Ğ
-     * @return ·µ»ØÏÂÔØ³É¹¦µÄÎÄ¼şFile
+     * @param serviceUrl è¿æ¥åœ°å€
+     * @param modelName  æ–¹æ³•å
+     * @param key        é”®çš„åç§°
+     * @param value      å€¼çš„å†…å®¹
+     * @param folder     ä¿å­˜æ–‡ä»¶çš„æ–‡ä»¶å¤¹
+     * @return è¿”å›ä¸‹è½½æˆåŠŸçš„æ–‡ä»¶File
      * @throws IOException
      * @throws SAXException
      * @throws ParserConfigurationException
@@ -120,13 +120,13 @@ public class KsoapConnUtil {
     }
 
     /**
-     * Í¨¹ıwebserviceÁ¬½Ó»ñÈ¡ÎÄ¼ş£¬ÎÄ¼şÒÔBase64ĞÎÊ½×÷Îª½á¹û´«Êä
+     * é€šè¿‡webserviceè¿æ¥è·å–æ–‡ä»¶ï¼Œæ–‡ä»¶ä»¥Base64å½¢å¼ä½œä¸ºç»“æœä¼ è¾“
      *
-     * @param serviceUrl Á¬½ÓµØÖ·
-     * @param modelName  ·½·¨Ãû
-     * @param params     ²ÎÊı
-     * @param folder     ±£´æÎÄ¼şµÄÎÄ¼ş¼Ğ
-     * @return ·µ»ØÏÂÔØ³É¹¦µÄÎÄ¼şFile
+     * @param serviceUrl è¿æ¥åœ°å€
+     * @param modelName  æ–¹æ³•å
+     * @param params     å‚æ•°
+     * @param folder     ä¿å­˜æ–‡ä»¶çš„æ–‡ä»¶å¤¹
+     * @return è¿”å›ä¸‹è½½æˆåŠŸçš„æ–‡ä»¶File
      * @throws IOException
      * @throws SAXException
      * @throws ParserConfigurationException
@@ -139,22 +139,22 @@ public class KsoapConnUtil {
         conn.setConnectTimeout(CONN_TIMEOUT);
         conn.setRequestMethod("POST");
 
-        // ´´½¨soapObject¶ÔÏó²¢´«ÈëÃüÃû¿Õ¼äºÍ·½·¨Ãû
+        // åˆ›å»ºsoapObjectå¯¹è±¡å¹¶ä¼ å…¥å‘½åç©ºé—´å’Œæ–¹æ³•å
         SoapObject soapObject = new SoapObject(namespace, modelName);
-        // Ìí¼Ó²ÎÊı
+        // æ·»åŠ å‚æ•°
         if (params != null) {
             Set<Map.Entry<String, String>> entries = params.entrySet();
             for (Map.Entry<String, String> e : entries) {
                 soapObject.addProperty(e.getKey(), e.getValue());
             }
         }
-        // ´´½¨SoapSerializationEnvelope¶ÔÏó²¢´«ÈëSOAPĞ­ÒéµÄ°æ±¾ºÅ
+        // åˆ›å»ºSoapSerializationEnvelopeå¯¹è±¡å¹¶ä¼ å…¥SOAPåè®®çš„ç‰ˆæœ¬å·
         SoapSerializationEnvelope soapserial = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapserial.bodyOut = soapObject;
-        // ÉèÖÃÓë.NETÌá¹©µÄWeb service±£³ÖÓĞÁ¼ºÃµÄ¼æÈİĞÔ
+        // è®¾ç½®ä¸.NETæä¾›çš„Web serviceä¿æŒæœ‰è‰¯å¥½çš„å…¼å®¹æ€§
         soapserial.dotNet = true;
 
-        HttpTransportSE httpSE = new HttpTransportSE(serviceUrl); // ½èÓÃÀ´»ñÈ¡byte[]
+        HttpTransportSE httpSE = new HttpTransportSE(serviceUrl); // å€Ÿç”¨æ¥è·å–byte[]
         byte[] bytes = httpSE.createRequestData(soapserial, "UTF-8");
 //        System.out.println(new String(bytes, "UTF-8"));
 
@@ -173,8 +173,8 @@ public class KsoapConnUtil {
             InputStream is = null;
             OutputStream os = null;
             try {
-                File file = new File(folder, AppUtil.getUUid() + ".tmp~"); // ÎÄ¼şÏÂÔØÃû³Æ
-                FileUtil.createFile(file); // ´´½¨ĞÂÎÄ¼ş
+                File file = new File(folder, AppUtil.getUUid() + ".tmp~"); // æ–‡ä»¶ä¸‹è½½åç§°
+                FileUtil.createFile(file); // åˆ›å»ºæ–°æ–‡ä»¶
 
                 is = new BufferedInputStream(conn.getInputStream());
                 os = new FileOutputStream(file, true);

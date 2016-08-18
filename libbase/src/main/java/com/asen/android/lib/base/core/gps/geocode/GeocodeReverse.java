@@ -6,7 +6,7 @@ import com.asen.android.lib.base.core.gps.listener.OnAddressChangedListener;
 import java.util.List;
 
 /**
- * ÄæµØÀí±àÂë³éÏóÀà ¶¨Òå
+ * é€†åœ°ç†ç¼–ç æŠ½è±¡ç±» å®šä¹‰
  *
  * @author Asen
  * @version v1.0
@@ -14,11 +14,11 @@ import java.util.List;
  */
 public abstract class GeocodeReverse implements IGeocodeReverse {
 
-    protected List<OnAddressChangedListener> mAddressChangedListeners = null; // µØÖ·¸Ä±äÊ±µÄ¼àÌı¼¯ºÏ
+    protected List<OnAddressChangedListener> mAddressChangedListeners = null; // åœ°å€æ”¹å˜æ—¶çš„ç›‘å¬é›†åˆ
 
     protected double mLon = Double.NaN, mLat = Double.NaN;
 
-    protected LocationInfo mLocationInfo; // ¶¨Î»ĞÅÏ¢
+    protected LocationInfo mLocationInfo; // å®šä½ä¿¡æ¯
 
     @Override
     public LocationInfo getLocationInfo() {
@@ -26,15 +26,15 @@ public abstract class GeocodeReverse implements IGeocodeReverse {
     }
 
     /**
-     * ÉèÖÃµØÖ·¼àÌı¼¯ºÏ
+     * è®¾ç½®åœ°å€ç›‘å¬é›†åˆ
      *
-     * @param listeners µØÖ·¼àÌı¼¯ºÏ
+     * @param listeners åœ°å€ç›‘å¬é›†åˆ
      */
     public void setAddressChangedListeners(List<OnAddressChangedListener> listeners) {
         mAddressChangedListeners = listeners;
     }
 
-    // Ë¢ĞÂµØÖ·¸Ä±äµÄ¼àÌı
+    // åˆ·æ–°åœ°å€æ”¹å˜çš„ç›‘å¬
     protected void refreshAddressChangedListener() {
         if (mAddressChangedListeners != null) {
             for (OnAddressChangedListener listener : mAddressChangedListeners) {
@@ -43,7 +43,7 @@ public abstract class GeocodeReverse implements IGeocodeReverse {
         }
     }
 
-    // Ë¢ĞÂµØÖ·ĞÅÏ¢
+    // åˆ·æ–°åœ°å€ä¿¡æ¯
     public void refreshLocationInfo(double lon, double lat, LocationInfo locationInfo) {
         mLon = lon;
         mLat = lat;

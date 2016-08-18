@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.network.download.exception;
 
 /**
- * 文件下载异常
+ * 鏂囦欢涓嬭浇寮傚父
  *
  * @author Asen
  * @version v1.0

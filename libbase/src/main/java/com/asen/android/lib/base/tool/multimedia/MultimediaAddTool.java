@@ -8,7 +8,7 @@ import java.io.File;
 import java.util.List;
 
 /**
- * ¶àÃ½ÌåÌí¼Ó¹¤¾ßÀà
+ * å¤šåª’ä½“æ·»åŠ å·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -19,11 +19,11 @@ public abstract class MultimediaAddTool {
     /**
      * MultimediaAddTool
      *
-     * @param parent   Ö´ĞĞµÄ¸¸Àà£¨Activity or Fragment£©
-     * @param listener ¸½¼şÔö¼Ó¼àÌı
-     * @param fileList ³õÊ¼»¯ÎÄ¼ş¼¯ºÏ
+     * @param parent   æ‰§è¡Œçš„çˆ¶ç±»ï¼ˆActivity or Fragmentï¼‰
+     * @param listener é™„ä»¶å¢åŠ ç›‘å¬
+     * @param fileList åˆå§‹åŒ–æ–‡ä»¶é›†åˆ
      * @param <T>      Activity or Fragment
-     * @return ´´½¨MultimediaAddTool£¬²»ÊôÓÚActivity or FragmentÊ±£¬·µ»Ønull
+     * @return åˆ›å»ºMultimediaAddToolï¼Œä¸å±äºActivity or Fragmentæ—¶ï¼Œè¿”å›null
      */
     public static <T> MultimediaAddTool createMultimediaAddTool(T parent, IMultimediaAddListener listener, List<File> fileList) {
         if (parent instanceof Activity) {
@@ -38,10 +38,10 @@ public abstract class MultimediaAddTool {
     /**
      * MultimediaAddTool
      *
-     * @param parent   Ö´ĞĞµÄ¸¸Àà£¨Activity or Fragment£©
-     * @param listener ¸½¼şÔö¼Ó¼àÌı
+     * @param parent   æ‰§è¡Œçš„çˆ¶ç±»ï¼ˆActivity or Fragmentï¼‰
+     * @param listener é™„ä»¶å¢åŠ ç›‘å¬
      * @param <T>      Activity or Fragment
-     * @return ´´½¨MultimediaAddTool£¬²»ÊôÓÚActivity or FragmentÊ±£¬·µ»Ønull
+     * @return åˆ›å»ºMultimediaAddToolï¼Œä¸å±äºActivity or Fragmentæ—¶ï¼Œè¿”å›null
      */
     public static <T> MultimediaAddTool createMultimediaAddTool(T parent, IMultimediaAddListener listener) {
         if (parent instanceof Activity) {
@@ -54,7 +54,7 @@ public abstract class MultimediaAddTool {
     }
 
     /**
-     * onActivityResult Ê±µ÷ÓÃ
+     * onActivityResult æ—¶è°ƒç”¨
      *
      * @param requestCode requestCode
      * @param resultCode  resultCode
@@ -63,95 +63,95 @@ public abstract class MultimediaAddTool {
     public abstract void onActivityResult(int requestCode, int resultCode, Intent data);
 
     /**
-     * ÉèÖÃ×îºó±£´æµÄFile
+     * è®¾ç½®æœ€åä¿å­˜çš„File
      *
      * @param lastFile lastFile
      */
     public abstract void setLastFile(File lastFile);
 
     /**
-     * ÉèÖÃFile¼¯ºÏ
+     * è®¾ç½®Fileé›†åˆ
      *
      * @param fileList fileList
      */
     public abstract void setFileList(List<File> fileList);
 
     /**
-     * »ñµÃ×îºóÒ»¸ö¸½¼şÎÄ¼ş
+     * è·å¾—æœ€åä¸€ä¸ªé™„ä»¶æ–‡ä»¶
      *
-     * @return ×îºóÒ»¸ö¸½¼şÎÄ¼ş
+     * @return æœ€åä¸€ä¸ªé™„ä»¶æ–‡ä»¶
      */
     public abstract File getLastFile();
 
 
     /**
-     * »ñµÃËùÓĞ¸Ã¹ÜÀíÀàÖĞµÄÎÄ¼ş
+     * è·å¾—æ‰€æœ‰è¯¥ç®¡ç†ç±»ä¸­çš„æ–‡ä»¶
      *
-     * @return ËùÓĞ¸Ã¹ÜÀíÀàÖĞµÄÎÄ¼ş
+     * @return æ‰€æœ‰è¯¥ç®¡ç†ç±»ä¸­çš„æ–‡ä»¶
      */
     public abstract List<File> getFileList();
 
     /**
-     * ¿ªÊ¼ÅÄÕÕ
+     * å¼€å§‹æ‹ç…§
      *
-     * @return ³É¹¦Óë·ñ
+     * @return æˆåŠŸä¸å¦
      */
     public abstract boolean startPicture();
 
     /**
-     * ¿ªÊ¼ÅÄÕÕ
+     * å¼€å§‹æ‹ç…§
      *
-     * @param name ÕÕÆ¬Ãû³Æ£¨²»º¬ºó×º£©
-     * @return ³É¹¦Óë·ñ
+     * @param name ç…§ç‰‡åç§°ï¼ˆä¸å«åç¼€ï¼‰
+     * @return æˆåŠŸä¸å¦
      */
     public abstract boolean startPicture(String name);
 
     /**
-     * ¿ªÊ¼Â¼ÊÓÆµ
+     * å¼€å§‹å½•è§†é¢‘
      *
-     * @return ³É¹¦Óë·ñ
+     * @return æˆåŠŸä¸å¦
      */
     public abstract boolean startVideo();
 
     /**
-     * ¿ªÊ¼Â¼ÊÓÆµ
+     * å¼€å§‹å½•è§†é¢‘
      *
-     * @param name ÊÓÆµÃû³Æ£¨²»º¬ºó×º£©
-     * @return ³É¹¦Óë·ñ
+     * @param name è§†é¢‘åç§°ï¼ˆä¸å«åç¼€ï¼‰
+     * @return æˆåŠŸä¸å¦
      */
     public abstract boolean startVideo(String name);
 
     /**
-     * ¿ªÊ¼Â¼ÊÓÆµ
+     * å¼€å§‹å½•è§†é¢‘
      *
-     * @param time     Ê±¼äÃë  Ğ¡ÓÚ0 Ê±²»×öÏŞÖÆ
-     * @param fileSize µ¥Î»×Ö½Ú Ğ¡ÓÚ0 Ê±²»×öÏŞÖÆ
-     * @return ³É¹¦Óë·ñ
+     * @param time     æ—¶é—´ç§’  å°äº0 æ—¶ä¸åšé™åˆ¶
+     * @param fileSize å•ä½å­—èŠ‚ å°äº0 æ—¶ä¸åšé™åˆ¶
+     * @return æˆåŠŸä¸å¦
      */
     public abstract boolean startVideo(int time, int fileSize);
 
     /**
-     * ¿ªÊ¼Â¼ÊÓÆµ
+     * å¼€å§‹å½•è§†é¢‘
      *
-     * @param name     ÎÄ¼şÃû£¨²»º¬ºó×º£©
-     * @param time     Ê±¼äÃë Ğ¡ÓÚ0 Ê±²»×öÏŞÖÆ
-     * @param fileSize µ¥Î»×Ö½Ú Ğ¡ÓÚ0 Ê±²»×öÏŞÖÆ
-     * @return ³É¹¦Óë·ñ
+     * @param name     æ–‡ä»¶åï¼ˆä¸å«åç¼€ï¼‰
+     * @param time     æ—¶é—´ç§’ å°äº0 æ—¶ä¸åšé™åˆ¶
+     * @param fileSize å•ä½å­—èŠ‚ å°äº0 æ—¶ä¸åšé™åˆ¶
+     * @return æˆåŠŸä¸å¦
      */
     public abstract boolean startVideo(String name, int time, int fileSize);
 
     /**
-     * ¿ªÊ¼Â¼Òô
+     * å¼€å§‹å½•éŸ³
      *
-     * @return ³É¹¦Óë·ñ
+     * @return æˆåŠŸä¸å¦
      */
     public abstract boolean startAudio();
 
     /**
-     * ¿ªÊ¼Â¼Òô
+     * å¼€å§‹å½•éŸ³
      *
-     * @param name ÒôÀÖÃû³Æ£¨²»º¬ºó×º£©
-     * @return ³É¹¦Óë·ñ
+     * @param name éŸ³ä¹åç§°ï¼ˆä¸å«åç¼€ï¼‰
+     * @return æˆåŠŸä¸å¦
      */
     public abstract boolean startAudio(String name);
 

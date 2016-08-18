@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * View µ¥Ñ¡¹ÜÀíÀà£¬»ùÓÚselector
+ * View å•é€‰ç®¡ç†ç±»ï¼ŒåŸºäºselector
  *
  * @author Asen
  * @version v1.0
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ViewManager4Selector {
 
-    private List<View> list = null; // ±£´æView¼¯ºÏ
+    private List<View> list = null; // ä¿å­˜Viewé›†åˆ
 
     private int currentPressedIndex = -1;
 
@@ -23,7 +23,7 @@ public class ViewManager4Selector {
     }
 
     /**
-     * ĞÂÔöView
+     * æ–°å¢View
      *
      * @param view view
      */
@@ -36,9 +36,9 @@ public class ViewManager4Selector {
     }
 
     /**
-     * ĞÂÔöView¼¯
+     * æ–°å¢Viewé›†
      *
-     * @param views view¼¯
+     * @param views viewé›†
      */
     public void addView(View... views) {
         for (View v : views) {
@@ -47,26 +47,26 @@ public class ViewManager4Selector {
     }
 
     /**
-     * »ñµÃViewµÄ¼¯ºÏ
+     * è·å¾—Viewçš„é›†åˆ
      *
-     * @return ViewµÄ¼¯ºÏ
+     * @return Viewçš„é›†åˆ
      */
     public List<View> getViewList() {
         return list;
     }
 
     /**
-     * ÅĞ¶ÏÊÇ·ñ°üº¬View
+     * åˆ¤æ–­æ˜¯å¦åŒ…å«View
      *
      * @param view view
-     * @return true °üº¬£¬false ²»°üº¬
+     * @return true åŒ…å«ï¼Œfalse ä¸åŒ…å«
      */
     public boolean contains(View view) {
         return list.contains(view);
     }
 
     /**
-     * Ôö¼ÓÑ¡ÖĞµÄView
+     * å¢åŠ é€‰ä¸­çš„View
      *
      * @param view view
      */
@@ -85,27 +85,27 @@ public class ViewManager4Selector {
     }
 
     /**
-     * ÒÆ³ıËùÓĞView
+     * ç§»é™¤æ‰€æœ‰View
      */
     public void removeAllViews() {
         list.clear();
     }
 
     /**
-     * Ñ¡ÖĞView
+     * é€‰ä¸­View
      *
      * @param view select this view, if it's selected, do nothing.
-     * @return ÊÇ·ñÑ¡ÖĞ
+     * @return æ˜¯å¦é€‰ä¸­
      */
     public boolean selectView(View view) {
         return this.selectView(view, false);
     }
 
     /**
-     * Ñ¡ÖĞ»òÈ¡ÏûÑ¡ÖĞView
+     * é€‰ä¸­æˆ–å–æ¶ˆé€‰ä¸­View
      *
      * @param view select this view, if it's selected, cancel selected;
-     * @return ÊÇ·ñÑ¡ÖĞ
+     * @return æ˜¯å¦é€‰ä¸­
      */
     public boolean selectOrCancel(View view) {
         return this.selectView(view, true);
@@ -129,7 +129,7 @@ public class ViewManager4Selector {
         } else if (!view.isSelected()) {
             view.setSelected(true);
             result = true;
-        } else if (currentPressedIndex == index) {// µ±Ç°ÒÑ¾­°´ÏÂ
+        } else if (currentPressedIndex == index) {// å½“å‰å·²ç»æŒ‰ä¸‹
             if (flag) {
                 list.get(index).setSelected(false);
                 result = false;
@@ -147,20 +147,20 @@ public class ViewManager4Selector {
     }
 
     /**
-     * Ñ¡ÖĞView
+     * é€‰ä¸­View
      *
      * @param viewId select this view, if it's selected, do nothing.
-     * @return ÊÇ·ñÑ¡ÖĞ
+     * @return æ˜¯å¦é€‰ä¸­
      */
     public boolean selectView(int viewId) {
         return this.selectView(viewId, false);
     }
 
     /**
-     * Ñ¡ÖĞ»òÈ¡ÏûÑ¡ÖĞView
+     * é€‰ä¸­æˆ–å–æ¶ˆé€‰ä¸­View
      *
      * @param viewId select this view, if it's selected, cancel selected;
-     * @return ÊÇ·ñÑ¡ÖĞ
+     * @return æ˜¯å¦é€‰ä¸­
      */
     public boolean selectOrCancel(int viewId) {
         return this.selectView(viewId, true);
@@ -185,7 +185,7 @@ public class ViewManager4Selector {
             addSelectedView(view);
             view.setSelected(true);
             result = true;
-        } else if (currentPressedIndex == index) {// µ±Ç°ÒÑ¾­°´ÏÂ
+        } else if (currentPressedIndex == index) {// å½“å‰å·²ç»æŒ‰ä¸‹
             if (flag) {
                 list.get(index).setSelected(false);
                 result = false;
@@ -211,7 +211,7 @@ public class ViewManager4Selector {
     }
 
     /**
-     * È¡Ïûµ±Ç°Ñ¡ÖĞµÄView
+     * å–æ¶ˆå½“å‰é€‰ä¸­çš„View
      */
     public void cancelSelect() {
         if (currentPressedIndex != -1 && currentPressedIndex < list.size()) {
@@ -221,20 +221,20 @@ public class ViewManager4Selector {
     }
 
     /**
-     * Ñ¡ÖĞView
+     * é€‰ä¸­View
      *
-     * @param tag tag±êÇ©
-     * @return ÊÇ·ñÑ¡ÖĞ
+     * @param tag tagæ ‡ç­¾
+     * @return æ˜¯å¦é€‰ä¸­
      */
     public boolean selectViewByTag(Object tag) {
         return this.selectViewByTag(tag, false);
     }
 
     /**
-     * Ñ¡ÖĞ»òÈ¡ÏûÑ¡ÖĞView
+     * é€‰ä¸­æˆ–å–æ¶ˆé€‰ä¸­View
      *
-     * @param tag tag±êÇ©
-     * @return ÊÇ·ñÑ¡ÖĞ
+     * @param tag tagæ ‡ç­¾
+     * @return æ˜¯å¦é€‰ä¸­
      */
     public boolean selectOrCancelByTag(Object tag) {
         return this.selectViewByTag(tag, true);
@@ -259,7 +259,7 @@ public class ViewManager4Selector {
             addSelectedView(view);
             view.setSelected(true);
             result = true;
-        } else if (currentPressedIndex == index) {// µ±Ç°ÒÑ¾­°´ÏÂ
+        } else if (currentPressedIndex == index) {// å½“å‰å·²ç»æŒ‰ä¸‹
             if (flag) {
                 list.get(index).setSelected(false);
                 result = false;
@@ -285,9 +285,9 @@ public class ViewManager4Selector {
     }
 
     /**
-     * »ñµÃµ±Ç°Ñ¡ÖĞµÄView
+     * è·å¾—å½“å‰é€‰ä¸­çš„View
      *
-     * @return ·µ»Øµ±Ç°Ñ¡ÖĞµÄView£¬Ã»ÓĞÔò·µ»Ønull
+     * @return è¿”å›å½“å‰é€‰ä¸­çš„Viewï¼Œæ²¡æœ‰åˆ™è¿”å›null
      */
     public View getSelectView() {
         if (currentPressedIndex != -1 && currentPressedIndex < list.size()) {

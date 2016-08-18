@@ -4,7 +4,7 @@ package com.asen.android.lib.base.tool.manage.action;
 import android.os.Bundle;
 
 /**
- * ActionÖ´ĞĞÒâÍ¼
+ * Actionæ‰§è¡Œæ„å›¾
  *
  * @author Asen
  * @version v1.0
@@ -14,16 +14,16 @@ public class ActionIntent {
 
     private BaseAction mAction; // Action
 
-    private Bundle mBundle; // BundleÊı¾İ
+    private Bundle mBundle; // Bundleæ•°æ®
 
-    private Object mObject; // ObjectÊı¾İ
+    private Object mObject; // Objectæ•°æ®
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param action Ö´ĞĞµÄAction
-     * @param object object Êı¾İ
-     * @param bundle bundle Êı¾İ
+     * @param action æ‰§è¡Œçš„Action
+     * @param object object æ•°æ®
+     * @param bundle bundle æ•°æ®
      */
     public ActionIntent(BaseAction action, Object object, Bundle bundle) {
         this.mAction = action;
@@ -32,27 +32,27 @@ public class ActionIntent {
     }
 
     /**
-     * »ñµÃÖ´ĞĞµÄAction
+     * è·å¾—æ‰§è¡Œçš„Action
      *
-     * @return ·µ»ØÖ´ĞĞµÄAction
+     * @return è¿”å›æ‰§è¡Œçš„Action
      */
     public BaseAction getAction() {
         return mAction;
     }
 
     /**
-     * »ñµÃobject Êı¾İ
+     * è·å¾—object æ•°æ®
      *
-     * @return ·µ»Øobject Êı¾İ
+     * @return è¿”å›object æ•°æ®
      */
     public Object getObject() {
         return mObject;
     }
 
     /**
-     * »ñµÃbundle Êı¾İ
+     * è·å¾—bundle æ•°æ®
      *
-     * @return ·µ»Øbundle Êı¾İ
+     * @return è¿”å›bundle æ•°æ®
      */
     public Bundle getBundle() {
         return mBundle;

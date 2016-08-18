@@ -5,7 +5,7 @@ import android.location.Location;
 import com.asen.android.lib.base.core.gps.bean.LocationInfo;
 
 /**
- * À©Õ¹¶¨Î»½Ó¿Ú
+ * æ‰©å±•å®šä½æ¥å£
  *
  * @author Asen
  * @version v1.0
@@ -14,35 +14,35 @@ import com.asen.android.lib.base.core.gps.bean.LocationInfo;
 public interface IExtensionLocation {
 
     /**
-     * ¿ªÊ¼¶¨Î»
+     * å¼€å§‹å®šä½
      */
     void start();
 
     /**
-     * ½áÊø¶¨Î»
+     * ç»“æŸå®šä½
      */
     void stop();
 
     /**
-     * »ñµÃ¶¨Î»ĞÅÏ¢
+     * è·å¾—å®šä½ä¿¡æ¯
      *
-     * @return ¶¨Î»ĞÅÏ¢
+     * @return å®šä½ä¿¡æ¯
      */
     Location getLocation();
 
     /**
-     * Ë¢ĞÂÎ»ÖÃĞÅÏ¢
+     * åˆ·æ–°ä½ç½®ä¿¡æ¯
      *
-     * @param location GPSÎ»ÖÃĞÅÏ¢
+     * @param location GPSä½ç½®ä¿¡æ¯
      */
     void refreshLocation(Location location);
 
     /**
-     * Ë¢ĞÂ¶¨Î»µØÖ·ĞÅÏ¢
+     * åˆ·æ–°å®šä½åœ°å€ä¿¡æ¯
      *
-     * @param lon          ¾­¶È
-     * @param lat          Î³¶È
-     * @param locationInfo µØÖ·ĞÅÏ¢
+     * @param lon          ç»åº¦
+     * @param lat          çº¬åº¦
+     * @param locationInfo åœ°å€ä¿¡æ¯
      */
     void refreshLocationInfo(double lon, double lat, LocationInfo locationInfo);
 

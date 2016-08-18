@@ -5,7 +5,7 @@ import android.os.Binder;
 
 
 /**
- * BaseBinder »ù´¡µÄBinder
+ * BaseBinder åŸºç¡€çš„Binder
  *
  * @author Asen
  * @version v1.0

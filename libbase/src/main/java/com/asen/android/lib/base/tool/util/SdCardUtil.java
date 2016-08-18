@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Sd¿¨»ñÈ¡µÄ¹¤¾ßÀà
+ * Sdå¡è·å–çš„å·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -23,19 +23,19 @@ import java.util.List;
 public class SdCardUtil {
 
     /**
-     * »ñµÃÄÚÖÃsd¿¨
-     * ×¢£º²¿·ÖÊÖ»ú£¬Èç£ºĞ¡Ã×1S£¬±¾ÉíÊÇÃ»ÓĞÄÚÖÃsd¿¨µÄ£¬Íâ²¿²åÈëµÄ¿¨¼´ÎªÄÚÖÃsd¿¨£¬Èç¹û²»²åÈësd¿¨£¬ÔòÊôÓÚsd¿¨²»¿ÉÓÃ
+     * è·å¾—å†…ç½®sdå¡
+     * æ³¨ï¼šéƒ¨åˆ†æ‰‹æœºï¼Œå¦‚ï¼šå°ç±³1Sï¼Œæœ¬èº«æ˜¯æ²¡æœ‰å†…ç½®sdå¡çš„ï¼Œå¤–éƒ¨æ’å…¥çš„å¡å³ä¸ºå†…ç½®sdå¡ï¼Œå¦‚æœä¸æ’å…¥sdå¡ï¼Œåˆ™å±äºsdå¡ä¸å¯ç”¨
      *
-     * @return ·µ»ØÄÚÖÃsd¿¨Â·¾¶£¬Ã»ÓĞµÄ»°£¬·µ»Ønull
+     * @return è¿”å›å†…ç½®sdå¡è·¯å¾„ï¼Œæ²¡æœ‰çš„è¯ï¼Œè¿”å›null
      */
     public static String getFirstExternalPath() {
         return isFirstSdcardMounted() ? Environment.getExternalStorageDirectory().getPath() : null;
     }
 
     /**
-     * ·µ»Øsd¿¨Â·¾¶
+     * è¿”å›sdå¡è·¯å¾„
      *
-     * @return ·µ»ØÖµ²»´øFile seperater "/", Èç¹ûÃ»ÓĞÍâÖÃµÚ¶ş¸ösd¿¨,·µ»Ønull
+     * @return è¿”å›å€¼ä¸å¸¦File seperater "/", å¦‚æœæ²¡æœ‰å¤–ç½®ç¬¬äºŒä¸ªsdå¡,è¿”å›null
      */
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public static String getSecondExternalPath(Context context) {
@@ -65,18 +65,18 @@ public class SdCardUtil {
     }
 
     /**
-     * ÅĞ¶ÏÄÚÖÃsd¿¨ÊÇ·ñ¿ÉÓÃ
+     * åˆ¤æ–­å†…ç½®sdå¡æ˜¯å¦å¯ç”¨
      *
-     * @return ¿ÉÓÃ·µ»Øtrue£¬·ñÔò·µ»Øfalse
+     * @return å¯ç”¨è¿”å›trueï¼Œå¦åˆ™è¿”å›false
      */
     public static boolean isFirstSdcardMounted() {
         return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
     }
 
     /**
-     * ÅĞ¶ÏÍâÖÃsd¿¨ÊÇ·ñ¿ÉÓÃ
+     * åˆ¤æ–­å¤–ç½®sdå¡æ˜¯å¦å¯ç”¨
      *
-     * @return ¿ÉÓÃ·µ»Øtrue£¬·ñÔò·µ»Øfalse
+     * @return å¯ç”¨è¿”å›trueï¼Œå¦åˆ™è¿”å›false
      */
     public static boolean isSecondSDcardMounted(Context context) {
         String sd2 = getSecondExternalPath(context);
@@ -84,22 +84,22 @@ public class SdCardUtil {
     }
 
     /**
-     * ÅĞ¶ÏÎÄ¼ş¼ĞÊÇ·ñ¿ÉĞ´
+     * åˆ¤æ–­æ–‡ä»¶å¤¹æ˜¯å¦å¯å†™
      *
-     * @param dir ÎÄ¼şÂ·¾¶
-     * @return ¿ÉĞ´·µ»Øtrue£¬·ñÔò·µ»Øfalse
+     * @param dir æ–‡ä»¶è·¯å¾„
+     * @return å¯å†™è¿”å›trueï¼Œå¦åˆ™è¿”å›false
      */
     public static boolean isWritable(String dir) {
         return checkFsWritable(dir);
     }
 
     /**
-     * ²âÊÔÍâÖÃsd¿¨ÊÇ·ñĞ¶ÔØ£¬²»ÄÜÖ±½ÓÅĞ¶ÏÍâÖÃsd¿¨ÊÇ·ñÎªnull£¬ÒòÎªµ±ÍâÖÃsd¿¨°Î³öÊ±£¬ÈÔÈ»ÄÜµÃµ½ÍâÖÃsd¿¨Â·¾¶¡£
-     * ÎÒÕâÖÖ·½·¨ÊÇ°´ÕÕandroid¹È¸è²âÊÔDICMµÄ·½·¨£¬ ´´½¨Ò»¸öÎÄ¼ş£¬È»ºóÁ¢¼´É¾³ı£¬¿´ÊÇ·ñĞ¶ÔØÍâÖÃsd¿¨
-     * ×¢ÒâÕâÀïÓĞÒ»¸öĞ¡bug£¬¼´Ê¹ÍâÖÃsd¿¨Ã»ÓĞĞ¶ÔØ£¬µ«ÊÇ´æ´¢¿Õ¼ä²»¹»´ó£¬»òÕßÎÄ¼şÊıÒÑÖÁ×î´óÊı£¬´ËÊ±£¬Ò²²»ÄÜ´´½¨ĞÂÎÄ¼ş¡£´ËÊ±£¬Í³Ò»ÌáÊ¾ÓÃ»§ÇåÀísd¿¨°É
+     * æµ‹è¯•å¤–ç½®sdå¡æ˜¯å¦å¸è½½ï¼Œä¸èƒ½ç›´æ¥åˆ¤æ–­å¤–ç½®sdå¡æ˜¯å¦ä¸ºnullï¼Œå› ä¸ºå½“å¤–ç½®sdå¡æ‹”å‡ºæ—¶ï¼Œä»ç„¶èƒ½å¾—åˆ°å¤–ç½®sdå¡è·¯å¾„ã€‚
+     * æˆ‘è¿™ç§æ–¹æ³•æ˜¯æŒ‰ç…§androidè°·æ­Œæµ‹è¯•DICMçš„æ–¹æ³•ï¼Œ åˆ›å»ºä¸€ä¸ªæ–‡ä»¶ï¼Œç„¶åç«‹å³åˆ é™¤ï¼Œçœ‹æ˜¯å¦å¸è½½å¤–ç½®sdå¡
+     * æ³¨æ„è¿™é‡Œæœ‰ä¸€ä¸ªå°bugï¼Œå³ä½¿å¤–ç½®sdå¡æ²¡æœ‰å¸è½½ï¼Œä½†æ˜¯å­˜å‚¨ç©ºé—´ä¸å¤Ÿå¤§ï¼Œæˆ–è€…æ–‡ä»¶æ•°å·²è‡³æœ€å¤§æ•°ï¼Œæ­¤æ—¶ï¼Œä¹Ÿä¸èƒ½åˆ›å»ºæ–°æ–‡ä»¶ã€‚æ­¤æ—¶ï¼Œç»Ÿä¸€æç¤ºç”¨æˆ·æ¸…ç†sdå¡å§
      *
-     * @param dir ÎÄ¼şÂ·¾¶
-     * @return ¿ÉĞ´·µ»Øtrue£¬·ñÔò·µ»Øfalse
+     * @param dir æ–‡ä»¶è·¯å¾„
+     * @return å¯å†™è¿”å›trueï¼Œå¦åˆ™è¿”å›false
      */
     private static boolean checkFsWritable(String dir) {
         if (dir == null)
@@ -138,15 +138,15 @@ public class SdCardUtil {
         Runtime runtime = Runtime.getRuntime();
         InputStream is = null;
         BufferedReader br = null;
-        // µÃµ½Â·¾¶
+        // å¾—åˆ°è·¯å¾„
         try {
-            Process proc = runtime.exec("mount");// »òÕß "cat /proc/mounts"
+            Process proc = runtime.exec("mount");// æˆ–è€… "cat /proc/mounts"
             is = proc.getInputStream();
             br = new BufferedReader(new InputStreamReader(is));
 
             String line;
             while ((line = br.readLine()) != null) {
-                // ½«³£¼ûµÄlinux·ÖÇø¹ıÂËµô
+                // å°†å¸¸è§çš„linuxåˆ†åŒºè¿‡æ»¤æ‰
                 if (line.contains("secure"))
                     continue;
                 if (line.contains("asec"))

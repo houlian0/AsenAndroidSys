@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.network.download.bean;
 
 /**
- * ÏÂÔØÅäÖÃµÈĞÅÏ¢
+ * ä¸‹è½½é…ç½®ç­‰ä¿¡æ¯
  *
  * @author Asen
  * @version v1.0
@@ -10,17 +10,17 @@ package com.asen.android.lib.base.core.network.download.bean;
 public class DownConfigInfo {
 
     /**
-     * ÊÇ·ñÔ­ÎÄ¼şÃûÊä³ö
+     * æ˜¯å¦åŸæ–‡ä»¶åè¾“å‡º
      */
     private boolean isOriginal;
 
     /**
-     * Ïß³ÌÊıÁ¿£¬Ä¬ÈÏ3¸öÏß³ÌÊı
+     * çº¿ç¨‹æ•°é‡ï¼Œé»˜è®¤3ä¸ªçº¿ç¨‹æ•°
      */
     private int threadNumber;
 
     /**
-     * ¿Õ¹¹Ôìº¯Êı£¬Ä¬ÈÏisOriginal = true£¬threadNumber = 3
+     * ç©ºæ„é€ å‡½æ•°ï¼Œé»˜è®¤isOriginal = trueï¼ŒthreadNumber = 3
      */
     public DownConfigInfo() {
         isOriginal = true;
@@ -28,36 +28,36 @@ public class DownConfigInfo {
     }
 
     /**
-     * »ñÈ¡ÊÇ·ñÔ­ÎÄ¼şÃûÊä³öµÄ×´Ì¬
+     * è·å–æ˜¯å¦åŸæ–‡ä»¶åè¾“å‡ºçš„çŠ¶æ€
      *
-     * @return true£ºÔ­ÎÄ¼şÃûÊä³ö£»false£ºÎ¨Ò»µÄÎÄ¼şÃû
+     * @return trueï¼šåŸæ–‡ä»¶åè¾“å‡ºï¼›falseï¼šå”¯ä¸€çš„æ–‡ä»¶å
      */
     public boolean isOriginal() {
         return isOriginal;
     }
 
     /**
-     * ÉèÖÃÊÇ·ñÔ­ÎÄ¼şÃûÊä³öµÄ×´Ì¬
+     * è®¾ç½®æ˜¯å¦åŸæ–‡ä»¶åè¾“å‡ºçš„çŠ¶æ€
      *
-     * @param original true£ºÔ­ÎÄ¼şÃûÊä³ö£»false£ºÎ¨Ò»µÄÎÄ¼şÃû
+     * @param original trueï¼šåŸæ–‡ä»¶åè¾“å‡ºï¼›falseï¼šå”¯ä¸€çš„æ–‡ä»¶å
      */
     public void setOriginal(boolean original) {
         isOriginal = original;
     }
 
     /**
-     * »ñÈ¡Í¬Ê±ÏÂÔØµÄÏß³ÌÊıÁ¿
+     * è·å–åŒæ—¶ä¸‹è½½çš„çº¿ç¨‹æ•°é‡
      *
-     * @return Í¬Ê±ÏÂÔØµÄÏß³ÌÊıÁ¿
+     * @return åŒæ—¶ä¸‹è½½çš„çº¿ç¨‹æ•°é‡
      */
     public int getThreadNumber() {
         return threadNumber;
     }
 
     /**
-     * ÉèÖÃÍ¬Ê±ÏÂÔØµÄÏß³ÌÊıÁ¿
+     * è®¾ç½®åŒæ—¶ä¸‹è½½çš„çº¿ç¨‹æ•°é‡
      *
-     * @param threadNumber Ïß³ÌÊıÁ¿
+     * @param threadNumber çº¿ç¨‹æ•°é‡
      */
     public void setThreadNumber(int threadNumber) {
         this.threadNumber = threadNumber;

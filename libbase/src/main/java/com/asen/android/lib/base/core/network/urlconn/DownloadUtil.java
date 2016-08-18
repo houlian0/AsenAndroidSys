@@ -17,7 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * ¼òÒ×°æµÄÎÄ¼şÏÂÔØ
+ * ç®€æ˜“ç‰ˆçš„æ–‡ä»¶ä¸‹è½½
  *
  * @author Asen
  * @version v1.0
@@ -26,45 +26,45 @@ import java.util.regex.Pattern;
 public class DownloadUtil {
 
     /**
-     * ½âÎö Content-Disposition ÖĞµÄÎÄ¼şÄÚÈİ
+     * è§£æ Content-Disposition ä¸­çš„æ–‡ä»¶å†…å®¹
      */
     private static final String CONTENT_DISPOSITION = "content-disposition";
 
     /**
-     * ½âÎö Content-Length ÖĞµÄÎÄ¼şÄÚÈİ
+     * è§£æ Content-Length ä¸­çš„æ–‡ä»¶å†…å®¹
      */
     private static final String CONTENT_LENGTH = "content-length";
 
     /**
-     * ½âÎö Content-Type ÖĞµÄÎÄ¼şÄÚÈİ
+     * è§£æ Content-Type ä¸­çš„æ–‡ä»¶å†…å®¹
      */
     private static final String CONTENT_TYPE = "content-type";
 
     /**
-     * ±àÂë·½Ê½ ISO8859_1
+     * ç¼–ç æ–¹å¼ ISO8859_1
      */
     private static final String CHARSET_ISO8859_1 = "ISO8859_1";
 
     /**
-     * ±àÂë·½Ê½ GB2312
+     * ç¼–ç æ–¹å¼ GB2312
      */
     private static final String CHARSET_GB2312 = "GB2312";
 
     /**
-     * ±àÂë·½Ê½ UTF-8
+     * ç¼–ç æ–¹å¼ UTF-8
      */
     private static final String CHARSET_UTF_8 = "UTF-8";
 
     /**
-     * »º´æ´óĞ¡
+     * ç¼“å­˜å¤§å°
      */
     private static final int BUFFER_SIZE = 2048;
 
     /**
-     * ´ÓÍøÂçÁ¬½ÓÖĞ»ñÈ¡ÎÄ¼şĞÅÏ¢
+     * ä»ç½‘ç»œè¿æ¥ä¸­è·å–æ–‡ä»¶ä¿¡æ¯
      *
-     * @param connection ÍøÂçÁ¬½Ó
-     * @return ÎÄ¼şĞÅÏ¢
+     * @param connection ç½‘ç»œè¿æ¥
+     * @return æ–‡ä»¶ä¿¡æ¯
      * @throws UnsupportedEncodingException
      */
     public static DownFileInfo getFileInfoByConn(HttpURLConnection connection) throws UnsupportedEncodingException {
@@ -77,20 +77,20 @@ public class DownloadUtil {
             String key = connection.getHeaderFieldKey(i);
             if (mine == null && key == null) break;
 
-            // ½âÎö Content-Disposition ÖĞµÄÎÄ¼şÃû³Æ
+            // è§£æ Content-Disposition ä¸­çš„æ–‡ä»¶åç§°
             if (CONTENT_DISPOSITION.equalsIgnoreCase(key)) {
                 if (mine == null) continue;
                 Matcher m = Pattern.compile(".*filename=(.*)").matcher(mine);
                 if (m.find()) {
                     fileName = URLDecoder.decode(m.group(1).replace("\"", ""), CHARSET_UTF_8);
-                    if (Charset.forName(CHARSET_ISO8859_1).newEncoder().canEncode(fileName)) { // ÄÜÍ¨¹ıISO8859_1ĞÎÊ½×ªÂë
+                    if (Charset.forName(CHARSET_ISO8859_1).newEncoder().canEncode(fileName)) { // èƒ½é€šè¿‡ISO8859_1å½¢å¼è½¬ç 
                         fileName = new String(fileName.getBytes(CHARSET_ISO8859_1), Charset.forName(CHARSET_UTF_8));
-                    } else if (Charset.forName(CHARSET_GB2312).newEncoder().canEncode(fileName)) { // ÄÜÍ¨¹ıGB2312ĞÎÊ½×ªÂë
+                    } else if (Charset.forName(CHARSET_GB2312).newEncoder().canEncode(fileName)) { // èƒ½é€šè¿‡GB2312å½¢å¼è½¬ç 
                         fileName = new String(fileName.getBytes(CHARSET_GB2312), Charset.forName(CHARSET_UTF_8));
                     }
                 }
             }
-            // ½âÎö Content-Length ÖĞµÄÎÄ¼şÄÚÈİ
+            // è§£æ Content-Length ä¸­çš„æ–‡ä»¶å†…å®¹
             else if (CONTENT_LENGTH.equalsIgnoreCase(key)) {
                 if (mine == null) continue;
                 try {
@@ -98,13 +98,13 @@ public class DownloadUtil {
                 } catch (NumberFormatException ignored) {
                 }
             }
-            // ½âÎö Content-Type ÖĞµÄÎÄ¼şÄÚÈİ
+            // è§£æ Content-Type ä¸­çš„æ–‡ä»¶å†…å®¹
             else if (CONTENT_TYPE.equalsIgnoreCase(key)) {
                 fileType = mine;
             }
         }
 
-        if (fileName == null) { // ´ÓURL½áÎ²»ñÈ¡ÎÄ¼şÃû
+        if (fileName == null) { // ä»URLç»“å°¾è·å–æ–‡ä»¶å
             String file = connection.getURL().getPath();
             int index = file.lastIndexOf("/");
             if (index != -1) {
@@ -116,10 +116,10 @@ public class DownloadUtil {
     }
 
     /**
-     * ÏÂÔØÎÄ¼ş£¬Ä¬ÈÏÔ­ÃûÊä³ö
+     * ä¸‹è½½æ–‡ä»¶ï¼Œé»˜è®¤åŸåè¾“å‡º
      *
-     * @param urlStr ÏÂÔØÎÄ¼şµØÖ·
-     * @param folder ÏÂÔØ±£´æÎÄ¼şµÄÂ·¾¶
+     * @param urlStr ä¸‹è½½æ–‡ä»¶åœ°å€
+     * @param folder ä¸‹è½½ä¿å­˜æ–‡ä»¶çš„è·¯å¾„
      * @throws IOException
      * @throws HttpResponseException
      */
@@ -128,11 +128,11 @@ public class DownloadUtil {
     }
 
     /**
-     * ÏÂÔØÎÄ¼ş£¬Ä¬ÈÏÔ­ÃûÊä³ö
+     * ä¸‹è½½æ–‡ä»¶ï¼Œé»˜è®¤åŸåè¾“å‡º
      *
-     * @param urlStr             ÏÂÔØÎÄ¼şµØÖ·
-     * @param folder             ÏÂÔØ±£´æÎÄ¼şµÄÂ·¾¶
-     * @param onDownloadListener ÏÂÔØ¼àÌı£¬¸Ã¼àÌıÔÚµ±Ç°µÄÖ´ĞĞÏß³ÌÏÂ½øĞĞ
+     * @param urlStr             ä¸‹è½½æ–‡ä»¶åœ°å€
+     * @param folder             ä¸‹è½½ä¿å­˜æ–‡ä»¶çš„è·¯å¾„
+     * @param onDownloadListener ä¸‹è½½ç›‘å¬ï¼Œè¯¥ç›‘å¬åœ¨å½“å‰çš„æ‰§è¡Œçº¿ç¨‹ä¸‹è¿›è¡Œ
      * @throws IOException
      * @throws HttpResponseException
      */
@@ -141,11 +141,11 @@ public class DownloadUtil {
     }
 
     /**
-     * ÏÂÔØÎÄ¼ş
+     * ä¸‹è½½æ–‡ä»¶
      *
-     * @param urlStr     ÏÂÔØÎÄ¼şµØÖ·
-     * @param folder     ÏÂÔØ±£´æÎÄ¼şµÄÂ·¾¶
-     * @param isOriginal ÊÇ·ñÔ­ÃûÊä³ö
+     * @param urlStr     ä¸‹è½½æ–‡ä»¶åœ°å€
+     * @param folder     ä¸‹è½½ä¿å­˜æ–‡ä»¶çš„è·¯å¾„
+     * @param isOriginal æ˜¯å¦åŸåè¾“å‡º
      * @throws IOException
      * @throws HttpResponseException
      */
@@ -154,12 +154,12 @@ public class DownloadUtil {
     }
 
     /**
-     * ÏÂÔØÎÄ¼ş
+     * ä¸‹è½½æ–‡ä»¶
      *
-     * @param urlStr             ÏÂÔØÎÄ¼şµØÖ·
-     * @param folder             ÏÂÔØ±£´æÎÄ¼şµÄÂ·¾¶
-     * @param isOriginal         ÊÇ·ñÔ­ÃûÊä³ö
-     * @param onDownloadListener ÏÂÔØ¼àÌı£¬¸Ã¼àÌıÔÚµ±Ç°µÄÖ´ĞĞÏß³ÌÏÂ½øĞĞ
+     * @param urlStr             ä¸‹è½½æ–‡ä»¶åœ°å€
+     * @param folder             ä¸‹è½½ä¿å­˜æ–‡ä»¶çš„è·¯å¾„
+     * @param isOriginal         æ˜¯å¦åŸåè¾“å‡º
+     * @param onDownloadListener ä¸‹è½½ç›‘å¬ï¼Œè¯¥ç›‘å¬åœ¨å½“å‰çš„æ‰§è¡Œçº¿ç¨‹ä¸‹è¿›è¡Œ
      * @throws IOException
      * @throws HttpResponseException
      */
@@ -167,7 +167,7 @@ public class DownloadUtil {
         InputStream inputStream = null;
         FileOutputStream outputStream = null;
 
-        boolean success = true; // ÊÇ·ñ³É¹¦
+        boolean success = true; // æ˜¯å¦æˆåŠŸ
         File saveFile = null;
         DownFileInfo info = null;
         try {
@@ -214,23 +214,23 @@ public class DownloadUtil {
             success = false;
             throw e;
         } finally {
-            // ¹Ø±ÕÎÄ¼şÁ÷
+            // å…³é—­æ–‡ä»¶æµ
             if (inputStream != null) inputStream.close();
             if (outputStream != null) outputStream.close();
-            // ¹Ø±ÕÎÄ¼şÁ÷Ö®ºó¶ÔÎÄ¼ş½øĞĞ²Ù×÷
-            if (success) { // ³É¹¦
+            // å…³é—­æ–‡ä»¶æµä¹‹åå¯¹æ–‡ä»¶è¿›è¡Œæ“ä½œ
+            if (success) { // æˆåŠŸ
                 if (saveFile != null && saveFile.exists()) {
-                    if (isOriginal && info.getFileName() != null) { // ĞèÒªÔ­ÎÄ¼şÃûÊä³ö£¬ÇÒÄÜ»ñµÃÔ­ÎÄ¼şÃû
+                    if (isOriginal && info.getFileName() != null) { // éœ€è¦åŸæ–‡ä»¶åè¾“å‡ºï¼Œä¸”èƒ½è·å¾—åŸæ–‡ä»¶å
                         File newFile = new File(folder, info.getFileName());
                         FileUtil.rename(saveFile, newFile);
                         saveFile = newFile;
-                    } else { // 32Î» + ÕæÊµºó×ºÃû
+                    } else { // 32ä½ + çœŸå®åç¼€å
                         File newFile = new File(folder, saveFile.getName().substring(0, saveFile.getName().lastIndexOf(".") + 1) + info.getFileSuffix());
                         FileUtil.rename(saveFile, newFile);
                         saveFile = newFile;
                     }
                 }
-            } else { // ²»³É¹¦
+            } else { // ä¸æˆåŠŸ
                 if (saveFile != null && saveFile.exists()) {
                     saveFile.delete();
                 }
@@ -241,15 +241,15 @@ public class DownloadUtil {
     }
 
     /**
-     * ÏÂÔØÎÄ¼şµÄ½ø¶È¼àÌı
+     * ä¸‹è½½æ–‡ä»¶çš„è¿›åº¦ç›‘å¬
      */
     public interface OnDownloadListener {
 
         /**
-         * ÏÂÔØÎÄ¼şµÄ½ø¶È
+         * ä¸‹è½½æ–‡ä»¶çš„è¿›åº¦
          *
-         * @param fileSize ÎÄ¼ş´óĞ¡
-         * @param progress ÒÑÏÂÔØµÄÎÄ¼ş´óĞ¡
+         * @param fileSize æ–‡ä»¶å¤§å°
+         * @param progress å·²ä¸‹è½½çš„æ–‡ä»¶å¤§å°
          */
         void downloadProgress(long fileSize, long progress);
     }

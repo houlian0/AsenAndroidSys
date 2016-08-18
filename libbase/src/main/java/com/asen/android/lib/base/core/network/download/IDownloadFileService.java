@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.network.download;
 
 /**
- * ÏÂÔØÎÄ¼ş½Ó¿Ú¶¨Òå
+ * ä¸‹è½½æ–‡ä»¶æ¥å£å®šä¹‰
  *
  * @author Asen
  * @version v1.0
@@ -10,17 +10,17 @@ package com.asen.android.lib.base.core.network.download;
 public interface IDownloadFileService {
 
     /**
-     * ¿ªÊ¼ÏÂÔØ
+     * å¼€å§‹ä¸‹è½½
      */
     void startDownload();
 
     /**
-     * ½áÊøÏÂÔØ£¬¶Ïµã¼ÇÂ¼½«±»É¾³ı
+     * ç»“æŸä¸‹è½½ï¼Œæ–­ç‚¹è®°å½•å°†è¢«åˆ é™¤
      */
     void stopDownload();
 
     /**
-     * ÔİÍ£ÏÂÔØ£¬¶Ïµã¼ÇÂ¼²»»á±»É¾³ı
+     * æš‚åœä¸‹è½½ï¼Œæ–­ç‚¹è®°å½•ä¸ä¼šè¢«åˆ é™¤
      */
     void pauseDownload();
 

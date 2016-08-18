@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ÍøÂçÇëÇó¹¤¾ßÀà
+ * ç½‘ç»œè¯·æ±‚å·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -19,12 +19,12 @@ import java.util.Map;
 public class HttpUtil {
 
     /**
-     * ÊÇ·ñÉÏ´«µÄSQLÓï¾ä
+     * æ˜¯å¦ä¸Šä¼ çš„SQLè¯­å¥
      */
     public static boolean IS_SQL = false;
 
     /**
-     * HttpÇëÇóÁ¬½Ó³¬Ê±µÄÊ±¼ä¼ä¸ô£¨ºÁÃëÖµ£©
+     * Httpè¯·æ±‚è¿æ¥è¶…æ—¶çš„æ—¶é—´é—´éš”ï¼ˆæ¯«ç§’å€¼ï¼‰
      */
     public static int CONN_TIMEOUT = 10 * 1000;
 
@@ -35,10 +35,10 @@ public class HttpUtil {
     }
 
     /**
-     * getÇëÇó
+     * getè¯·æ±‚
      *
-     * @param url urlµØÖ·
-     * @return »ñµÃµÄstring½á¹û
+     * @param url urlåœ°å€
+     * @return è·å¾—çš„stringç»“æœ
      * @throws HttpResponseException
      */
     public static String get(String url) throws HttpResponseException {
@@ -46,11 +46,11 @@ public class HttpUtil {
     }
 
     /**
-     * getÇëÇó
+     * getè¯·æ±‚
      *
-     * @param url      urlµØÖ·
-     * @param infoList ²ÎÊı
-     * @return »ñµÃµÄstring½á¹û
+     * @param url      urlåœ°å€
+     * @param infoList å‚æ•°
+     * @return è·å¾—çš„stringç»“æœ
      * @throws HttpResponseException
      */
     public static String get(String url, List<HttpTextEntity> infoList) throws HttpResponseException {
@@ -85,21 +85,21 @@ public class HttpUtil {
     }
 
     /**
-     * »ñµÃ×Ö½ÚbyteÊı×é
+     * è·å¾—å­—èŠ‚byteæ•°ç»„
      *
-     * @param url urlµØÖ·
-     * @return »ñµÃµÄbyte½á¹û
+     * @param url urlåœ°å€
+     * @return è·å¾—çš„byteç»“æœ
      */
     public static byte[] getBytes(String url) throws HttpResponseException {
         return mHttpRequest.sendGet2ByteArray(url);
     }
 
     /**
-     * postÇëÇó
+     * postè¯·æ±‚
      *
-     * @param url      urlµØÖ·
-     * @param infoList ²ÎÊı
-     * @return »ñµÃµÄstring½á¹û
+     * @param url      urlåœ°å€
+     * @param infoList å‚æ•°
+     * @return è·å¾—çš„stringç»“æœ
      * @throws HttpResponseException
      */
     public static String post(String url, List<HttpTextEntity> infoList) throws HttpResponseException {
@@ -134,12 +134,12 @@ public class HttpUtil {
     }
 
     /**
-     * postÇëÇó£¨º¬ÎÄ¼ş£©
+     * postè¯·æ±‚ï¼ˆå«æ–‡ä»¶ï¼‰
      *
-     * @param url      urlµØÖ·
-     * @param infoList ²ÎÊı
-     * @param fileList ÎÄ¼ş²ÎÊı
-     * @return »ñµÃµÄstring½á¹û
+     * @param url      urlåœ°å€
+     * @param infoList å‚æ•°
+     * @param fileList æ–‡ä»¶å‚æ•°
+     * @return è·å¾—çš„stringç»“æœ
      * @throws HttpResponseException
      */
     public static String post(String url, List<HttpTextEntity> infoList, List<HttpFileEntity> fileList) throws HttpResponseException {
@@ -147,12 +147,12 @@ public class HttpUtil {
     }
 
     /**
-     * postÇëÇó£¨º¬ÎÄ¼ş£©
+     * postè¯·æ±‚ï¼ˆå«æ–‡ä»¶ï¼‰
      *
-     * @param url    urlµØÖ·
-     * @param params ²ÎÊı
-     * @param files  ÎÄ¼ş²ÎÊı
-     * @return »ñµÃµÄstring½á¹û
+     * @param url    urlåœ°å€
+     * @param params å‚æ•°
+     * @param files  æ–‡ä»¶å‚æ•°
+     * @return è·å¾—çš„stringç»“æœ
      * @throws HttpResponseException
      */
     public static String post(String url, Map<String, String> params, Map<String, File> files) throws HttpResponseException {
@@ -160,11 +160,11 @@ public class HttpUtil {
     }
 
     /**
-     * Í¨¹ıÁ÷µÄ·½Ê½ÉÏ´«ĞÅÏ¢
+     * é€šè¿‡æµçš„æ–¹å¼ä¸Šä¼ ä¿¡æ¯
      *
-     * @param url                      ·ÃÎÊµÄ·şÎñÆ÷URL
-     * @param httpOutputStreamListener Á÷ĞÅÏ¢´«µİµÄ¼àÌı½Ó¿Ú
-     * @return ·µ»ØÔ¶³Ì×ÊÔ´µÄÏìÓ¦½á¹û
+     * @param url                      è®¿é—®çš„æœåŠ¡å™¨URL
+     * @param httpOutputStreamListener æµä¿¡æ¯ä¼ é€’çš„ç›‘å¬æ¥å£
+     * @return è¿”å›è¿œç¨‹èµ„æºçš„å“åº”ç»“æœ
      * @throws HttpResponseException
      */
     public static String postData(String url, OnHttpOutputStreamListener httpOutputStreamListener) throws HttpResponseException {

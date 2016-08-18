@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.module.broadcast;
 
 /**
- * ¹ã²¥½ÓÊÜÕß½Ó¿Ú¶¨Òå
+ * å¹¿æ’­æ¥å—è€…æ¥å£å®šä¹‰
  *
  * @author Asen
  * @version v1.0
@@ -10,12 +10,12 @@ package com.asen.android.lib.base.module.broadcast;
 public interface IBroadcastDefinition {
 
     /**
-     * ¿ªÊ¼¼àÌı¹ã²¥
+     * å¼€å§‹ç›‘å¬å¹¿æ’­
      */
     public void startWatch();
 
     /**
-     * Í£Ö¹¼àÌı£¬×¢Ïú¹ã²¥
+     * åœæ­¢ç›‘å¬ï¼Œæ³¨é”€å¹¿æ’­
      */
     public void stopWatch();
 

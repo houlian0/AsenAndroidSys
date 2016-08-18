@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.gps.extension;
 
 /**
- * À©Õ¹µÄµ¥´Î¶¨Î»£¬ÓÉ¶¨Î»Ö÷ÌåÖ÷¶¯µ÷ÓÃ{@link IExtensionLocation#getLocation()}¶¨Î»·½·¨»ñÈ¡×îĞÂµÄ×ø±êĞÅÏ¢½øĞĞ¶¨Î»£¬Ê±¼ä¼ä¸ô¹Ì¶¨
+ * æ‰©å±•çš„å•æ¬¡å®šä½ï¼Œç”±å®šä½ä¸»ä½“ä¸»åŠ¨è°ƒç”¨{@link IExtensionLocation#getLocation()}å®šä½æ–¹æ³•è·å–æœ€æ–°çš„åæ ‡ä¿¡æ¯è¿›è¡Œå®šä½ï¼Œæ—¶é—´é—´éš”å›ºå®š
  *
  * @author Asen
  * @version v1.0

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * ¶à¼¶Ê÷½Úµã°ïÖúÀà£¨Ò»´ÎĞÔ»ñÈ¡ËùÓĞµÄ½ÚµãĞÅÏ¢£¬ËùÒÔ£©
+ * å¤šçº§æ ‘èŠ‚ç‚¹å¸®åŠ©ç±»ï¼ˆä¸€æ¬¡æ€§è·å–æ‰€æœ‰çš„èŠ‚ç‚¹ä¿¡æ¯ï¼Œæ‰€ä»¥ï¼‰
  *
  * @author Asen
  * @version v1.0
@@ -21,21 +21,21 @@ class TreeNodeHelper<T> {
     private int defaultLevel = 0;
 
     /**
-     * ¶à¼¶Ê÷°ïÖúÀà
+     * å¤šçº§æ ‘å¸®åŠ©ç±»
      *
-     * @param datas        Ô­Ê¼Êı¾İ
-     * @param defaultLevel Ä¬ÈÏÕ¹¿ªµÄ²ãÊı£¬Ğ¡ÓÚµÈÓÚ¸ÃÊı×ÖÕ¹¿ª
+     * @param datas        åŸå§‹æ•°æ®
+     * @param defaultLevel é»˜è®¤å±•å¼€çš„å±‚æ•°ï¼Œå°äºç­‰äºè¯¥æ•°å­—å±•å¼€
      */
     TreeNodeHelper(List<T> datas, int defaultLevel) {
         this.datas = datas;
         this.defaultLevel = defaultLevel < 0 ? 0 : defaultLevel;
-        treeNodeList = reassemblingNodeList(); // ÖØ×é½Úµã¼¯ºÏ
+        treeNodeList = reassemblingNodeList(); // é‡ç»„èŠ‚ç‚¹é›†åˆ
     }
 
     /**
-     * »ñµÃËùÓĞ¿É¼ûµÄnode¼¯ºÏ
+     * è·å¾—æ‰€æœ‰å¯è§çš„nodeé›†åˆ
      *
-     * @return ·µ»ØËùÓĞÕ¹¿´µÄ´ıÏÔÊ¾µÄ¼¯ºÏ
+     * @return è¿”å›æ‰€æœ‰å±•çœ‹çš„å¾…æ˜¾ç¤ºçš„é›†åˆ
      */
     public List<TreeNode<T>> getExpandedNodeList() {
         List<TreeNode<T>> nodeList = new ArrayList<>();
@@ -47,7 +47,7 @@ class TreeNodeHelper<T> {
         return nodeList;
     }
 
-    // Ïò×Ü¼¯ºÏÉÏÔö¼ÓÊı¾İ
+    // å‘æ€»é›†åˆä¸Šå¢åŠ æ•°æ®
     private void add2ExpandedNodeList(List<TreeNode<T>> nodeList, TreeNode<T> node) {
         nodeList.add(node);
         if (node.isExpanded()) {
@@ -59,9 +59,9 @@ class TreeNodeHelper<T> {
     }
 
     /**
-     * ÖØĞÂ×°Åä½Úµã¼¯ºÏ
+     * é‡æ–°è£…é…èŠ‚ç‚¹é›†åˆ
      *
-     * @return ÖØĞÂ×°ÅäºóµÄ½á¹û
+     * @return é‡æ–°è£…é…åçš„ç»“æœ
      */
     private List<TreeNode<T>> reassemblingNodeList() {
         List<TreeNode<T>> nodeList = datas2NodeList();
@@ -71,9 +71,9 @@ class TreeNodeHelper<T> {
     }
 
     /**
-     * ¸øËùÓĞµÄ½ÚµãÉèÖÃ²ã¼¶ĞÅÏ¢
+     * ç»™æ‰€æœ‰çš„èŠ‚ç‚¹è®¾ç½®å±‚çº§ä¿¡æ¯
      *
-     * @param nodeList ¸ù½ÚµãĞÅÏ¢
+     * @param nodeList æ ¹èŠ‚ç‚¹ä¿¡æ¯
      */
     private void initLevel(List<TreeNode<T>> nodeList) {
         for (TreeNode<T> node : nodeList) {
@@ -93,9 +93,9 @@ class TreeNodeHelper<T> {
     }
 
     /**
-     * ´¦Àí³ö¸ù½Úµã
+     * å¤„ç†å‡ºæ ¹èŠ‚ç‚¹
      *
-     * @param nodeList ËùÓĞµÄ½ÚµãĞÅÏ¢
+     * @param nodeList æ‰€æœ‰çš„èŠ‚ç‚¹ä¿¡æ¯
      */
     private void initRootNodeList(List<TreeNode<T>> nodeList) {
         ListIterator<TreeNode<T>> iterator = nodeList.listIterator();
@@ -108,9 +108,9 @@ class TreeNodeHelper<T> {
     }
 
     /**
-     * ½«Ô­Ê¼Êı¾İ×ª³É½ÚµãĞÍÊı¾İ
+     * å°†åŸå§‹æ•°æ®è½¬æˆèŠ‚ç‚¹å‹æ•°æ®
      *
-     * @return ½ÚµãĞÍÊı¾İ
+     * @return èŠ‚ç‚¹å‹æ•°æ®
      */
     private List<TreeNode<T>> datas2NodeList() {
         List<TreeNode<T>> nodeList = new ArrayList<>();
@@ -145,12 +145,12 @@ class TreeNodeHelper<T> {
         return nodeList;
     }
 
-    // ±È½ÏÁ½¸öObjectÀà
+    // æ¯”è¾ƒä¸¤ä¸ªObjectç±»
     private boolean equals(Object obj1, Object obj2) {
         return obj1 == null ? null == obj2 : obj1.equals(obj2);
     }
 
-    // »ñµÃidºÍpid
+    // è·å¾—idå’Œpid
     private Object[] getObjects(TreeNode<T> node) throws IllegalAccessException {
         T object = node.getObject();
         Field[] fields = object.getClass().getDeclaredFields();

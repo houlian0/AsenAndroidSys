@@ -3,7 +3,7 @@ package com.asen.android.lib.base.core.network.download;
 import java.io.File;
 
 /**
- * ÏÂÔØ¼àÌı
+ * ä¸‹è½½ç›‘å¬
  *
  * @author Asen
  * @version v1.0
@@ -12,27 +12,27 @@ import java.io.File;
 public interface OnDownloadFileListener {
 
     /**
-     * ÏÂÔØµÄ½ø¶ÈĞÅÏ¢
+     * ä¸‹è½½çš„è¿›åº¦ä¿¡æ¯
      *
-     * @param downloadSize µ±Ç°ÒÑ¾­ÏÂÔØµÄ´óĞ¡
-     * @param totalSize    ÎÄ¼şµÄ×Ü´óĞ¡
-     * @param progress     ÎÄ¼şÏÂÔØµÄ½ø¶È£¨0~100£©
-     * @param speed        ÎÄ¼şÏÂÔØµÄËÙ¶È£¨byte/s£©
+     * @param downloadSize å½“å‰å·²ç»ä¸‹è½½çš„å¤§å°
+     * @param totalSize    æ–‡ä»¶çš„æ€»å¤§å°
+     * @param progress     æ–‡ä»¶ä¸‹è½½çš„è¿›åº¦ï¼ˆ0~100ï¼‰
+     * @param speed        æ–‡ä»¶ä¸‹è½½çš„é€Ÿåº¦ï¼ˆbyte/sï¼‰
      */
     void progress(long downloadSize, long totalSize, float progress, float speed);
 
     /**
-     * ÏÂÔØ³É¹¦
+     * ä¸‹è½½æˆåŠŸ
      *
-     * @param file ÏÂÔØ³É¹¦µÄÎÄ¼ş
+     * @param file ä¸‹è½½æˆåŠŸçš„æ–‡ä»¶
      */
     void success(File file);
 
     /**
-     * ÏÂÔØÊ§°Ü
+     * ä¸‹è½½å¤±è´¥
      *
-     * @param errorCode ÏÂÔØÊ§°ÜµÄ´íÎó´úÂë
-     * @param e         ÏÂÔØÊ±µÄÒì³£
+     * @param errorCode ä¸‹è½½å¤±è´¥çš„é”™è¯¯ä»£ç 
+     * @param e         ä¸‹è½½æ—¶çš„å¼‚å¸¸
      */
     void error(int errorCode, Exception e);
 

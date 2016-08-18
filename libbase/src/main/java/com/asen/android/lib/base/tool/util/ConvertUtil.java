@@ -7,7 +7,7 @@ import com.asen.android.lib.base.global.AppData;
 import java.util.Date;
 
 /**
- * ×Ö·û´® Óë »ù±¾ÀàĞÍ×ª»» ¹¤¾ßÀà
+ * å­—ç¬¦ä¸² ä¸ åŸºæœ¬ç±»å‹è½¬æ¢ å·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -16,21 +16,21 @@ import java.util.Date;
 public class ConvertUtil {
 
     /**
-     * ½«StringÀàĞÍ×ª³Ébyte×Ö½Ú
+     * å°†Stringç±»å‹è½¬æˆbyteå­—èŠ‚
      *
-     * @param str ´ı×ª»»µÄ×Ö·û´®
-     * @return ·µ»Øbyte£¬Ä¬ÈÏÖµ0
+     * @param str å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @return è¿”å›byteï¼Œé»˜è®¤å€¼0
      */
     public static byte stringToByte(String str) {
         return stringToByte(str, (byte) 0);
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Ébyte×Ö½Ú
+     * å°†Stringç±»å‹è½¬æˆbyteå­—èŠ‚
      *
-     * @param str         ´ı×ª»»µÄ×Ö·û´®
-     * @param defaultData Ä¬ÈÏÖµ
-     * @return ·µ»Øbyte
+     * @param str         å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @param defaultData é»˜è®¤å€¼
+     * @return è¿”å›byte
      */
     public static byte stringToByte(String str, byte defaultData) {
         try {
@@ -42,21 +42,21 @@ public class ConvertUtil {
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Éshort
+     * å°†Stringç±»å‹è½¬æˆshort
      *
-     * @param str ´ı×ª»»µÄ×Ö·û´®
-     * @return ·µ»Øshort £¬Ä¬ÈÏÖµ0
+     * @param str å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @return è¿”å›short ï¼Œé»˜è®¤å€¼0
      */
     public static short stringToShort(String str) {
         return stringToShort(str, (short) 0);
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Éshort
+     * å°†Stringç±»å‹è½¬æˆshort
      *
-     * @param str         ´ı×ª»»µÄ×Ö·û´®
-     * @param defaultData Ä¬ÈÏÖµ
-     * @return ·µ»Øshort
+     * @param str         å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @param defaultData é»˜è®¤å€¼
+     * @return è¿”å›short
      */
     public static short stringToShort(String str, short defaultData) {
         try {
@@ -68,21 +68,21 @@ public class ConvertUtil {
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Éint
+     * å°†Stringç±»å‹è½¬æˆint
      *
-     * @param str ´ı×ª»»µÄ×Ö·û´®
-     * @return ·µ»Øint£¬Ä¬ÈÏÖµ0
+     * @param str å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @return è¿”å›intï¼Œé»˜è®¤å€¼0
      */
     public static int stringToInt(String str) {
         return stringToInt(str, 0);
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Éint
+     * å°†Stringç±»å‹è½¬æˆint
      *
-     * @param str         ´ı×ª»»µÄ×Ö·û´®
-     * @param defaultData Ä¬ÈÏÖµ
-     * @return ·µ»Øint
+     * @param str         å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @param defaultData é»˜è®¤å€¼
+     * @return è¿”å›int
      */
     public static int stringToInt(String str, int defaultData) {
         try {
@@ -94,21 +94,21 @@ public class ConvertUtil {
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Élong
+     * å°†Stringç±»å‹è½¬æˆlong
      *
-     * @param str ´ı×ª»»µÄ×Ö·û´®
-     * @return ·µ»Ølong£¬Ä¬ÈÏÖµ0
+     * @param str å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @return è¿”å›longï¼Œé»˜è®¤å€¼0
      */
     public static long stringToLong(String str) {
         return stringToLong(str, 0);
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Élong
+     * å°†Stringç±»å‹è½¬æˆlong
      *
-     * @param str         ´ı×ª»»µÄ×Ö·û´®
-     * @param defaultData Ä¬ÈÏÖµ
-     * @return ·µ»Ølong
+     * @param str         å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @param defaultData é»˜è®¤å€¼
+     * @return è¿”å›long
      */
     public static long stringToLong(String str, long defaultData) {
         try {
@@ -120,21 +120,21 @@ public class ConvertUtil {
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Éfloat
+     * å°†Stringç±»å‹è½¬æˆfloat
      *
-     * @param str ´ı×ª»»µÄ×Ö·û´®
-     * @return ·µ»Øfloat£¬Ä¬ÈÏÖµ0
+     * @param str å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @return è¿”å›floatï¼Œé»˜è®¤å€¼0
      */
     public static float stringToFloat(String str) {
         return stringToFloat(str, 0);
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Éfloat
+     * å°†Stringç±»å‹è½¬æˆfloat
      *
-     * @param str         ´ı×ª»»µÄ×Ö·û´®
-     * @param defaultData Ä¬ÈÏÖµ
-     * @return ·µ»Øfloat
+     * @param str         å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @param defaultData é»˜è®¤å€¼
+     * @return è¿”å›float
      */
     public static float stringToFloat(String str, float defaultData) {
         try {
@@ -146,21 +146,21 @@ public class ConvertUtil {
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Édouble
+     * å°†Stringç±»å‹è½¬æˆdouble
      *
-     * @param str ´ı×ª»»µÄ×Ö·û´®
-     * @return ·µ»Ødouble£¬Ä¬ÈÏÖµ0
+     * @param str å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @return è¿”å›doubleï¼Œé»˜è®¤å€¼0
      */
     public static double stringToDouble(String str) {
         return stringToDouble(str, 0);
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Édouble
+     * å°†Stringç±»å‹è½¬æˆdouble
      *
-     * @param str         ´ı×ª»»µÄ×Ö·û´®
-     * @param defaultData Ä¬ÈÏÖµ
-     * @return ·µ»Ødouble
+     * @param str         å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @param defaultData é»˜è®¤å€¼
+     * @return è¿”å›double
      */
     public static double stringToDouble(String str, double defaultData) {
         try {
@@ -172,21 +172,21 @@ public class ConvertUtil {
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Éboolean
+     * å°†Stringç±»å‹è½¬æˆboolean
      *
-     * @param str ´ı×ª»»µÄ×Ö·û´®
-     * @return ·µ»Øboolean£¬Ä¬ÈÏÖµfalse
+     * @param str å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @return è¿”å›booleanï¼Œé»˜è®¤å€¼false
      */
     public static boolean stringToBoolean(String str) {
         return stringToBoolean(str, false);
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Éboolean
+     * å°†Stringç±»å‹è½¬æˆboolean
      *
-     * @param str         ´ı×ª»»µÄ×Ö·û´®
-     * @param defaultData Ä¬ÈÏÖµ
-     * @return ·µ»Øboolean
+     * @param str         å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @param defaultData é»˜è®¤å€¼
+     * @return è¿”å›boolean
      */
     public static boolean stringToBoolean(String str, boolean defaultData) {
         try {
@@ -198,10 +198,10 @@ public class ConvertUtil {
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Échar
+     * å°†Stringç±»å‹è½¬æˆchar
      *
-     * @param str ´ı×ª»»µÄ×Ö·û´®
-     * @return ·µ»Øchar£¬Ä¬ÈÏÖµ0
+     * @param str å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @return è¿”å›charï¼Œé»˜è®¤å€¼0
      */
     public static char stringToChar(String str) {
         if (TextUtils.isEmpty(str)) {
@@ -212,11 +212,11 @@ public class ConvertUtil {
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³Échar
+     * å°†Stringç±»å‹è½¬æˆchar
      *
-     * @param str         ´ı×ª»»µÄ×Ö·û´®
-     * @param defaultData Ä¬ÈÏÖµ
-     * @return ·µ»Øchar
+     * @param str         å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @param defaultData é»˜è®¤å€¼
+     * @return è¿”å›char
      */
     public static char stringToChar(String str, char defaultData) {
         if (TextUtils.isEmpty(str)) {
@@ -227,42 +227,42 @@ public class ConvertUtil {
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³ÉlongºÁÃëÖµ
+     * å°†Stringç±»å‹è½¬æˆlongæ¯«ç§’å€¼
      *
-     * @param str ´ı×ª»»µÄ×Ö·û´®
-     * @return ·µ»ØlongºÁÃëÖµ£¬Ä¬ÈÏÖµ0
+     * @param str å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @return è¿”å›longæ¯«ç§’å€¼ï¼Œé»˜è®¤å€¼0
      */
     public static long stringToDateTime(String str) {
         return stringToDateTime(str, 0);
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³ÉlongºÁÃëÖµ
+     * å°†Stringç±»å‹è½¬æˆlongæ¯«ç§’å€¼
      *
-     * @param str         ´ı×ª»»µÄ×Ö·û´®
-     * @param defaultData Ä¬ÈÏÖµ
-     * @return ·µ»ØlongºÁÃëÖµ
+     * @param str         å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @param defaultData é»˜è®¤å€¼
+     * @return è¿”å›longæ¯«ç§’å€¼
      */
     public static long stringToDateTime(String str, long defaultData) {
         return stringToLong(str, defaultData);
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³ÉDate
+     * å°†Stringç±»å‹è½¬æˆDate
      *
-     * @param str ´ı×ª»»µÄ×Ö·û´®
-     * @return ·µ»ØDate£¬Ä¬ÈÏÖµ new Date(0)
+     * @param str å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @return è¿”å›Dateï¼Œé»˜è®¤å€¼ new Date(0)
      */
     public static Date stringToDate(String str) {
         return stringToDate(str, new Date(0));
     }
 
     /**
-     * ½«StringÀàĞÍ×ª³ÉDate
+     * å°†Stringç±»å‹è½¬æˆDate
      *
-     * @param str         ´ı×ª»»µÄ×Ö·û´®
-     * @param defaultData Ä¬ÈÏÖµ
-     * @return ·µ»ØDate
+     * @param str         å¾…è½¬æ¢çš„å­—ç¬¦ä¸²
+     * @param defaultData é»˜è®¤å€¼
+     * @return è¿”å›Date
      */
     public static Date stringToDate(String str, Date defaultData) {
         try {

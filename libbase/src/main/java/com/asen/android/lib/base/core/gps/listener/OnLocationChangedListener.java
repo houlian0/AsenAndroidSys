@@ -5,7 +5,7 @@ import com.asen.android.lib.base.core.gps.bean.GpsPoint;
 import com.asen.android.lib.base.core.gps.bean.MapPoint;
 
 /**
- * GPSµãÎ»¸Ä±ä½Ó¿Ú
+ * GPSç‚¹ä½æ”¹å˜æ¥å£
  *
  * @author Asen
  * @version v1.0
@@ -14,10 +14,10 @@ import com.asen.android.lib.base.core.gps.bean.MapPoint;
 public interface OnLocationChangedListener {
 
     /**
-     * GPSµãÎ»¸Ä±ä½Ó¿Ú
+     * GPSç‚¹ä½æ”¹å˜æ¥å£
      *
-     * @param gpsPoint gpsµã
-     * @param mapPoint Í¨¹ı×ª»»·½·¨ºóµÄµØÍ¼µã£¨Î´ÉèÖÃ×ª»»·½·¨Ê±£¬È¡gpsµã²¿·ÖĞÅÏ¢£©
+     * @param gpsPoint gpsç‚¹
+     * @param mapPoint é€šè¿‡è½¬æ¢æ–¹æ³•åçš„åœ°å›¾ç‚¹ï¼ˆæœªè®¾ç½®è½¬æ¢æ–¹æ³•æ—¶ï¼Œå–gpsç‚¹éƒ¨åˆ†ä¿¡æ¯ï¼‰
      */
     void locationChanged(GpsPoint gpsPoint, MapPoint mapPoint);
 

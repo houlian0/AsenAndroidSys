@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 快速FindView时需要的注解
+ * 蹇�烣indView鏃堕渶瑕佺殑娉ㄨВ
  *
  * @author Asen
  * @version v1.0
@@ -17,12 +17,12 @@ import java.lang.annotation.Target;
 public @interface AFindView {
 
     /**
-     * 控件的资源id
+     * 鎺т欢鐨勮祫婧恑d
      */
     int id() default -1;
 
     /**
-     * 控件点击事件触发的方法名，方法带一个View参数
+     * 鎺т欢鐐瑰嚮浜嬩欢瑙﹀彂鐨勬柟娉曞悕锛屾柟娉曞甫涓�涓猇iew鍙傛暟
      */
     String onClick() default "";
 

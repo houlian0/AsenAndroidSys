@@ -31,7 +31,7 @@ import java.util.UUID;
 import java.util.regex.Pattern;
 
 /**
- * APP¹¤¾ßÀà
+ * APPå·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -40,7 +40,7 @@ import java.util.regex.Pattern;
 public class AppUtil {
 
     /**
-     * »ñµÃÎ¨Ò»ID
+     * è·å¾—å”¯ä¸€ID
      *
      * @return uuid
      */
@@ -50,10 +50,10 @@ public class AppUtil {
     }
 
     /**
-     * »ñµÃAndroidÉè±¸µÄIMEIºÅ£¨DeviceId£ºIMEI£¨International Mobile Equipment Identity£©ÊÇ¹ú¼ÊÒÆ¶¯Éè±¸±êÊ¶µÄËõĞ´£©
+     * è·å¾—Androidè®¾å¤‡çš„IMEIå·ï¼ˆDeviceIdï¼šIMEIï¼ˆInternational Mobile Equipment Identityï¼‰æ˜¯å›½é™…ç§»åŠ¨è®¾å¤‡æ ‡è¯†çš„ç¼©å†™ï¼‰
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return AndroidÉè±¸µÄIMEIºÅ
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return Androidè®¾å¤‡çš„IMEIå·
      */
     public static String getDeviceId(Context context) {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -61,10 +61,10 @@ public class AppUtil {
     }
 
     /**
-     * »ñµÃÊÖ»úºÅÂë£¨ÏÖÔÚµÄSIM¿¨ÊÇÄÃ²»µ½ÊÖ»úºÅµÄ£©
+     * è·å¾—æ‰‹æœºå·ç ï¼ˆç°åœ¨çš„SIMå¡æ˜¯æ‹¿ä¸åˆ°æ‰‹æœºå·çš„ï¼‰
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return AndroidÊÖ»úºÅ
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return Androidæ‰‹æœºå·
      */
     public static String getLine1Number(Context context) {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -72,10 +72,10 @@ public class AppUtil {
     }
 
     /**
-     * »ñµÃÊÖ»úSIM¿¨µÄICCIDºÅ£¨Integrate circuit card identity ¼¯³ÉµçÂ·¿¨Ê¶±ğÂë£¬¹Ì»¯ÔÚÊÖ»úSIM¿¨ÖĞ£©
+     * è·å¾—æ‰‹æœºSIMå¡çš„ICCIDå·ï¼ˆIntegrate circuit card identity é›†æˆç”µè·¯å¡è¯†åˆ«ç ï¼Œå›ºåŒ–åœ¨æ‰‹æœºSIMå¡ä¸­ï¼‰
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return ÊÖ»úSIM¿¨µÄICCIDºÅ£¨ÊÖ»úºÅµÄÎ¨Ò»Öµ£©
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return æ‰‹æœºSIMå¡çš„ICCIDå·ï¼ˆæ‰‹æœºå·çš„å”¯ä¸€å€¼ï¼‰
      */
     public static String getSimSerialNumber(Context context) {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -83,10 +83,10 @@ public class AppUtil {
     }
 
     /**
-     * »ñµÃÊÖ»úSIM¿¨µÄIMSIºÅ ¹ú¼ÊÒÆ¶¯ÓÃ»§Ê¶±ğÂë£¨IMSI£ºInternational Mobile Subscriber Identification Number£©
+     * è·å¾—æ‰‹æœºSIMå¡çš„IMSIå· å›½é™…ç§»åŠ¨ç”¨æˆ·è¯†åˆ«ç ï¼ˆIMSIï¼šInternational Mobile Subscriber Identification Numberï¼‰
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return ÊÖ»úSIM¿¨µÄIMSIºÅ
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return æ‰‹æœºSIMå¡çš„IMSIå·
      */
     public static String getSubscriberId(Context context) {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -94,23 +94,23 @@ public class AppUtil {
     }
 
     /**
-     * 1sºóÖØÆô³ÌĞò£¬²¢½øÈëµ½Ö¸¶¨Activity
+     * 1såé‡å¯ç¨‹åºï¼Œå¹¶è¿›å…¥åˆ°æŒ‡å®šActivity
      *
-     * @param context     AndroidÉÏÏÂÎÄ
-     * @param activityCls ĞèÒªÖØĞÂ´ò¿ªµÄActivityÒ³ÃæÀà
+     * @param context     Androidä¸Šä¸‹æ–‡
+     * @param activityCls éœ€è¦é‡æ–°æ‰“å¼€çš„Activityé¡µé¢ç±»
      */
     public static void exitAndRestart(Context context, Class<?> activityCls) {
         Intent intent = new Intent(context, activityCls);
         PendingIntent restartIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT); // FLAG_ACTIVITY_NEW_TASK
         AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000, restartIntent); // 1ÃëÖÓºóÖØÆôÓ¦ÓÃ
+        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000, restartIntent); // 1ç§’é’Ÿåé‡å¯åº”ç”¨
     }
 
     /**
-     * ÃèÊö£º´ò¿ª²¢°²×°ÎÄ¼ş.
+     * æè¿°ï¼šæ‰“å¼€å¹¶å®‰è£…æ–‡ä»¶.
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @param file    apkÎÄ¼şÂ·¾¶
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @param file    apkæ–‡ä»¶è·¯å¾„
      */
     public static void installApk(Context context, File file) {
         Intent intent = new Intent();
@@ -121,10 +121,10 @@ public class AppUtil {
     }
 
     /**
-     * ÃèÊö£ºĞ¶ÔØ³ÌĞò.
+     * æè¿°ï¼šå¸è½½ç¨‹åº.
      *
-     * @param context     AndroidÉÏÏÂÎÄ
-     * @param packageName ³ÌĞò°üÃû
+     * @param context     Androidä¸Šä¸‹æ–‡
+     * @param packageName ç¨‹åºåŒ…å
      */
     public static void uninstallApk(Context context, String packageName) {
         Intent intent = new Intent(Intent.ACTION_DELETE);
@@ -134,10 +134,10 @@ public class AppUtil {
     }
 
     /**
-     * »ñµÃAPP°æ±¾ºÅ
+     * è·å¾—APPç‰ˆæœ¬å·
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return APPµÄ°æ±¾ºÅ
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return APPçš„ç‰ˆæœ¬å·
      */
     public static int getAppVersionCode(Context context) {
         int verCode = -1;
@@ -150,10 +150,10 @@ public class AppUtil {
     }
 
     /**
-     * »ñµÃAPP°æ±¾Ãû³Æ
+     * è·å¾—APPç‰ˆæœ¬åç§°
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return APPµÄ°æ±¾Ãû³Æ
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return APPçš„ç‰ˆæœ¬åç§°
      */
     public static String getAppVersionName(Context context) {
         String verCode = null;
@@ -166,10 +166,10 @@ public class AppUtil {
     }
 
     /**
-     * »ñµÃAPP°üÃû
+     * è·å¾—APPåŒ…å
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return APPµÄ³ÌĞò°üÃû
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return APPçš„ç¨‹åºåŒ…å
      */
     public static String getAppPackageName(Context context) {
         String pkName = null;
@@ -182,53 +182,53 @@ public class AppUtil {
     }
 
     /**
-     * ¸ù¾İ×ÊÔ´id»ñµÃ×ÊÔ´ÎÄ¼şÃû
+     * æ ¹æ®èµ„æºidè·å¾—èµ„æºæ–‡ä»¶å
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @param resId   ×ÊÔ´ID
-     * @return ×ÊÔ´ÎÄ¼şÃû³Æ
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @param resId   èµ„æºID
+     * @return èµ„æºæ–‡ä»¶åç§°
      */
     public static String getResourceNameById(Context context, int resId) {
         return context.getResources().getResourceName(resId);
     }
 
     /**
-     * ¸ù¾İ×ÊÔ´ÎÄ¼şÃû³Æ»ñµÃ×ÊÔ´id
+     * æ ¹æ®èµ„æºæ–‡ä»¶åç§°è·å¾—èµ„æºid
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @param name    ×ÊÔ´ÎÄ¼şÃû³Æ
-     * @param defType ×ÊÔ´ÎÄ¼şÀàĞÍ£¬Èç£º"drawable"
-     * @return ×ÊÔ´ID
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @param name    èµ„æºæ–‡ä»¶åç§°
+     * @param defType èµ„æºæ–‡ä»¶ç±»å‹ï¼Œå¦‚ï¼š"drawable"
+     * @return èµ„æºID
      */
     public static int getResourcesIdByName(Context context, String name, String defType) {
         return context.getResources().getIdentifier(name, defType, context.getPackageName());
     }
 
     /**
-     * ÅĞ¶Ïµ±Ç°Éè±¸ÊÇÊÖ»ú»¹ÊÇÆ½°å£¬´úÂëÀ´×Ô Google I/O App for Android
+     * åˆ¤æ–­å½“å‰è®¾å¤‡æ˜¯æ‰‹æœºè¿˜æ˜¯å¹³æ¿ï¼Œä»£ç æ¥è‡ª Google I/O App for Android
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return Æ½°å·µ»Ø True£¬ÊÖ»ú·µ»Ø False
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return å¹³æ¿è¿”å› Trueï¼Œæ‰‹æœºè¿”å› False
      */
     public static boolean isPad(Context context) {
         return (context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
     /**
-     * ÅĞ¶ÏÊÇ·ñÎªÆ½°å-¸ù¾İÆÁÄ»µÄ³ß´çÅĞ¶¨£¨½¨Òé²ÉÓÃ{@link AppUtil#isPad(Context)}·½·¨£©
+     * åˆ¤æ–­æ˜¯å¦ä¸ºå¹³æ¿-æ ¹æ®å±å¹•çš„å°ºå¯¸åˆ¤å®šï¼ˆå»ºè®®é‡‡ç”¨{@link AppUtil#isPad(Context)}æ–¹æ³•ï¼‰
      *
-     * @return AndroidÉÏÏÂÎÄ
+     * @return Androidä¸Šä¸‹æ–‡
      */
     public static boolean isPad2(Context context) {
-        // ´óÓÚ6³ß´çÔòÎªPad
+        // å¤§äº6å°ºå¯¸åˆ™ä¸ºPad
         return getScreenInches(context) >= 6.0;
     }
 
     /**
-     * ¸ù¾İÊÇÆ½°å»¹ÊÇÊÖ»ú£¬ÇĞ»»ÏÔÊ¾×´Ì¬£¨ºáÆÁ»¹ÊÇÊúÆÁ£©
-     * Èç¹ûÊÇÆ½°åµÄ»°£¬ÉèÎªºáÆÁ£»Èç¹ûÊÇÊÖ»úµÄ»°£¬ÉèÎªÊúÆÁ
+     * æ ¹æ®æ˜¯å¹³æ¿è¿˜æ˜¯æ‰‹æœºï¼Œåˆ‡æ¢æ˜¾ç¤ºçŠ¶æ€ï¼ˆæ¨ªå±è¿˜æ˜¯ç«–å±ï¼‰
+     * å¦‚æœæ˜¯å¹³æ¿çš„è¯ï¼Œè®¾ä¸ºæ¨ªå±ï¼›å¦‚æœæ˜¯æ‰‹æœºçš„è¯ï¼Œè®¾ä¸ºç«–å±
      *
-     * @param activity µ±Ç°ÏÔÊ¾µÄÒ³Ãæ
+     * @param activity å½“å‰æ˜¾ç¤ºçš„é¡µé¢
      */
     public static void initScreenOrientation(Activity activity) {
         if (isPad(activity.getApplicationContext())) {
@@ -243,20 +243,20 @@ public class AppUtil {
     }
 
     /**
-     * ÅĞ¶Ïµ±Ç°µÄÆÁÄ»ÊÇ·ñÊúÆÁ
+     * åˆ¤æ–­å½“å‰çš„å±å¹•æ˜¯å¦ç«–å±
      *
-     * @param activity µ±Ç°ÏÔÊ¾µÄÒ³Ãæ
-     * @return ÎªÊúÆÁµÄ»°£¬·µ»Øtrue£»·ñÔò·µ»Øfalse
+     * @param activity å½“å‰æ˜¾ç¤ºçš„é¡µé¢
+     * @return ä¸ºç«–å±çš„è¯ï¼Œè¿”å›trueï¼›å¦åˆ™è¿”å›false
      */
     public static boolean isPortrait(Activity activity) {
         return activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
     }
 
     /**
-     * »ñµÃÉè±¸³ß´ç
+     * è·å¾—è®¾å¤‡å°ºå¯¸
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return Éè±¸³ß´ç(µ¥Î»Ó¢´ç)
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return è®¾å¤‡å°ºå¯¸(å•ä½è‹±å¯¸)
      */
     public static double getScreenInches(Context context) {
         DisplayMetrics dm = getDisplayMetrics(context);
@@ -266,16 +266,16 @@ public class AppUtil {
     }
 
     /**
-     * »ñµÃÊÖ»úwifiµÄmacµØÖ·
+     * è·å¾—æ‰‹æœºwifiçš„macåœ°å€
      *
-     * @param context     AndroidÉÏÏÂÎÄ
-     * @param isLowerCase ÊÇ·ñĞ¡Ğ´×Ö·û´®Êä³ö¡£trueÔòĞ¡Ğ´£¬falseÔò´óĞ´
-     * @return ·µ»ØMacµØÖ·
+     * @param context     Androidä¸Šä¸‹æ–‡
+     * @param isLowerCase æ˜¯å¦å°å†™å­—ç¬¦ä¸²è¾“å‡ºã€‚trueåˆ™å°å†™ï¼Œfalseåˆ™å¤§å†™
+     * @return è¿”å›Macåœ°å€
      */
     public String getLocalMacAddress(Context context, boolean isLowerCase) {
         String macAddress = "";
         if (Version.hasMarshmallow()) {
-            // ´Ó"/sys/class/net/wlan0/address"ÎÄ¼şÖĞ»ñÈ¡MacµØÖ·ĞÅÏ¢
+            // ä»"/sys/class/net/wlan0/address"æ–‡ä»¶ä¸­è·å–Macåœ°å€ä¿¡æ¯
             try {
                 String str = "";
                 Process pp = Runtime.getRuntime().exec("cat /sys/class/net/wlan0/address ");
@@ -284,7 +284,7 @@ public class AppUtil {
                 for (; null != str; ) {
                     str = input.readLine();
                     if (str != null) {
-                        macAddress = str.trim();// È¥¿Õ¸ñ
+                        macAddress = str.trim();// å»ç©ºæ ¼
                         break;
                     }
                 }
@@ -293,7 +293,7 @@ public class AppUtil {
             }
 
             if ("".equals(macAddress)) {
-                // ´Ó"/sys/class/net/eth0/address"ÎÄ¼şÖĞ»ñÈ¡MacµØÖ·ĞÅÏ¢
+                // ä»"/sys/class/net/eth0/address"æ–‡ä»¶ä¸­è·å–Macåœ°å€ä¿¡æ¯
                 try {
                     FileReader reader = new FileReader("/sys/class/net/eth0/address");
                     StringBuilder builder = new StringBuilder();
@@ -319,11 +319,11 @@ public class AppUtil {
     }
 
     /**
-     * ÓÃÀ´ÅĞ¶Ï·şÎñÊÇ·ñÔËĞĞ.
+     * ç”¨æ¥åˆ¤æ–­æœåŠ¡æ˜¯å¦è¿è¡Œ.
      *
-     * @param ctx       AndroidÉÏÏÂÎÄ
-     * @param className ·şÎñµÄÀàÃû
-     * @return true ÔÚÔËĞĞ£¬false ²»ÔÚÔËĞĞ
+     * @param ctx       Androidä¸Šä¸‹æ–‡
+     * @param className æœåŠ¡çš„ç±»å
+     * @return true åœ¨è¿è¡Œï¼Œfalse ä¸åœ¨è¿è¡Œ
      */
     public static boolean isServiceRunning(Context ctx, String className) {
         boolean isRunning = false;
@@ -338,11 +338,11 @@ public class AppUtil {
     }
 
     /**
-     * Í£Ö¹·şÎñ
+     * åœæ­¢æœåŠ¡
      *
-     * @param ctx       AndroidµÄÉÏÏÂÎÄ
-     * @param className ·şÎñµÄÀàĞÍ
-     * @return Èç¹û³É¹¦Í£Ö¹·şÎñ£¬Ôò·µ»Øtrue£¬·ñÔò·µ»Øfalse
+     * @param ctx       Androidçš„ä¸Šä¸‹æ–‡
+     * @param className æœåŠ¡çš„ç±»å‹
+     * @return å¦‚æœæˆåŠŸåœæ­¢æœåŠ¡ï¼Œåˆ™è¿”å›trueï¼Œå¦åˆ™è¿”å›false
      */
     public static boolean stopRunningService(Context ctx, String className) {
         Intent intent_service = null;
@@ -359,9 +359,9 @@ public class AppUtil {
     }
 
     /**
-     * Í¨¹ıÏµÍ³ÎÄ¼ş"/sys/devices/system/cpu"Â·¾¶ÏÂµÄÄÚÈİ£¬²éÑ¯cpuµÄ¸öÊıĞÅÏ¢
+     * é€šè¿‡ç³»ç»Ÿæ–‡ä»¶"/sys/devices/system/cpu"è·¯å¾„ä¸‹çš„å†…å®¹ï¼ŒæŸ¥è¯¢cpuçš„ä¸ªæ•°ä¿¡æ¯
      *
-     * @return ²éÑ¯CPUµÄ¸öÊı£¬Èç¹ûÊ§°ÜµÄ»°£¬·µ»Ø1
+     * @return æŸ¥è¯¢CPUçš„ä¸ªæ•°ï¼Œå¦‚æœå¤±è´¥çš„è¯ï¼Œè¿”å›1
      */
     public static int getNumCores() {
         try {
@@ -384,10 +384,10 @@ public class AppUtil {
     }
 
     /**
-     * ÃèÊö£ºÅĞ¶ÏÍøÂçÊÇ·ñÁ¬½Ó
+     * æè¿°ï¼šåˆ¤æ–­ç½‘ç»œæ˜¯å¦è¿æ¥
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return Èç¹ûÍøÂç¿ÉÓÃ£¬·µ»Øtrue£»·ñÔò·µ»Øfalse
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return å¦‚æœç½‘ç»œå¯ç”¨ï¼Œè¿”å›trueï¼›å¦åˆ™è¿”å›false
      */
     public static boolean isNetworkAvailable(Context context) {
         try {
@@ -407,10 +407,10 @@ public class AppUtil {
     }
 
     /**
-     * ÅĞ¶ÏGpsÊÇ·ñ´ò¿ª ĞèÒª android.permission.ACCESS_FINE_LOCATION È¨ÏŞ
+     * åˆ¤æ–­Gpsæ˜¯å¦æ‰“å¼€ éœ€è¦ android.permission.ACCESS_FINE_LOCATION æƒé™
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return Èç¹ûGPS¶¨Î»¿ÉÓÃ£¬·µ»Øtrue£»·ñÔò·µ»Øfalse
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return å¦‚æœGPSå®šä½å¯ç”¨ï¼Œè¿”å›trueï¼›å¦åˆ™è¿”å›false
      */
     public static boolean isGpsEnabled(Context context) {
         LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
@@ -418,10 +418,10 @@ public class AppUtil {
     }
 
     /**
-     * ÅĞ¶ÏÉè±¸ÊÇ·ñº¬ÓĞGPS¶¨Î»¹¦ÄÜ£¨ÊÇ·ñ´æÔÚÏàÓ¦µÄÓ²¼şÉèÊ©£©
+     * åˆ¤æ–­è®¾å¤‡æ˜¯å¦å«æœ‰GPSå®šä½åŠŸèƒ½ï¼ˆæ˜¯å¦å­˜åœ¨ç›¸åº”çš„ç¡¬ä»¶è®¾æ–½ï¼‰
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return Èç¹û°üº¬GPS¶¨Î»¹¦ÄÜ£¬·µ»Øtrue£»·ñÔò·µ»Øfalse
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return å¦‚æœåŒ…å«GPSå®šä½åŠŸèƒ½ï¼Œè¿”å›trueï¼›å¦åˆ™è¿”å›false
      */
     public static boolean hasGPSDevice(Context context) {
         LocationManager mgr = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
@@ -429,10 +429,10 @@ public class AppUtil {
     }
 
     /**
-     * ÅĞ¶ÏÉè±¸ÊÇ·ñº¬ÓĞÍøÂç¶¨Î»¹¦ÄÜ£¨ÊÇ·ñ´æÔÚÏàÓ¦µÄÓ²¼şÉèÊ©£©
+     * åˆ¤æ–­è®¾å¤‡æ˜¯å¦å«æœ‰ç½‘ç»œå®šä½åŠŸèƒ½ï¼ˆæ˜¯å¦å­˜åœ¨ç›¸åº”çš„ç¡¬ä»¶è®¾æ–½ï¼‰
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return Èç¹û°üº¬ÍøÂç¶¨Î»¹¦ÄÜ£¬·µ»Øtrue£»·ñÔò·µ»Øfalse
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return å¦‚æœåŒ…å«ç½‘ç»œå®šä½åŠŸèƒ½ï¼Œè¿”å›trueï¼›å¦åˆ™è¿”å›false
      */
     public static boolean hasNetworkDevice(Context context) {
         LocationManager mgr = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
@@ -440,10 +440,10 @@ public class AppUtil {
     }
 
     /**
-     * wifiÊÇ·ñ´ò¿ª
+     * wifiæ˜¯å¦æ‰“å¼€
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return Èç¹ûwifi´ò¿ªµÄÇé¿ö£¬Ôò·µ»Øtrue£»·ñÔò·µ»Øfalse
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return å¦‚æœwifiæ‰“å¼€çš„æƒ…å†µï¼Œåˆ™è¿”å›trueï¼›å¦åˆ™è¿”å›false
      */
     public static boolean isWifiEnabled(Context context) {
         ConnectivityManager mgrConn = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -452,10 +452,10 @@ public class AppUtil {
     }
 
     /**
-     * ÅĞ¶Ïµ±Ç°ÍøÂçÊÇ·ñÊÇwifiÍøÂç
+     * åˆ¤æ–­å½“å‰ç½‘ç»œæ˜¯å¦æ˜¯wifiç½‘ç»œ
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return Èç¹ûµ±Ç°µÄÍøÂçÊÇwifiµÄÇé¿ö£¬·µ»Øtrue£»·ñÔò·µ»Øfalse
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return å¦‚æœå½“å‰çš„ç½‘ç»œæ˜¯wifiçš„æƒ…å†µï¼Œè¿”å›trueï¼›å¦åˆ™è¿”å›false
      */
     public static boolean isWifi(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -467,10 +467,10 @@ public class AppUtil {
     }
 
     /**
-     * ÅĞ¶Ïµ±Ç°ÍøÂçÊÇ·ñÊÇÒÆ¶¯ÍøÂç
+     * åˆ¤æ–­å½“å‰ç½‘ç»œæ˜¯å¦æ˜¯ç§»åŠ¨ç½‘ç»œ
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return Èç¹ûµ±Ç°µÄÍøÂçÊÇÒÆ¶¯ÍøÂçµÄÇé¿ö£¬·µ»Øtrue£»·ñÔò·µ»Øfalse
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return å¦‚æœå½“å‰çš„ç½‘ç»œæ˜¯ç§»åŠ¨ç½‘ç»œçš„æƒ…å†µï¼Œè¿”å›trueï¼›å¦åˆ™è¿”å›false
      */
     public static boolean is3G(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -482,9 +482,9 @@ public class AppUtil {
     }
 
     /**
-     * ´ò¿ªÈí¼üÅÌ
+     * æ‰“å¼€è½¯é”®ç›˜
      *
-     * @param context AndroidÉÏÏÂÎÄ
+     * @param context Androidä¸Šä¸‹æ–‡
      */
     public static void showSoftInput(Context context) {
         InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -492,9 +492,9 @@ public class AppUtil {
     }
 
     /**
-     * ¹Ø±ÕÈí¼üÅÌ
+     * å…³é—­è½¯é”®ç›˜
      *
-     * @param activity AndroidËÄ´ó×é¼şÖ®Ò»µÄActivity
+     * @param activity Androidå››å¤§ç»„ä»¶ä¹‹ä¸€çš„Activity
      */
     public static void closeSoftInput(Activity activity) {
         InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -504,10 +504,10 @@ public class AppUtil {
     }
 
     /**
-     * »ñÈ¡ÆÁÄ»³ß´çÓëÃÜ¶ÈµÈĞÅÏ¢
+     * è·å–å±å¹•å°ºå¯¸ä¸å¯†åº¦ç­‰ä¿¡æ¯
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @return ÆÁÄ»³ß´çÓëÃÜ¶ÈµÈĞÅÏ¢
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @return å±å¹•å°ºå¯¸ä¸å¯†åº¦ç­‰ä¿¡æ¯
      */
     public static DisplayMetrics getDisplayMetrics(Context context) {
         WindowManager mWindowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);

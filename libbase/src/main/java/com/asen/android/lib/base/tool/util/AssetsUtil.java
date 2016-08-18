@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * AssetsÎÄ¼ş¼ĞÏÂµÄÏà¹Ø´¦Àí²Ù×÷Àà
+ * Assetsæ–‡ä»¶å¤¹ä¸‹çš„ç›¸å…³å¤„ç†æ“ä½œç±»
  *
  * @author Asen
  * @version v1.0
@@ -17,11 +17,11 @@ import java.io.InputStream;
 public class AssetsUtil {
 
     /**
-     * ¿½±´assetsÖĞµÄµ¥¸öÎÄ¼şµ½sd¿¨µÄÖ¸¶¨Â·¾¶ÏÂ
+     * æ‹·è´assetsä¸­çš„å•ä¸ªæ–‡ä»¶åˆ°sdå¡çš„æŒ‡å®šè·¯å¾„ä¸‹
      *
-     * @param context    AndroidÉÏÏÂÎÄ
-     * @param assetPath  assetsÖĞµÄÎÄ¼şÂ·¾¶
-     * @param sdcardPath Òª±£´æµ½µÄsd¿¨ÖĞµÄÎÄ¼şÎ»ÖÃ£¨°üº¬ÎÄ¼şÃû³Æ£©
+     * @param context    Androidä¸Šä¸‹æ–‡
+     * @param assetPath  assetsä¸­çš„æ–‡ä»¶è·¯å¾„
+     * @param sdcardPath è¦ä¿å­˜åˆ°çš„sdå¡ä¸­çš„æ–‡ä»¶ä½ç½®ï¼ˆåŒ…å«æ–‡ä»¶åç§°ï¼‰
      */
     public static boolean copyFile(Context context, String assetPath, String sdcardPath) {
         InputStream is = null;
@@ -31,7 +31,7 @@ public class AssetsUtil {
 
         try {
             int length = 0;
-            is = context.getAssets().open(assetPath); // ¶ÁÈëÔ­ÎÄ¼ş
+            is = context.getAssets().open(assetPath); // è¯»å…¥åŸæ–‡ä»¶
             fs = new FileOutputStream(sdcardPath);
             byte[] buffer = new byte[1024];
             while ((length = is.read(buffer)) != -1) {
@@ -54,11 +54,11 @@ public class AssetsUtil {
     }
 
     /**
-     * »ñÈ¡Ëù´«ÈëµÄassetsÂ·¾¶ÏÂµÄ×ÓÎÄ¼şÂ·¾¶ĞÅÏ¢
+     * è·å–æ‰€ä¼ å…¥çš„assetsè·¯å¾„ä¸‹çš„å­æ–‡ä»¶è·¯å¾„ä¿¡æ¯
      *
-     * @param context   AndroidÉÏÏÂÎÄ
-     * @param assetPath assetsÖĞµÄÎÄ¼şÂ·¾¶
-     * @return Èç¹û´«ÈëµÄassetsÊÇ¸öÎÄ¼ş¼Ğ£¬Ôò·µ»ØÆä×ÓÎÄ¼şµÄÂ·¾¶ĞÅÏ¢¼¯£»·ñÔò·µ»Ønull
+     * @param context   Androidä¸Šä¸‹æ–‡
+     * @param assetPath assetsä¸­çš„æ–‡ä»¶è·¯å¾„
+     * @return å¦‚æœä¼ å…¥çš„assetsæ˜¯ä¸ªæ–‡ä»¶å¤¹ï¼Œåˆ™è¿”å›å…¶å­æ–‡ä»¶çš„è·¯å¾„ä¿¡æ¯é›†ï¼›å¦åˆ™è¿”å›null
      */
     public static String[] getListFile(Context context, String assetPath) {
         try {
@@ -69,11 +69,11 @@ public class AssetsUtil {
     }
 
     /**
-     * ¸´ÖÆassetsÂ·¾¶ÏÂµÄËùÓĞÎÄ¼şµ½sd¿¨µÄÖ¸¶¨Â·¾¶ÏÂ
+     * å¤åˆ¶assetsè·¯å¾„ä¸‹çš„æ‰€æœ‰æ–‡ä»¶åˆ°sdå¡çš„æŒ‡å®šè·¯å¾„ä¸‹
      *
-     * @param context    AndroidÉÏÏÂÎÄ
-     * @param assetPath  assetsÖĞµÄÎÄ¼şÂ·¾¶
-     * @param sdcardPath Òª±£´æµ½µÄsd¿¨ÖĞµÄÎÄ¼ş¼ĞÎ»ÖÃ£¨×¢£º´Ë´¦ÎªÎÄ¼ş¼Ğ£©
+     * @param context    Androidä¸Šä¸‹æ–‡
+     * @param assetPath  assetsä¸­çš„æ–‡ä»¶è·¯å¾„
+     * @param sdcardPath è¦ä¿å­˜åˆ°çš„sdå¡ä¸­çš„æ–‡ä»¶å¤¹ä½ç½®ï¼ˆæ³¨ï¼šæ­¤å¤„ä¸ºæ–‡ä»¶å¤¹ï¼‰
      */
     public static void copyFolder(Context context, String assetPath, String sdcardPath) {
         FileUtil.createFolder(new File(sdcardPath));

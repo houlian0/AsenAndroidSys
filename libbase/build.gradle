@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/houlian0/AsenAndroidSys'
     gitUrl = 'https://github.com/houlian0/AsenAndroidSys.git'
 
-    libraryVersion = '0.0.2'
+    libraryVersion = '0.0.3'
 
     developerId = 'asen'
     developerName = 'HouLian'

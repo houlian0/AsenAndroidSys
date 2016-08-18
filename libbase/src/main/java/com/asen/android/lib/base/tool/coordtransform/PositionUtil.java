@@ -1,12 +1,12 @@
 package com.asen.android.lib.base.tool.coordtransform;
 
 /**
- * ¸÷µØÍ¼API×ø±êÏµÍ³±È½ÏÓë×ª»»;
- * WGS84×ø±êÏµ£º¼´µØÇò×ø±êÏµ£¬¹ú¼ÊÉÏÍ¨ÓÃµÄ×ø±êÏµ¡£Éè±¸Ò»°ã°üº¬GPSĞ¾Æ¬»òÕß±±¶·Ğ¾Æ¬»ñÈ¡µÄ¾­Î³¶ÈÎªWGS84µØÀí×ø±êÏµ,
- * ¹È¸èµØÍ¼²ÉÓÃµÄÊÇWGS84µØÀí×ø±êÏµ£¨ÖĞ¹ú·¶Î§³ıÍâ£©;
- * GCJ02×ø±êÏµ£º¼´»ğĞÇ×ø±êÏµ£¬ÊÇÓÉÖĞ¹ú¹ú¼Ò²â»æ¾ÖÖÆ¶©µÄµØÀíĞÅÏ¢ÏµÍ³µÄ×ø±êÏµÍ³¡£ÓÉWGS84×ø±êÏµ¾­¼ÓÃÜºóµÄ×ø±êÏµ¡£
- * ¹È¸èÖĞ¹úµØÍ¼ºÍËÑËÑÖĞ¹úµØÍ¼²ÉÓÃµÄÊÇGCJ02µØÀí×ø±êÏµ; BD09×ø±êÏµ£º¼´°Ù¶È×ø±êÏµ£¬GCJ02×ø±êÏµ¾­¼ÓÃÜºóµÄ×ø±êÏµ;
- * ËÑ¹·×ø±êÏµ¡¢Í¼°É×ø±êÏµµÈ£¬¹À¼ÆÒ²ÊÇÔÚGCJ02»ù´¡ÉÏ¼ÓÃÜ¶ø³ÉµÄ¡£
+ * å„åœ°å›¾APIåæ ‡ç³»ç»Ÿæ¯”è¾ƒä¸è½¬æ¢;
+ * WGS84åæ ‡ç³»ï¼šå³åœ°çƒåæ ‡ç³»ï¼Œå›½é™…ä¸Šé€šç”¨çš„åæ ‡ç³»ã€‚è®¾å¤‡ä¸€èˆ¬åŒ…å«GPSèŠ¯ç‰‡æˆ–è€…åŒ—æ–—èŠ¯ç‰‡è·å–çš„ç»çº¬åº¦ä¸ºWGS84åœ°ç†åæ ‡ç³»,
+ * è°·æ­Œåœ°å›¾é‡‡ç”¨çš„æ˜¯WGS84åœ°ç†åæ ‡ç³»ï¼ˆä¸­å›½èŒƒå›´é™¤å¤–ï¼‰;
+ * GCJ02åæ ‡ç³»ï¼šå³ç«æ˜Ÿåæ ‡ç³»ï¼Œæ˜¯ç”±ä¸­å›½å›½å®¶æµ‹ç»˜å±€åˆ¶è®¢çš„åœ°ç†ä¿¡æ¯ç³»ç»Ÿçš„åæ ‡ç³»ç»Ÿã€‚ç”±WGS84åæ ‡ç³»ç»åŠ å¯†åçš„åæ ‡ç³»ã€‚
+ * è°·æ­Œä¸­å›½åœ°å›¾å’Œæœæœä¸­å›½åœ°å›¾é‡‡ç”¨çš„æ˜¯GCJ02åœ°ç†åæ ‡ç³»; BD09åæ ‡ç³»ï¼šå³ç™¾åº¦åæ ‡ç³»ï¼ŒGCJ02åæ ‡ç³»ç»åŠ å¯†åçš„åæ ‡ç³»;
+ * æœç‹—åæ ‡ç³»ã€å›¾å§åæ ‡ç³»ç­‰ï¼Œä¼°è®¡ä¹Ÿæ˜¯åœ¨GCJ02åŸºç¡€ä¸ŠåŠ å¯†è€Œæˆçš„ã€‚
  *
  * @author Asen
  * @version v1.0
@@ -21,11 +21,11 @@ public class PositionUtil {
     public static double ee = 0.00669342162296594323;
 
     /**
-     * 84 to »ğĞÇ×ø±êÏµ (GCJ-02) World Geodetic System ×ª Mars Geodetic System
+     * 84 to ç«æ˜Ÿåæ ‡ç³» (GCJ-02) World Geodetic System è½¬ Mars Geodetic System
      *
-     * @param lat Î³¶È
-     * @param lon ¾­¶È
-     * @return ×ª»»ºóµÄ¾­Î³¶ÈĞÅÏ¢
+     * @param lat çº¬åº¦
+     * @param lon ç»åº¦
+     * @return è½¬æ¢åçš„ç»çº¬åº¦ä¿¡æ¯
      */
     public static PositionGps gps84_To_Gcj02(double lat, double lon) {
         if (outOfChina(lat, lon)) {
@@ -45,11 +45,11 @@ public class PositionUtil {
     }
 
     /**
-     * »ğĞÇ×ø±êÏµ (GCJ-02) to 84
+     * ç«æ˜Ÿåæ ‡ç³» (GCJ-02) to 84
      *
-     * @param lat Î³¶È
-     * @param lon ¾­¶È
-     * @return ×ª»»ºóµÄ¾­Î³¶ÈĞÅÏ¢
+     * @param lat çº¬åº¦
+     * @param lon ç»åº¦
+     * @return è½¬æ¢åçš„ç»çº¬åº¦ä¿¡æ¯
      */
     public static PositionGps gcj02_To_Gps84(double lat, double lon) {
         PositionGps gps = transform(lat, lon);
@@ -59,11 +59,11 @@ public class PositionUtil {
     }
 
     /**
-     * »ğĞÇ×ø±êÏµ (GCJ-02) Óë°Ù¶È×ø±êÏµ (BD-09) µÄ×ª»»Ëã·¨ ½« GCJ-02 ×ø±ê×ª»»³É BD-09 ×ø±ê
+     * ç«æ˜Ÿåæ ‡ç³» (GCJ-02) ä¸ç™¾åº¦åæ ‡ç³» (BD-09) çš„è½¬æ¢ç®—æ³• å°† GCJ-02 åæ ‡è½¬æ¢æˆ BD-09 åæ ‡
      *
-     * @param gg_lat Î³¶È
-     * @param gg_lon ¾­¶È
-     * @return ×ª»»ºóµÄ¾­Î³¶ÈĞÅÏ¢
+     * @param gg_lat çº¬åº¦
+     * @param gg_lon ç»åº¦
+     * @return è½¬æ¢åçš„ç»çº¬åº¦ä¿¡æ¯
      */
     public static PositionGps gcj02_To_Bd09(double gg_lat, double gg_lon) {
         double z = Math.sqrt(gg_lon * gg_lon + gg_lat * gg_lat) + 0.00002 * Math.sin(gg_lat * pi);
@@ -74,11 +74,11 @@ public class PositionUtil {
     }
 
     /**
-     * * »ğĞÇ×ø±êÏµ (GCJ-02) Óë°Ù¶È×ø±êÏµ (BD-09) µÄ×ª»»Ëã·¨ * * ½« BD-09 ×ø±ê×ª»»³ÉGCJ-02 ×ø±ê *
+     * * ç«æ˜Ÿåæ ‡ç³» (GCJ-02) ä¸ç™¾åº¦åæ ‡ç³» (BD-09) çš„è½¬æ¢ç®—æ³• * * å°† BD-09 åæ ‡è½¬æ¢æˆGCJ-02 åæ ‡ *
      *
-     * @param bd_lat Î³¶È
-     * @param bd_lon ¾­¶È
-     * @return ×ª»»ºóµÄ¾­Î³¶ÈĞÅÏ¢
+     * @param bd_lat çº¬åº¦
+     * @param bd_lon ç»åº¦
+     * @return è½¬æ¢åçš„ç»çº¬åº¦ä¿¡æ¯
      */
     public static PositionGps bd09_To_Gcj02(double bd_lat, double bd_lon) {
         double x = bd_lon - 0.0065, y = bd_lat - 0.006;
@@ -90,11 +90,11 @@ public class PositionUtil {
     }
 
     /**
-     * (BD-09) ×ª 84
+     * (BD-09) è½¬ 84
      *
-     * @param bd_lat Î³¶È
-     * @param bd_lon ¾­¶È
-     * @return ×ª»»ºóµÄ¾­Î³¶ÈĞÅÏ¢
+     * @param bd_lat çº¬åº¦
+     * @param bd_lon ç»åº¦
+     * @return è½¬æ¢åçš„ç»çº¬åº¦ä¿¡æ¯
      */
     public static PositionGps bd09_To_Gps84(double bd_lat, double bd_lon) {
         PositionGps gcj02 = PositionUtil.bd09_To_Gcj02(bd_lat, bd_lon);
@@ -102,11 +102,11 @@ public class PositionUtil {
     }
 
     /**
-     * ÅĞ¶ÏÊÇ·ñÔÚÖĞ¹ú
+     * åˆ¤æ–­æ˜¯å¦åœ¨ä¸­å›½
      *
-     * @param lat Î³¶È
-     * @param lon ¾­¶È
-     * @return true£¬ÔÚÖĞ¹ú·¶Î§ÄÚ£»false£¬²»ÔÚÖĞ¹ú
+     * @param lat çº¬åº¦
+     * @param lon ç»åº¦
+     * @return trueï¼Œåœ¨ä¸­å›½èŒƒå›´å†…ï¼›falseï¼Œä¸åœ¨ä¸­å›½
      */
     public static boolean outOfChina(double lat, double lon) {
         return lon < 72.004 || lon > 137.8347 || lat < 0.8293 || lat > 55.8271;
@@ -150,7 +150,7 @@ public class PositionUtil {
 
 //    public static void main(String[] args) {
 //
-//        // ±±¶·Ğ¾Æ¬»ñÈ¡µÄ¾­Î³¶ÈÎªWGS84µØÀí×ø±ê 31.426896,119.496145
+//        // åŒ—æ–—èŠ¯ç‰‡è·å–çš„ç»çº¬åº¦ä¸ºWGS84åœ°ç†åæ ‡ 31.426896,119.496145
 //        PositionGps gps = new PositionGps(31.426896, 119.496145);
 //        System.out.println("gps :" + gps);
 //        PositionGps gcj = gps84_To_Gcj02(gps.getWgLat(), gps.getWgLon());

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ¶à¶¨Ê±ÈÎÎñµÄService
+ * å¤šå®šæ—¶ä»»åŠ¡çš„Service
  *
  * @author Asen
  * @version v1.0
@@ -22,14 +22,14 @@ import java.util.List;
  */
 public abstract class BaseMultiService extends Service {
 
-    protected Context mContext; // AndroidµÄÉÏÏÂÎÄ
+    protected Context mContext; // Androidçš„ä¸Šä¸‹æ–‡
 
     protected BaseApplication mApplication;
 
-    // Ä¬ÈÏÊ×´ÎÆô¶¯¶¨Ê±ÈÎÎñµÄÊ±¼ä¼ä¸ô
+    // é»˜è®¤é¦–æ¬¡å¯åŠ¨å®šæ—¶ä»»åŠ¡çš„æ—¶é—´é—´éš”
     private static final int DEFAULT_START_TIME_INTERVAL_ITEM = 100; // 100, 200, 300 .....
 
-    // Ä¬ÈÏµÄ¶¨Ê±ÈÎÎñÊ±¼ä¼ä¸ô
+    // é»˜è®¤çš„å®šæ—¶ä»»åŠ¡æ—¶é—´é—´éš”
     private static final int DEFAULT_RUNNABLE_TIME_INTERVAL = 60 * 1000;
 
     @Override
@@ -62,14 +62,14 @@ public abstract class BaseMultiService extends Service {
     public void onDestroy() {
         super.onDestroy();
         stopRunnable();
-        stopForeground(true); // ¹ØµôËùÓĞµÄÍ¨Öª
+        stopForeground(true); // å…³æ‰æ‰€æœ‰çš„é€šçŸ¥
     }
 
     private List<SenTimingTask<Void, Object, Void>> mTimingTaskList = null;
 
     private boolean isStart = false;
 
-    // ¿ªÆô¶¨Ê±ÈÎÎñ
+    // å¼€å¯å®šæ—¶ä»»åŠ¡
     private void startRunnable() {
         if (!isStart) {
             int number = timeTaskNumber();
@@ -115,7 +115,7 @@ public abstract class BaseMultiService extends Service {
         }
     }
 
-    // ½áÊø¶¨Ê±ÈÎÎñ
+    // ç»“æŸå®šæ—¶ä»»åŠ¡
     private void stopRunnable() {
         if (isStart) {
             for (SenTimingTask task : mTimingTaskList) {
@@ -127,10 +127,10 @@ public abstract class BaseMultiService extends Service {
     }
 
     /**
-     * ½«Êı¾İ·¢ËÍµ½Ö÷Ïß³ÌÖĞ´¦Àí
+     * å°†æ•°æ®å‘é€åˆ°ä¸»çº¿ç¨‹ä¸­å¤„ç†
      *
-     * @param position   ¶¨Ê±ÈÎÎñ¼¯ºÏµÄÏÂ±ê£¨¼´µÚ position+1 ¸ö¶¨Ê±ÈÎÎñ£©
-     * @param progresses Òª·¢ËÍµÄÊı¾İĞÅÏ¢
+     * @param position   å®šæ—¶ä»»åŠ¡é›†åˆçš„ä¸‹æ ‡ï¼ˆå³ç¬¬ position+1 ä¸ªå®šæ—¶ä»»åŠ¡ï¼‰
+     * @param progresses è¦å‘é€çš„æ•°æ®ä¿¡æ¯
      */
     protected void publishProgress(int position, Object... progresses) {
         if (mTimingTaskList.size() <= position) return;
@@ -139,51 +139,51 @@ public abstract class BaseMultiService extends Service {
     }
 
     /**
-     * ½ÓÊÕ·¢ËÍµ½Ö÷Ïß³ÌÖĞµÄÊı¾İ£¬²¢ÔÚÖ÷Ïß³ÌÖĞ´¦Àí
+     * æ¥æ”¶å‘é€åˆ°ä¸»çº¿ç¨‹ä¸­çš„æ•°æ®ï¼Œå¹¶åœ¨ä¸»çº¿ç¨‹ä¸­å¤„ç†
      *
-     * @param position   ¶¨Ê±ÈÎÎñ¼¯ºÏµÄÏÂ±ê£¨¼´µÚ position+1 ¸ö¶¨Ê±ÈÎÎñ£©
-     * @param progresses ½ÓÊÕ·¢ËÍ¹ıÀ´µÄÊı¾İĞÅÏ¢
+     * @param position   å®šæ—¶ä»»åŠ¡é›†åˆçš„ä¸‹æ ‡ï¼ˆå³ç¬¬ position+1 ä¸ªå®šæ—¶ä»»åŠ¡ï¼‰
+     * @param progresses æ¥æ”¶å‘é€è¿‡æ¥çš„æ•°æ®ä¿¡æ¯
      */
     protected void onProgressUpdate(int position, Object... progresses) {
 
     }
 
     /**
-     * »ñµÃ¶¨Ê±ÈÎÎñ¸öÊı
+     * è·å¾—å®šæ—¶ä»»åŠ¡ä¸ªæ•°
      *
-     * @return ¶¨Ê±ÈÎÎñµÄ×Ü¸öÊı
+     * @return å®šæ—¶ä»»åŠ¡çš„æ€»ä¸ªæ•°
      */
     protected abstract int timeTaskNumber();
 
     /**
-     * ÆğÊ¼µÄÊ±¼ä¼ä¸ô
+     * èµ·å§‹çš„æ—¶é—´é—´éš”
      *
-     * @return ¶àÈÎÎñÆğÊ¼Ö´ĞĞµÄÊ±¼ä¼ä¸ô£¨ºÁÃëÖµ£©
+     * @return å¤šä»»åŠ¡èµ·å§‹æ‰§è¡Œçš„æ—¶é—´é—´éš”ï¼ˆæ¯«ç§’å€¼ï¼‰
      */
     protected abstract long[] startTimeIntervals();
 
     /**
-     * ÖĞ¼äµÄÊ±¼ä¼ä¸ô
+     * ä¸­é—´çš„æ—¶é—´é—´éš”
      *
-     * @return ¶àÈÎÎñÖĞ¼äÃ¿´ÎÖ´ĞĞµÄÊ±¼ä¼ä¸ô£¨ºÁÃëÖµ£©
+     * @return å¤šä»»åŠ¡ä¸­é—´æ¯æ¬¡æ‰§è¡Œçš„æ—¶é—´é—´éš”ï¼ˆæ¯«ç§’å€¼ï¼‰
      */
     protected abstract long[] initRunnableTimeIntervals();
 
     /**
-     * ºóÌ¨ÔËĞĞ
+     * åå°è¿è¡Œ
      *
-     * @param position ¶¨Ê±ÈÎÎñ¼¯ºÏµÄÏÂ±ê£¨¼´µÚ position+1 ¸ö¶¨Ê±ÈÎÎñ£©
+     * @param position å®šæ—¶ä»»åŠ¡é›†åˆçš„ä¸‹æ ‡ï¼ˆå³ç¬¬ position+1 ä¸ªå®šæ—¶ä»»åŠ¡ï¼‰
      */
     protected abstract void doInBackground(int position);
 
 //	Intent i = new Intent();
 //	i.setClass(MainActivity.this, MainActivity.class);
-//	//Ò»¶¨ÒªIntent.FLAG_ACTIVITY_NEW_TASK
+//	//ä¸€å®šè¦Intent.FLAG_ACTIVITY_NEW_TASK
 //	i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//	//PendingIntent ÊÇIntentµÄ°ü×°Àà
+//	//PendingIntent æ˜¯Intentçš„åŒ…è£…ç±»
 //	PendingIntent contentIntent = PendingIntent.getActivity(MainActivity.this, 1, i, PendingIntent.FLAG_UPDATE_CURRENT);
 //	NotificationCompat.Builder ncb = new NotificationCompat.Builder(MainActivity.this);
-//	ncb.setTicker("µÚÒ»¸öNotifiy");
+//	ncb.setTicker("ç¬¬ä¸€ä¸ªNotifiy");
 //	ncb.setAutoCancel(true);
 //	ncb.setContentIntent(contentIntent);
 //	ncb.setDefaults(Notification.DEFAULT_ALL);

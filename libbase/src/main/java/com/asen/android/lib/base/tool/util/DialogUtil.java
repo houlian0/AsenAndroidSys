@@ -25,7 +25,7 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * AndroidÔ­ÉúDialogµÄ¹¤¾ßÀà
+ * AndroidåŸç”ŸDialogçš„å·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -40,10 +40,10 @@ public class DialogUtil {
     private static Dialog dialog = null;
 
     /**
-     * Õ¹Ê¾ ProgressDialog
+     * å±•ç¤º ProgressDialog
      *
-     * @param context AndroidÉÏÏÂÎÄ
-     * @param msg     Õ¹Ê¾µÄmessageÄÚÈİ
+     * @param context Androidä¸Šä¸‹æ–‡
+     * @param msg     å±•ç¤ºçš„messageå†…å®¹
      */
     public static void showProgressDialog(Activity context, String msg) {
         cancelProgressDialog();
@@ -54,7 +54,7 @@ public class DialogUtil {
     }
 
     /**
-     * È¡ÏûÕ¹Ê¾ ProgressDialog
+     * å–æ¶ˆå±•ç¤º ProgressDialog
      */
     public static void cancelProgressDialog() {
         try {
@@ -68,10 +68,10 @@ public class DialogUtil {
     }
 
     /**
-     * Õ¹Ê¾ Ë®Æ½ProgressDialog
+     * å±•ç¤º æ°´å¹³ProgressDialog
      *
-     * @param context  AndroidµÄÉÏÏÂÎÄ
-     * @param progress µ±Ç°ÏÔÊ¾µÄ½ø¶ÈĞÅÏ¢
+     * @param context  Androidçš„ä¸Šä¸‹æ–‡
+     * @param progress å½“å‰æ˜¾ç¤ºçš„è¿›åº¦ä¿¡æ¯
      */
     public static void showHorizontalProgressDialog(Activity context, int progress) {
         if (horizontalProgressDialog == null || !horizontalProgressDialog.isShowing()) {
@@ -84,7 +84,7 @@ public class DialogUtil {
     }
 
     /**
-     * È¡ÏûÕ¹Ê¾ Ë®Æ½ProgressDialog
+     * å–æ¶ˆå±•ç¤º æ°´å¹³ProgressDialog
      */
     public static void cancelHorizontalProgressDialog() {
         if (horizontalProgressDialog != null && horizontalProgressDialog.isShowing())
@@ -92,7 +92,7 @@ public class DialogUtil {
         horizontalProgressDialog = null;
     }
 
-    // È¡Ïû¶Ô»°¿ò
+    // å–æ¶ˆå¯¹è¯æ¡†
     private static void cancelDialog() {
         try {
             if (dialog != null && dialog.isShowing()) {
@@ -106,13 +106,13 @@ public class DialogUtil {
     }
 
     /**
-     * ¼òµ¥µÄÏûÏ¢µ¯³ö¿ò
+     * ç®€å•çš„æ¶ˆæ¯å¼¹å‡ºæ¡†
      *
-     * @param activity  ÏÔÊ¾µÄÒ³Ãæactivity
-     * @param title     ±êÌâ
-     * @param message   ÄÚÈİ
-     * @param btnTexts  ×î¶àÈıÌõÓĞĞ§Öµ
-     * @param listeners °´Å¥¼àÌı
+     * @param activity  æ˜¾ç¤ºçš„é¡µé¢activity
+     * @param title     æ ‡é¢˜
+     * @param message   å†…å®¹
+     * @param btnTexts  æœ€å¤šä¸‰æ¡æœ‰æ•ˆå€¼
+     * @param listeners æŒ‰é’®ç›‘å¬
      */
     public static void showTitleMessageDialog(Activity activity, CharSequence title, CharSequence message, CharSequence[] btnTexts, DialogInterface.OnClickListener[] listeners) {
         cancelDialog();
@@ -138,24 +138,24 @@ public class DialogUtil {
     }
 
     /**
-     * ¼òµ¥µÄÏûÏ¢µ¯³ö¿ò
+     * ç®€å•çš„æ¶ˆæ¯å¼¹å‡ºæ¡†
      *
-     * @param activity ÏÔÊ¾µÄÒ³Ãæactivity
-     * @param title    ±êÌâ
-     * @param message  ÄÚÈİ
-     * @param listener ¡°È·ÈÏ¡±°´Å¥µÄ¼àÌıÊÂ¼ş
+     * @param activity æ˜¾ç¤ºçš„é¡µé¢activity
+     * @param title    æ ‡é¢˜
+     * @param message  å†…å®¹
+     * @param listener â€œç¡®è®¤â€æŒ‰é’®çš„ç›‘å¬äº‹ä»¶
      */
     public static void showTitleMessageDialog(Activity activity, CharSequence title, CharSequence message, DialogInterface.OnClickListener listener) {
-        showTitleMessageDialog(activity, title, message, new CharSequence[]{"È·ÈÏ", "È¡Ïû"}, new DialogInterface.OnClickListener[]{listener});
+        showTitleMessageDialog(activity, title, message, new CharSequence[]{"ç¡®è®¤", "å–æ¶ˆ"}, new DialogInterface.OnClickListener[]{listener});
     }
 
     /**
-     * ¼òµ¥µÄÑ¡Ôñ¿ò
+     * ç®€å•çš„é€‰æ‹©æ¡†
      *
-     * @param activity ÏÔÊ¾µÄÒ³Ãæactivity
-     * @param itemsId  stringArrayµÄ×ÊÔ´ÎÄ¼şid
-     * @param tvShow   ÒªÏÔÊ¾µÄTextView
-     * @param listener ¼àÌıÊÂ¼ş
+     * @param activity æ˜¾ç¤ºçš„é¡µé¢activity
+     * @param itemsId  stringArrayçš„èµ„æºæ–‡ä»¶id
+     * @param tvShow   è¦æ˜¾ç¤ºçš„TextView
+     * @param listener ç›‘å¬äº‹ä»¶
      */
     public static void showTextSelectDialog(Activity activity, int itemsId, TextView tvShow, DialogInterface.OnClickListener listener) {
         String[] strs = activity.getResources().getStringArray(itemsId);
@@ -163,12 +163,12 @@ public class DialogUtil {
     }
 
     /**
-     * ¼òµ¥µÄÑ¡Ôñ¿ò
+     * ç®€å•çš„é€‰æ‹©æ¡†
      *
-     * @param activity ÏÔÊ¾µÄÒ³Ãæactivity
-     * @param strList  ×Ö·û´®¼¯ºÏ
-     * @param tvShow   ÒªÏÔÊ¾µÄTextView
-     * @param listener ¼àÌıÊÂ¼ş
+     * @param activity æ˜¾ç¤ºçš„é¡µé¢activity
+     * @param strList  å­—ç¬¦ä¸²é›†åˆ
+     * @param tvShow   è¦æ˜¾ç¤ºçš„TextView
+     * @param listener ç›‘å¬äº‹ä»¶
      */
     public static void showTextSelectDialog(Activity activity, List<CharSequence> strList, TextView tvShow, DialogInterface.OnClickListener listener) {
         CharSequence[] strs = strList.toArray(new CharSequence[strList.size()]);
@@ -176,12 +176,12 @@ public class DialogUtil {
     }
 
     /**
-     * ¼òµ¥µÄÑ¡Ôñ¿ò
+     * ç®€å•çš„é€‰æ‹©æ¡†
      *
-     * @param activity ÏÔÊ¾µÄÒ³Ãæactivity
-     * @param strs     ×Ö·û´®¼¯ºÏ
-     * @param tvShow   ÒªÏÔÊ¾µÄTextView
-     * @param listener ¼àÌıÊÂ¼ş
+     * @param activity æ˜¾ç¤ºçš„é¡µé¢activity
+     * @param strs     å­—ç¬¦ä¸²é›†åˆ
+     * @param tvShow   è¦æ˜¾ç¤ºçš„TextView
+     * @param listener ç›‘å¬äº‹ä»¶
      */
     public static void showTextSelectDialog(Activity activity, final CharSequence[] strs, final TextView tvShow, final DialogInterface.OnClickListener listener) {
         cancelDialog();
@@ -201,10 +201,10 @@ public class DialogUtil {
     }
 
     /**
-     * ÄêÔÂÈÕÑ¡Ôñ¿ò
+     * å¹´æœˆæ—¥é€‰æ‹©æ¡†
      *
-     * @param activity ÏÔÊ¾µÄÒ³Ãæactivity
-     * @param listener ¼àÌıÊÂ¼ş
+     * @param activity æ˜¾ç¤ºçš„é¡µé¢activity
+     * @param listener ç›‘å¬äº‹ä»¶
      */
     public static void showDateSelectDialog(Activity activity, DatePickerDialog.OnDateSetListener listener) {
         cancelDialog();
@@ -214,10 +214,10 @@ public class DialogUtil {
     }
 
     /**
-     * ¿ìËÙµÄÄêÔÂÈÕÑ¡Ôñ¿ò
+     * å¿«é€Ÿçš„å¹´æœˆæ—¥é€‰æ‹©æ¡†
      *
-     * @param activity ÏÔÊ¾µÄÒ³Ãæactivity
-     * @param tv       ÒªÏÔÊ¾µÄTextView
+     * @param activity æ˜¾ç¤ºçš„é¡µé¢activity
+     * @param tv       è¦æ˜¾ç¤ºçš„TextView
      */
     public static void showQuickDateSelectDialog(Activity activity, final TextView tv) {
         showQuickDateSelectDialog(activity, tv, true, true, true, null);
@@ -266,27 +266,27 @@ public class DialogUtil {
     }
 
     /**
-     * ¿ìËÙµÄÈÕÆÚÊ±¼äÑ¡ÔñÆ÷
+     * å¿«é€Ÿçš„æ—¥æœŸæ—¶é—´é€‰æ‹©å™¨
      *
-     * @param activity ÏÔÊ¾µÄÒ³Ãæactivity
-     * @param tv       ÒªÏÔÊ¾µÄTextView
+     * @param activity æ˜¾ç¤ºçš„é¡µé¢activity
+     * @param tv       è¦æ˜¾ç¤ºçš„TextView
      */
     public static void showQuickDateTimeSelectDialog(Activity activity, final TextView tv) {
         showQuickDateTimeSelectDialog(activity, tv, null, null);
     }
 
     /**
-     * ¿ìËÙµÄÈÕÆÚÊ±¼äÑ¡ÔñÆ÷
+     * å¿«é€Ÿçš„æ—¥æœŸæ—¶é—´é€‰æ‹©å™¨
      *
-     * @param activity ÏÔÊ¾µÄÒ³Ãæactivity
-     * @param tv       ÒªÏÔÊ¾µÄTextView
+     * @param activity æ˜¾ç¤ºçš„é¡µé¢activity
+     * @param tv       è¦æ˜¾ç¤ºçš„TextView
      * @param listener1 DatePicker.OnDateChangedListener
      * @param listener2 TimePicker.OnTimeChangedListener
      */
     public static void showQuickDateTimeSelectDialog(Activity activity, final TextView tv, final DatePicker.OnDateChangedListener listener1, final TimePicker.OnTimeChangedListener listener2) {
         cancelDialog();
         final Calendar calendar = Calendar.getInstance();
-        // ³õÊ¼»¯²¼¾Ö
+        // åˆå§‹åŒ–å¸ƒå±€
         Context context = activity.getApplicationContext();
         DisplayMetrics metrics = AppUtil.getDisplayMetrics(context);
         LinearLayout mainLayout = new LinearLayout(context);
@@ -299,7 +299,7 @@ public class DialogUtil {
         setTimePickerTextColor(timePicker);
         mainLayout.addView(datePicker);
         mainLayout.addView(timePicker);
-        // ³õÊ¼»¯¼àÌı
+        // åˆå§‹åŒ–ç›‘å¬
         datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -322,7 +322,7 @@ public class DialogUtil {
         dialog = new AlertDialog.Builder(activity)
                 .setTitle(DateUtil.getStringByFormat(calendar.getTime(), DateUtil.dateFormatYMDHMS))
                 .setView(mainLayout)
-                .setPositiveButton("Íê³É", new DialogInterface.OnClickListener() {
+                .setPositiveButton("å®Œæˆ", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         if (tv != null)
                             tv.setText(DateUtil.getStringByFormat(calendar.getTime(), DateUtil.dateFormatYMDHMS));
@@ -334,7 +334,7 @@ public class DialogUtil {
                 }).show();
     }
 
-    // ÉèÖÃ DatePicker ÑÕÉ«ÎªºÚÉ«
+    // è®¾ç½® DatePicker é¢œè‰²ä¸ºé»‘è‰²
     private static void setDatePickerTextColor(DatePicker datePicker) {
         LinearLayout llFirst = (LinearLayout) datePicker.getChildAt(0);
         LinearLayout mSpinners = (LinearLayout) llFirst.getChildAt(0);
@@ -347,7 +347,7 @@ public class DialogUtil {
         }
     }
 
-    // ÉèÖÃ DatePicker ÑÕÉ«ÎªºÚÉ«
+    // è®¾ç½® DatePicker é¢œè‰²ä¸ºé»‘è‰²
     private static void setTimePickerTextColor(TimePicker timePicker) {
         LinearLayout mSpinners = (LinearLayout) timePicker.getChildAt(0);
         for (int i = 0; i < mSpinners.getChildCount(); i++) {
@@ -359,7 +359,7 @@ public class DialogUtil {
         }
     }
 
-    // ÉèÖÃNumberPicker ¿Ø¼şµÄÑÕÉ«
+    // è®¾ç½®NumberPicker æ§ä»¶çš„é¢œè‰²
     private static boolean setNumberPickerTextColor(NumberPicker numberPicker, int color) {
         boolean result = false;
         final int count = numberPicker.getChildCount();

@@ -10,7 +10,7 @@ import android.widget.ListView;
 import java.util.List;
 
 /**
- * ÎªListViewÊÊÅäµÄÎŞÏŞ¼«Ê÷ µÄÊÊÅäÆ÷
+ * ä¸ºListViewé€‚é…çš„æ— é™ææ ‘ çš„é€‚é…å™¨
  *
  * @author Asen
  * @version v1.0
@@ -86,20 +86,20 @@ public abstract class BaseTreeAdapter<T> extends BaseAdapter {
     }
 
     /**
-     * ÉèÖÃÃ¿¼¶Ïà¶ÔÓÚÉÏÒ»¼¶µÄ×óËõ½ø´óĞ¡
+     * è®¾ç½®æ¯çº§ç›¸å¯¹äºä¸Šä¸€çº§çš„å·¦ç¼©è¿›å¤§å°
      *
-     * @return Ëõ½ø´óĞ¡
+     * @return ç¼©è¿›å¤§å°
      */
     public abstract float paddingLeftSize();
 
     /**
-     * ³õÊ¼»¯²¼¾Ö
+     * åˆå§‹åŒ–å¸ƒå±€
      *
-     * @param node        Êı¾İÔ´
-     * @param position    Êı¾İÏÂ±í
-     * @param convertView ²¼¾ÖView
+     * @param node        æ•°æ®æº
+     * @param position    æ•°æ®ä¸‹è¡¨
+     * @param convertView å¸ƒå±€View
      * @param parent      ViewGroup
-     * @return ²¼¾ÖView
+     * @return å¸ƒå±€View
      */
     public abstract View getConvertView(TreeNode<T> node, int position, View convertView, ViewGroup parent);
 

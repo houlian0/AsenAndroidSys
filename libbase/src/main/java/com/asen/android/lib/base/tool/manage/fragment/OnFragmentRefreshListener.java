@@ -3,7 +3,7 @@ package com.asen.android.lib.base.tool.manage.fragment;
 import android.os.Bundle;
 
 /**
- * FragmentÏÔÊ¾Ê±µÄ¼àÌı½Ó¿Ú
+ * Fragmentæ˜¾ç¤ºæ—¶çš„ç›‘å¬æ¥å£
  *
  * @param <T>
  * @author Asen
@@ -13,10 +13,10 @@ import android.os.Bundle;
 public interface OnFragmentRefreshListener<T> {
 
     /**
-     * ÏÔÊ¾FragmentÊ±µ÷ÓÃ
+     * æ˜¾ç¤ºFragmentæ—¶è°ƒç”¨
      *
-     * @param parent ¸¸ÀàĞÅÏ¢£¨Activity»òÕßFragment£©
-     * @param data   ´«µİµÄÊı¾İĞÅÏ¢
+     * @param parent çˆ¶ç±»ä¿¡æ¯ï¼ˆActivityæˆ–è€…Fragmentï¼‰
+     * @param data   ä¼ é€’çš„æ•°æ®ä¿¡æ¯
      */
     public void onRefresh(T parent, Bundle data);
 

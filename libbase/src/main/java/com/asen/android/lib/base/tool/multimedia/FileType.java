@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.tool.multimedia;
 
 /**
- * ÎÄ¼şÀàĞÍ
+ * æ–‡ä»¶ç±»å‹
  *
  * @author Asen
  * @version v1.0
@@ -10,19 +10,19 @@ package com.asen.android.lib.base.tool.multimedia;
 public enum FileType {
 
     /**
-     * Í¼Æ¬
+     * å›¾ç‰‡
      */
     PICTURE,
     /**
-     * ÊÓÆµ
+     * è§†é¢‘
      */
     VIDEO,
     /**
-     * ÒôÀÖ
+     * éŸ³ä¹
      */
     AUDIO,
     /**
-     * ²»Ê¶±ğ
+     * ä¸è¯†åˆ«
      */
     UNKNOWN
 }

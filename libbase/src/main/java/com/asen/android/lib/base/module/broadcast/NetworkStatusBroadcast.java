@@ -8,7 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 /**
- * ÍøÂç×´Ì¬¼àÌı¹ã²¥
+ * ç½‘ç»œçŠ¶æ€ç›‘å¬å¹¿æ’­
  *
  * @author Asen
  * @version v1.0
@@ -16,17 +16,17 @@ import android.net.NetworkInfo;
  */
 public class NetworkStatusBroadcast implements IBroadcastDefinition {
 
-    private Context mContext; // AndroidÉÏÏÂÎÄ
+    private Context mContext; // Androidä¸Šä¸‹æ–‡
 
-    private OnNetworkStatusListener mOnNetworkStatusListener; // ÍøÂç×´Ì¬µÄ¼àÌı½Ó¿Ú
+    private OnNetworkStatusListener mOnNetworkStatusListener; // ç½‘ç»œçŠ¶æ€çš„ç›‘å¬æ¥å£
 
-    private NetworkRecevier mRecevier; // ¹ã²¥
+    private NetworkRecevier mRecevier; // å¹¿æ’­
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param context                 AndroidÉÏÏÂÎÄ
-     * @param onNetworkStatusListener ÍøÂç×´Ì¬µÄ¼àÌı½Ó¿Ú
+     * @param context                 Androidä¸Šä¸‹æ–‡
+     * @param onNetworkStatusListener ç½‘ç»œçŠ¶æ€çš„ç›‘å¬æ¥å£
      */
     public NetworkStatusBroadcast(Context context, OnNetworkStatusListener onNetworkStatusListener) {
         mContext = context;
@@ -35,28 +35,28 @@ public class NetworkStatusBroadcast implements IBroadcastDefinition {
     }
 
     /**
-     * ÍøÂç×´Ì¬¼àÌıµÄ¼àÌı½Ó¿Ú
+     * ç½‘ç»œçŠ¶æ€ç›‘å¬çš„ç›‘å¬æ¥å£
      */
     public interface OnNetworkStatusListener {
 
         /**
-         * Á¬½Óµ½wifiÍøÂç
+         * è¿æ¥åˆ°wifiç½‘ç»œ
          */
         public void connToWifi();
 
         /**
-         * Á¬½Óµ½ÒÆ¶¯ÍøÂç
+         * è¿æ¥åˆ°ç§»åŠ¨ç½‘ç»œ
          */
         public void connToMobile();
 
         /**
-         * Î´Á¬½ÓÍøÂç
+         * æœªè¿æ¥ç½‘ç»œ
          */
         public void unConnNetwork();
     }
 
     /**
-     * ¿ªÊ¼¼àÌı¹ã²¥
+     * å¼€å§‹ç›‘å¬å¹¿æ’­
      */
     @Override
     public void startWatch() {
@@ -66,7 +66,7 @@ public class NetworkStatusBroadcast implements IBroadcastDefinition {
     }
 
     /**
-     * Í£Ö¹¼àÌı£¬×¢Ïú¹ã²¥
+     * åœæ­¢ç›‘å¬ï¼Œæ³¨é”€å¹¿æ’­
      */
     @Override
     public void stopWatch() {
@@ -80,7 +80,7 @@ public class NetworkStatusBroadcast implements IBroadcastDefinition {
     }
 
     /**
-     * ¹ã²¥½ÓÊÕÕß
+     * å¹¿æ’­æ¥æ”¶è€…
      */
     class NetworkRecevier extends BroadcastReceiver {
 

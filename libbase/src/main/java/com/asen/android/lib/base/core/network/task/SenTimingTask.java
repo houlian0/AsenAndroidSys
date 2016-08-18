@@ -10,11 +10,11 @@ import java.util.concurrent.Future;
 
 
 /**
- * ¶¨Ê±ÈÎÎñÀà
+ * å®šæ—¶ä»»åŠ¡ç±»
  *
- * @param <Params>    Ö´ĞĞ²ÎÊı£¨Ò»¶ÎÊ±¼ä´ÓÖĞ×Ô¼ºÈ¡Öµ£©
- * @param <Progress>  ÖĞÍ¾·¢ËÍĞÅÏ¢µ½ Ö÷Ïß³Ì´¦Àí
- * @param <Performer> Ã¿´ÎµÄÖ´ĞĞ½á¹û
+ * @param <Params>    æ‰§è¡Œå‚æ•°ï¼ˆä¸€æ®µæ—¶é—´ä»ä¸­è‡ªå·±å–å€¼ï¼‰
+ * @param <Progress>  ä¸­é€”å‘é€ä¿¡æ¯åˆ° ä¸»çº¿ç¨‹å¤„ç†
+ * @param <Performer> æ¯æ¬¡çš„æ‰§è¡Œç»“æœ
  * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:20
@@ -27,13 +27,13 @@ public abstract class SenTimingTask<Params, Progress, Performer> {
 
     private static final int HANDLER_PROGRESS = 0x1001;
 
-    private static final int HANDLER_EXECUTE = 0x1002; // Ö´ĞĞHandler±êÇ©
+    private static final int HANDLER_EXECUTE = 0x1002; // æ‰§è¡ŒHandleræ ‡ç­¾
 
     private static final int HANDLER_FINISH_OK = 0x1003;
 
     private static final int HANDLER_FINISH_ERROR = 0x1004;
 
-    private static final int HANDLER_ERROR_MESSAGE = 0x1005; // ´íÎóĞÅÏ¢
+    private static final int HANDLER_ERROR_MESSAGE = 0x1005; // é”™è¯¯ä¿¡æ¯
 
     private final Handler mHandler = new Handler() {
         @SuppressWarnings("unchecked")
@@ -81,84 +81,84 @@ public abstract class SenTimingTask<Params, Progress, Performer> {
     };
 
     /**
-     * Ê×´ÎÖ´ĞĞ¶¨Ê±ÈÎÎñµÄ»º³åÊ±¼ä¼ä¸ô
+     * é¦–æ¬¡æ‰§è¡Œå®šæ—¶ä»»åŠ¡çš„ç¼“å†²æ—¶é—´é—´éš”
      *
-     * @return long Ê±¼äºÁÃëÖµ
+     * @return long æ—¶é—´æ¯«ç§’å€¼
      */
     protected abstract long startTimeInterval();
 
     /**
-     * ³ıÊ×´ÎÍâ£¬ÆäÓàÃ¿´ÎÖ´ĞĞ¶¨Ê±ÈÎÎñµÄÊ±¼ä¼ä¸ô
+     * é™¤é¦–æ¬¡å¤–ï¼Œå…¶ä½™æ¯æ¬¡æ‰§è¡Œå®šæ—¶ä»»åŠ¡çš„æ—¶é—´é—´éš”
      *
-     * @return long Ê±¼äºÁÃëÖµ
+     * @return long æ—¶é—´æ¯«ç§’å€¼
      */
     protected abstract long runnableTimeInterval();
 
     /**
-     * ÊÇ·ñÔÚUIÏß³ÌÖĞÖ´ĞĞ´¦ÀíÊı¾İµÄ·½·¨{@link SenTimingTask#processingData(Object[])}£¬Ä¬ÈÏ·ÇUIÏß³ÌÄÚÖ´ĞĞ
+     * æ˜¯å¦åœ¨UIçº¿ç¨‹ä¸­æ‰§è¡Œå¤„ç†æ•°æ®çš„æ–¹æ³•{@link SenTimingTask#processingData(Object[])}ï¼Œé»˜è®¤éUIçº¿ç¨‹å†…æ‰§è¡Œ
      *
-     * @return boolean true£¬ÔÚÖ÷Ïß³ÌÖĞÖ´ĞĞÊı¾İ´¦Àí·½·¨£»false£¬ÔÚ·ÇÖ÷Ïß³ÌÖĞÖ´ĞĞÊı¾İ´¦Àí·½·¨
+     * @return boolean trueï¼Œåœ¨ä¸»çº¿ç¨‹ä¸­æ‰§è¡Œæ•°æ®å¤„ç†æ–¹æ³•ï¼›falseï¼Œåœ¨éä¸»çº¿ç¨‹ä¸­æ‰§è¡Œæ•°æ®å¤„ç†æ–¹æ³•
      */
     protected boolean isProcessingDataInUiThread() {
         return false;
     }
 
     /**
-     * ´¦ÀíÊı¾İ£¨Éú³ÉÖ´ĞĞÕß£©£¬¸ù¾İ{@link SenTimingTask#isProcessingDataInUiThread()}·½·¨ÅĞ¶ÏÊÇ·ñÔÚÖ÷Ïß³ÌÖĞÖ´ĞĞ´Ë·½·¨
+     * å¤„ç†æ•°æ®ï¼ˆç”Ÿæˆæ‰§è¡Œè€…ï¼‰ï¼Œæ ¹æ®{@link SenTimingTask#isProcessingDataInUiThread()}æ–¹æ³•åˆ¤æ–­æ˜¯å¦åœ¨ä¸»çº¿ç¨‹ä¸­æ‰§è¡Œæ­¤æ–¹æ³•
      *
-     * @param params ²ÎÊı
-     * @return ´¦ÀíÍêµÄÊı¾İĞÅÏ¢
+     * @param params å‚æ•°
+     * @return å¤„ç†å®Œçš„æ•°æ®ä¿¡æ¯
      */
     protected abstract Performer processingData(Params... params);
 
     /**
-     * Ö´ĞĞÏß³Ì£¨±ØÔÚ·ÇUIÏß³ÌÖĞÖ´ĞĞ£©
+     * æ‰§è¡Œçº¿ç¨‹ï¼ˆå¿…åœ¨éUIçº¿ç¨‹ä¸­æ‰§è¡Œï¼‰
      *
-     * @param params Ö´ĞĞÕß£¨´¦ÀíÍêºóµÄÊı¾İ£©
+     * @param params æ‰§è¡Œè€…ï¼ˆå¤„ç†å®Œåçš„æ•°æ®ï¼‰
      * @throws RuntimeException
      */
     protected abstract void doInBackground(Performer params) throws RuntimeException;
 
     /**
-     * Õı³£Ö´ĞĞÍê·ÇUIÏß³ÌÖĞµÄ²Ù×÷ºó£¬Ö´ĞĞ´Ë·½·¨
+     * æ­£å¸¸æ‰§è¡Œå®ŒéUIçº¿ç¨‹ä¸­çš„æ“ä½œåï¼Œæ‰§è¡Œæ­¤æ–¹æ³•
      *
-     * @param success ³É¹¦µÄ½á¹û-Ö´ĞĞÕß
+     * @param success æˆåŠŸçš„ç»“æœ-æ‰§è¡Œè€…
      */
     protected void onResultOK(Performer success) {
 
     }
 
     /**
-     * ·ÇÕı³£Ö´ĞĞÍê·ÇUIÏß³ÌÖĞµÄ²Ù×÷ºó£¬Ö´ĞĞ´Ë·½·¨
+     * éæ­£å¸¸æ‰§è¡Œå®ŒéUIçº¿ç¨‹ä¸­çš„æ“ä½œåï¼Œæ‰§è¡Œæ­¤æ–¹æ³•
      *
-     * @param error Ê§°ÜµÄ½á¹û-Ö´ĞĞÕß
+     * @param error å¤±è´¥çš„ç»“æœ-æ‰§è¡Œè€…
      */
     protected void onResultError(Performer error) {
 
     }
 
     /**
-     * ºóÌ¨Ö´ĞĞ±¨´íÊ±£¬´¦Àí´íÎóĞÅÏ¢
+     * åå°æ‰§è¡ŒæŠ¥é”™æ—¶ï¼Œå¤„ç†é”™è¯¯ä¿¡æ¯
      *
-     * @param message ´ÓÒì³£ÖĞÄÃµ½µÄmessageĞÅÏ¢
+     * @param message ä»å¼‚å¸¸ä¸­æ‹¿åˆ°çš„messageä¿¡æ¯
      */
     protected void onErrorMessage(String message) {
 
     }
 
     /**
-     * ÔÚÖ÷Ïß³ÌÖĞÖ´ĞĞ²Ù×÷
+     * åœ¨ä¸»çº¿ç¨‹ä¸­æ‰§è¡Œæ“ä½œ
      *
-     * @param progresses Í¨¹ı{@link SenTimingTask#publishProgress(Object[])}·½·¨´«µİµÄ²ÎÊı
+     * @param progresses é€šè¿‡{@link SenTimingTask#publishProgress(Object[])}æ–¹æ³•ä¼ é€’çš„å‚æ•°
      */
     protected void onProgressUpdate(Progress... progresses) {
 
     }
 
     /**
-     * ÏòÖ÷Ïß³ÌÖĞ´«µİ²ÎÊıĞÅÏ¢
+     * å‘ä¸»çº¿ç¨‹ä¸­ä¼ é€’å‚æ•°ä¿¡æ¯
      *
-     * @param progresses ²ÎÊıĞÅÏ¢
+     * @param progresses å‚æ•°ä¿¡æ¯
      */
     public void publishProgress(Progress... progresses) {
         mHandler.obtainMessage(HANDLER_PROGRESS, progresses).sendToTarget();
@@ -182,18 +182,18 @@ public abstract class SenTimingTask<Params, Progress, Performer> {
     private boolean isStarted = false;
 
     /**
-     * ÊÇ·ñÒÑ¿ªÊ¼Ö´ĞĞ¶¨Ê±ÈÎÎñ
+     * æ˜¯å¦å·²å¼€å§‹æ‰§è¡Œå®šæ—¶ä»»åŠ¡
      *
-     * @return true£¬¶¨Ê±ÈÎÎñÒÑ¾­¿ªÊ¼Ö´ĞĞ£»false£¬¶¨Ê±ÈÎÎñÎ´¿ªÊ¼Ö´ĞĞ
+     * @return trueï¼Œå®šæ—¶ä»»åŠ¡å·²ç»å¼€å§‹æ‰§è¡Œï¼›falseï¼Œå®šæ—¶ä»»åŠ¡æœªå¼€å§‹æ‰§è¡Œ
      */
     public boolean isStarted() {
         return isStarted;
     }
 
     /**
-     * ¿ªÊ¼¶¨Ê±ÈÎÎñ
+     * å¼€å§‹å®šæ—¶ä»»åŠ¡
      *
-     * @param params Ö´ĞĞÊ±´«µİµÄ²ÎÊı
+     * @param params æ‰§è¡Œæ—¶ä¼ é€’çš„å‚æ•°
      */
     public void start(Params... params) {
         isStarted = true;
@@ -202,7 +202,7 @@ public abstract class SenTimingTask<Params, Progress, Performer> {
     }
 
     /**
-     * ½áÊø¶¨Ê±ÈÎÎñ
+     * ç»“æŸå®šæ—¶ä»»åŠ¡
      */
     public void stop() {
         isStarted = false;

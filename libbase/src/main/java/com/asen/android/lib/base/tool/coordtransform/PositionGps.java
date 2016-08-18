@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.tool.coordtransform;
 
 /**
- * ¾­Î³¶È×ø±êĞÅÏ¢
+ * ç»çº¬åº¦åæ ‡ä¿¡æ¯
  *
  * @author Asen
  * @version v1.0
@@ -9,15 +9,15 @@ package com.asen.android.lib.base.tool.coordtransform;
  */
 public class PositionGps {
 
-    private double wgLat; // Î³¶È
+    private double wgLat; // çº¬åº¦
 
-    private double wgLon; // ¾­¶È
+    private double wgLon; // ç»åº¦
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param wgLat Î³¶È
-     * @param wgLon ¾­¶È
+     * @param wgLat çº¬åº¦
+     * @param wgLon ç»åº¦
      */
     public PositionGps(double wgLat, double wgLon) {
         setWgLat(wgLat);
@@ -25,36 +25,36 @@ public class PositionGps {
     }
 
     /**
-     * »ñÈ¡Î³¶È
+     * è·å–çº¬åº¦
      *
-     * @return Î³¶È
+     * @return çº¬åº¦
      */
     public double getWgLat() {
         return wgLat;
     }
 
     /**
-     * ÉèÖÃÎ³¶È
+     * è®¾ç½®çº¬åº¦
      *
-     * @param wgLat Î³¶È
+     * @param wgLat çº¬åº¦
      */
     public void setWgLat(double wgLat) {
         this.wgLat = wgLat;
     }
 
     /**
-     * »ñÈ¡¾­¶È
+     * è·å–ç»åº¦
      *
-     * @return ¾­¶È
+     * @return ç»åº¦
      */
     public double getWgLon() {
         return wgLon;
     }
 
     /**
-     * ÉèÖÃ¾­¶È
+     * è®¾ç½®ç»åº¦
      *
-     * @param wgLon ¾­¶È
+     * @param wgLon ç»åº¦
      */
     public void setWgLon(double wgLon) {
         this.wgLon = wgLon;

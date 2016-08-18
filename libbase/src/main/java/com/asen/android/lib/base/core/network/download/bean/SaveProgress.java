@@ -3,7 +3,7 @@ package com.asen.android.lib.base.core.network.download.bean;
 import java.util.List;
 
 /**
- * ÏÂÔØÎÄ¼şµÄ½ø¶ÈĞÅÏ¢
+ * ä¸‹è½½æ–‡ä»¶çš„è¿›åº¦ä¿¡æ¯
  *
  * @author Asen
  * @version v1.0
@@ -12,20 +12,20 @@ import java.util.List;
 public class SaveProgress {
 
     /**
-     * µ±Ç°ÏÂÔØµÄ´óĞ¡
+     * å½“å‰ä¸‹è½½çš„å¤§å°
      */
     private long downloadLength;
 
     /**
-     * ËùÓĞÏÂÔØÏß³ÌµÄ½ø¶ÈĞÅÏ¢¼¯ºÏ
+     * æ‰€æœ‰ä¸‹è½½çº¿ç¨‹çš„è¿›åº¦ä¿¡æ¯é›†åˆ
      */
     private List<DownProgressItem> mProgressInfoList;
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param downloadLength   µ±Ç°ÏÂÔØµÄ´óĞ¡
-     * @param progressInfoList ËùÓĞÏÂÔØÏß³ÌµÄ½ø¶ÈĞÅÏ¢¼¯ºÏ
+     * @param downloadLength   å½“å‰ä¸‹è½½çš„å¤§å°
+     * @param progressInfoList æ‰€æœ‰ä¸‹è½½çº¿ç¨‹çš„è¿›åº¦ä¿¡æ¯é›†åˆ
      */
     public SaveProgress(long downloadLength, List<DownProgressItem> progressInfoList) {
         this.downloadLength = downloadLength;
@@ -33,36 +33,36 @@ public class SaveProgress {
     }
 
     /**
-     * »ñÈ¡µ±Ç°ÏÂÔØµÄ´óĞ¡
+     * è·å–å½“å‰ä¸‹è½½çš„å¤§å°
      *
-     * @return µ±Ç°ÏÂÔØµÄ´óĞ¡
+     * @return å½“å‰ä¸‹è½½çš„å¤§å°
      */
     public long getDownloadLength() {
         return downloadLength;
     }
 
     /**
-     * ÉèÖÃµ±Ç°ÏÂÔØµÄ´óĞ¡
+     * è®¾ç½®å½“å‰ä¸‹è½½çš„å¤§å°
      *
-     * @param downloadLength µ±Ç°ÏÂÔØµÄ´óĞ¡
+     * @param downloadLength å½“å‰ä¸‹è½½çš„å¤§å°
      */
     public void setDownloadLength(long downloadLength) {
         this.downloadLength = downloadLength;
     }
 
     /**
-     * »ñÈ¡ËùÓĞÏÂÔØÏß³ÌµÄ½ø¶ÈĞÅÏ¢¼¯ºÏ
+     * è·å–æ‰€æœ‰ä¸‹è½½çº¿ç¨‹çš„è¿›åº¦ä¿¡æ¯é›†åˆ
      *
-     * @return ËùÓĞÏÂÔØÏß³ÌµÄ½ø¶ÈĞÅÏ¢¼¯ºÏ
+     * @return æ‰€æœ‰ä¸‹è½½çº¿ç¨‹çš„è¿›åº¦ä¿¡æ¯é›†åˆ
      */
     public List<DownProgressItem> getProgressInfoList() {
         return mProgressInfoList;
     }
 
     /**
-     * ÉèÖÃËùÓĞÏÂÔØÏß³ÌµÄ½ø¶ÈĞÅÏ¢¼¯ºÏ
+     * è®¾ç½®æ‰€æœ‰ä¸‹è½½çº¿ç¨‹çš„è¿›åº¦ä¿¡æ¯é›†åˆ
      *
-     * @param progressInfoList ËùÓĞÏÂÔØÏß³ÌµÄ½ø¶ÈĞÅÏ¢¼¯ºÏ
+     * @param progressInfoList æ‰€æœ‰ä¸‹è½½çº¿ç¨‹çš„è¿›åº¦ä¿¡æ¯é›†åˆ
      */
     public void setProgressInfoList(List<DownProgressItem> progressInfoList) {
         mProgressInfoList = progressInfoList;

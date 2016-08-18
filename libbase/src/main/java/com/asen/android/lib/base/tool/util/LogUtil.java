@@ -5,7 +5,7 @@ import android.util.Log;
 import com.asen.android.lib.base.global.AppData;
 
 /**
- * 后台打印信息的工具类
+ * 鍚庡彴鎵撳嵃淇℃伅鐨勫伐鍏风被
  *
  * @author Asen
  * @version v1.0

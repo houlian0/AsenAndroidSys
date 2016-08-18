@@ -3,7 +3,7 @@ package com.asen.android.lib.base.core.util;
 import java.util.List;
 
 /**
- * ×î´óÊıÁ¿Õ» ¶¨Òå ½Ó¿Ú
+ * æœ€å¤§æ•°é‡æ ˆ å®šä¹‰ æ¥å£
  *
  * @author Asen
  * @version v1.0
@@ -12,58 +12,58 @@ import java.util.List;
 public interface IMaxStack<E> {
 
     /**
-     * Çå¿ÕÕ»Êı¾İ
+     * æ¸…ç©ºæ ˆæ•°æ®
      */
     public void clear();
 
     /**
-     * Õ»ÖĞµ±Ç°Êı¾İµÄÊıÁ¿
+     * æ ˆä¸­å½“å‰æ•°æ®çš„æ•°é‡
      *
      * @return size
      */
     public int size();
 
     /**
-     * ÅĞ¶Ïµ±Ç°Õ»ÊÇ·ñÎª¿Õ
+     * åˆ¤æ–­å½“å‰æ ˆæ˜¯å¦ä¸ºç©º
      *
-     * @return trueÎª¿Õ
+     * @return trueä¸ºç©º
      */
     public boolean isEmpty();
 
     /**
-     * Ñ¹Õ»
+     * å‹æ ˆ
      *
-     * @param object ¶ÔÏó
+     * @param object å¯¹è±¡
      */
     public void push(E object);
 
     /**
-     * »ñÈ¡×îºóÒ»Ìõ¼ÇÂ¼
+     * è·å–æœ€åä¸€æ¡è®°å½•
      *
-     * @return object ¶ÔÏó
+     * @return object å¯¹è±¡
      */
     public E getLastData();
 
     /**
-     * »ñÈ¡×îÓÅÊı¾İ
+     * è·å–æœ€ä¼˜æ•°æ®
      *
-     * @param compareListener ×îÓÅÊı¾İÅĞ¶Ï½Ó¿Ú
-     * @return ×îÓÅ¶ÔÏó
+     * @param compareListener æœ€ä¼˜æ•°æ®åˆ¤æ–­æ¥å£
+     * @return æœ€ä¼˜å¯¹è±¡
      */
     public E getGood(IGoodCompareListener<E> compareListener);
 
     /**
-     * ×îÓÅÊı¾İÅĞ¶Ï½Ó¿Ú
+     * æœ€ä¼˜æ•°æ®åˆ¤æ–­æ¥å£
      *
      * @param <E>
      */
     public interface IGoodCompareListener<E> {
 
         /**
-         * ´Ó¼¯ºÏÖĞÈ¡³ö×îÓÅÊı¾İ
+         * ä»é›†åˆä¸­å–å‡ºæœ€ä¼˜æ•°æ®
          *
-         * @param dataList Êı¾İ¼¯ºÏ
-         * @return ×îÓÅÊı¾İ
+         * @param dataList æ•°æ®é›†åˆ
+         * @return æœ€ä¼˜æ•°æ®
          */
         public E getGood(List<E> dataList);
     }

@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.global;
 
 /**
- * ³ÌÐòÈ«¾Ö±äÁ¿´æ·Å´¦
+ * ç¨‹åºå…¨å±€å˜é‡å­˜æ”¾å¤„
  *
  * @author Asen
  * @version v1.0
@@ -10,57 +10,57 @@ package com.asen.android.lib.base.global;
 public class AppData {
 
     /**
-     * APPÓ¦ÓÃÊÇ·ñ´¦ÓÚDEBUG×´Ì¬£¬DEBUG×´Ì¬ÏÂ£¬³ÌÐò´òÓ¡µÄLOG¸üÈ«Ãæ
+     * APPåº”ç”¨æ˜¯å¦å¤„äºŽDEBUGçŠ¶æ€ï¼ŒDEBUGçŠ¶æ€ä¸‹ï¼Œç¨‹åºæ‰“å°çš„LOGæ›´å…¨é¢
      */
     public static boolean DEBUG = false;
 
     /**
-     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ
+     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°
      */
     public static String APP_PROJECT = "asen";
 
     /**
-     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--´íÎóÐÅÏ¢
+     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--é”™è¯¯ä¿¡æ¯
      */
     static String APP_ERROR = "error";
 
     /**
-     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--SQLITEÊý¾ÝÎÄ¼þ¼Ð
+     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--SQLITEæ•°æ®æ–‡ä»¶å¤¹
      */
     static String APP_SQLITE = "db";
 
     /**
-     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--PERSTÊý¾ÝÎÄ¼þ¼Ð
+     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--PERSTæ•°æ®æ–‡ä»¶å¤¹
      */
     static String APP_PERST = "dbs";
 
     /**
-     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--µØÍ¼ÎÄ¼þ¼Ð
+     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--åœ°å›¾æ–‡ä»¶å¤¹
      */
     static String APP_MAP = "map";
 
     /**
-     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--µØÍ¼»º´æÎÄ¼þ¼Ð
+     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--åœ°å›¾ç¼“å­˜æ–‡ä»¶å¤¹
      */
     static String APP_MAP_CACHE = "map/cache";
 
     /**
-     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--ÏÂÔØ×¨ÓÃÎÄ¼þ¼Ð
+     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--ä¸‹è½½ä¸“ç”¨æ–‡ä»¶å¤¹
      */
     static String APP_DOWNLOAD = "download";
 
     /**
-     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--ÕÕÆ¬´æ·ÅÎÄ¼þ¼Ð
+     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--ç…§ç‰‡å­˜æ”¾æ–‡ä»¶å¤¹
      */
     static String APP_PICTURE = "multi/picture";
 
     /**
-     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--ÊÓÆµ´æ·ÅÎÄ¼þ¼Ð
+     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--è§†é¢‘å­˜æ”¾æ–‡ä»¶å¤¹
      */
     static String APP_VIDEO = "multi/video";
 
     /**
-     * ÏîÄ¿Êý¾ÝÎÄ¼þ¼ÐÃû³Æ--ÒôÀÖ´æ·ÅÎÄ¼þ¼Ð
+     * é¡¹ç›®æ•°æ®æ–‡ä»¶å¤¹åç§°--éŸ³ä¹å­˜æ”¾æ–‡ä»¶å¤¹
      */
     static String APP_MUSIC = "multi/music";
 

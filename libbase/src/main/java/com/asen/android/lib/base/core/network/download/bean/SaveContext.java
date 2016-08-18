@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.network.download.bean;
 
 /**
- * ÏÂÔØµÄÉÏÏÂÎÄĞÅÏ¢
+ * ä¸‹è½½çš„ä¸Šä¸‹æ–‡ä¿¡æ¯
  *
  * @author Asen
  * @version v1.0
@@ -10,50 +10,50 @@ package com.asen.android.lib.base.core.network.download.bean;
 public class SaveContext {
 
     /**
-     * ÏÂÔØµØÖ·
+     * ä¸‹è½½åœ°å€
      */
     private String url;
 
     /**
-     * ÎÄ¼şÎ¨Ò»Öµ
+     * æ–‡ä»¶å”¯ä¸€å€¼
      */
     private String featid;
 
     /**
-     * ÉÏ´ÎÎÄ¼şÏÂÔØµÄÊ±¼ä
+     * ä¸Šæ¬¡æ–‡ä»¶ä¸‹è½½çš„æ—¶é—´
      */
     private long time;
 
     /**
-     * ÉÏ´ÎÎÄ¼şÏÂÔØµÄ´óĞ¡
+     * ä¸Šæ¬¡æ–‡ä»¶ä¸‹è½½çš„å¤§å°
      */
     private long fileSize;
 
     /**
-     * µ±Ç°ÏÂÔØÏß³Ì×Ü¹²·ÖÅäµÄ×Ö½Ú³¤¶È
+     * å½“å‰ä¸‹è½½çº¿ç¨‹æ€»å…±åˆ†é…çš„å­—èŠ‚é•¿åº¦
      */
     private long currentLength;
 
     /**
-     * ÊÇ·ñÔ­ÎÄ¼şÃûÊä³ö
+     * æ˜¯å¦åŸæ–‡ä»¶åè¾“å‡º
      */
     private boolean isOriginal;
 
     /**
-     * Ïß³ÌÊıÁ¿£¬Ä¬ÈÏ3¸öÏß³ÌÊı
+     * çº¿ç¨‹æ•°é‡ï¼Œé»˜è®¤3ä¸ªçº¿ç¨‹æ•°
      */
     private int threadNumber;
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param url           ÏÂÔØµÄURLµØÖ·
-     * @param featid        Î¨Ò»±àÂë£¨Ã¿´ÎÓĞĞÂµØÖ·ÏÂÔØÊ±£¬Éú³ÉÒ»¸öÎ¨Ò»µÄ±àÂëÖµ£©
-     * @param time          ÉÏ´ÎÎÄ¼şÏÂÔØµÄÊ±¼ä
-     * @param fileSize      ÉÏ´ÎÎÄ¼şÏÂÔØµÄ´óĞ¡
-     * @param currentLength µ±Ç°ÏÂÔØÏß³Ì×Ü¹²·ÖÅäµÄ×Ö½Ú³¤¶È
-     * @param isOriginal    ÊÇ·ñÔ­ÎÄ¼şÃûÊä³ö
-     * @param threadNumber  Ïß³ÌÊıÁ¿£¬Ä¬ÈÏ3¸öÏß³ÌÊı
+     * @param url           ä¸‹è½½çš„URLåœ°å€
+     * @param featid        å”¯ä¸€ç¼–ç ï¼ˆæ¯æ¬¡æœ‰æ–°åœ°å€ä¸‹è½½æ—¶ï¼Œç”Ÿæˆä¸€ä¸ªå”¯ä¸€çš„ç¼–ç å€¼ï¼‰
+     * @param time          ä¸Šæ¬¡æ–‡ä»¶ä¸‹è½½çš„æ—¶é—´
+     * @param fileSize      ä¸Šæ¬¡æ–‡ä»¶ä¸‹è½½çš„å¤§å°
+     * @param currentLength å½“å‰ä¸‹è½½çº¿ç¨‹æ€»å…±åˆ†é…çš„å­—èŠ‚é•¿åº¦
+     * @param isOriginal    æ˜¯å¦åŸæ–‡ä»¶åè¾“å‡º
+     * @param threadNumber  çº¿ç¨‹æ•°é‡ï¼Œé»˜è®¤3ä¸ªçº¿ç¨‹æ•°
      */
     public SaveContext(String url, String featid, long time, long fileSize, long currentLength, boolean isOriginal, int threadNumber) {
         this.url = url;
@@ -66,126 +66,126 @@ public class SaveContext {
     }
 
     /**
-     * ÊÇ·ñÔ­ÎÄ¼şÃûÊä³ö
+     * æ˜¯å¦åŸæ–‡ä»¶åè¾“å‡º
      *
-     * @return true£¬°´Ô­ÎÄ¼şÃûÊä³ö£»false£¬ÒÔuuidÃüÃûµÄÎÄ¼şÃûÊä³ö
+     * @return trueï¼ŒæŒ‰åŸæ–‡ä»¶åè¾“å‡ºï¼›falseï¼Œä»¥uuidå‘½åçš„æ–‡ä»¶åè¾“å‡º
      */
     public boolean isOriginal() {
         return isOriginal;
     }
 
     /**
-     * ÉèÖÃÊÇ·ñ°´ÕÕÔ­ÎÄ¼şÃûÊä³ö
+     * è®¾ç½®æ˜¯å¦æŒ‰ç…§åŸæ–‡ä»¶åè¾“å‡º
      *
-     * @param original true£¬°´Ô­ÎÄ¼şÃûÊä³ö£»false£¬ÒÔuuidÃüÃûµÄÎÄ¼şÃûÊä³ö
+     * @param original trueï¼ŒæŒ‰åŸæ–‡ä»¶åè¾“å‡ºï¼›falseï¼Œä»¥uuidå‘½åçš„æ–‡ä»¶åè¾“å‡º
      */
     public void setOriginal(boolean original) {
         isOriginal = original;
     }
 
     /**
-     * »ñÈ¡Í¬Ê±ÏÂÔØµ¥¸öÎÄ¼şµÄÏß³ÌÊıÁ¿
+     * è·å–åŒæ—¶ä¸‹è½½å•ä¸ªæ–‡ä»¶çš„çº¿ç¨‹æ•°é‡
      *
-     * @return Í¬Ê±ÏÂÔØµ¥¸öÎÄ¼şµÄÏß³ÌÊıÁ¿
+     * @return åŒæ—¶ä¸‹è½½å•ä¸ªæ–‡ä»¶çš„çº¿ç¨‹æ•°é‡
      */
     public int getThreadNumber() {
         return threadNumber;
     }
 
     /**
-     * ÉèÖÃÍ¬Ê±ÏÂÔØµ¥¸öÎÄ¼şµÄÏß³ÌÊıÁ¿
+     * è®¾ç½®åŒæ—¶ä¸‹è½½å•ä¸ªæ–‡ä»¶çš„çº¿ç¨‹æ•°é‡
      *
-     * @param threadNumber Í¬Ê±ÏÂÔØµ¥¸öÎÄ¼şµÄÏß³ÌÊıÁ¿
+     * @param threadNumber åŒæ—¶ä¸‹è½½å•ä¸ªæ–‡ä»¶çš„çº¿ç¨‹æ•°é‡
      */
     public void setThreadNumber(int threadNumber) {
         this.threadNumber = threadNumber;
     }
 
     /**
-     * »ñÈ¡µ±Ç°ÏÂÔØÏß³Ì×Ü¹²·ÖÅäµÄ×Ö½Ú³¤¶È
+     * è·å–å½“å‰ä¸‹è½½çº¿ç¨‹æ€»å…±åˆ†é…çš„å­—èŠ‚é•¿åº¦
      *
-     * @return µ±Ç°ÏÂÔØÏß³Ì×Ü¹²·ÖÅäµÄ×Ö½Ú³¤¶È
+     * @return å½“å‰ä¸‹è½½çº¿ç¨‹æ€»å…±åˆ†é…çš„å­—èŠ‚é•¿åº¦
      */
     public long getCurrentLength() {
         return currentLength;
     }
 
     /**
-     * ÉèÖÃµ±Ç°ÏÂÔØÏß³Ì×Ü¹²·ÖÅäµÄ×Ö½Ú³¤¶È
+     * è®¾ç½®å½“å‰ä¸‹è½½çº¿ç¨‹æ€»å…±åˆ†é…çš„å­—èŠ‚é•¿åº¦
      *
-     * @param currentLength µ±Ç°ÏÂÔØÏß³Ì×Ü¹²·ÖÅäµÄ×Ö½Ú³¤¶È
+     * @param currentLength å½“å‰ä¸‹è½½çº¿ç¨‹æ€»å…±åˆ†é…çš„å­—èŠ‚é•¿åº¦
      */
     public void setCurrentLength(long currentLength) {
         this.currentLength = currentLength;
     }
 
     /**
-     * »ñÈ¡ÏÂÔØµØÖ·
+     * è·å–ä¸‹è½½åœ°å€
      *
-     * @return ÏÂÔØµØÖ·
+     * @return ä¸‹è½½åœ°å€
      */
     public String getUrl() {
         return url;
     }
 
     /**
-     * ÉèÖÃÏÂÔØµØÖ·
+     * è®¾ç½®ä¸‹è½½åœ°å€
      *
-     * @param url ÏÂÔØµØÖ·
+     * @param url ä¸‹è½½åœ°å€
      */
     public void setUrl(String url) {
         this.url = url;
     }
 
     /**
-     * »ñÈ¡ÏÂÔØµÄÎ¨Ò»±àÂë
+     * è·å–ä¸‹è½½çš„å”¯ä¸€ç¼–ç 
      *
-     * @return Î¨Ò»±àÂë
+     * @return å”¯ä¸€ç¼–ç 
      */
     public String getFeatid() {
         return featid;
     }
 
     /**
-     * ÉèÖÃÏÂÔØµÄÎ¨Ò»±àÂë
+     * è®¾ç½®ä¸‹è½½çš„å”¯ä¸€ç¼–ç 
      *
-     * @param featid Î¨Ò»±àÂë
+     * @param featid å”¯ä¸€ç¼–ç 
      */
     public void setFeatid(String featid) {
         this.featid = featid;
     }
 
     /**
-     * »ñÈ¡ÉÏ´ÎÎÄ¼şÏÂÔØµÄÊ±¼ä
+     * è·å–ä¸Šæ¬¡æ–‡ä»¶ä¸‹è½½çš„æ—¶é—´
      *
-     * @return ÉÏ´ÎÎÄ¼şÏÂÔØµÄÊ±¼ä
+     * @return ä¸Šæ¬¡æ–‡ä»¶ä¸‹è½½çš„æ—¶é—´
      */
     public long getTime() {
         return time;
     }
 
     /**
-     * ÉèÖÃÉÏ´ÎÎÄ¼şÏÂÔØµÄÊ±¼ä
+     * è®¾ç½®ä¸Šæ¬¡æ–‡ä»¶ä¸‹è½½çš„æ—¶é—´
      *
-     * @param time ÉÏ´ÎÎÄ¼şÏÂÔØµÄÊ±¼ä
+     * @param time ä¸Šæ¬¡æ–‡ä»¶ä¸‹è½½çš„æ—¶é—´
      */
     public void setTime(long time) {
         this.time = time;
     }
 
     /**
-     * »ñÈ¡ÉÏ´ÎÎÄ¼şÏÂÔØµÄ´óĞ¡
+     * è·å–ä¸Šæ¬¡æ–‡ä»¶ä¸‹è½½çš„å¤§å°
      *
-     * @return ÉÏ´ÎÎÄ¼şÏÂÔØµÄ´óĞ¡
+     * @return ä¸Šæ¬¡æ–‡ä»¶ä¸‹è½½çš„å¤§å°
      */
     public long getFileSize() {
         return fileSize;
     }
 
     /**
-     * ÉèÖÃÉÏ´ÎÎÄ¼şÏÂÔØµÄ´óĞ¡
+     * è®¾ç½®ä¸Šæ¬¡æ–‡ä»¶ä¸‹è½½çš„å¤§å°
      *
-     * @param fileSize ÉÏ´ÎÎÄ¼şÏÂÔØµÄ´óĞ¡
+     * @param fileSize ä¸Šæ¬¡æ–‡ä»¶ä¸‹è½½çš„å¤§å°
      */
     public void setFileSize(long fileSize) {
         this.fileSize = fileSize;

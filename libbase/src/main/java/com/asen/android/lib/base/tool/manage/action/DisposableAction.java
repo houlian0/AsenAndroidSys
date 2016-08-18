@@ -3,7 +3,7 @@ package com.asen.android.lib.base.tool.manage.action;
 import android.os.Bundle;
 
 /**
- * 可销毁式Action
+ * 鍙攢姣佸紡Action
  *
  * @author Asen
  * @version v1.0
@@ -21,18 +21,18 @@ public abstract class DisposableAction extends BaseAction {
     }
 
     /**
-     * 首次执行时会调用
+     * 棣栨鎵ц鏃朵細璋冪敤
      *
-     * @param object object数据
-     * @param bundle bundle数据
+     * @param object object鏁版嵁
+     * @param bundle bundle鏁版嵁
      */
     public abstract void onStart(Object object, Bundle bundle);
 
     /**
-     * 非首次执行的其他多次执行时会调用
+     * 闈為娆℃墽琛岀殑鍏朵粬澶氭鎵ц鏃朵細璋冪敤
      *
-     * @param object object数据
-     * @param bundle bundle数据
+     * @param object object鏁版嵁
+     * @param bundle bundle鏁版嵁
      */
     public abstract void onResume(Object object, Bundle bundle);
 

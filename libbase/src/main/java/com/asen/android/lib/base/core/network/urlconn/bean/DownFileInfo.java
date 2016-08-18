@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.network.urlconn.bean;
 
 /**
- * ÏÂÔØµÄÎÄ¼şĞÅÏ¢
+ * ä¸‹è½½çš„æ–‡ä»¶ä¿¡æ¯
  *
  * @author Asen
  * @version v1.0
@@ -10,26 +10,26 @@ package com.asen.android.lib.base.core.network.urlconn.bean;
 public class DownFileInfo {
 
     /**
-     * ÎÄ¼şÃû³Æ
+     * æ–‡ä»¶åç§°
      */
     private String fileName;
 
     /**
-     * ÎÄ¼ş´óĞ¡
+     * æ–‡ä»¶å¤§å°
      */
     private long fileLength;
 
     /**
-     * ÎÄ¼şÀàĞÍ
+     * æ–‡ä»¶ç±»å‹
      */
     private String fileType;
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param fileName   ÎÄ¼şµÄÃû³Æ
-     * @param fileLength ÎÄ¼şµÄ´óĞ¡
-     * @param fileType   ÎÄ¼şµÄÀàĞÍ
+     * @param fileName   æ–‡ä»¶çš„åç§°
+     * @param fileLength æ–‡ä»¶çš„å¤§å°
+     * @param fileType   æ–‡ä»¶çš„ç±»å‹
      */
     public DownFileInfo(String fileName, long fileLength, String fileType) {
         this.fileName = fileName;
@@ -38,63 +38,63 @@ public class DownFileInfo {
     }
 
     /**
-     * »ñÈ¡ÎÄ¼şµÄÀàĞÍ
+     * è·å–æ–‡ä»¶çš„ç±»å‹
      *
-     * @return ÎÄ¼şµÄÀàĞÍ
+     * @return æ–‡ä»¶çš„ç±»å‹
      */
     public String getFileType() {
         return fileType;
     }
 
     /**
-     * ÉèÖÃÎÄ¼şµÄÀàĞÍ
+     * è®¾ç½®æ–‡ä»¶çš„ç±»å‹
      *
-     * @param fileType ÎÄ¼şµÄÀàĞÍ
+     * @param fileType æ–‡ä»¶çš„ç±»å‹
      */
     public void setFileType(String fileType) {
         this.fileType = fileType;
     }
 
     /**
-     * »ñÈ¡ÎÄ¼şµÄÃû³Æ
+     * è·å–æ–‡ä»¶çš„åç§°
      *
-     * @return ÎÄ¼şµÄÃû³Æ
+     * @return æ–‡ä»¶çš„åç§°
      */
     public String getFileName() {
         return fileName;
     }
 
     /**
-     * ÉèÖÃÎÄ¼şµÄÃû³Æ
+     * è®¾ç½®æ–‡ä»¶çš„åç§°
      *
-     * @param fileName ÎÄ¼şµÄÃû³Æ
+     * @param fileName æ–‡ä»¶çš„åç§°
      */
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
 
     /**
-     * »ñÈ¡ÎÄ¼şµÄ´óĞ¡
+     * è·å–æ–‡ä»¶çš„å¤§å°
      *
-     * @return ÎÄ¼şµÄ´óĞ¡
+     * @return æ–‡ä»¶çš„å¤§å°
      */
     public long getFileLength() {
         return fileLength;
     }
 
     /**
-     * ÉèÖÃÎÄ¼şµÄ´óĞ¡
+     * è®¾ç½®æ–‡ä»¶çš„å¤§å°
      *
-     * @param fileLength ÎÄ¼şµÄ´óĞ¡
+     * @param fileLength æ–‡ä»¶çš„å¤§å°
      */
     public void setFileLength(long fileLength) {
         this.fileLength = fileLength;
     }
 
     /**
-     * »ñÈ¡ÎÄ¼şµÄºó×ºÃû
+     * è·å–æ–‡ä»¶çš„åç¼€å
      *
-     * @return ÎÄ¼şµÄºó×ºÃû
+     * @return æ–‡ä»¶çš„åç¼€å
      */
     public String getFileSuffix() {
         if (fileName != null) {

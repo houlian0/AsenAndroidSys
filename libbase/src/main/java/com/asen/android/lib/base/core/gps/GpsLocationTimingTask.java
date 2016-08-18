@@ -7,7 +7,7 @@ import com.asen.android.lib.base.core.gps.extension.IExtensionLocation;
 import com.asen.android.lib.base.core.network.task.SenTimingTask;
 
 /**
- * Î»ÖÃË¢ĞÂµÄ¶¨Ê±ÈÎÎñ
+ * ä½ç½®åˆ·æ–°çš„å®šæ—¶ä»»åŠ¡
  *
  * @author Asen
  * @version v1.0
@@ -16,7 +16,7 @@ import com.asen.android.lib.base.core.network.task.SenTimingTask;
 class GpsLocationTimingTask extends SenTimingTask<Void, Void, Void> {
 
     /**
-     * Ë¢ĞÂGPSÎ»ÖÃµÄÊ±¼ä¼ä¸ô¡¢À©Õ¹ĞÔ¶¨Î»Ö÷¶¯¶¨Î»µÄÊ±¼ä¼ä¸ô
+     * åˆ·æ–°GPSä½ç½®çš„æ—¶é—´é—´éš”ã€æ‰©å±•æ€§å®šä½ä¸»åŠ¨å®šä½çš„æ—¶é—´é—´éš”
      */
     public static final long TIME_INTERVAL = 5000;
 
@@ -46,7 +46,7 @@ class GpsLocationTimingTask extends SenTimingTask<Void, Void, Void> {
         IExtensionLocation extensionLocation = mGpsLocation.getExtensionLocation();
         if (extensionLocation != null && extensionLocation instanceof ExtensionASingleLocation) {
             Location location = extensionLocation.getLocation();
-            extensionLocation.refreshLocation(location); // Ö÷¶¯»ñÈ¡GPS¶¨Î»
+            extensionLocation.refreshLocation(location); // ä¸»åŠ¨è·å–GPSå®šä½
         }
         if (mGpsLocation.hasGpsPoint())
             publishProgress();

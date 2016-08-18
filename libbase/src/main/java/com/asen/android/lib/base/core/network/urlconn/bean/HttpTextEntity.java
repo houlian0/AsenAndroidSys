@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.network.urlconn.bean;
 
 /**
- * ¼üÖµ¶ÔÉÏ´«²ÎÊıµÄĞÅÏ¢
+ * é”®å€¼å¯¹ä¸Šä¼ å‚æ•°çš„ä¿¡æ¯
  *
  * @author Asen
  * @version v1.0
@@ -10,20 +10,20 @@ package com.asen.android.lib.base.core.network.urlconn.bean;
 public class HttpTextEntity {
 
     /**
-     * ¼üÃû³Æ
+     * é”®åç§°
      */
     private String name;
 
     /**
-     * ÖµÄÚÈİ
+     * å€¼å†…å®¹
      */
     private String value;
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param name  ¼üÃû³Æ
-     * @param value ÖµÄÚÈİ
+     * @param name  é”®åç§°
+     * @param value å€¼å†…å®¹
      */
     public HttpTextEntity(String name, String value) {
         super();
@@ -32,36 +32,36 @@ public class HttpTextEntity {
     }
 
     /**
-     * »ñÈ¡¼üÃû³Æ
+     * è·å–é”®åç§°
      *
-     * @return ¼üÃû³Æ
+     * @return é”®åç§°
      */
     public String getName() {
         return name;
     }
 
     /**
-     * ÉèÖÃ¼üÃû³Æ
+     * è®¾ç½®é”®åç§°
      *
-     * @param name ¼üÃû³Æ
+     * @param name é”®åç§°
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * »ñÈ¡ÖµÄÚÈİ
+     * è·å–å€¼å†…å®¹
      *
-     * @return ÖµÄÚÈİ
+     * @return å€¼å†…å®¹
      */
     public String getValue() {
         return value;
     }
 
     /**
-     * ÉèÖÃÖµÄÚÈİ
+     * è®¾ç½®å€¼å†…å®¹
      *
-     * @param value ÖµÄÚÈİ
+     * @param value å€¼å†…å®¹
      */
     public void setValue(String value) {
         this.value = value;

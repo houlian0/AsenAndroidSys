@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.network.download.exception;
 
 /**
- * ´íÎó´úÂë´¦ÀíÀà
+ * é”™è¯¯ä»£ç å¤„ç†ç±»
  *
  * @author Asen
  * @version v1.0
@@ -10,21 +10,21 @@ package com.asen.android.lib.base.core.network.download.exception;
 public class DownErrorCodeUtil {
 
     /**
-     * ¸ù¾İ´íÎó´úÂë»ñÈ¡´íÎóĞÅÏ¢
+     * æ ¹æ®é”™è¯¯ä»£ç è·å–é”™è¯¯ä¿¡æ¯
      *
-     * @param code ´íÎó´úÂë
-     * @return ´íÎóĞÅÏ¢
+     * @param code é”™è¯¯ä»£ç 
+     * @return é”™è¯¯ä¿¡æ¯
      */
     public static String getErrorMessage(int code) {
         return getErrorMessage(code, new DefaultDownDownErrorCode());
     }
 
     /**
-     * ¸ù¾İ´íÎó´úÂë»ñÈ¡´íÎóĞÅÏ¢
+     * æ ¹æ®é”™è¯¯ä»£ç è·å–é”™è¯¯ä¿¡æ¯
      *
-     * @param code         ´íÎó´úÂë
-     * @param errorCodeImp ´íÎó´úÂë×ª´íÎóĞÅÏ¢ÊµÀı
-     * @return ´íÎóĞÅÏ¢
+     * @param code         é”™è¯¯ä»£ç 
+     * @param errorCodeImp é”™è¯¯ä»£ç è½¬é”™è¯¯ä¿¡æ¯å®ä¾‹
+     * @return é”™è¯¯ä¿¡æ¯
      */
     public static String getErrorMessage(int code, IDownErrorCode errorCodeImp) {
         if (IDownErrorCode.DOWNLOAD_IS_STARTED == code) {
@@ -39,10 +39,10 @@ public class DownErrorCodeUtil {
     }
 
     /**
-     * ´íÎó´úÂë×ªÒì³£
+     * é”™è¯¯ä»£ç è½¬å¼‚å¸¸
      *
-     * @param code ´íÎó´úÂë
-     * @return Òì³£
+     * @param code é”™è¯¯ä»£ç 
+     * @return å¼‚å¸¸
      */
     public static DownloadFileException getErrorException(int code) {
         if (IDownErrorCode.DOWNLOAD_IS_STARTED == code) {

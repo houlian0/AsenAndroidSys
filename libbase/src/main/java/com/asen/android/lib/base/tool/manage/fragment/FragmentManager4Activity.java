@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ¹ÜÀíFragmentµÄÀà£¨»ùÓÚActivity£©
+ * ç®¡ç†Fragmentçš„ç±»ï¼ˆåŸºäºActivityï¼‰
  *
  * @author Asen
  * @version v1.0

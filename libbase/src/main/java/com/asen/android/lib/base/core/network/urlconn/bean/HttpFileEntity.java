@@ -3,7 +3,7 @@ package com.asen.android.lib.base.core.network.urlconn.bean;
 import java.io.File;
 
 /**
- * ¼üÖµ¶ÔÉÏ´«ÎÄ¼şµÄĞÅÏ¢
+ * é”®å€¼å¯¹ä¸Šä¼ æ–‡ä»¶çš„ä¿¡æ¯
  *
  * @author Asen
  * @version v1.0
@@ -12,20 +12,20 @@ import java.io.File;
 public class HttpFileEntity {
 
     /**
-     * ¼üÃû³Æ
+     * é”®åç§°
      */
     private String name;
 
     /**
-     * ÎÄ¼şFile
+     * æ–‡ä»¶File
      */
     private File value;
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param name  ¼üÃû³Æ
-     * @param value ÎÄ¼şFile
+     * @param name  é”®åç§°
+     * @param value æ–‡ä»¶File
      */
     public HttpFileEntity(String name, File value) {
         super();
@@ -34,36 +34,36 @@ public class HttpFileEntity {
     }
 
     /**
-     * »ñÈ¡¼üÃû³Æ
+     * è·å–é”®åç§°
      *
-     * @return ¼üÃû³Æ
+     * @return é”®åç§°
      */
     public String getName() {
         return name;
     }
 
     /**
-     * ÉèÖÃ¼üÃû³Æ
+     * è®¾ç½®é”®åç§°
      *
-     * @param name ¼üÃû³Æ
+     * @param name é”®åç§°
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * »ñÈ¡ÎÄ¼şFile
+     * è·å–æ–‡ä»¶File
      *
-     * @return ÎÄ¼şFile
+     * @return æ–‡ä»¶File
      */
     public File getValue() {
         return value;
     }
 
     /**
-     * ÉèÖÃÎÄ¼şFile
+     * è®¾ç½®æ–‡ä»¶File
      *
-     * @param value ÎÄ¼şFile
+     * @param value æ–‡ä»¶File
      */
     public void setValue(File value) {
         this.value = value;

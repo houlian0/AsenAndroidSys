@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * ºº×Ö×ªÆ´ÒôµÄÀà
+ * æ±‰å­—è½¬æ‹¼éŸ³çš„ç±»
  *
  * @author Asen
  * @version v1.0
@@ -25,9 +25,9 @@ public class HanziToPinyin {
     }
 
     /**
-     * »ñÈ¡ºº×Ö×ªÆ´ÒôµÄÊµÀý
+     * èŽ·å–æ±‰å­—è½¬æ‹¼éŸ³çš„å®žä¾‹
      *
-     * @return ºº×Ö×ªÆ´ÒôµÄÊµÀý
+     * @return æ±‰å­—è½¬æ‹¼éŸ³çš„å®žä¾‹
      */
     public static HanziToPinyin getInstance() {
         if (p == null) {
@@ -444,10 +444,10 @@ public class HanziToPinyin {
     }
 
     /**
-     * »ñµÃµ¥¸öºº×ÖµÄAscii.
+     * èŽ·å¾—å•ä¸ªæ±‰å­—çš„Ascii.
      *
-     * @param cn char ºº×Ö×Ö·û
-     * @return int ´íÎó·µ»Ø 0,·ñÔò·µ»Øascii
+     * @param cn char æ±‰å­—å­—ç¬¦
+     * @return int é”™è¯¯è¿”å›ž 0,å¦åˆ™è¿”å›žascii
      */
     private int getCnAscii(char cn) {
         byte[] bytes = null;
@@ -456,34 +456,34 @@ public class HanziToPinyin {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        if (bytes == null || bytes.length > 2 || bytes.length <= 0) { // ´íÎó
+        if (bytes == null || bytes.length > 2 || bytes.length <= 0) { // é”™è¯¯
             return 0;
         }
-        if (bytes.length == 1) { // Ó¢ÎÄ×Ö·û
+        if (bytes.length == 1) { // è‹±æ–‡å­—ç¬¦
             return bytes[0];
         }
-        if (bytes.length == 2) { // ÖÐÎÄ×Ö·û
+        if (bytes.length == 2) { // ä¸­æ–‡å­—ç¬¦
             int hightByte = 256 + bytes[0];
             int lowByte = 256 + bytes[1];
             return (256 * hightByte + lowByte) - 256 * 256;
         }
-        return 0; // ´íÎó
+        return 0; // é”™è¯¯
     }
 
     /**
-     * ¸ù¾ÝASCIIÂëµ½SpellMapÖÐ²éÕÒ¶ÔÓ¦µÄÆ´Òô
+     * æ ¹æ®ASCIIç åˆ°SpellMapä¸­æŸ¥æ‰¾å¯¹åº”çš„æ‹¼éŸ³
      *
-     * @param ascii int ×Ö·û¶ÔÓ¦µÄASCII
-     * @return String Æ´Òô,Ê×ÏÈÅÐ¶ÏASCIIÊÇ·ñ>0&<160,Èç¹ûÊÇ·µ»Ø¶ÔÓ¦µÄ×Ö·û,
+     * @param ascii int å­—ç¬¦å¯¹åº”çš„ASCII
+     * @return String æ‹¼éŸ³,é¦–å…ˆåˆ¤æ–­ASCIIæ˜¯å¦>0&<160,å¦‚æžœæ˜¯è¿”å›žå¯¹åº”çš„å­—ç¬¦,
      * <p/>
-     * ·ñÔòµ½SpellMapÖÐ²éÕÒ,Èç¹ûÃ»ÓÐÕÒµ½Æ´Òô,Ôò·µ»Ønull,Èç¹ûÕÒµ½Ôò·µ»ØÆ´Òô.
+     * å¦åˆ™åˆ°SpellMapä¸­æŸ¥æ‰¾,å¦‚æžœæ²¡æœ‰æ‰¾åˆ°æ‹¼éŸ³,åˆ™è¿”å›žnull,å¦‚æžœæ‰¾åˆ°åˆ™è¿”å›žæ‹¼éŸ³.
      */
     private String getSpellByAscii(int ascii) {
-        if (ascii > 0 && ascii < 160) { // µ¥×Ö·û
+        if (ascii > 0 && ascii < 160) { // å•å­—ç¬¦
             return String.valueOf((char) ascii);
         }
 
-        if (ascii < -20319 || ascii > -10247) { // ²»ÖªµÀµÄ×Ö·û
+        if (ascii < -20319 || ascii > -10247) { // ä¸çŸ¥é“çš„å­—ç¬¦
             return null;
         }
 
@@ -502,7 +502,7 @@ public class HanziToPinyin {
             if (valObj != null) {
                 asciiRang = (Integer) valObj;
 
-                if (ascii >= asciiRang0 && ascii < asciiRang) { // Çø¼äÕÒµ½
+                if (ascii >= asciiRang0 && ascii < asciiRang) { // åŒºé—´æ‰¾åˆ°
                     return (spell0 == null) ? spell : spell0;
                 } else {
                     spell0 = spell;
@@ -514,7 +514,7 @@ public class HanziToPinyin {
     }
 
     /**
-     * ÅÐ¶ÏÊÇ·ñÊÇ×ÖÄ¸
+     * åˆ¤æ–­æ˜¯å¦æ˜¯å­—æ¯
      *
      * @param ascii int
      * @return boolean
@@ -524,11 +524,11 @@ public class HanziToPinyin {
     }
 
     /**
-     * ·µ»Ø×Ö·û´®µÄÈ«Æ´,ÊÇºº×Ö×ª»¯ÎªÈ«Æ´,ÆäËü×Ö·û²»½øÐÐ×ª»»
+     * è¿”å›žå­—ç¬¦ä¸²çš„å…¨æ‹¼,æ˜¯æ±‰å­—è½¬åŒ–ä¸ºå…¨æ‹¼,å…¶å®ƒå­—ç¬¦ä¸è¿›è¡Œè½¬æ¢
      *
-     * @param input     String ×Ö·û´®
-     * @param lowerCase ÊÇ·ñÐ¡Ð´×ÖÄ¸
-     * @return String ×ª»»³ÉÈ«Æ´ºóµÄ×Ö·û´®
+     * @param input     String å­—ç¬¦ä¸²
+     * @param lowerCase æ˜¯å¦å°å†™å­—æ¯
+     * @return String è½¬æ¢æˆå…¨æ‹¼åŽçš„å­—ç¬¦ä¸²
      */
     public String convert(String input, boolean lowerCase) {
         if (null == input || "".equals(input.trim())) {
@@ -543,7 +543,7 @@ public class HanziToPinyin {
 
         for (char aChar : chars) {
             int ascii = getCnAscii(aChar);
-            if (ascii == 0) { // È¡asciiÊ±³ö´í
+            if (ascii == 0) { // å–asciiæ—¶å‡ºé”™
                 retuBuf.append(aChar);
             } else {
                 String spell = getSpellByAscii(ascii);

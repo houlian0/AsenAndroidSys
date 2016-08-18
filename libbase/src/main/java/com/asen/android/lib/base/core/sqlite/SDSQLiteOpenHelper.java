@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * SD¿¨ÈÎÒâÓĞÈ¨ÏŞÎ»ÖÃµÄSQLiteHelper
+ * SDå¡ä»»æ„æœ‰æƒé™ä½ç½®çš„SQLiteHelper
  *
  * @author Asen
  * @version v1.0
@@ -19,54 +19,54 @@ import java.io.IOException;
 public abstract class SDSQLiteOpenHelper extends SQLiteOpenHelper {
 
     /**
-     * ÈÕÖ¾±ê¼Ç.
+     * æ—¥å¿—æ ‡è®°.
      */
     public static final String TAG = SDSQLiteOpenHelper.class.getSimpleName();
 
     /**
-     * Ó¦ÓÃContext.
+     * åº”ç”¨Context.
      */
     public final Context mContext;
 
     /**
-     * Êı¾İ¿âÃû.
+     * æ•°æ®åº“å.
      */
     private final String mName;
 
     /**
-     * Òª·Åµ½SDCardÏÂµÄÎÄ¼ş¼ĞÂ·¾¶.
+     * è¦æ”¾åˆ°SDCardä¸‹çš„æ–‡ä»¶å¤¹è·¯å¾„.
      */
     private final String mPath;
 
     /**
-     * Êı¾İ¿â²éÑ¯µÄÓÎ±ê¹¤³§.
+     * æ•°æ®åº“æŸ¥è¯¢çš„æ¸¸æ ‡å·¥å‚.
      */
     private final CursorFactory mFactory;
 
     /**
-     * Êı¾İ¿âµÄĞÂ°æ±¾ºÅ.
+     * æ•°æ®åº“çš„æ–°ç‰ˆæœ¬å·.
      */
     private final int mNewVersion;
 
     /**
-     * Êı¾İ¿â¶ÔÏó.
+     * æ•°æ®åº“å¯¹è±¡.
      */
     private SQLiteDatabase mDatabase = null;
 
     /**
-     * ÊÇ·ñÒÑ¾­³õÊ¼»¯¹ı.
+     * æ˜¯å¦å·²ç»åˆå§‹åŒ–è¿‡.
      */
     private boolean mIsInitializing = false;
 
 
     /**
-     * ³õÊ¼»¯Ò»¸öSDSQLiteOpenHelper¶ÔÏó.
+     * åˆå§‹åŒ–ä¸€ä¸ªSDSQLiteOpenHelperå¯¹è±¡.
      *
-     * @param context Ó¦ÓÃContext
-     * @param path    Òª·Åµ½SDCardÏÂµÄÎÄ¼ş¼ĞÂ·¾¶
-     * @param name    Êı¾İ¿âÃû
-     * @param factory Êı¾İ¿â²éÑ¯µÄÓÎ±ê¹¤³§
-     * @param version Êı¾İ¿âµÄĞÂ°æ±¾ºÅ
+     * @param context åº”ç”¨Context
+     * @param path    è¦æ”¾åˆ°SDCardä¸‹çš„æ–‡ä»¶å¤¹è·¯å¾„
+     * @param name    æ•°æ®åº“å
+     * @param factory æ•°æ®åº“æŸ¥è¯¢çš„æ¸¸æ ‡å·¥å‚
+     * @param version æ•°æ®åº“çš„æ–°ç‰ˆæœ¬å·
      */
     public SDSQLiteOpenHelper(Context context, String path, String name, CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -79,27 +79,27 @@ public abstract class SDSQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * »ñÈ¡¿ÉĞ´È¨ÏŞµÄÊı¾İ¿â¶ÔÏó.
+     * è·å–å¯å†™æƒé™çš„æ•°æ®åº“å¯¹è±¡.
      *
-     * @return Êı¾İ¿â¶ÔÏó
+     * @return æ•°æ®åº“å¯¹è±¡
      */
     public synchronized SQLiteDatabase getWritableDatabase() {
         if (mDatabase != null && mDatabase.isOpen() && !mDatabase.isReadOnly()) {
-            //ÒÑ¾­»ñÈ¡¹ı
+            //å·²ç»è·å–è¿‡
             return mDatabase;
         }
         if (mIsInitializing) {
-            throw new IllegalStateException("Êı¾İ¿âÒÑ±»Õ¼ÓÃgetWritableDatabase()");
+            throw new IllegalStateException("æ•°æ®åº“å·²è¢«å ç”¨getWritableDatabase()");
         }
         boolean success = false;
         SQLiteDatabase db = null;
         try {
             mIsInitializing = true;
             if (mName == null) {
-                //´´½¨Ò»¸öÄÚ´æÖ§³ÖSQLiteÊı¾İ¿â
+                //åˆ›å»ºä¸€ä¸ªå†…å­˜æ”¯æŒSQLiteæ•°æ®åº“
                 db = SQLiteDatabase.create(null);
             } else {
-                //´´½¨Ò»¸öÎÄ¼şÖ§³ÖSQLiteÊı¾İ¿â
+                //åˆ›å»ºä¸€ä¸ªæ–‡ä»¶æ”¯æŒSQLiteæ•°æ®åº“
                 String path = getDatabasePath(mPath, mName).getPath();
                 db = SQLiteDatabase.openOrCreateDatabase(path, mFactory);
             }
@@ -122,7 +122,7 @@ public abstract class SDSQLiteOpenHelper extends SQLiteOpenHelper {
             success = true;
             return db;
         } finally {
-            //ÊÍ·ÅÕ¼ÓĞ
+            //é‡Šæ”¾å æœ‰
             mIsInitializing = false;
             if (success) {
                 if (mDatabase != null) {
@@ -139,20 +139,20 @@ public abstract class SDSQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * »ñÈ¡¿É¶ÁÈ¨ÏŞµÄÊı¾İ¿â¶ÔÏó..
+     * è·å–å¯è¯»æƒé™çš„æ•°æ®åº“å¯¹è±¡..
      *
-     * @return Êı¾İ¿â¶ÔÏó
+     * @return æ•°æ®åº“å¯¹è±¡
      */
     public synchronized SQLiteDatabase getReadableDatabase() {
         if (mDatabase != null && mDatabase.isOpen()) {
-            //ÒÑ¾­»ñÈ¡¹ı
+            //å·²ç»è·å–è¿‡
             return mDatabase;
         }
         if (mIsInitializing) {
-            throw new IllegalStateException("Êı¾İ¿âÒÑ±»Õ¼ÓÃgetReadableDatabase()");
+            throw new IllegalStateException("æ•°æ®åº“å·²è¢«å ç”¨getReadableDatabase()");
         }
 
-        //¶¼ÊÇĞ´»ñÈ¡Ğ´µÄÊı¾İ¿â
+        //éƒ½æ˜¯å†™è·å–å†™çš„æ•°æ®åº“
         SQLiteDatabase db = null;
 
         try {
@@ -164,7 +164,7 @@ public abstract class SDSQLiteOpenHelper extends SQLiteOpenHelper {
                 String path = getDatabasePath(mPath, mName).getPath();
                 db = SQLiteDatabase.openDatabase(path, mFactory, SQLiteDatabase.OPEN_READONLY);
                 if (db.getVersion() != mNewVersion) {
-                    throw new SQLiteException("²»ÄÜ¸üĞÂÖ»¶ÁÊı¾İ¿âµÄ°æ±¾ from version " + db.getVersion() + " to " + mNewVersion + ": " + path);
+                    throw new SQLiteException("ä¸èƒ½æ›´æ–°åªè¯»æ•°æ®åº“çš„ç‰ˆæœ¬ from version " + db.getVersion() + " to " + mNewVersion + ": " + path);
                 }
                 onOpen(db);
                 mDatabase = db;
@@ -181,15 +181,15 @@ public abstract class SDSQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Êı¾İ¿â±»´ò¿ª.
+     * æ•°æ®åº“è¢«æ‰“å¼€.
      *
-     * @param db ±»´ò¿ªµÄÊı¾İ¿â
+     * @param db è¢«æ‰“å¼€çš„æ•°æ®åº“
      */
     public void onOpen(SQLiteDatabase db) {
     }
 
     /**
-     * Êı¾İ¿â±»¹Ø±Õ.
+     * æ•°æ®åº“è¢«å…³é—­.
      */
     public synchronized void close() {
         if (mIsInitializing) throw new IllegalStateException("Closed during initialization");
@@ -200,44 +200,44 @@ public abstract class SDSQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Êı¾İ¿â±»´´½¨ÊÂ¼ş.
+     * æ•°æ®åº“è¢«åˆ›å»ºäº‹ä»¶.
      *
-     * @param db ±»´´½¨µÄÊı¾İ¿â
+     * @param db è¢«åˆ›å»ºçš„æ•°æ®åº“
      */
     public abstract void onCreate(SQLiteDatabase db);
 
     /**
-     * Êı¾İ¿â±»ÖØ½¨.
+     * æ•°æ®åº“è¢«é‡å»º.
      *
-     * @param db         ±»´´½¨µÄÊı¾İ¿â
-     * @param oldVersion Ô­À´µÄÊı¾İ¿â°æ±¾
-     * @param newVersion ĞÂµÄÊı¾İ¿â°æ±¾
+     * @param db         è¢«åˆ›å»ºçš„æ•°æ®åº“
+     * @param oldVersion åŸæ¥çš„æ•°æ®åº“ç‰ˆæœ¬
+     * @param newVersion æ–°çš„æ•°æ®åº“ç‰ˆæœ¬
      */
     public abstract void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion);
 
 
     /**
-     * »ñÈ¡Êı¾İ¿âÎÄ¼ş.
+     * è·å–æ•°æ®åº“æ–‡ä»¶.
      *
-     * @param dbpath Êı¾İ¿âÎÄ¼şÂ·¾¶
-     * @param dbName Êı¾İ¿âÎÄ¼şÃû³Æ
-     * @return Êı¾İ¿âÎÄ¼ş
+     * @param dbpath æ•°æ®åº“æ–‡ä»¶è·¯å¾„
+     * @param dbName æ•°æ®åº“æ–‡ä»¶åç§°
+     * @return æ•°æ®åº“æ–‡ä»¶
      */
     private File getDatabasePath(String dbpath, String dbName) {
 
-        //´´½¨Ä¿Â¼
+        //åˆ›å»ºç›®å½•
         File path = new File(dbpath);
-        // ´´½¨ÎÄ¼ş
+        // åˆ›å»ºæ–‡ä»¶
         File f = new File(path.getPath(), dbName);
-        // Ä¿Â¼´æÔÚ·µ»Øfalse
+        // ç›®å½•å­˜åœ¨è¿”å›false
         if (!path.exists()) {
-            // ´´½¨Ä¿Â¼
+            // åˆ›å»ºç›®å½•
             path.mkdirs();
         }
-        // ÎÄ¼ş´æÔÚ·µ»Øfalse
+        // æ–‡ä»¶å­˜åœ¨è¿”å›false
         if (!f.exists()) {
             try {
-                //´´½¨ÎÄ¼ş
+                //åˆ›å»ºæ–‡ä»¶
                 f.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();

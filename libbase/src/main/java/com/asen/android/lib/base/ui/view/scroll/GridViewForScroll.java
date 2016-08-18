@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.GridView;
 
 /**
- * ¼æÈÝScrollViewµÄGridView
+ * å…¼å®¹ScrollViewçš„GridView
  *
  * @author Asen
  * @version v1.0

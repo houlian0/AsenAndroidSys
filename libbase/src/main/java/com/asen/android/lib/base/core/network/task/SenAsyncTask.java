@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
 /**
- * Òì²½ÈÎÎñÀà - ²ÉÓÃHandlerµÄ·½Ê½£¬·ÂÕÕAsyncTaskĞ´µÄÒì²½ÈÎÎñÀà
+ * å¼‚æ­¥ä»»åŠ¡ç±» - é‡‡ç”¨Handlerçš„æ–¹å¼ï¼Œä»¿ç…§AsyncTaskå†™çš„å¼‚æ­¥ä»»åŠ¡ç±»
  *
  * @author Asen
  * @version v1.0
@@ -53,26 +53,26 @@ public abstract class SenAsyncTask<Params, Progress, Result> {
     };
 
     /**
-     * ÔÚºóÌ¨Ö´ĞĞ²Ù×÷
+     * åœ¨åå°æ‰§è¡Œæ“ä½œ
      *
-     * @param params Í¨¹ı{@link SenAsyncTask#execute(Object[])} ·½·¨´«µİµÄ²ÎÊı
-     * @return ·µ»Ø¶¨ÒåµÄ½á¹û
+     * @param params é€šè¿‡{@link SenAsyncTask#execute(Object[])} æ–¹æ³•ä¼ é€’çš„å‚æ•°
+     * @return è¿”å›å®šä¹‰çš„ç»“æœ
      * @throws RuntimeException
      */
     protected abstract Result doInBackground(Params... params) throws RuntimeException;
 
     /**
-     * ÔÚÖ÷Ïß³ÌÖĞÖ´ĞĞ²Ù×÷
+     * åœ¨ä¸»çº¿ç¨‹ä¸­æ‰§è¡Œæ“ä½œ
      *
-     * @param values Í¨¹ı{@link SenAsyncTask#publishProgress(Object[])}·½·¨´«µİµÄ²ÎÊı
+     * @param values é€šè¿‡{@link SenAsyncTask#publishProgress(Object[])}æ–¹æ³•ä¼ é€’çš„å‚æ•°
      */
     protected void onProgressUpdate(Progress... values) {
     }
 
     /**
-     * ÏòÖ÷Ïß³ÌÖĞ´«µİ²ÎÊıĞÅÏ¢
+     * å‘ä¸»çº¿ç¨‹ä¸­ä¼ é€’å‚æ•°ä¿¡æ¯
      *
-     * @param values ²ÎÊıĞÅÏ¢
+     * @param values å‚æ•°ä¿¡æ¯
      */
     protected void publishProgress(Progress... values) {
         mHandler.obtainMessage(HANDLER_PROGRESS, values).sendToTarget();
@@ -88,9 +88,9 @@ public abstract class SenAsyncTask<Params, Progress, Result> {
     }
 
     /**
-     * ·¢ËÍ´íÎóÒì³£µÄĞÅÏ¢
+     * å‘é€é”™è¯¯å¼‚å¸¸çš„ä¿¡æ¯
      *
-     * @param msg ĞèÒª´«µİµ½{@link SenAsyncTask#onResultError(String)}·½·¨ÖĞ×÷Îª²ÎÊıµÄĞÅÏ¢
+     * @param msg éœ€è¦ä¼ é€’åˆ°{@link SenAsyncTask#onResultError(String)}æ–¹æ³•ä¸­ä½œä¸ºå‚æ•°çš„ä¿¡æ¯
      * @throws RuntimeException
      */
     protected void errorMessge(String msg) throws RuntimeException {
@@ -98,30 +98,30 @@ public abstract class SenAsyncTask<Params, Progress, Result> {
     }
 
     /**
-     * Òì²½ÈÎÎñÀàÖ´ĞĞÇ°£¬µ÷ÓÃ´Ë·½·¨£¨¸Ã·½·¨ÔÚÖ÷Ïß³ÌÖĞÖ´ĞĞ£©
+     * å¼‚æ­¥ä»»åŠ¡ç±»æ‰§è¡Œå‰ï¼Œè°ƒç”¨æ­¤æ–¹æ³•ï¼ˆè¯¥æ–¹æ³•åœ¨ä¸»çº¿ç¨‹ä¸­æ‰§è¡Œï¼‰
      */
     protected void onPreExecute() {
 
     }
 
     /**
-     * ºóÌ¨Ö´ĞĞÍê³Éºó£¬´¦Àí½á¹ûĞÅÏ¢
+     * åå°æ‰§è¡Œå®Œæˆåï¼Œå¤„ç†ç»“æœä¿¡æ¯
      *
-     * @param result {@link SenAsyncTask#doInBackground(Object[])} ·µ»ØµÄ½á¹ûĞÅÏ¢
+     * @param result {@link SenAsyncTask#doInBackground(Object[])} è¿”å›çš„ç»“æœä¿¡æ¯
      */
     protected abstract void onResultOK(Result result);
 
     /**
-     * ºóÌ¨Ö´ĞĞ±¨´íÊ±£¬´¦Àí´íÎóĞÅÏ¢
+     * åå°æ‰§è¡ŒæŠ¥é”™æ—¶ï¼Œå¤„ç†é”™è¯¯ä¿¡æ¯
      *
-     * @param msg ´ÓÒì³£ÖĞÄÃµ½µÄmessageĞÅÏ¢
+     * @param msg ä»å¼‚å¸¸ä¸­æ‹¿åˆ°çš„messageä¿¡æ¯
      */
     protected abstract void onResultError(String msg);
 
     /**
-     * ¿ªÊ¼Ö´ĞĞÒì²½ÈÎÎñÀà
+     * å¼€å§‹æ‰§è¡Œå¼‚æ­¥ä»»åŠ¡ç±»
      *
-     * @param params ²ÎÊı
+     * @param params å‚æ•°
      */
     public void execute(Params... params) {
         onPreExecute();
@@ -151,7 +151,7 @@ public abstract class SenAsyncTask<Params, Progress, Result> {
     private Future<Result> submit = null;
 
     /**
-     * ½áÊøÖ´ĞĞÒì²½ÈÎÎñÀà
+     * ç»“æŸæ‰§è¡Œå¼‚æ­¥ä»»åŠ¡ç±»
      */
     public void cancel() {
         if (submit != null && !submit.isCancelled()) {

@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * µ¥¶¨Ê±ÈÎÎñService
+ * å•å®šæ—¶ä»»åŠ¡Service
  *
  * @author Asen
  * @version v1.0
@@ -23,13 +23,13 @@ public abstract class BaseSingleService extends android.app.Service {
 
     static final int HANDLER_RESTART_RUNNABLE = 0x9001;
 
-    protected Context mContext; // AndroidÉÏÏÂÎÄ
+    protected Context mContext; // Androidä¸Šä¸‹æ–‡
 
     protected BaseApplication mApplication;
 
-    private ExecutorService pool = Executors.newFixedThreadPool(6); // Ïß³Ì³Ø
+    private ExecutorService pool = Executors.newFixedThreadPool(6); // çº¿ç¨‹æ± 
 
-    private BaseSingleServiceRunnable runnable; // ¶¨Ê±ÈÎÎñÖ´ĞĞµÄÏß³Ì
+    private BaseSingleServiceRunnable runnable; // å®šæ—¶ä»»åŠ¡æ‰§è¡Œçš„çº¿ç¨‹
 
     @Override
     public void onCreate() {
@@ -61,12 +61,12 @@ public abstract class BaseSingleService extends android.app.Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        isStart = false; // ½áÊø¶¨Ê±ÈÎÎñ
+        isStart = false; // ç»“æŸå®šæ—¶ä»»åŠ¡
         stopForeground(true);
         mHandler.removeMessages(HANDLER_RESTART_RUNNABLE);
     }
 
-    // ¿ªÊ¼¶¨Ê±ÈÎÎñ
+    // å¼€å§‹å®šæ—¶ä»»åŠ¡
     private void startRunnable() {
         if (!isStart) {
             isStart = true;
@@ -90,32 +90,32 @@ public abstract class BaseSingleService extends android.app.Service {
     Object[] objects;
 
     /**
-     * ÏòºóÌ¨´¦ÀíµÄÏß³Ì£¬·¢ËÍÊı¾İ£¨ÉèÖÃÊı¾İÔ´£©
+     * å‘åå°å¤„ç†çš„çº¿ç¨‹ï¼Œå‘é€æ•°æ®ï¼ˆè®¾ç½®æ•°æ®æºï¼‰
      *
-     * @param objects Êı¾İÔ´
+     * @param objects æ•°æ®æº
      */
     public void setData(Object... objects) {
         this.objects = objects;
     }
 
     /**
-     * ¶¨Ê±ÈÎÎñµÄÆğÊ¼Ê±¼ä
+     * å®šæ—¶ä»»åŠ¡çš„èµ·å§‹æ—¶é—´
      *
-     * @return ÆğÊ¼Ê±¼ä£¨ºÁÃëÖµ£©
+     * @return èµ·å§‹æ—¶é—´ï¼ˆæ¯«ç§’å€¼ï¼‰
      */
     protected abstract long startTimeInterval();
 
     /**
-     * ÆğÊ¼ÈÎÎñµÄÖĞ¼ä¼ä¸ôÊ±¼ä
+     * èµ·å§‹ä»»åŠ¡çš„ä¸­é—´é—´éš”æ—¶é—´
      *
-     * @return ÖĞ¼ä¼ä¸ôÊ±¼ä£¨ºÁÃëÖµ£©
+     * @return ä¸­é—´é—´éš”æ—¶é—´ï¼ˆæ¯«ç§’å€¼ï¼‰
      */
     protected abstract long initRunnableTimeInterval();
 
     /**
-     * ºóÌ¨´¦ÀíÊı¾İ
+     * åå°å¤„ç†æ•°æ®
      *
-     * @param objects Êı¾İÔ´
+     * @param objects æ•°æ®æº
      */
     protected abstract void doInBackground(Object... objects);
 
@@ -127,12 +127,12 @@ public abstract class BaseSingleService extends android.app.Service {
 
 //	Intent i = new Intent();
 //	i.setClass(MainActivity.this, MainActivity.class);
-//	//Ò»¶¨ÒªIntent.FLAG_ACTIVITY_NEW_TASK
+//	//ä¸€å®šè¦Intent.FLAG_ACTIVITY_NEW_TASK
 //	i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//	//PendingIntent ÊÇIntentµÄ°ü×°Àà
+//	//PendingIntent æ˜¯Intentçš„åŒ…è£…ç±»
 //	PendingIntent contentIntent = PendingIntent.getActivity(MainActivity.this, 1, i, PendingIntent.FLAG_UPDATE_CURRENT);
 //	NotificationCompat.Builder ncb = new NotificationCompat.Builder(MainActivity.this);
-//	ncb.setTicker("µÚÒ»¸öNotifiy");
+//	ncb.setTicker("ç¬¬ä¸€ä¸ªNotifiy");
 //	ncb.setAutoCancel(true);
 //	ncb.setContentIntent(contentIntent);
 //	ncb.setDefaults(Notification.DEFAULT_ALL);

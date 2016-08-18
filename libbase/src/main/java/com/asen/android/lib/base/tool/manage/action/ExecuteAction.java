@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.tool.manage.action;
 
 /**
- * ִ��ʽAction
+ * 执行式Action
  *
  * @author Asen
  * @version v1.0

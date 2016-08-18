@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.ListView;
 
 /**
- * ¼æÈÝScrollViewµÄListView
+ * å…¼å®¹ScrollViewçš„ListView
  *
  * @author Asen
  * @version v1.0

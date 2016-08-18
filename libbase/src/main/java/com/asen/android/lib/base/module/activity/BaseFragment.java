@@ -16,7 +16,7 @@ import com.asen.android.lib.base.tool.manage.action.OperaActionManager;
 import com.asen.android.lib.base.tool.manage.fragment.FragmentManager;
 
 /**
- * »ù±¾µÄFragment£¬²ÉÓÃµÄv4°üµÄFragment
+ * åŸºæœ¬çš„Fragmentï¼Œé‡‡ç”¨çš„v4åŒ…çš„Fragment
  *
  * @author Asen
  * @version v1.0
@@ -33,7 +33,7 @@ public class BaseFragment extends Fragment implements OnFragmentHideListener, On
     private IActionManager mActionManager;
 
     /**
-     * ¸¸Fragment£¬ÔÚonShowÖĞÄÜ»ñµÃÏàÓ¦µÄÖµ
+     * çˆ¶Fragmentï¼Œåœ¨onShowä¸­èƒ½è·å¾—ç›¸åº”çš„å€¼
      */
     protected Fragment mParentFragment;
 
@@ -47,7 +47,7 @@ public class BaseFragment extends Fragment implements OnFragmentHideListener, On
         mActionManager = new OperaActionManager(this);
     }
 
-    private boolean isFirstShow = true; // ÊÇ·ñÊ×´ÎÖ´ĞĞonShow
+    private boolean isFirstShow = true; // æ˜¯å¦é¦–æ¬¡æ‰§è¡ŒonShow
 
     @Override
     public final void onRefresh(Object parent, Bundle data) {
@@ -55,23 +55,23 @@ public class BaseFragment extends Fragment implements OnFragmentHideListener, On
             mParentFragment = (Fragment) parent;
         }
         if (data != null) {
-            isFirstShow = false; // ¸Ä±äÊ×´ÎÖ´ĞĞµÄ×´Ì¬
+            isFirstShow = false; // æ”¹å˜é¦–æ¬¡æ‰§è¡Œçš„çŠ¶æ€
         }
         onShow(data, isFirstShow);
     }
 
     /**
-     * ÀûÓÃ{@link FragmentManager}ÏÔÊ¾FragmentÊ±Ö´ĞĞ
+     * åˆ©ç”¨{@link FragmentManager}æ˜¾ç¤ºFragmentæ—¶æ‰§è¡Œ
      *
-     * @param data    ´«ÈëµÄ²ÎÊı
-     * @param isFirst Ä¬ÈÏisFirstÊÇtrue£¬Èç¹ûdata²»ÎªnullÊ±£¬isFirst±»Éè³Éfalse
+     * @param data    ä¼ å…¥çš„å‚æ•°
+     * @param isFirst é»˜è®¤isFirstæ˜¯trueï¼Œå¦‚æœdataä¸ä¸ºnullæ—¶ï¼ŒisFirstè¢«è®¾æˆfalse
      */
     public void onShow(Bundle data, boolean isFirst) {
 
     }
 
     /**
-     * ÀûÓÃ {@link FragmentManager}Òş²ØFragmentÊ±Ö´ĞĞ
+     * åˆ©ç”¨ {@link FragmentManager}éšè—Fragmentæ—¶æ‰§è¡Œ
      */
     @Override
     public void onHide() {
@@ -80,27 +80,27 @@ public class BaseFragment extends Fragment implements OnFragmentHideListener, On
 
 
     /**
-     * Ö´ĞĞAction
+     * æ‰§è¡ŒAction
      *
-     * @param actionIntent µ±Ç°µÄActionÒâÍ¼
+     * @param actionIntent å½“å‰çš„Actionæ„å›¾
      */
     public void executeIntent(ActionIntent actionIntent) {
         mActionManager.executeIntent(actionIntent);
     }
 
     /**
-     * Ïú»Ùµ±Ç°µÄAction
+     * é”€æ¯å½“å‰çš„Action
      */
     public void cancelCurrentIntent() {
         mActionManager.cancelCurrentIntent();
     }
 
     /**
-     * »ñµÃµ±Ç°FragmentµÄAction
+     * è·å¾—å½“å‰Fragmentçš„Action
      *
-     * @param cls ActionÀà
-     * @param <T> ·ºĞÍ
-     * @return Èç¹ûµ±Ç°FragmentµÄActionÊÇËù´«ÈëµÄÀà£¬Ôò·µ»ØAction¶ÔÏó£»·ñÔò·µ»Ønull
+     * @param cls Actionç±»
+     * @param <T> æ³›å‹
+     * @return å¦‚æœå½“å‰Fragmentçš„Actionæ˜¯æ‰€ä¼ å…¥çš„ç±»ï¼Œåˆ™è¿”å›Actionå¯¹è±¡ï¼›å¦åˆ™è¿”å›null
      */
     public <T extends BaseAction> T getFragmentAction(Class<T> cls) {
         ActionIntent intent = mActionManager.getCurrentIntent();
@@ -109,7 +109,7 @@ public class BaseFragment extends Fragment implements OnFragmentHideListener, On
 
         try {
             BaseAction action = intent.getAction();
-            Class<?> currentCls = action.getClass(); // µ±Ç°ÏÔÊ¾µÄAction
+            Class<?> currentCls = action.getClass(); // å½“å‰æ˜¾ç¤ºçš„Action
             while (currentCls != null) {
                 if (currentCls.getName().equals(cls.getName())) {
                     return (T) action;
@@ -124,11 +124,11 @@ public class BaseFragment extends Fragment implements OnFragmentHideListener, On
     }
 
     /**
-     * »ñµÃµ±Ç°ActivityÉÏµÄAction
+     * è·å¾—å½“å‰Activityä¸Šçš„Action
      *
-     * @param cls ActionÀà
-     * @param <T> ·ºĞÍ
-     * @return Èç¹ûµ±Ç°ActivityÉÏµÄActionÊÇËù´«ÈëµÄÀà£¬Ôò·µ»ØAction¶ÔÏó£»·ñÔò·µ»Ønull
+     * @param cls Actionç±»
+     * @param <T> æ³›å‹
+     * @return å¦‚æœå½“å‰Activityä¸Šçš„Actionæ˜¯æ‰€ä¼ å…¥çš„ç±»ï¼Œåˆ™è¿”å›Actionå¯¹è±¡ï¼›å¦åˆ™è¿”å›null
      */
     public <T extends BaseAction> T getActivityAction(Class<T> cls) {
         if (mActivity instanceof BaseActivity) {

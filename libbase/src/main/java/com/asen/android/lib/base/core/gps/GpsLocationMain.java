@@ -33,7 +33,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * GPS¶¨Î»ÊµÏÖÀà£¨´¿AndroidÔ­Éú£©
+ * GPSå®šä½å®ç°ç±»ï¼ˆçº¯AndroidåŸç”Ÿï¼‰
  *
  * @author Asen
  * @version v1.0
@@ -43,19 +43,19 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
 
     private static final String TAG = GpsLocation.class.getSimpleName();
 
-    private static final long MIN_TIME = 500; // ¸üĞÂÊ±¼ä¼ä¸ô
+    private static final long MIN_TIME = 500; // æ›´æ–°æ—¶é—´é—´éš”
 
-    private static final int MIN_DISTANCE = 0; // ¸üĞÂ×îĞ¡¾àÀë¼ä¸ô
+    private static final int MIN_DISTANCE = 0; // æ›´æ–°æœ€å°è·ç¦»é—´éš”
 
-    private static final long STAY_TIME_INTERVAL = 60 * 1000; // Í£ÁôÊ±¼ä¼ä¸ô
+    private static final long STAY_TIME_INTERVAL = 60 * 1000; // åœç•™æ—¶é—´é—´éš”
 
-    public static final int EXTENSION_BUFFER_DISTANCE = 25; // µÚÈı·½¶¨Î»»º³å¾àÀë£¬³¬¹ıÕâ¸ö¾àÀëÓëÁ½µã¾«¶ÈµÄºÍ£¬Ôò¸üĞÂµãÎ»
+    public static final int EXTENSION_BUFFER_DISTANCE = 25; // ç¬¬ä¸‰æ–¹å®šä½ç¼“å†²è·ç¦»ï¼Œè¶…è¿‡è¿™ä¸ªè·ç¦»ä¸ä¸¤ç‚¹ç²¾åº¦çš„å’Œï¼Œåˆ™æ›´æ–°ç‚¹ä½
 
-    public static final int EXTENSION_BUFFER_TIME = 60 * 1000; // µÚÈı·½¶¨Î»»º³åÊ±¼ä£¬³¬¹ıÕâ¸öÊ±¼ä£¬Ôò¸üĞÂµãÎ»
+    public static final int EXTENSION_BUFFER_TIME = 60 * 1000; // ç¬¬ä¸‰æ–¹å®šä½ç¼“å†²æ—¶é—´ï¼Œè¶…è¿‡è¿™ä¸ªæ—¶é—´ï¼Œåˆ™æ›´æ–°ç‚¹ä½
 
-    private static final int MAX_STACK_SIZE = 5; // ÅĞ¶Ï×îÓÅµãµÄ¼¯ºÏµÄÊı¾İÁ¿ÉÏÏŞ
+    private static final int MAX_STACK_SIZE = 5; // åˆ¤æ–­æœ€ä¼˜ç‚¹çš„é›†åˆçš„æ•°æ®é‡ä¸Šé™
 
-    private LocationType mLocationType = LocationType.ORIGINAL_EXTENSION; // ¶¨Î»×´Ì¬
+    private LocationType mLocationType = LocationType.ORIGINAL_EXTENSION; // å®šä½çŠ¶æ€
 
     private Context mContext;
 
@@ -79,7 +79,7 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
 
     private boolean isStarted = false;
 
-    private IExtensionLocation mExtensionLocation; // À©Õ¹ĞÔ¶¨Î»
+    private IExtensionLocation mExtensionLocation; // æ‰©å±•æ€§å®šä½
 
     private SenMaxListStack<TmpGpsInfo> senMaxListStack;
 
@@ -89,7 +89,7 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
         mContext = context;
         mOnLocationChangedListeners = new ArrayList<>();
         mOnAddressChangedListeners = new ArrayList<>();
-        setGeocodeReverse(new TianDTGeocodeReverse()); // ÉèÖÃÌìµØÍ¼µÄÄæµØÀí±àÂë
+        setGeocodeReverse(new TianDTGeocodeReverse()); // è®¾ç½®å¤©åœ°å›¾çš„é€†åœ°ç†ç¼–ç 
         mTimingTask = new GpsLocationTimingTask(this);
         senMaxListStack = new SenMaxListStack<>(MAX_STACK_SIZE);
     }
@@ -207,7 +207,7 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
 
             if (mLocationType != LocationType.ORIGINAL && mExtensionLocation != null && mExtensionLocation instanceof ExtensionContinuousLocation) {
                 try {
-                    mExtensionLocation.start(); // ¿ªÆôµÚÈı·½¶¨Î»
+                    mExtensionLocation.start(); // å¼€å¯ç¬¬ä¸‰æ–¹å®šä½
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -217,10 +217,10 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
                 locationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
 
                 mGpsStatusListener = new GpsStatusListener(this);
-                locationManager.addGpsStatusListener(mGpsStatusListener);// ÕìÌıGPS×´Ì¬
+                locationManager.addGpsStatusListener(mGpsStatusListener);// ä¾¦å¬GPSçŠ¶æ€
 
                 Location location = null;
-                if (AppUtil.hasGPSDevice(mContext)) { // Éè±¸´æÔÚGPS¶¨Î»µÄÓ²¼ş
+                if (AppUtil.hasGPSDevice(mContext)) { // è®¾å¤‡å­˜åœ¨GPSå®šä½çš„ç¡¬ä»¶
                     mGpsLocationListener = new GpsLocationListener(this, GpsInfoType.TYPE_GPS);
                     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME, MIN_DISTANCE, mGpsLocationListener);
                     location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -259,7 +259,7 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
         mTimingTask.stop();
 
         if (mExtensionLocation != null && mExtensionLocation instanceof ExtensionContinuousLocation) {
-            mExtensionLocation.stop(); // ½áÊøµÚÈı·½¶¨Î»
+            mExtensionLocation.stop(); // ç»“æŸç¬¬ä¸‰æ–¹å®šä½
         }
         mExtensionLocation = null;
 
@@ -300,22 +300,22 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
     }
 
     public void refreshLocation(GpsInfoType type, Location location) {
-        if (GpsInfoType.TYPE_FIRST == type) { // ´Ë´¦ÎªµÚÒ»¸ö»ñµÃµÄGPSµãÎ»£¨ÉÏ»Ø¼ÇÂ¼µÄGPSµã£©
+        if (GpsInfoType.TYPE_FIRST == type) { // æ­¤å¤„ä¸ºç¬¬ä¸€ä¸ªè·å¾—çš„GPSç‚¹ä½ï¼ˆä¸Šå›è®°å½•çš„GPSç‚¹ï¼‰
             TmpGpsInfo tmpGpsInfo = location(type, location);
             valueToPointInfo(tmpGpsInfo);
             sendLocationListener();
         } else {
             boolean flag = !isNotFirst;
-            isNotFirst = true; // ÉèÎª·ÇÊ×´Î¶¨Î»×´Ì¬
-            if (!hasGpsPoint() || flag) { // Èç¹ûÃ»ÓĞ»ñµÃ¹ıGPSÎ»ÖÃ£¬»òÕßÎ»ÖÃÎªÊ×´Î¶¨Î»µÄµã£¬ÔòÖØĞÂ¶¨Î»
+            isNotFirst = true; // è®¾ä¸ºéé¦–æ¬¡å®šä½çŠ¶æ€
+            if (!hasGpsPoint() || flag) { // å¦‚æœæ²¡æœ‰è·å¾—è¿‡GPSä½ç½®ï¼Œæˆ–è€…ä½ç½®ä¸ºé¦–æ¬¡å®šä½çš„ç‚¹ï¼Œåˆ™é‡æ–°å®šä½
                 TmpGpsInfo tmpGpsInfo = location(type, location);
                 add2MaxListStack(tmpGpsInfo);
                 valueToPointInfo(tmpGpsInfo);
                 sendLocationListener();
             } else {
                 TmpGpsInfo tmpGpsInfo = location(type, location);
-                add2MaxListStack(tmpGpsInfo); // ½«µãÎ»ĞÅÏ¢¼Óµ½¼¯ºÏÖĞ£¬²¢¼ÆËãÓëÉÏ´ÎµãÎ»µÄ¾àÀë
-                tmpGpsInfo = senMaxListStack.getGood(this); // »ñÈ¡×îÓÅµãÎ»
+                add2MaxListStack(tmpGpsInfo); // å°†ç‚¹ä½ä¿¡æ¯åŠ åˆ°é›†åˆä¸­ï¼Œå¹¶è®¡ç®—ä¸ä¸Šæ¬¡ç‚¹ä½çš„è·ç¦»
+                tmpGpsInfo = senMaxListStack.getGood(this); // è·å–æœ€ä¼˜ç‚¹ä½
                 valueToPointInfo(tmpGpsInfo);
                 sendLocationListener();
             }
@@ -326,7 +326,7 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
         if (mGeocodeReverse != null) mGeocodeReverse.refreshLocationInfo(lon, lat, locationInfo);
     }
 
-    // ¸³Öµµ½ÕıÊ½µÄ¶¨Î»ĞÅÏ¢ÉÏ
+    // èµ‹å€¼åˆ°æ­£å¼çš„å®šä½ä¿¡æ¯ä¸Š
     private void valueToPointInfo(TmpGpsInfo tmpGpsInfo) {
         if (tmpGpsInfo == null) return;
         mMapPoint = tmpGpsInfo.getMapPoint();
@@ -334,17 +334,17 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
     }
 
     @Override
-    public TmpGpsInfo getGood(List<TmpGpsInfo> dataList) { // Ìøµã´¦Àí¹Ø¼ü´úÂë
+    public TmpGpsInfo getGood(List<TmpGpsInfo> dataList) { // è·³ç‚¹å¤„ç†å…³é”®ä»£ç 
         int size = dataList.size();
 
         if (size == 0) {
             return null;
         } else if (size == 1) {
             return dataList.get(0);
-        } else if (size == 2) { // Ö»ÓĞÁ½ÌõÓĞĞ§Êı¾İ£¬µÚÒ»ÌõÊı¾İÎª³õÊ¼µã
+        } else if (size == 2) { // åªæœ‰ä¸¤æ¡æœ‰æ•ˆæ•°æ®ï¼Œç¬¬ä¸€æ¡æ•°æ®ä¸ºåˆå§‹ç‚¹
             return dataList.get(size - 1);
         } else {
-            // »ñÈ¡Ò»×éµãÖĞ ×îÓĞĞ§µÄµãÎ»
+            // è·å–ä¸€ç»„ç‚¹ä¸­ æœ€æœ‰æ•ˆçš„ç‚¹ä½
             TmpGpsInfo tmpGpsInfo = null;
             double minDistance = -1;
 
@@ -372,21 +372,21 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
             double distance = distance(mGpsPoint.getLongitude(), mGpsPoint.getLatitude(), tmpPoint.getLongitude(), tmpPoint.getLatitude());
             if (tmpPoint.getGpsInfoType() == GpsInfoType.TYPE_EXTENSION ? (tmpPoint.getTime() - mGpsPoint.getTime() > EXTENSION_BUFFER_TIME && distance > tmpPoint.getAccuracy() * 3 + EXTENSION_BUFFER_DISTANCE) : (distance > tmpPoint.getAccuracy() * 2)) {
                 return tmpGpsInfo;
-            } else { // ²»ĞèÒªË¢ĞÂµãÎ»
+            } else { // ä¸éœ€è¦åˆ·æ–°ç‚¹ä½
                 mGpsPoint.setSpeed(tmpPoint.getTime() - mGpsPoint.getTime() > STAY_TIME_INTERVAL ? 0 : tmpPoint.getSpeed());
                 return null;
             }
         }
     }
 
-    // ½«×îĞÂµãÎ»¼Óµ½¼¯ºÏÖĞ
+    // å°†æœ€æ–°ç‚¹ä½åŠ åˆ°é›†åˆä¸­
     private void add2MaxListStack(TmpGpsInfo tmpGpsInfo) {
         if (tmpGpsInfo != null) {
             senMaxListStack.push(tmpGpsInfo);
         }
     }
 
-    // ¼ÆËã¾­Î³¶ÈÖ®¼äµÄ¾àÀë
+    // è®¡ç®—ç»çº¬åº¦ä¹‹é—´çš„è·ç¦»
     private double distance(double lon1, double lat1, double lon2, double lat2) { // 6371004.0
         return 6378137.000 * Math.acos(1 - (Math.pow((Math.sin((90 - lat1) * Math.PI / 180) * Math.cos(lon1 * Math.PI / 180) - Math.sin((90 - lat2) * Math.PI / 180) * Math.cos(lon2 * Math.PI / 180)), 2) + Math.pow((Math.sin((90 - lat1) * Math.PI / 180) * Math.sin(lon1 * Math.PI / 180) - Math.sin((90 - lat2) * Math.PI / 180) * Math.sin(lon2 * Math.PI / 180)), 2) + Math.pow((Math.cos((90 - lat1) * Math.PI / 180) - Math.cos((90 - lat2) * Math.PI / 180)), 2)) / 2);
     }
@@ -394,7 +394,7 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
     private TmpGpsInfo location(GpsInfoType type, Location location) {
         if (location == null) return null;
 
-        double longitude = location.getLongitude(); // È¥µô¹ıĞ¡µÄµãÎ»
+        double longitude = location.getLongitude(); // å»æ‰è¿‡å°çš„ç‚¹ä½
         double latitude = location.getLatitude();
         if (Math.abs(longitude) < 0.1 && Math.abs(latitude) < 0.1) {
             return null;
@@ -408,7 +408,7 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
         gpsPoint.setLongitude(location.getLongitude());
         gpsPoint.setSpeed(location.getSpeed());
         gpsPoint.setTime(location.getTime());
-        gpsPoint.setGpsInfoType(type); // ÊÇ·ñÎªGPSµãÎ»
+        gpsPoint.setGpsInfoType(type); // æ˜¯å¦ä¸ºGPSç‚¹ä½
 
         MapPoint mapPoint = mICoordinateTransform != null ? mICoordinateTransform.gpsPoint2MapPoint(gpsPoint) : new MapPoint(location.getLongitude(), location.getLatitude(), location.getAltitude());
 
@@ -421,7 +421,7 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
         return new TmpGpsInfo(gpsPoint, mapPoint);
     }
 
-    // ·¢ËÍ´¦Àí¶¨Î»¼àÌı
+    // å‘é€å¤„ç†å®šä½ç›‘å¬
     synchronized void sendLocationListener() {
         if (hasGpsPoint()) {
             if (mGpsPoint.getSpeed() != 0 && new Date().getTime() - mGpsPoint.getTime() > STAY_TIME_INTERVAL) {
@@ -433,16 +433,16 @@ public class GpsLocationMain extends GpsLocation implements IMaxStack.IGoodCompa
         }
     }
 
-    // Ë¢ĞÂGPS×´Ì¬ºÍËÑµ½µÄÎÀĞÇÊıÁ¿ĞÅÏ¢
+    // åˆ·æ–°GPSçŠ¶æ€å’Œæœåˆ°çš„å«æ˜Ÿæ•°é‡ä¿¡æ¯
     void refreshGpsStatus(int gpsStatus, List<GpsSatellite> gpsSatellites) {
         this.mGpsSatellites = gpsSatellites;
         if (mOnSatelliteChangedListener != null)
             mOnSatelliteChangedListener.satelliteChanged(gpsStatus, gpsSatellites);
         if (mExtensionLocation == null || !(mExtensionLocation instanceof ExtensionContinuousLocation)) {
-            return;  // µÚÈı·½ÊµÊ±¶¨Î»Ã»ÓĞÉèÖÃÊ±£¬²»×ö²Ù×÷
+            return;  // ç¬¬ä¸‰æ–¹å®æ—¶å®šä½æ²¡æœ‰è®¾ç½®æ—¶ï¼Œä¸åšæ“ä½œ
         }
         if (gpsSatellites != null && gpsSatellites.size() > 3 && hasGpsPoint()) {
-            mExtensionLocation.stop();  // ËÑµ½µÄÎÀĞÇÊıÁ¿´óÓÚÈı¸öÊ±²ÅÄÜÎÀĞÇ¶¨Î»
+            mExtensionLocation.stop();  // æœåˆ°çš„å«æ˜Ÿæ•°é‡å¤§äºä¸‰ä¸ªæ—¶æ‰èƒ½å«æ˜Ÿå®šä½
         } else if (mLocationType != LocationType.ORIGINAL) {
             mExtensionLocation.start();
         }

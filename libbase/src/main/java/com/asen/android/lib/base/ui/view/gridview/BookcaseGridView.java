@@ -9,7 +9,7 @@ import android.widget.GridView;
 import android.widget.ListAdapter;
 
 /**
- * Êé¼ÜÊ½µÄgridView£¬ÄÚÈİ²»³¬³öÆÁÄ»Ê±Õı³£
+ * ä¹¦æ¶å¼çš„gridViewï¼Œå†…å®¹ä¸è¶…å‡ºå±å¹•æ—¶æ­£å¸¸
  *
  * @author Asen
  * @version v1.0
@@ -30,9 +30,9 @@ public class BookcaseGridView extends GridView {
     }
 
     /**
-     * ÉèÖÃÊé¼Ü±³¾°Í¼Æ¬
+     * è®¾ç½®ä¹¦æ¶èƒŒæ™¯å›¾ç‰‡
      *
-     * @param background Êé¼Ü±³¾°Í¼Æ¬
+     * @param background ä¹¦æ¶èƒŒæ™¯å›¾ç‰‡
      */
     public void setBackGround(Bitmap background) {
         this.background = background;

@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.util;
 
 /**
- * Õ» ¶¨Òå ½Ó¿Ú
+ * æ ˆ å®šä¹‰ æ¥å£
  *
  * @author Asen
  * @version v1.0
@@ -10,50 +10,50 @@ package com.asen.android.lib.base.core.util;
 public interface IStack<E> {
 
     /**
-     * Çå¿ÕÕ»Êı¾İ
+     * æ¸…ç©ºæ ˆæ•°æ®
      */
     void clear();
 
     /**
-     * Õ»ÖĞÊı¾İÊıÁ¿
+     * æ ˆä¸­æ•°æ®æ•°é‡
      *
      * @return size
      */
     int size();
 
     /**
-     * ÅĞ¶Ïµ±Ç°Õ»ÊÇ·ñÎª¿Õ
+     * åˆ¤æ–­å½“å‰æ ˆæ˜¯å¦ä¸ºç©º
      *
-     * @return trueÎª¿Õ
+     * @return trueä¸ºç©º
      */
     boolean isEmpty();
 
     /**
-     * ·µ»ØÕ»¶¥µÄ¶ÔÏó£¬µ«²»½«ÆäÒÆ³ı³öÕ»
+     * è¿”å›æ ˆé¡¶çš„å¯¹è±¡ï¼Œä½†ä¸å°†å…¶ç§»é™¤å‡ºæ ˆ
      *
-     * @return Õ»¶¥µÄ¶ÔÏó
+     * @return æ ˆé¡¶çš„å¯¹è±¡
      */
     E peek();
 
     /**
-     * ·µ»ØÕ»¶¥µÄ¶ÔÏó£¬²¢½«ÆäÒÆ³ı³öÕ»
+     * è¿”å›æ ˆé¡¶çš„å¯¹è±¡ï¼Œå¹¶å°†å…¶ç§»é™¤å‡ºæ ˆ
      *
-     * @return Õ»¶¥µÄ¶ÔÏó
+     * @return æ ˆé¡¶çš„å¯¹è±¡
      */
     E pop();
 
     /**
-     * Ñ¹Õ»
+     * å‹æ ˆ
      *
-     * @param object ¶ÔÏó
+     * @param object å¯¹è±¡
      */
     void push(E object);
 
     /**
-     * ²éÑ¯¶ÔÏóÔÚÕ»ÖĞµÄµÚ¼¸²ã£¬´ÓÕ»¶¥Êı
+     * æŸ¥è¯¢å¯¹è±¡åœ¨æ ˆä¸­çš„ç¬¬å‡ å±‚ï¼Œä»æ ˆé¡¶æ•°
      *
-     * @param o ĞèÒª²éÑ¯µÄ¶ÔÏó
-     * @return ²ãÊı
+     * @param o éœ€è¦æŸ¥è¯¢çš„å¯¹è±¡
+     * @return å±‚æ•°
      */
     int search(Object o);
 

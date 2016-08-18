@@ -3,7 +3,7 @@ package com.asen.android.lib.base.tool.util;
 import android.os.Build;
 
 /**
- * Androidϵͳ�汾�ж�
+ * Android系统版本判断
  *
  * @author Asen
  * @version v1.0

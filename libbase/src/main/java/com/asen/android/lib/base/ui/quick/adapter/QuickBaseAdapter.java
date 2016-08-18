@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ¿ìËÙBaseAdapter£¨ĞèÒª×Ô¼ºÈ¥findView£©
+ * å¿«é€ŸBaseAdapterï¼ˆéœ€è¦è‡ªå·±å»findViewï¼‰
  *
  * @author Asen
  * @version v1.0
@@ -19,26 +19,26 @@ import java.util.List;
 abstract class QuickBaseAdapter<T> extends BaseAdapter {
 
     /**
-     * AndroidÉÏÏÂÎÄ
+     * Androidä¸Šä¸‹æ–‡
      */
     protected Context mContext;
 
     /**
-     * ²¼¾Ö×ÊÔ´
+     * å¸ƒå±€èµ„æº
      */
     private int mLayoutResId;
 
     /**
-     * Êı¾İÔ´
+     * æ•°æ®æº
      */
-    private List<T> mDataList; // Êı¾İÔ´
+    private List<T> mDataList; // æ•°æ®æº
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param context     AndroidÉÏÏÂÎÄ
-     * @param layoutResId ²¼¾Ö×ÊÔ´
-     * @param data        Êı¾İÔ´
+     * @param context     Androidä¸Šä¸‹æ–‡
+     * @param layoutResId å¸ƒå±€èµ„æº
+     * @param data        æ•°æ®æº
      */
     QuickBaseAdapter(Context context, int layoutResId, List<T> data) {
         mContext = context;
@@ -47,18 +47,18 @@ abstract class QuickBaseAdapter<T> extends BaseAdapter {
     }
 
     /**
-     * »ñµÃÊı¾İ¼¯
+     * è·å¾—æ•°æ®é›†
      *
-     * @return Êı¾İ¼¯
+     * @return æ•°æ®é›†
      */
     protected List<T> getData() {
         return mDataList;
     }
 
     /**
-     * Ìæ»»Êı¾İ²¢Ë¢ĞÂ
+     * æ›¿æ¢æ•°æ®å¹¶åˆ·æ–°
      *
-     * @param data Êı¾İ¼¯
+     * @param data æ•°æ®é›†
      */
     public void replaceData(List<T> data) {
         if (data == null) return;
@@ -105,11 +105,11 @@ abstract class QuickBaseAdapter<T> extends BaseAdapter {
     }
 
     /**
-     * Ìî³äÄÚÈİ
+     * å¡«å……å†…å®¹
      *
-     * @param helper   ¿ìËÙholder°ïÖúÀà
-     * @param info     Êı¾İĞÅÏ¢£¨µ±position > size-1 Ê±£¬Îªnull£©
-     * @param position Êı¾İÏÂ±ê
+     * @param helper   å¿«é€Ÿholderå¸®åŠ©ç±»
+     * @param info     æ•°æ®ä¿¡æ¯ï¼ˆå½“position > size-1 æ—¶ï¼Œä¸ºnullï¼‰
+     * @param position æ•°æ®ä¸‹æ ‡
      */
     public abstract void convert(HolderHelper helper, T info, int position);
 

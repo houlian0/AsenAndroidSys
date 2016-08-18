@@ -13,7 +13,7 @@ import org.json.JSONObject;
 import java.net.URLEncoder;
 
 /**
- * ÌìµØÍ¼ÄæµØÀí±àÂë
+ * å¤©åœ°å›¾é€†åœ°ç†ç¼–ç 
  *
  * @author Asen
  * @version v1.0
@@ -21,26 +21,26 @@ import java.net.URLEncoder;
  */
 public class TianDTGeocodeReverse extends GeocodeReverse {
 
-    private static final double MIN_DISTANCE = 5.0; // ×îĞ¡Ë¢ĞÂÎ»ÖÃĞÅÏ¢µÄ¾àÀë
+    private static final double MIN_DISTANCE = 5.0; // æœ€å°åˆ·æ–°ä½ç½®ä¿¡æ¯çš„è·ç¦»
 
     private static final String TAG = TianDTGeocodeReverse.class.getName();
 
-    private SenAsyncTask<Double, Void, GeoAddressInfo> mSenAsyncTask; // Òì²½¼ÓÔØÀà
+    private SenAsyncTask<Double, Void, GeoAddressInfo> mSenAsyncTask; // å¼‚æ­¥åŠ è½½ç±»
 
     @Override
     public void reverseGeocode(GpsPoint gpsPoint) {
-        // ÕıÔÚ»ñÈ¡Î»ÖÃĞÅÏ¢Ê±£¬²»ÖØ¸´Ö´ĞĞ
+        // æ­£åœ¨è·å–ä½ç½®ä¿¡æ¯æ—¶ï¼Œä¸é‡å¤æ‰§è¡Œ
         if (mSenAsyncTask != null) return;
 
         mSenAsyncTask = new SenAsyncTask<Double, Void, GeoAddressInfo>() {
             @Override
             protected GeoAddressInfo doInBackground(Double... params) throws RuntimeException {
-                // ¼ì²âÊÇ·ñĞèÒªÖØĞÂ»ñÈ¡Î»ÖÃĞÅÏ¢
+                // æ£€æµ‹æ˜¯å¦éœ€è¦é‡æ–°è·å–ä½ç½®ä¿¡æ¯
                 if (!checkNeadRequest(params[0], params[1])) return null;
 
                 String result;
                 try {
-                    result = get(params[0], params[1]); // getÇëÇó£¬»ñÈ¡½á¹û
+                    result = get(params[0], params[1]); // getè¯·æ±‚ï¼Œè·å–ç»“æœ
                 } catch (Exception e) {
                     e.printStackTrace();
                     throw new RuntimeException("network connection is failed");
@@ -82,9 +82,9 @@ public class TianDTGeocodeReverse extends GeocodeReverse {
     }
 
     /**
-     * ÅĞ¶ÏÊÇ·ñĞèÒªÍøÂçÇëÇóµØÖ·ĞÅÏ¢£¬·Ç³£½üÊ±·µ»Øfalse
+     * åˆ¤æ–­æ˜¯å¦éœ€è¦ç½‘ç»œè¯·æ±‚åœ°å€ä¿¡æ¯ï¼Œéå¸¸è¿‘æ—¶è¿”å›false
      *
-     * @return ÊÇ·ñĞèÒªÍøÂçÇëÇóµØÖ·ĞÅÏ¢
+     * @return æ˜¯å¦éœ€è¦ç½‘ç»œè¯·æ±‚åœ°å€ä¿¡æ¯
      */
     private boolean checkNeadRequest(double lon, double lat) {
         if (Double.isNaN(mLon) || Double.isNaN(mLat)) {
@@ -94,7 +94,7 @@ public class TianDTGeocodeReverse extends GeocodeReverse {
         }
 
         double distance = distance(mLon, mLat, lon, lat);
-        if (distance < MIN_DISTANCE) { // ¾àÀëĞ¡ÓÚ5m£¨´óÔ¼¾àÀë£©
+        if (distance < MIN_DISTANCE) { // è·ç¦»å°äº5mï¼ˆå¤§çº¦è·ç¦»ï¼‰
             return false;
         } else {
             mLon = lon;
@@ -103,17 +103,17 @@ public class TianDTGeocodeReverse extends GeocodeReverse {
         }
     }
 
-    // ¼ÆËã¾­Î³¶ÈÖ®¼äµÄ¾àÀë
+    // è®¡ç®—ç»çº¬åº¦ä¹‹é—´çš„è·ç¦»
     private double distance(double lon1, double lat1, double lon2, double lat2) { // 6371004.0
         return 6378137.000 * Math.acos(1 - (Math.pow((Math.sin((90 - lat1) * Math.PI / 180) * Math.cos(lon1 * Math.PI / 180) - Math.sin((90 - lat2) * Math.PI / 180) * Math.cos(lon2 * Math.PI / 180)), 2) + Math.pow((Math.sin((90 - lat1) * Math.PI / 180) * Math.sin(lon1 * Math.PI / 180) - Math.sin((90 - lat2) * Math.PI / 180) * Math.sin(lon2 * Math.PI / 180)), 2) + Math.pow((Math.cos((90 - lat1) * Math.PI / 180) - Math.cos((90 - lat2) * Math.PI / 180)), 2)) / 2);
     }
 
     /**
-     * getÇëÇó»ñµÃÄæµØÀí±àÂë½á¹û
+     * getè¯·æ±‚è·å¾—é€†åœ°ç†ç¼–ç ç»“æœ
      *
-     * @param lon ¾­¶È
-     * @param lat Î³¶È
-     * @return ·µ»ØÍøÂçÇëÇó½á¹û
+     * @param lon ç»åº¦
+     * @param lat çº¬åº¦
+     * @return è¿”å›ç½‘ç»œè¯·æ±‚ç»“æœ
      * @throws Exception
      */
     private String get(double lon, double lat) throws Exception {
@@ -123,10 +123,10 @@ public class TianDTGeocodeReverse extends GeocodeReverse {
     }
 
     /**
-     * ½âÎöJSON´®
+     * è§£æJSONä¸²
      *
-     * @param result ÍøÂçÇëÇó½á¹û
-     * @return ·µ»Ø½á¹û¶ÔÏó
+     * @param result ç½‘ç»œè¯·æ±‚ç»“æœ
+     * @return è¿”å›ç»“æœå¯¹è±¡
      * @throws JSONException
      */
     private GeoAddressInfo result2AddressInfo(String result) throws JSONException {

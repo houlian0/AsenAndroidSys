@@ -28,7 +28,7 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
 /**
- * Zip°üÑ¹Ëõ¹¤¾ßÀà
+ * ZipåŒ…å‹ç¼©å·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -37,11 +37,11 @@ import javax.crypto.spec.PBEParameterSpec;
 public class ZipUtil {
 
     /**
-     * Ñ¹Ëõ
+     * å‹ç¼©
      *
-     * @param directory ÒªÑ¹ËõµÄÎÄ¼ş¼ĞFile
-     * @param zipFile   ±£´æµÄzip°üFile
-     * @param password  Ñ¹ËõÊ±µÄÃæ
+     * @param directory è¦å‹ç¼©çš„æ–‡ä»¶å¤¹File
+     * @param zipFile   ä¿å­˜çš„zipåŒ…File
+     * @param password  å‹ç¼©æ—¶çš„é¢
      * @throws IOException
      * @throws InvalidKeySpecException
      * @throws InvalidAlgorithmParameterException
@@ -78,11 +78,11 @@ public class ZipUtil {
     }
 
     /**
-     * ½âÑ¹
+     * è§£å‹
      *
-     * @param zipFile   Òª½âÑ¹µÄzip°üFile
-     * @param directory ½âÑ¹µ½µÄÎÄ¼ş¼ĞFile
-     * @param password  ½âÑ¹µÄÃÜÂë
+     * @param zipFile   è¦è§£å‹çš„zipåŒ…File
+     * @param directory è§£å‹åˆ°çš„æ–‡ä»¶å¤¹File
+     * @param password  è§£å‹çš„å¯†ç 
      * @throws IOException
      * @throws InvalidKeySpecException
      * @throws InvalidAlgorithmParameterException
@@ -130,10 +130,10 @@ public class ZipUtil {
     }
 
     /**
-     * Ñ¹Ëõ
+     * å‹ç¼©
      *
-     * @param directory ÒªÑ¹ËõµÄÎÄ¼ş¼ĞFile
-     * @param zipFile   ±£´æµÄzip°üFile
+     * @param directory è¦å‹ç¼©çš„æ–‡ä»¶å¤¹File
+     * @param zipFile   ä¿å­˜çš„zipåŒ…File
      * @throws IOException
      */
     public static void zip(File directory, File zipFile) throws IOException {
@@ -165,10 +165,10 @@ public class ZipUtil {
     }
 
     /**
-     * ½âÑ¹
+     * è§£å‹
      *
-     * @param zipFile   Òª½âÑ¹µÄzip°üFile
-     * @param directory ½âÑ¹µ½µÄÎÄ¼ş¼ĞFile
+     * @param zipFile   è¦è§£å‹çš„zipåŒ…File
+     * @param directory è§£å‹åˆ°çš„æ–‡ä»¶å¤¹File
      * @throws IOException
      */
     public static void unzip(File zipFile, File directory) throws IOException {

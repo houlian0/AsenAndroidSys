@@ -3,7 +3,7 @@ package com.asen.android.lib.base.core.network.urlconn;
 import java.io.DataOutputStream;
 
 /**
- * Á÷ĞÅÏ¢´«µİµÄ¼àÌı½Ó¿Ú
+ * æµä¿¡æ¯ä¼ é€’çš„ç›‘å¬æ¥å£
  *
  * @author Asen
  * @version v1.0
@@ -12,9 +12,9 @@ import java.io.DataOutputStream;
 public interface OnHttpOutputStreamListener {
 
     /**
-     * ¿ÉÒÔÔÚµ±Ç°·½·¨Àï´«µİÈÎÒâĞÅÏ¢µ½·şÎñÆ÷
+     * å¯ä»¥åœ¨å½“å‰æ–¹æ³•é‡Œä¼ é€’ä»»æ„ä¿¡æ¯åˆ°æœåŠ¡å™¨
      *
-     * @param outputStream Êä³öÁ÷
+     * @param outputStream è¾“å‡ºæµ
      */
     public void outputData(DataOutputStream outputStream);
 

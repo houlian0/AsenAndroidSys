@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 /**
- * Ê±¼ä¸Ä±ä¹ã²¥¼àÌı
+ * æ—¶é—´æ”¹å˜å¹¿æ’­ç›‘å¬
  *
  * @author Asen
  * @version v1.0
@@ -14,17 +14,17 @@ import android.content.IntentFilter;
  */
 public class TimeChangedBroadcast implements IBroadcastDefinition {
 
-    private Context mContext; // AndroidÉÏÏÂÎÄ
+    private Context mContext; // Androidä¸Šä¸‹æ–‡
 
-    private OnTimeChangeListener mOnTimeChangeListener; // Ê±¼ä¸Ä±äµÄ¼àÌı½Ó¿Ú
+    private OnTimeChangeListener mOnTimeChangeListener; // æ—¶é—´æ”¹å˜çš„ç›‘å¬æ¥å£
 
-    private TimeReceiver mRecevier; // ¹ã²¥
+    private TimeReceiver mRecevier; // å¹¿æ’­
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param context              AndroidÉÏÏÂÎÄ
-     * @param onTimeChangeListener Ê±¼ä¸Ä±äµÄ¼àÌı½Ó¿Ú
+     * @param context              Androidä¸Šä¸‹æ–‡
+     * @param onTimeChangeListener æ—¶é—´æ”¹å˜çš„ç›‘å¬æ¥å£
      */
     public TimeChangedBroadcast(Context context, OnTimeChangeListener onTimeChangeListener) {
         mContext = context;
@@ -33,18 +33,18 @@ public class TimeChangedBroadcast implements IBroadcastDefinition {
     }
 
     /**
-     * Ê±¼ä¸Ä±äÊ±µÄ¼àÌı
+     * æ—¶é—´æ”¹å˜æ—¶çš„ç›‘å¬
      */
     public interface OnTimeChangeListener {
 
         /**
-         * Ê±¼ä¼àÌı
+         * æ—¶é—´ç›‘å¬
          */
         void timeChanged();
     }
 
     /**
-     * ¿ªÊ¼¼àÌı
+     * å¼€å§‹ç›‘å¬
      */
     @Override
     public void startWatch() {
@@ -54,7 +54,7 @@ public class TimeChangedBroadcast implements IBroadcastDefinition {
     }
 
     /**
-     * ½áÊø¼àÌı
+     * ç»“æŸç›‘å¬
      */
     @Override
     public void stopWatch() {

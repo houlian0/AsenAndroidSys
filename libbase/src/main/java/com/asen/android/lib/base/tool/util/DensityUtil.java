@@ -5,7 +5,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
 /**
- * ÓëÏñËØÃÜ¶ÈÏà¹ØµÄ¹¤¾ßÀà
+ * ä¸åƒç´ å¯†åº¦ç›¸å…³çš„å·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -14,11 +14,11 @@ import android.util.TypedValue;
 public class DensityUtil {
 
     /**
-     * ÃèÊö£ºdip×ª»»Îªpx.
+     * æè¿°ï¼šdipè½¬æ¢ä¸ºpx.
      *
      * @param context  the context
      * @param dipValue the dip value
-     * @return pxÖµ
+     * @return pxå€¼
      */
     public static float dip2px(Context context, float dipValue) {
         DisplayMetrics mDisplayMetrics = AppUtil.getDisplayMetrics(context);
@@ -26,11 +26,11 @@ public class DensityUtil {
     }
 
     /**
-     * ÃèÊö£ºpx×ª»»Îªdip.
+     * æè¿°ï¼špxè½¬æ¢ä¸ºdip.
      *
      * @param context the context
      * @param pxValue the px value
-     * @return dipÖµ
+     * @return dipå€¼
      */
     public static float px2dip(Context context, float pxValue) {
         DisplayMetrics mDisplayMetrics = AppUtil.getDisplayMetrics(context);
@@ -38,11 +38,11 @@ public class DensityUtil {
     }
 
     /**
-     * ÃèÊö£ºsp×ª»»Îªpx.
+     * æè¿°ï¼šspè½¬æ¢ä¸ºpx.
      *
      * @param context the context
      * @param spValue the sp value
-     * @return spÖµ
+     * @return spå€¼
      */
     public static float sp2px(Context context, float spValue) {
         DisplayMetrics mDisplayMetrics = AppUtil.getDisplayMetrics(context);
@@ -51,11 +51,11 @@ public class DensityUtil {
     }
 
     /**
-     * ÃèÊö£ºpx×ª»»Îªsp.
+     * æè¿°ï¼špxè½¬æ¢ä¸ºsp.
      *
      * @param context the context
      * @param pxValue the px value
-     * @return spÖµ
+     * @return spå€¼
      */
     public static float px2sp(Context context, float pxValue) {
         DisplayMetrics mDisplayMetrics = AppUtil.getDisplayMetrics(context);
@@ -63,12 +63,12 @@ public class DensityUtil {
     }
 
     /**
-     * TypedValue¹Ù·½Ô´ÂëÖĞµÄËã·¨£¬ÈÎÒâµ¥Î»×ª»»ÎªPXµ¥Î»
+     * TypedValueå®˜æ–¹æºç ä¸­çš„ç®—æ³•ï¼Œä»»æ„å•ä½è½¬æ¢ä¸ºPXå•ä½
      *
      * @param unit    TypedValue.COMPLEX_UNIT_DIP
-     * @param value   ¶ÔÓ¦µ¥Î»µÄÖµ
-     * @param metrics ÃÜ¶È
-     * @return pxÖµ
+     * @param value   å¯¹åº”å•ä½çš„å€¼
+     * @param metrics å¯†åº¦
+     * @return pxå€¼
      */
     public static float applyDimension(int unit, float value, DisplayMetrics metrics) {
         switch (unit) {

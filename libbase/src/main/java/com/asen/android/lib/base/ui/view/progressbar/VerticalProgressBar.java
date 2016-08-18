@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.ProgressBar;
 
 /**
- * ´¹Ö±µÄProgressBar
+ * å‚ç›´çš„ProgressBar
  *
  * @author Asen
  * @version v1.0
@@ -28,13 +28,13 @@ public class VerticalProgressBar extends ProgressBar {
 
     @Override
     protected synchronized void onDraw(Canvas canvas) {
-        // canvas.rotate(-90);// ·´×ª90¶È£¬½«Ë®Æ½ProgressBarÊúÆğÀ´
+        // canvas.rotate(-90);// åè½¬90åº¦ï¼Œå°†æ°´å¹³ProgressBarç«–èµ·æ¥
         // canvas.translate(-getHeight(), 0);//
-        // ½«¾­¹ıĞı×ªºóµÃµ½µÄVerticalProgressBarÒÆµ½ÕıÈ·µÄÎ»ÖÃ,×¢Òâ¾­Ğı×ª<span
+        // å°†ç»è¿‡æ—‹è½¬åå¾—åˆ°çš„VerticalProgressBarç§»åˆ°æ­£ç¡®çš„ä½ç½®,æ³¨æ„ç»æ—‹è½¬<span
         // style="white-space: pre;">
-        // </span> ºó¿í¸ßÖµ»¥»»
+        // </span> åå®½é«˜å€¼äº’æ¢
 
-        canvas.rotate(90);// Õı×ª90¶È£¬½«Ë®Æ½ProgressBarÊúÆğÀ´
+        canvas.rotate(90);// æ­£è½¬90åº¦ï¼Œå°†æ°´å¹³ProgressBarç«–èµ·æ¥
         canvas.translate(0, -getWidth());
 
         super.onDraw(canvas);
@@ -43,12 +43,12 @@ public class VerticalProgressBar extends ProgressBar {
     @Override
     protected synchronized void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(heightMeasureSpec, widthMeasureSpec);
-        setMeasuredDimension(getMeasuredHeight(), getMeasuredWidth());// »¥»»¿í¸ßÖµ
+        setMeasuredDimension(getMeasuredHeight(), getMeasuredWidth());// äº’æ¢å®½é«˜å€¼
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(h, w, oldw, oldh);// »¥»»¿í¸ßÖµ
+        super.onSizeChanged(h, w, oldw, oldh);// äº’æ¢å®½é«˜å€¼
         // super.onSizeChanged(w, h, oldw, oldh);
     }
 }

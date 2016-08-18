@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.network.download.exception;
 
 /**
- * ÏÂÔØµÄ´íÎóÀàĞÍ½Ó¿Ú¶¨Òå
+ * ä¸‹è½½çš„é”™è¯¯ç±»å‹æ¥å£å®šä¹‰
  *
  * @author Asen
  * @version v1.0
@@ -10,57 +10,57 @@ package com.asen.android.lib.base.core.network.download.exception;
 public interface IDownErrorCode {
 
     /**
-     * ÍøÂçÁ¬½ÓÊ§°Ü
+     * ç½‘ç»œè¿æ¥å¤±è´¥
      */
     int NETWORK_CONN_ERROR = 0x01;
 
     /**
-     * ÎÄ¼ş´óĞ¡Îª0
+     * æ–‡ä»¶å¤§å°ä¸º0
      */
     int FILE_LENGTH_ZERO = 0x02;
 
     /**
-     * ÎÄ¼ş´´½¨Ê§°Ü
+     * æ–‡ä»¶åˆ›å»ºå¤±è´¥
      */
     int FILE_CREATE_ERROR = 0x03;
 
     /**
-     * ÏÂÔØÕıÔÚ½øĞĞÖĞ
+     * ä¸‹è½½æ­£åœ¨è¿›è¡Œä¸­
      */
     int DOWNLOAD_IS_STARTED = 0x04;
 
     /**
-     * ÎÄ¼şÅäÖÃĞÅÏ¢±¨´í
+     * æ–‡ä»¶é…ç½®ä¿¡æ¯æŠ¥é”™
      */
     int FILE_CONFIG_ERROR = 0x05;
 
     /**
-     * ÍøÂçÁ¬½ÓÊ§°Ü
+     * ç½‘ç»œè¿æ¥å¤±è´¥
      */
     String getNetworkConnErrorStr();
 
     /**
-     * ÎÄ¼ş´óĞ¡ÎªÁã
+     * æ–‡ä»¶å¤§å°ä¸ºé›¶
      */
     String getFileLengthZeroStr();
 
     /**
-     * ÎÄ¼ş´´½¨Ê§°Ü
+     * æ–‡ä»¶åˆ›å»ºå¤±è´¥
      */
     String getFileCreateErrorStr();
 
     /**
-     * ÏÂÔØÕıÔÚ½øĞĞÖĞ
+     * ä¸‹è½½æ­£åœ¨è¿›è¡Œä¸­
      */
     String getDownloadIsStartedStr();
 
     /**
-     * ÎÄ¼şÅäÖÃĞÅÏ¢±¨´í
+     * æ–‡ä»¶é…ç½®ä¿¡æ¯æŠ¥é”™
      */
     String getFileConfigErrorStr();
 
     /**
-     * Î´Öª´íÎóĞÅÏ¢
+     * æœªçŸ¥é”™è¯¯ä¿¡æ¯
      */
     String getUnknownErrorStr();
 

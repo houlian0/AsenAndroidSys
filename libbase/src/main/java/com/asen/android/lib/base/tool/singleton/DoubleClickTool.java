@@ -7,7 +7,7 @@ import com.asen.android.lib.base.tool.util.ToastUtil;
 import java.util.Date;
 
 /**
- * Á½´Î·µ»Ø¼üÍË³öÓ¦ÓÃµÄÅĞ¶ÏÀà£¬µ÷ÓÃisDoubleClick()·½·¨¼´¿É
+ * ä¸¤æ¬¡è¿”å›é”®é€€å‡ºåº”ç”¨çš„åˆ¤æ–­ç±»ï¼Œè°ƒç”¨isDoubleClick()æ–¹æ³•å³å¯
  *
  * @author Asen
  * @version v1.0
@@ -21,7 +21,7 @@ public class DoubleClickTool {
 
     private long preTime;
 
-    private long totalTime = 2000;// Ë«µã»÷£¬¼ä¸ôÁ½Ãë
+    private long totalTime = 2000;// åŒç‚¹å‡»ï¼Œé—´éš”ä¸¤ç§’
 
     private DoubleClickTool(Context context) {
         _context = context;
@@ -29,7 +29,7 @@ public class DoubleClickTool {
     }
 
     /**
-     * »ñÈ¡DoubleClickToolÊµÀı ,µ¥ÀıÄ£Ê½
+     * è·å–DoubleClickToolå®ä¾‹ ,å•ä¾‹æ¨¡å¼
      */
     public static DoubleClickTool getInstance(Context context) {
         if (null == tt) {
@@ -43,35 +43,35 @@ public class DoubleClickTool {
     }
 
     /**
-     * µ¯³öToastÏÔÊ¾ĞÅÏ¢
+     * å¼¹å‡ºToastæ˜¾ç¤ºä¿¡æ¯
      *
-     * @param message ÒªÕ¹Ê¾µÄĞÅÏ¢ÄÚÈİ
+     * @param message è¦å±•ç¤ºçš„ä¿¡æ¯å†…å®¹
      */
     void showMessage(String message) {
         ToastUtil.showToast(_context, message);
     }
 
     /**
-     * ÅĞ¶ÏÊÇ·ñÊÇÁ¬ĞøµÄµÚ¶ş´Îµã»÷£¬Èç¹û²»ÊÇµÄ»°£¬µ¯³ö"ÔÙ°´Ò»´Î·µ»Ø¼ü¹Ø±Õ³ÌĞò"µÄ¶Ô»°¿ò
+     * åˆ¤æ–­æ˜¯å¦æ˜¯è¿ç»­çš„ç¬¬äºŒæ¬¡ç‚¹å‡»ï¼Œå¦‚æœä¸æ˜¯çš„è¯ï¼Œå¼¹å‡º"å†æŒ‰ä¸€æ¬¡è¿”å›é”®å…³é—­ç¨‹åº"çš„å¯¹è¯æ¡†
      *
-     * @return ÊÇ·ñÒÑ¾­ÊÇµÚ¶ş´Îµã»÷¡£ÊÇµÄ»°£¬·µ»Øtrue£¬·ñÔò·µ»Øfalse¡£
+     * @return æ˜¯å¦å·²ç»æ˜¯ç¬¬äºŒæ¬¡ç‚¹å‡»ã€‚æ˜¯çš„è¯ï¼Œè¿”å›trueï¼Œå¦åˆ™è¿”å›falseã€‚
      */
     public boolean isDoubleClick() {
         long nowTime = new Date().getTime();
         if (nowTime < preTime + totalTime) {
             return true;
         } else {
-            showMessage("ÔÙ°´Ò»´Î·µ»Ø¼ü¹Ø±Õ³ÌĞò");
+            showMessage("å†æŒ‰ä¸€æ¬¡è¿”å›é”®å…³é—­ç¨‹åº");
             preTime = nowTime;
             return false;
         }
     }
 
     /**
-     * ÅĞ¶ÏÊÇ·ñÊÇÁ¬ĞøµÄµÚ¶ş´Îµã»÷£¬Èç¹û²»ÊÇµÄ»°£¬µ¯³ö"ÔÙ°´Ò»´Î·µ»Ø¼ü¹Ø±Õ³ÌĞò"µÄ¶Ô»°¿ò
+     * åˆ¤æ–­æ˜¯å¦æ˜¯è¿ç»­çš„ç¬¬äºŒæ¬¡ç‚¹å‡»ï¼Œå¦‚æœä¸æ˜¯çš„è¯ï¼Œå¼¹å‡º"å†æŒ‰ä¸€æ¬¡è¿”å›é”®å…³é—­ç¨‹åº"çš„å¯¹è¯æ¡†
      *
-     * @param message ´«Èë²»ÊÇµÚ¶ş´Îµã»÷Ê±µÄÌáÊ¾ĞÅÏ¢
-     * @return ÊÇ·ñÒÑ¾­ÊÇµÚ¶ş´Îµã»÷¡£ÊÇµÄ»°£¬·µ»Øtrue£¬·ñÔò·µ»Øfalse¡£
+     * @param message ä¼ å…¥ä¸æ˜¯ç¬¬äºŒæ¬¡ç‚¹å‡»æ—¶çš„æç¤ºä¿¡æ¯
+     * @return æ˜¯å¦å·²ç»æ˜¯ç¬¬äºŒæ¬¡ç‚¹å‡»ã€‚æ˜¯çš„è¯ï¼Œè¿”å›trueï¼Œå¦åˆ™è¿”å›falseã€‚
      */
     public boolean isDoubleClick(String message) {
         long nowTime = new Date().getTime();

@@ -4,7 +4,7 @@ import com.asen.android.lib.base.core.gps.bean.GpsPoint;
 import com.asen.android.lib.base.core.gps.bean.LocationInfo;
 
 /**
- * ÄæµØÀí±àÂë½Ó¿Ú¶¨Òå
+ * é€†åœ°ç†ç¼–ç æ¥å£å®šä¹‰
  *
  * @author Asen
  * @version v1.0
@@ -13,16 +13,16 @@ import com.asen.android.lib.base.core.gps.bean.LocationInfo;
 interface IGeocodeReverse {
 
     /**
-     * »ñµÃµØÖ·ĞÅÏ¢
+     * è·å¾—åœ°å€ä¿¡æ¯
      *
-     * @return µØÖ·ĞÅÏ¢
+     * @return åœ°å€ä¿¡æ¯
      */
     LocationInfo getLocationInfo();
 
     /**
-     * ÄæµØÀí±àÂë
+     * é€†åœ°ç†ç¼–ç 
      *
-     * @param gpsPoint gpsµãÎ»
+     * @param gpsPoint gpsç‚¹ä½
      */
     void reverseGeocode(GpsPoint gpsPoint);
 

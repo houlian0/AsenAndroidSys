@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.network.download.bean;
 
 /**
- * ÏÂÔØµ¥Ïß³ÌµÄ½ø¶ÈĞÅÏ¢
+ * ä¸‹è½½å•çº¿ç¨‹çš„è¿›åº¦ä¿¡æ¯
  *
  * @author Asen
  * @version v1.0
@@ -10,30 +10,30 @@ package com.asen.android.lib.base.core.network.download.bean;
 public class DownProgressItem {
 
     /**
-     * µ±Ç°Ïß³ÌµÄÎÄ¼şÏÂÔØÆğÊ¼Î»ÖÃ
+     * å½“å‰çº¿ç¨‹çš„æ–‡ä»¶ä¸‹è½½èµ·å§‹ä½ç½®
      */
     private long startSeek;
 
     /**
-     * µ±Ç°Ïß³ÌµÄÎÄ¼şÏÂÔØÖÕµãÎ»ÖÃ
+     * å½“å‰çº¿ç¨‹çš„æ–‡ä»¶ä¸‹è½½ç»ˆç‚¹ä½ç½®
      */
     private long endSeek;
 
     /**
-     * ¸Ã½ø¶ÈÖĞÒÑ¾­ÏÂÔØ×Ö½Ú´óĞ¡
+     * è¯¥è¿›åº¦ä¸­å·²ç»ä¸‹è½½å­—èŠ‚å¤§å°
      */
     private long downSize;
 
     /**
-     * µ±Ç°Ïß³ÌÊÇ·ñÕıÔÚÔËĞĞ
+     * å½“å‰çº¿ç¨‹æ˜¯å¦æ­£åœ¨è¿è¡Œ
      */
     private boolean isRunning = false;
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param startSeek ÎÄ¼şÏÂÔØµÄÆğÊ¼Î»ÖÃ
-     * @param endSeek   ÎÄ¼şÏÂÔØµÄÖÕÖ¹Î»ÖÃ
+     * @param startSeek æ–‡ä»¶ä¸‹è½½çš„èµ·å§‹ä½ç½®
+     * @param endSeek   æ–‡ä»¶ä¸‹è½½çš„ç»ˆæ­¢ä½ç½®
      */
     public DownProgressItem(long startSeek, long endSeek) {
         this.startSeek = startSeek;
@@ -41,11 +41,11 @@ public class DownProgressItem {
     }
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param startSeek ÎÄ¼şÏÂÔØµÄÆğÊ¼Î»ÖÃ
-     * @param endSeek   ÎÄ¼şÏÂÔØµÄÖÕÖ¹Î»ÖÃ
-     * @param downSize  µ±Ç°Ïß³ÌÒÑ¾­ÏÂÔØµÄÎÄ¼şÎ»ÖÃ
+     * @param startSeek æ–‡ä»¶ä¸‹è½½çš„èµ·å§‹ä½ç½®
+     * @param endSeek   æ–‡ä»¶ä¸‹è½½çš„ç»ˆæ­¢ä½ç½®
+     * @param downSize  å½“å‰çº¿ç¨‹å·²ç»ä¸‹è½½çš„æ–‡ä»¶ä½ç½®
      */
     public DownProgressItem(long startSeek, long endSeek, long downSize) {
         this.startSeek = startSeek;
@@ -54,54 +54,54 @@ public class DownProgressItem {
     }
 
     /**
-     * »ñÈ¡ÎÄ¼şÏÂÔØµÄÆğÊ¼Î»ÖÃ
+     * è·å–æ–‡ä»¶ä¸‹è½½çš„èµ·å§‹ä½ç½®
      *
-     * @return ÎÄ¼şÏÂÔØµÄÆğÊ¼Î»ÖÃ
+     * @return æ–‡ä»¶ä¸‹è½½çš„èµ·å§‹ä½ç½®
      */
     public long getStartSeek() {
         return startSeek;
     }
 
     /**
-     * »ñÈ¡ÎÄ¼şÏÂÔØµÄÖÕÖ¹Î»ÖÃ
+     * è·å–æ–‡ä»¶ä¸‹è½½çš„ç»ˆæ­¢ä½ç½®
      *
-     * @return ÎÄ¼şÏÂÔØµÄÖÕÖ¹Î»ÖÃ
+     * @return æ–‡ä»¶ä¸‹è½½çš„ç»ˆæ­¢ä½ç½®
      */
     public long getEndSeek() {
         return endSeek;
     }
 
     /**
-     * »ñÈ¡µ±Ç°Ïß³ÌÒÑ¾­ÏÂÔØµÄÎÄ¼şÎ»ÖÃ
+     * è·å–å½“å‰çº¿ç¨‹å·²ç»ä¸‹è½½çš„æ–‡ä»¶ä½ç½®
      *
-     * @return µ±Ç°Ïß³ÌÒÑ¾­ÏÂÔØµÄÎÄ¼şÎ»ÖÃ
+     * @return å½“å‰çº¿ç¨‹å·²ç»ä¸‹è½½çš„æ–‡ä»¶ä½ç½®
      */
     public long getDownSize() {
         return downSize;
     }
 
     /**
-     * ÉèÖÃµ±Ç°Ïß³ÌÒÑ¾­ÏÂÔØµÄÎÄ¼şÎ»ÖÃ
+     * è®¾ç½®å½“å‰çº¿ç¨‹å·²ç»ä¸‹è½½çš„æ–‡ä»¶ä½ç½®
      *
-     * @param downSize µ±Ç°Ïß³ÌÒÑ¾­ÏÂÔØµÄÎÄ¼şÎ»ÖÃ
+     * @param downSize å½“å‰çº¿ç¨‹å·²ç»ä¸‹è½½çš„æ–‡ä»¶ä½ç½®
      */
     public void setDownSize(long downSize) {
         this.downSize = downSize;
     }
 
     /**
-     * »ñÈ¡µ±Ç°Ïß³ÌÊÇ·ñÕıÔÚÔËĞĞµÄ×´Ì¬
+     * è·å–å½“å‰çº¿ç¨‹æ˜¯å¦æ­£åœ¨è¿è¡Œçš„çŠ¶æ€
      *
-     * @return µ±Ç°Ïß³ÌÊÇ·ñÕıÔÚÔËĞĞ
+     * @return å½“å‰çº¿ç¨‹æ˜¯å¦æ­£åœ¨è¿è¡Œ
      */
     public synchronized boolean isRunning() {
         return isRunning;
     }
 
     /**
-     * ÉèÖÃµ±Ç°Ïß³ÌÊÇ·ñÕıÔÚÔËĞĞµÄ×´Ì¬
+     * è®¾ç½®å½“å‰çº¿ç¨‹æ˜¯å¦æ­£åœ¨è¿è¡Œçš„çŠ¶æ€
      *
-     * @param running µ±Ç°Ïß³ÌÊÇ·ñÕıÔÚÔËĞĞ
+     * @param running å½“å‰çº¿ç¨‹æ˜¯å¦æ­£åœ¨è¿è¡Œ
      */
     public synchronized void setRunning(boolean running) {
         isRunning = running;

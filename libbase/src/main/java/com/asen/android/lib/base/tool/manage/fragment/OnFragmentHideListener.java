@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.tool.manage.fragment;
 
 /**
- * FragmentÒş²ØÊ±µÄ¼àÌı½Ó¿Ú
+ * Fragmentéšè—æ—¶çš„ç›‘å¬æ¥å£
  *
  * @author Asen
  * @version v1.0
@@ -10,7 +10,7 @@ package com.asen.android.lib.base.tool.manage.fragment;
 public interface OnFragmentHideListener {
 
     /**
-     * Òş²ØFragmentÊ±µ÷ÓÃ
+     * éšè—Fragmentæ—¶è°ƒç”¨
      */
     public void onHide();
 }

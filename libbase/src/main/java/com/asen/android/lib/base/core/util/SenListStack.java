@@ -5,7 +5,7 @@ import java.util.EmptyStackException;
 import java.util.List;
 
 /**
- * 用ArrayList来定义栈
+ * 鐢ˋrrayList鏉ュ畾涔夋爤
  *
  * @author Asen
  * @version v1.0

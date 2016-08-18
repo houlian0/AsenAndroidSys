@@ -8,10 +8,10 @@ import com.asen.android.lib.base.ui.quick.findview.FindViewUtil;
 import java.util.List;
 
 /**
- * ¿ìËÙBaseAdapter£¬²»ĞèÒªfindView
+ * å¿«é€ŸBaseAdapterï¼Œä¸éœ€è¦findView
  *
- * @param <T> Êı¾İÊµÀıÀà
- * @param <H> HolderÀà
+ * @param <T> æ•°æ®å®ä¾‹ç±»
+ * @param <H> Holderç±»
  * @author Asen
  * @version v1.0
  * @date 2016/3/31 17:08
@@ -19,11 +19,11 @@ import java.util.List;
 public abstract class QuickHolderBaseAdapter<T, H> extends QuickBaseAdapter<T> {
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param context     AndroidÉÏÏÂÎÄ
-     * @param layoutResId ²¼¾Ö×ÊÔ´
-     * @param data        Êı¾İÔ´
+     * @param context     Androidä¸Šä¸‹æ–‡
+     * @param layoutResId å¸ƒå±€èµ„æº
+     * @param data        æ•°æ®æº
      */
     public QuickHolderBaseAdapter(Context context, int layoutResId, List<T> data) {
         super(context, layoutResId, data);
@@ -41,19 +41,19 @@ public abstract class QuickHolderBaseAdapter<T, H> extends QuickBaseAdapter<T> {
     }
 
     /**
-     * »ñµÃHolderµÄÊµÀı»¯¶ÔÏó
-     * {@link AFindView}¡¢{@link HolderHelper}
+     * è·å¾—Holderçš„å®ä¾‹åŒ–å¯¹è±¡
+     * {@link AFindView}ã€{@link HolderHelper}
      *
-     * @return new ×Ô¶¨ÒåµÄholder£¬²¢½«¿Ø¼ş¼ÓÉÏAFindView×¢½â
+     * @return new è‡ªå®šä¹‰çš„holderï¼Œå¹¶å°†æ§ä»¶åŠ ä¸ŠAFindViewæ³¨è§£
      */
     public abstract H getInstance();
 
     /**
-     * Ìî³äÄÚÈİ
+     * å¡«å……å†…å®¹
      *
-     * @param holder   ×Ô¶¨ÒåµÄholder
-     * @param info     Êı¾İĞÅÏ¢£¨µ±position > size-1 Ê±£¬Îªnull£©
-     * @param position Êı¾İÏÂ±ê
+     * @param holder   è‡ªå®šä¹‰çš„holder
+     * @param info     æ•°æ®ä¿¡æ¯ï¼ˆå½“position > size-1 æ—¶ï¼Œä¸ºnullï¼‰
+     * @param position æ•°æ®ä¸‹æ ‡
      */
     public abstract void convert(H holder, T info, int position);
 

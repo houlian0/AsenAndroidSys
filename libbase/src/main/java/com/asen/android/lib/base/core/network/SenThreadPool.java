@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 
 /**
- * Ïß³Ì³Ø
+ * çº¿ç¨‹æ± 
  *
  * @author Asen
  * @version v1.0
@@ -13,39 +13,39 @@ import java.util.concurrent.Executors;
  */
 public class SenThreadPool {
 
-    private static final int DEFAULT_POOL_SIZE = 6; // Ä¬ÈÏµÄÏß³Ì³Ø´óĞ¡
+    private static final int DEFAULT_POOL_SIZE = 6; // é»˜è®¤çš„çº¿ç¨‹æ± å¤§å°
 
     private ExecutorService pool;
 
     /**
-     * »ñµÃÏß³Ì³Ø
+     * è·å¾—çº¿ç¨‹æ± 
      *
-     * @return Ïß³Ì³Ø
+     * @return çº¿ç¨‹æ± 
      */
     public ExecutorService getPool() {
         return pool;
     }
 
     /**
-     * ¹¹Ôìº¯Êı-³õÊ¼»¯Ä¬ÈÏsize´óĞ¡{@link SenThreadPool#DEFAULT_POOL_SIZE}µÄÏß³Ì³Ø
+     * æ„é€ å‡½æ•°-åˆå§‹åŒ–é»˜è®¤sizeå¤§å°{@link SenThreadPool#DEFAULT_POOL_SIZE}çš„çº¿ç¨‹æ± 
      */
     public SenThreadPool() {
         pool = Executors.newScheduledThreadPool(DEFAULT_POOL_SIZE);
     }
 
     /**
-     * ¹¹Ôìº¯Êı-³õÊ¼»¯size´óĞ¡µÄÏß³Ì³Ø
+     * æ„é€ å‡½æ•°-åˆå§‹åŒ–sizeå¤§å°çš„çº¿ç¨‹æ± 
      *
-     * @param size Ïß³Ì³Ø´óĞ¡
+     * @param size çº¿ç¨‹æ± å¤§å°
      */
     public SenThreadPool(int size) {
         pool = Executors.newScheduledThreadPool(size);
     }
 
     /**
-     * Ö´ĞĞÏß³Ì
+     * æ‰§è¡Œçº¿ç¨‹
      *
-     * @param command Ïß³Ì
+     * @param command çº¿ç¨‹
      */
     public void execute(Runnable command) {
         pool.execute(command);

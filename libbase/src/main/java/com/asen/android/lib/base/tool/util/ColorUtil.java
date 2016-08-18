@@ -5,7 +5,7 @@ import android.graphics.Color;
 import java.util.Random;
 
 /**
- * ÑÕÉ«µÄ¹¤¾ßÀà
+ * é¢œè‰²çš„å·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -14,10 +14,10 @@ import java.util.Random;
 public class ColorUtil {
 
     /**
-     * ²ğ·ÖÑÕÉ«µÄËÄ¸öÖµ£¬Ë³Ğò·Ö±ğÎª£ººì¡¢ÂÌ¡¢À¶¡¢Í¸Ã÷¶È
+     * æ‹†åˆ†é¢œè‰²çš„å››ä¸ªå€¼ï¼Œé¡ºåºåˆ†åˆ«ä¸ºï¼šçº¢ã€ç»¿ã€è“ã€é€æ˜åº¦
      *
-     * @param color ÑÕÉ«µÄintÖµ
-     * @return ºì¡¢ÂÌ¡¢À¶¡¢Í¸Ã÷¶È ËÄ¸öÖµµÃintÊı×é
+     * @param color é¢œè‰²çš„intå€¼
+     * @return çº¢ã€ç»¿ã€è“ã€é€æ˜åº¦ å››ä¸ªå€¼å¾—intæ•°ç»„
      */
     public static int[] colorToRGBA(int color) {
         int[] result = new int[4];
@@ -31,10 +31,10 @@ public class ColorUtil {
     }
 
     /**
-     * Ïà·´µÄÑÕÉ«£¨²»Í¸Ã÷µÄÉ«£©
+     * ç›¸åçš„é¢œè‰²ï¼ˆä¸é€æ˜çš„è‰²ï¼‰
      *
-     * @param color Ô­Ê¼µÄÑÕÉ«Öµ
-     * @return ×ª»»ºóµÄÔ­É«Öµ
+     * @param color åŸå§‹çš„é¢œè‰²å€¼
+     * @return è½¬æ¢åçš„åŸè‰²å€¼
      */
     public static int oppositeOpacityColor(int color) {
         int[] rgba = ColorUtil.colorToRGBA(~color);
@@ -42,10 +42,10 @@ public class ColorUtil {
     }
 
     /**
-     * Ïà·´µÄÑÕÉ«£¨°üÀ¨Í¸Ã÷¶È£©
+     * ç›¸åçš„é¢œè‰²ï¼ˆåŒ…æ‹¬é€æ˜åº¦ï¼‰
      *
-     * @param color Ô­Ê¼µÄÑÕÉ«Öµ
-     * @return ×ª»»ºóµÄÔ­É«Öµ
+     * @param color åŸå§‹çš„é¢œè‰²å€¼
+     * @return è½¬æ¢åçš„åŸè‰²å€¼
      */
     public static int oppositeColor(int color) {
         int[] rgba = ColorUtil.colorToRGBA(~color);
@@ -53,9 +53,9 @@ public class ColorUtil {
     }
 
     /**
-     * »ñÈ¡Ëæ»úµÄÑÕÉ«Öµ
+     * è·å–éšæœºçš„é¢œè‰²å€¼
      *
-     * @return Ëæ»úÑÕÉ«Öµ£¬²»º¬Í¸Ã÷¶È
+     * @return éšæœºé¢œè‰²å€¼ï¼Œä¸å«é€æ˜åº¦
      */
     public static int getRandomColor() {
         Random random = new Random();

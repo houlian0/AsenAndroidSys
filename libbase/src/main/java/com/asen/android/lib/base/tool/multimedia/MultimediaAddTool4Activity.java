@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Ôö¼Ó¶àÃ½ÌåµÄ¹ÜÀíÀà
+ * å¢åŠ å¤šåª’ä½“çš„ç®¡ç†ç±»
  *
  * @author Asen
  * @version v1.0
@@ -75,15 +75,15 @@ class MultimediaAddTool4Activity extends MultimediaAddTool {
 
         if (requestCode == REQUEST_CODE_PICTURE && resultCode == Activity.RESULT_OK) {
             mFileList.add(lastFile);
-            refreshMedia(pictureFile); // ½«ÅÄÉãµÄÕÕÆ¬ÎÄ¼şË¢ĞÂµ½ÏµÍ³ÎÄ¼şÊı¾İ¿â
+            refreshMedia(pictureFile); // å°†æ‹æ‘„çš„ç…§ç‰‡æ–‡ä»¶åˆ·æ–°åˆ°ç³»ç»Ÿæ–‡ä»¶æ•°æ®åº“
             refreshListener();
         } else if (requestCode == REQUEST_CODE_VIDEO && resultCode == Activity.RESULT_OK) {
             mFileList.add(lastFile);
-            refreshMedia(videoFile); // ½«ÅÄÉãµÄÊÓÆµÎÄ¼şË¢ĞÂµ½ÏµÍ³ÎÄ¼şÊı¾İ¿â
+            refreshMedia(videoFile); // å°†æ‹æ‘„çš„è§†é¢‘æ–‡ä»¶åˆ·æ–°åˆ°ç³»ç»Ÿæ–‡ä»¶æ•°æ®åº“
             refreshListener();
         } else if (requestCode == REQUEST_CODE_MUSIC && resultCode == Activity.RESULT_OK) {
             mFileList.add(lastFile);
-            refreshMedia(musicFile); // ½«ÅÄÉãµÄÒôÆµÎÄ¼şË¢ĞÂµ½ÏµÍ³ÎÄ¼şÊı¾İ¿â
+            refreshMedia(musicFile); // å°†æ‹æ‘„çš„éŸ³é¢‘æ–‡ä»¶åˆ·æ–°åˆ°ç³»ç»Ÿæ–‡ä»¶æ•°æ®åº“
             refreshListener();
         }
         lastFile = null;
@@ -103,7 +103,7 @@ class MultimediaAddTool4Activity extends MultimediaAddTool {
         mContext.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + folder.getPath())));
     }
 
-    // Ë¢ĞÂ¶àÃ½ÌåÔö¼Ó½Ó¿Ú
+    // åˆ·æ–°å¤šåª’ä½“å¢åŠ æ¥å£
     private void refreshListener() {
         if (mAddListener != null)
             mAddListener.multimediaAdd(lastFile, mFileList);
@@ -198,7 +198,7 @@ class MultimediaAddTool4Activity extends MultimediaAddTool {
 //            Log.e(TAG, musicFile.getPath() + " is not exists!!!");
 //            return false;
 //        }
-        ToastUtil.showToast(mContext, "Ô¤Áô¹¦ÄÜ");
+        ToastUtil.showToast(mContext, "é¢„ç•™åŠŸèƒ½");
         return false;
     }
 

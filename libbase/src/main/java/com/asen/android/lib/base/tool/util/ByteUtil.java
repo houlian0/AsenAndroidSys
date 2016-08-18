@@ -3,7 +3,7 @@ package com.asen.android.lib.base.tool.util;
 import java.math.BigInteger;
 
 /**
- * ×Ö½Ú×ª»»¹¤¾ßÀà
+ * å­—èŠ‚è½¬æ¢å·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -12,11 +12,11 @@ import java.math.BigInteger;
 public class ByteUtil {
 
     /**
-     * ×ª»»shortÎªbyte
+     * è½¬æ¢shortä¸ºbyte
      *
-     * @param b     Êä³öµÄ×Ö½ÚÊı×é
-     * @param s     ĞèÒª×ª»»µÄshort
-     * @param index ×Ö½ÚÊı×éÖĞµÄÆğÊ¼Î»ÖÃ
+     * @param b     è¾“å‡ºçš„å­—èŠ‚æ•°ç»„
+     * @param s     éœ€è¦è½¬æ¢çš„short
+     * @param index å­—èŠ‚æ•°ç»„ä¸­çš„èµ·å§‹ä½ç½®
      */
     public static void putShort(byte b[], short s, int index) {
         b[index + 1] = (byte) (s >> 8);
@@ -24,22 +24,22 @@ public class ByteUtil {
     }
 
     /**
-     * Í¨¹ıbyteÊı×éÈ¡µ½short
+     * é€šè¿‡byteæ•°ç»„å–åˆ°short
      *
-     * @param b     ĞèÒªÈ¡ÖµµÄ×Ö½ÚÊı×é
-     * @param index µÚ¼¸Î»¿ªÊ¼È¡
-     * @return È¡³öµÄshortÄÚÈİ
+     * @param b     éœ€è¦å–å€¼çš„å­—èŠ‚æ•°ç»„
+     * @param index ç¬¬å‡ ä½å¼€å§‹å–
+     * @return å–å‡ºçš„shortå†…å®¹
      */
     public static short getShort(byte[] b, int index) {
         return (short) (((b[index + 1] << 8) | b[index] & 0xff));
     }
 
     /**
-     * ×ª»»intÎªbyteÊı×é
+     * è½¬æ¢intä¸ºbyteæ•°ç»„
      *
-     * @param bb    Êä³öµÄ×Ö½ÚÊı×é
-     * @param x     ĞèÒª×ª»»µÄint
-     * @param index ×Ö½ÚÊı×éÖĞµÄÆğÊ¼Î»ÖÃ
+     * @param bb    è¾“å‡ºçš„å­—èŠ‚æ•°ç»„
+     * @param x     éœ€è¦è½¬æ¢çš„int
+     * @param index å­—èŠ‚æ•°ç»„ä¸­çš„èµ·å§‹ä½ç½®
      */
     public static void putInt(byte[] bb, int x, int index) {
         bb[index + 3] = (byte) (x >> 24);
@@ -49,11 +49,11 @@ public class ByteUtil {
     }
 
     /**
-     * Í¨¹ıbyteÊı×éÈ¡µ½int
+     * é€šè¿‡byteæ•°ç»„å–åˆ°int
      *
-     * @param bb    ĞèÒªÈ¡ÖµµÄ×Ö½ÚÊı×é
-     * @param index µÚ¼¸Î»¿ªÊ¼È¡
-     * @return È¡³öµÄintÄÚÈİ
+     * @param bb    éœ€è¦å–å€¼çš„å­—èŠ‚æ•°ç»„
+     * @param index ç¬¬å‡ ä½å¼€å§‹å–
+     * @return å–å‡ºçš„intå†…å®¹
      */
     public static int getInt(byte[] bb, int index) {
         return (((bb[index + 3] & 0xff) << 24)
@@ -63,11 +63,11 @@ public class ByteUtil {
     }
 
     /**
-     * ×ª»»longĞÍÎªbyteÊı×é
+     * è½¬æ¢longå‹ä¸ºbyteæ•°ç»„
      *
-     * @param bb    Êä³öµÄ×Ö½ÚÊı×é
-     * @param x     ĞèÒª×ª»»µÄlong
-     * @param index ×Ö½ÚÊı×éÖĞµÄÆğÊ¼Î»ÖÃ
+     * @param bb    è¾“å‡ºçš„å­—èŠ‚æ•°ç»„
+     * @param x     éœ€è¦è½¬æ¢çš„long
+     * @param index å­—èŠ‚æ•°ç»„ä¸­çš„èµ·å§‹ä½ç½®
      */
     public static void putLong(byte[] bb, long x, int index) {
         bb[index + 7] = (byte) (x >> 56);
@@ -81,11 +81,11 @@ public class ByteUtil {
     }
 
     /**
-     * Í¨¹ıbyteÊı×éÈ¡µ½long
+     * é€šè¿‡byteæ•°ç»„å–åˆ°long
      *
-     * @param bb    ĞèÒªÈ¡ÖµµÄ×Ö½ÚÊı×é
-     * @param index µÚ¼¸Î»¿ªÊ¼È¡
-     * @return È¡³öµÄlongÄÚÈİ
+     * @param bb    éœ€è¦å–å€¼çš„å­—èŠ‚æ•°ç»„
+     * @param index ç¬¬å‡ ä½å¼€å§‹å–
+     * @return å–å‡ºçš„longå†…å®¹
      */
     public static long getLong(byte[] bb, int index) {
         return ((((long) bb[index + 7] & 0xff) << 56)
@@ -99,26 +99,26 @@ public class ByteUtil {
     }
 
     /**
-     * ×Ö·ûµ½×Ö½Ú×ª»»
+     * å­—ç¬¦åˆ°å­—èŠ‚è½¬æ¢
      *
-     * @param bb    Êä³öµÄ×Ö½ÚÊı×é
-     * @param ch    ĞèÒª×ª»»µÄchar
-     * @param index ×Ö½ÚÊı×éÖĞµÄÆğÊ¼Î»ÖÃ
+     * @param bb    è¾“å‡ºçš„å­—èŠ‚æ•°ç»„
+     * @param ch    éœ€è¦è½¬æ¢çš„char
+     * @param index å­—èŠ‚æ•°ç»„ä¸­çš„èµ·å§‹ä½ç½®
      */
     public static void putChar(byte[] bb, char ch, int index) {
         int temp = (int) ch;
         for (int i = 0; i < 2; i++) {
-            bb[index + i] = Integer.valueOf(temp & 0xff).byteValue(); // ½«×î¸ßÎ»±£´æÔÚ×îµÍÎ»
-            temp = temp >> 8; // ÏòÓÒÒÆ8Î»
+            bb[index + i] = Integer.valueOf(temp & 0xff).byteValue(); // å°†æœ€é«˜ä½ä¿å­˜åœ¨æœ€ä½ä½
+            temp = temp >> 8; // å‘å³ç§»8ä½
         }
     }
 
     /**
-     * ×Ö½Úµ½×Ö·û×ª»»
+     * å­—èŠ‚åˆ°å­—ç¬¦è½¬æ¢
      *
-     * @param b     ĞèÒªÈ¡ÖµµÄ×Ö½ÚÊı×é
-     * @param index µÚ¼¸Î»¿ªÊ¼È¡
-     * @return È¡³öµÄcharÄÚÈİ
+     * @param b     éœ€è¦å–å€¼çš„å­—èŠ‚æ•°ç»„
+     * @param index ç¬¬å‡ ä½å¼€å§‹å–
+     * @return å–å‡ºçš„charå†…å®¹
      */
     public static char getChar(byte[] b, int index) {
         int s = 0;
@@ -135,11 +135,11 @@ public class ByteUtil {
     }
 
     /**
-     * float×ª»»byte
+     * floatè½¬æ¢byte
      *
-     * @param bb    Êä³öµÄ×Ö½ÚÊı×é
-     * @param x     ĞèÒª×ª»»µÄfloat
-     * @param index ×Ö½ÚÊı×éÖĞµÄÆğÊ¼Î»ÖÃ
+     * @param bb    è¾“å‡ºçš„å­—èŠ‚æ•°ç»„
+     * @param x     éœ€è¦è½¬æ¢çš„float
+     * @param index å­—èŠ‚æ•°ç»„ä¸­çš„èµ·å§‹ä½ç½®
      */
     public static void putFloat(byte[] bb, float x, int index) {
         int l = Float.floatToIntBits(x);
@@ -150,11 +150,11 @@ public class ByteUtil {
     }
 
     /**
-     * Í¨¹ıbyteÊı×éÈ¡µÃfloat
+     * é€šè¿‡byteæ•°ç»„å–å¾—float
      *
-     * @param b     ĞèÒªÈ¡ÖµµÄ×Ö½ÚÊı×é
-     * @param index µÚ¼¸Î»¿ªÊ¼È¡
-     * @return È¡³öµÄfloatÄÚÈİ
+     * @param b     éœ€è¦å–å€¼çš„å­—èŠ‚æ•°ç»„
+     * @param index ç¬¬å‡ ä½å¼€å§‹å–
+     * @return å–å‡ºçš„floatå†…å®¹
      */
     public static float getFloat(byte[] b, int index) {
         int l;
@@ -169,11 +169,11 @@ public class ByteUtil {
     }
 
     /**
-     * double×ª»»byte
+     * doubleè½¬æ¢byte
      *
-     * @param bb    Êä³öµÄ×Ö½ÚÊı×é
-     * @param x     ĞèÒª×ª»»µÄdouble
-     * @param index ×Ö½ÚÊı×éÖĞµÄÆğÊ¼Î»ÖÃ
+     * @param bb    è¾“å‡ºçš„å­—èŠ‚æ•°ç»„
+     * @param x     éœ€è¦è½¬æ¢çš„double
+     * @param index å­—èŠ‚æ•°ç»„ä¸­çš„èµ·å§‹ä½ç½®
      */
     public static void putDouble(byte[] bb, double x, int index) {
         long l = Double.doubleToLongBits(x);
@@ -184,11 +184,11 @@ public class ByteUtil {
     }
 
     /**
-     * Í¨¹ıbyteÊı×éÈ¡µÃfloat
+     * é€šè¿‡byteæ•°ç»„å–å¾—float
      *
-     * @param b     ĞèÒªÈ¡ÖµµÄ×Ö½ÚÊı×é
-     * @param index µÚ¼¸Î»¿ªÊ¼È¡
-     * @return È¡³öµÄdoubleÄÚÈİ
+     * @param b     éœ€è¦å–å€¼çš„å­—èŠ‚æ•°ç»„
+     * @param index ç¬¬å‡ ä½å¼€å§‹å–
+     * @return å–å‡ºçš„doubleå†…å®¹
      */
     public static double getDouble(byte[] b, int index) {
         long l;
@@ -211,15 +211,15 @@ public class ByteUtil {
     }
 
     /**
-     * ½«byte[]×ªÎª¸÷ÖÖ½øÖÆµÄ×Ö·û´®
+     * å°†byte[]è½¬ä¸ºå„ç§è¿›åˆ¶çš„å­—ç¬¦ä¸²
      *
-     * @param bytes ×Ö½ÚÊı×é
-     * @param radix »ùÊı¿ÉÒÔ×ª»»½øÖÆµÄ·¶Î§£¬´ÓCharacter.MIN_RADIXµ½Character.MAX_RADIX£¬
-     *              ³¬³ö·¶Î§ºó±äÎª10½øÖÆ
-     * @return ×ª»»ºóµÄ×Ö·û´®
+     * @param bytes å­—èŠ‚æ•°ç»„
+     * @param radix åŸºæ•°å¯ä»¥è½¬æ¢è¿›åˆ¶çš„èŒƒå›´ï¼Œä»Character.MIN_RADIXåˆ°Character.MAX_RADIXï¼Œ
+     *              è¶…å‡ºèŒƒå›´åå˜ä¸º10è¿›åˆ¶
+     * @return è½¬æ¢åçš„å­—ç¬¦ä¸²
      */
     public static String binary(byte[] bytes, int radix) {
-        return new BigInteger(1, bytes).toString(radix);// ÕâÀïµÄ1´ú±íÕıÊı
+        return new BigInteger(1, bytes).toString(radix);// è¿™é‡Œçš„1ä»£è¡¨æ­£æ•°
     }
 
 }

@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.gps;
 
 /**
- * 定位信息类型
+ * 瀹氫綅淇℃伅绫诲瀷
  *
  * @author Asen
  * @version v1.0
@@ -10,19 +10,19 @@ package com.asen.android.lib.base.core.gps;
 public enum GpsInfoType {
 
     /**
-     * 首次刷新
+     * 棣栨鍒锋柊
      */
     TYPE_FIRST,
     /**
-     * GPS 定位
+     * GPS 瀹氫綅
      */
     TYPE_GPS,
     /**
-     * 网络定位（Android自带的网络定位）
+     * 缃戠粶瀹氫綅锛圓ndroid鑷甫鐨勭綉缁滃畾浣嶏級
      */
     TYPE_NETWORK,
     /**
-     * 扩展性定位（第三方插件定位，自定义）
+     * 鎵╁睍鎬у畾浣嶏紙绗笁鏂规彃浠跺畾浣嶏紝鑷畾涔夛級
      */
     TYPE_EXTENSION
 

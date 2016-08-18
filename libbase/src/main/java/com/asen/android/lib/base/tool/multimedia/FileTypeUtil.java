@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.tool.multimedia;
 
 /**
- * ÎÄ¼şÀàĞÍ¹¤¾ßÀà
+ * æ–‡ä»¶ç±»å‹å·¥å…·ç±»
  *
  * @author Asen
  * @version v1.0
@@ -10,10 +10,10 @@ package com.asen.android.lib.base.tool.multimedia;
 public class FileTypeUtil {
 
     /**
-     * ¸ù¾İÎÄ¼şºó×º»ñµÃÎÄ¼şÀàĞÍ
+     * æ ¹æ®æ–‡ä»¶åç¼€è·å¾—æ–‡ä»¶ç±»å‹
      *
-     * @param suffix ºó×ºÃû
-     * @return ÎÄ¼şÀàĞÍ
+     * @param suffix åç¼€å
+     * @return æ–‡ä»¶ç±»å‹
      */
     public static FileType getFileTypeBySuffix(String suffix) {
         if ("jpg".equals(suffix) || "png".equals(suffix)) {

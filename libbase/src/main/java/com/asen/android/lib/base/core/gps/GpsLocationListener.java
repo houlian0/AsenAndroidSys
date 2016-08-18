@@ -5,7 +5,7 @@ import android.location.LocationListener;
 import android.os.Bundle;
 
 /**
- * Android原生定位监听
+ * Android鍘熺敓瀹氫綅鐩戝惉
  *
  * @author Asen
  * @version v1.0

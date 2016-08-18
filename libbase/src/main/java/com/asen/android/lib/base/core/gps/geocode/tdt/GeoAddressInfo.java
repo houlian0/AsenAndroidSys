@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.core.gps.geocode.tdt;
 
 /**
- * ÌìµØÍ¼µØÖ·ĞÅÏ¢¶ÔÏó
+ * å¤©åœ°å›¾åœ°å€ä¿¡æ¯å¯¹è±¡
  *
  * @author Asen
  * @version v1.0
@@ -10,68 +10,68 @@ package com.asen.android.lib.base.core.gps.geocode.tdt;
 public class GeoAddressInfo {
 
     /**
-     * ¸ñÊ½»¯µÄµØÖ·
+     * æ ¼å¼åŒ–çš„åœ°å€
      */
     private String formattedAddress;
 
     /**
-     * ×î½üµÄÂ·Ãû
+     * æœ€è¿‘çš„è·¯å
      */
     private String road;
 
     /**
-     * Óë×î½üÂ·ÃûµÄ¾àÀë
+     * ä¸æœ€è¿‘è·¯åçš„è·ç¦»
      */
     private int roadDistance;
 
     /**
-     * ×î½üµÄPOIµã
+     * æœ€è¿‘çš„POIç‚¹
      */
     private String poi;
 
     /**
-     * Óë×î½üµÄPOIµãµÄ¾àÀë
+     * ä¸æœ€è¿‘çš„POIç‚¹çš„è·ç¦»
      */
     private int poiDistance;
 
     /**
-     * Óë×î½üPOIµãµÄ·½Î»ĞÅÏ¢
+     * ä¸æœ€è¿‘POIç‚¹çš„æ–¹ä½ä¿¡æ¯
      */
     private String poiPosition;
 
     /**
-     * ×î½üµÄµØÖ·
+     * æœ€è¿‘çš„åœ°å€
      */
     private String address;
 
     /**
-     * Óë×î½üµØÖ·µÄ·½Î»ĞÅÏ¢
+     * ä¸æœ€è¿‘åœ°å€çš„æ–¹ä½ä¿¡æ¯
      */
     private String addressPosition;
 
     /**
-     * Óë×î½üµØÖ·µÄ¾àÀë
+     * ä¸æœ€è¿‘åœ°å€çš„è·ç¦»
      */
     private int addressDistance;
 
     /**
-     * ËùÔÚµÄ³ÇÊĞĞÅÏ¢
+     * æ‰€åœ¨çš„åŸå¸‚ä¿¡æ¯
      */
     private String city;
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param formattedAddress ¸ñÊ½»¯µÄµØÖ·
-     * @param road             ×î½üµÄÂ·Ãû
-     * @param roadDistance     Óë×î½üÂ·ÃûµÄ¾àÀë
-     * @param poi              ×î½üµÄPOIµã
-     * @param poiDistance      Óë×î½üµÄPOIµãµÄ¾àÀë
-     * @param poiPosition      Óë×î½üPOIµãµÄ·½Î»ĞÅÏ¢
-     * @param address          ×î½üµÄµØÖ·
-     * @param addressPosition  Óë×î½üµØÖ·µÄ·½Î»ĞÅÏ¢
-     * @param addressDistance  Óë×î½üµØÖ·µÄ¾àÀë
-     * @param city             ËùÔÚµÄ³ÇÊĞĞÅÏ¢
+     * @param formattedAddress æ ¼å¼åŒ–çš„åœ°å€
+     * @param road             æœ€è¿‘çš„è·¯å
+     * @param roadDistance     ä¸æœ€è¿‘è·¯åçš„è·ç¦»
+     * @param poi              æœ€è¿‘çš„POIç‚¹
+     * @param poiDistance      ä¸æœ€è¿‘çš„POIç‚¹çš„è·ç¦»
+     * @param poiPosition      ä¸æœ€è¿‘POIç‚¹çš„æ–¹ä½ä¿¡æ¯
+     * @param address          æœ€è¿‘çš„åœ°å€
+     * @param addressPosition  ä¸æœ€è¿‘åœ°å€çš„æ–¹ä½ä¿¡æ¯
+     * @param addressDistance  ä¸æœ€è¿‘åœ°å€çš„è·ç¦»
+     * @param city             æ‰€åœ¨çš„åŸå¸‚ä¿¡æ¯
      */
     public GeoAddressInfo(String formattedAddress, String road, int roadDistance, String poi, int poiDistance, String poiPosition, String address, String addressPosition, int addressDistance, String city) {
         this.formattedAddress = formattedAddress;
@@ -87,180 +87,180 @@ public class GeoAddressInfo {
     }
 
     /**
-     * »ñÈ¡¸ñÊ½»¯µÄµØÖ·
+     * è·å–æ ¼å¼åŒ–çš„åœ°å€
      *
-     * @return ¸ñÊ½»¯µÄµØÖ·
+     * @return æ ¼å¼åŒ–çš„åœ°å€
      */
     public String getFormattedAddress() {
         return this.formattedAddress;
     }
 
     /**
-     * ÉèÖÃ¸ñÊ½»¯µÄµØÖ·
+     * è®¾ç½®æ ¼å¼åŒ–çš„åœ°å€
      *
-     * @param formattedAddress ¸ñÊ½»¯µÄµØÖ·
+     * @param formattedAddress æ ¼å¼åŒ–çš„åœ°å€
      */
     public void setFormattedAddress(String formattedAddress) {
         this.formattedAddress = formattedAddress;
     }
 
     /**
-     * »ñÈ¡×î½üµÄÂ·Ãû
+     * è·å–æœ€è¿‘çš„è·¯å
      *
-     * @return ×î½üµÄÂ·Ãû
+     * @return æœ€è¿‘çš„è·¯å
      */
     public String getRoad() {
         return this.road;
     }
 
     /**
-     * ÉèÖÃ×î½üµÄÂ·Ãû
+     * è®¾ç½®æœ€è¿‘çš„è·¯å
      *
-     * @param road ×î½üµÄÂ·Ãû
+     * @param road æœ€è¿‘çš„è·¯å
      */
     public void setRoad(String road) {
         this.road = road;
     }
 
     /**
-     * »ñÈ¡Óë×î½üÂ·ÃûµÄ¾àÀë
+     * è·å–ä¸æœ€è¿‘è·¯åçš„è·ç¦»
      *
-     * @return Óë×î½üÂ·ÃûµÄ¾àÀë
+     * @return ä¸æœ€è¿‘è·¯åçš„è·ç¦»
      */
     public int getRoadDistance() {
         return this.roadDistance;
     }
 
     /**
-     * ÉèÖÃÓë×î½üÂ·ÃûµÄ¾àÀë
+     * è®¾ç½®ä¸æœ€è¿‘è·¯åçš„è·ç¦»
      *
-     * @param roadDistance Óë×î½üÂ·ÃûµÄ¾àÀë
+     * @param roadDistance ä¸æœ€è¿‘è·¯åçš„è·ç¦»
      */
     public void setRoadDistance(int roadDistance) {
         this.roadDistance = roadDistance;
     }
 
     /**
-     * »ñÈ¡×î½üµÄPOIµã
+     * è·å–æœ€è¿‘çš„POIç‚¹
      *
-     * @return ×î½üµÄPOIµã
+     * @return æœ€è¿‘çš„POIç‚¹
      */
     public String getPoi() {
         return this.poi;
     }
 
     /**
-     * ÉèÖÃ×î½üµÄPOIµã
+     * è®¾ç½®æœ€è¿‘çš„POIç‚¹
      *
-     * @param poi ×î½üµÄPOIµã
+     * @param poi æœ€è¿‘çš„POIç‚¹
      */
     public void setPoi(String poi) {
         this.poi = poi;
     }
 
     /**
-     * »ñÈ¡Óë×î½üµÄPOIµãµÄ¾àÀë
+     * è·å–ä¸æœ€è¿‘çš„POIç‚¹çš„è·ç¦»
      *
-     * @return Óë×î½üµÄPOIµãµÄ¾àÀë
+     * @return ä¸æœ€è¿‘çš„POIç‚¹çš„è·ç¦»
      */
     public int getPoiDistance() {
         return this.poiDistance;
     }
 
     /**
-     * ÉèÖÃÓë×î½üµÄPOIµãµÄ¾àÀë
+     * è®¾ç½®ä¸æœ€è¿‘çš„POIç‚¹çš„è·ç¦»
      *
-     * @param poiDistance Óë×î½üµÄPOIµãµÄ¾àÀë
+     * @param poiDistance ä¸æœ€è¿‘çš„POIç‚¹çš„è·ç¦»
      */
     public void setPoiDistance(int poiDistance) {
         this.poiDistance = poiDistance;
     }
 
     /**
-     * »ñÈ¡Óë×î½üPOIµãµÄ·½Î»ĞÅÏ¢
+     * è·å–ä¸æœ€è¿‘POIç‚¹çš„æ–¹ä½ä¿¡æ¯
      *
-     * @return Óë×î½üPOIµãµÄ·½Î»ĞÅÏ¢
+     * @return ä¸æœ€è¿‘POIç‚¹çš„æ–¹ä½ä¿¡æ¯
      */
     public String getPoiPosition() {
         return this.poiPosition;
     }
 
     /**
-     * ÉèÖÃÓë×î½üPOIµãµÄ·½Î»ĞÅÏ¢
+     * è®¾ç½®ä¸æœ€è¿‘POIç‚¹çš„æ–¹ä½ä¿¡æ¯
      *
-     * @param poiPosition Óë×î½üPOIµãµÄ·½Î»ĞÅÏ¢
+     * @param poiPosition ä¸æœ€è¿‘POIç‚¹çš„æ–¹ä½ä¿¡æ¯
      */
     public void setPoiPosition(String poiPosition) {
         this.poiPosition = poiPosition;
     }
 
     /**
-     * »ñÈ¡×î½üµÄµØÖ·
+     * è·å–æœ€è¿‘çš„åœ°å€
      *
-     * @return ×î½üµÄµØÖ·
+     * @return æœ€è¿‘çš„åœ°å€
      */
     public String getAddress() {
         return this.address;
     }
 
     /**
-     * ÉèÖÃ×î½üµÄµØÖ·
+     * è®¾ç½®æœ€è¿‘çš„åœ°å€
      *
-     * @param address ×î½üµÄµØÖ·
+     * @param address æœ€è¿‘çš„åœ°å€
      */
     public void setAddress(String address) {
         this.address = address;
     }
 
     /**
-     * »ñÈ¡Óë×î½üµØÖ·µÄ·½Î»ĞÅÏ¢
+     * è·å–ä¸æœ€è¿‘åœ°å€çš„æ–¹ä½ä¿¡æ¯
      *
-     * @return Óë×î½üµØÖ·µÄ·½Î»ĞÅÏ¢
+     * @return ä¸æœ€è¿‘åœ°å€çš„æ–¹ä½ä¿¡æ¯
      */
     public String getAddressPosition() {
         return this.addressPosition;
     }
 
     /**
-     * ÉèÖÃÓë×î½üµØÖ·µÄ·½Î»ĞÅÏ¢
+     * è®¾ç½®ä¸æœ€è¿‘åœ°å€çš„æ–¹ä½ä¿¡æ¯
      *
-     * @param addressPosition Óë×î½üµØÖ·µÄ·½Î»ĞÅÏ¢
+     * @param addressPosition ä¸æœ€è¿‘åœ°å€çš„æ–¹ä½ä¿¡æ¯
      */
     public void setAddressPosition(String addressPosition) {
         this.addressPosition = addressPosition;
     }
 
     /**
-     * »ñÈ¡Óë×î½üµØÖ·µÄ¾àÀë
+     * è·å–ä¸æœ€è¿‘åœ°å€çš„è·ç¦»
      *
-     * @return Óë×î½üµØÖ·µÄ¾àÀë
+     * @return ä¸æœ€è¿‘åœ°å€çš„è·ç¦»
      */
     public int getAddressDistance() {
         return this.addressDistance;
     }
 
     /**
-     * ÉèÖÃÓë×î½üµØÖ·µÄ¾àÀë
+     * è®¾ç½®ä¸æœ€è¿‘åœ°å€çš„è·ç¦»
      *
-     * @param addressDistance Óë×î½üµØÖ·µÄ¾àÀë
+     * @param addressDistance ä¸æœ€è¿‘åœ°å€çš„è·ç¦»
      */
     public void setAddressDistance(int addressDistance) {
         this.addressDistance = addressDistance;
     }
 
     /**
-     * »ñÈ¡ËùÔÚµÄ³ÇÊĞĞÅÏ¢
+     * è·å–æ‰€åœ¨çš„åŸå¸‚ä¿¡æ¯
      *
-     * @return ËùÔÚµÄ³ÇÊĞĞÅÏ¢
+     * @return æ‰€åœ¨çš„åŸå¸‚ä¿¡æ¯
      */
     public String getCity() {
         return this.city;
     }
 
     /**
-     * ÉèÖÃËùÔÚµÄ³ÇÊĞĞÅÏ¢
+     * è®¾ç½®æ‰€åœ¨çš„åŸå¸‚ä¿¡æ¯
      *
-     * @param city ËùÔÚµÄ³ÇÊĞĞÅÏ¢
+     * @param city æ‰€åœ¨çš„åŸå¸‚ä¿¡æ¯
      */
     public void setCity(String city) {
         this.city = city;

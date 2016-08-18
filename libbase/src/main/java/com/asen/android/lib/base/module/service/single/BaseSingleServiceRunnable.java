@@ -1,7 +1,7 @@
 package com.asen.android.lib.base.module.service.single;
 
 /**
- * µ¥¶¨Ê±ÈÎÎñServiceµÄÏß³Ì
+ * å•å®šæ—¶ä»»åŠ¡Serviceçš„çº¿ç¨‹
  *
  * @author Asen
  * @version v1.0
@@ -9,7 +9,7 @@ package com.asen.android.lib.base.module.service.single;
  */
 public class BaseSingleServiceRunnable implements Runnable {
 
-    private BaseSingleService mService; // µ¥¶¨Ê±ÈÎÎñService
+    private BaseSingleService mService; // å•å®šæ—¶ä»»åŠ¡Service
 
     public BaseSingleServiceRunnable(BaseSingleService service) {
         mService = service;
