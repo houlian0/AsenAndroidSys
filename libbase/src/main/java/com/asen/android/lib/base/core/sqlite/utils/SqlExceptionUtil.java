@@ -4,10 +4,9 @@ package com.asen.android.lib.base.core.sqlite.utils;
 import java.sql.SQLException;
 
 /**
- * Created by ASEN on 2016/5/18.
  * SQL语句异常管理
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/5/18 11:56
  */

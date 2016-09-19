@@ -2,19 +2,18 @@ package com.asen.android.lib.base.core.sqlite.utils;
 
 import android.database.sqlite.SQLiteDatabase;
 
-import com.gisinfo.android.lib.base.core.sqlite.field.FieldInfo;
-import com.gisinfo.android.lib.base.core.sqlite.table.TableConfig;
-import com.gisinfo.android.lib.base.core.sqlite.table.TableInfo;
-import com.gisinfo.android.lib.base.core.tool.util.LogUtil;
+import com.asen.android.lib.base.core.sqlite.field.FieldInfo;
+import com.asen.android.lib.base.core.sqlite.table.TableConfig;
+import com.asen.android.lib.base.core.sqlite.table.TableInfo;
+import com.asen.android.lib.base.tool.util.LogUtil;
 
 import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by ASEN on 2016/4/1.
- * 表的工具类
+ * 表新建删除等操作的工具类
  *
- * @author ASEN
+ * @author Asen
  * @version v1.0
  * @date 2016/4/1 9:43
  */
