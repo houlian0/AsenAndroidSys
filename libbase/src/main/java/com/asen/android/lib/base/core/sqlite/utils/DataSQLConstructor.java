@@ -5,7 +5,7 @@ import android.database.Cursor;
 import com.asen.android.lib.base.core.sqlite.field.FieldInfo;
 
 /**
- * 数据防止注入的SQL语句拼接器，拼接字段名，表名和值信息
+ * 数据防止注入的SQL语句拼接器，拼接字段名、表名和值信息
  *
  * @author Asen
  * @version v1.0
