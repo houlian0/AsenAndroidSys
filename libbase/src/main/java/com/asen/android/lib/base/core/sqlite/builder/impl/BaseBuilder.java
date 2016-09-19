@@ -10,7 +10,7 @@ import com.asen.android.lib.base.core.sqlite.field.AField;
 import com.asen.android.lib.base.core.sqlite.field.DataType;
 import com.asen.android.lib.base.core.sqlite.field.DefaultType;
 import com.asen.android.lib.base.core.sqlite.table.ATable;
-import com.asen.android.lib.base.core.sqlite.utils.DataSqlConstructor;
+import com.asen.android.lib.base.core.sqlite.utils.DataSQLConstructor;
 import com.asen.android.lib.base.core.sqlite.utils.SqlExceptionUtil;
 import com.asen.android.lib.base.tool.util.AppUtil;
 import com.asen.android.lib.base.tool.util.ConvertUtil;
@@ -205,41 +205,41 @@ abstract class BaseBuilder implements IBaseBuilder {
     void appendValue(StringBuilder sb, Object valueObj, DataType dataType, String form, long length, Class<?> type) throws SQLException {
         if (type == Integer.class || type == int.class) {
             if (valueObj == null) {
-                DataSqlConstructor.appendValueName(sb, (Integer) null);
+                DataSQLConstructor.appendValueName(sb, (Integer) null);
             } else {
-                DataSqlConstructor.appendValueName(sb, dataType == DataType.NUMBER_FORM ? ConvertUtil.stringToInt(new DecimalFormat(form).format(valueObj)) : (Integer) valueObj);
+                DataSQLConstructor.appendValueName(sb, dataType == DataType.NUMBER_FORM ? ConvertUtil.stringToInt(new DecimalFormat(form).format(valueObj)) : (Integer) valueObj);
             }
         } else if (type == Double.class || type == double.class) {
             if (valueObj == null) {
-                DataSqlConstructor.appendValueName(sb, (Double) null);
+                DataSQLConstructor.appendValueName(sb, (Double) null);
             } else {
-                DataSqlConstructor.appendValueName(sb, dataType == DataType.NUMBER_FORM ? ConvertUtil.stringToDouble(new DecimalFormat(form).format(valueObj)) : (Double) valueObj);
+                DataSQLConstructor.appendValueName(sb, dataType == DataType.NUMBER_FORM ? ConvertUtil.stringToDouble(new DecimalFormat(form).format(valueObj)) : (Double) valueObj);
             }
         } else if (type == Long.class || type == long.class) {
             if (valueObj == null) {
-                DataSqlConstructor.appendValueName(sb, (Long) null);
+                DataSQLConstructor.appendValueName(sb, (Long) null);
             } else {
-                DataSqlConstructor.appendValueName(sb, dataType == DataType.NUMBER_FORM ? ConvertUtil.stringToLong(new DecimalFormat(form).format(valueObj)) : (Long) valueObj);
+                DataSQLConstructor.appendValueName(sb, dataType == DataType.NUMBER_FORM ? ConvertUtil.stringToLong(new DecimalFormat(form).format(valueObj)) : (Long) valueObj);
             }
         } else if (type == Float.class || type == float.class) {
             if (valueObj == null) {
-                DataSqlConstructor.appendValueName(sb, (Float) null);
+                DataSQLConstructor.appendValueName(sb, (Float) null);
             } else {
-                DataSqlConstructor.appendValueName(sb, dataType == DataType.NUMBER_FORM ? ConvertUtil.stringToFloat(new DecimalFormat(form).format(valueObj)) : (Float) valueObj);
+                DataSQLConstructor.appendValueName(sb, dataType == DataType.NUMBER_FORM ? ConvertUtil.stringToFloat(new DecimalFormat(form).format(valueObj)) : (Float) valueObj);
             }
         } else if (type == Date.class) {
             if (dataType == DataType.DATE_STRING) {
-                DataSqlConstructor.appendValueName(sb, DateUtil.getStringByFormat((Date) valueObj, form));
+                DataSQLConstructor.appendValueName(sb, DateUtil.getStringByFormat((Date) valueObj, form));
             } else if (dataType == DataType.DATE_LONG) {
-                DataSqlConstructor.appendValueName(sb, valueObj == null ? null : ((Date) valueObj).getTime());
+                DataSQLConstructor.appendValueName(sb, valueObj == null ? null : ((Date) valueObj).getTime());
             } else { // 默认采用年月日时分秒的形式
-                DataSqlConstructor.appendValueName(sb, DateUtil.getStringByFormat((Date) valueObj, DateUtil.dateFormatYMDHMS));
+                DataSQLConstructor.appendValueName(sb, DateUtil.getStringByFormat((Date) valueObj, DateUtil.dateFormatYMDHMS));
             }
         } else if (type == String.class) {
             if (length != -1 && valueObj != null && valueObj.toString().length() > length) {
                 valueObj = valueObj.toString().substring(0, (int) length); // 默认截取最大长度的字符串信息
             }
-            DataSqlConstructor.appendValueName(sb, (String) valueObj);
+            DataSQLConstructor.appendValueName(sb, (String) valueObj);
         } else if (type == byte[].class || type == Byte[].class) {
             throw SqlExceptionUtil.create("byte[] field type can't to sql!", null);
         } else {

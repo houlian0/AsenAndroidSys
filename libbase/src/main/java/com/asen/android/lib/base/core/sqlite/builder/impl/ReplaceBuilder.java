@@ -11,7 +11,7 @@ import com.asen.android.lib.base.core.sqlite.field.DataType;
 import com.asen.android.lib.base.core.sqlite.field.DefaultType;
 import com.asen.android.lib.base.core.sqlite.table.ATable;
 import com.asen.android.lib.base.core.sqlite.table.TableConfig;
-import com.asen.android.lib.base.core.sqlite.utils.DataSqlConstructor;
+import com.asen.android.lib.base.core.sqlite.utils.DataSQLConstructor;
 import com.asen.android.lib.base.core.sqlite.utils.SqlExceptionUtil;
 import com.asen.android.lib.base.tool.util.DateUtil;
 import com.asen.android.lib.base.tool.util.HexUtil;
@@ -160,7 +160,7 @@ class ReplaceBuilder extends BaseSqlBuilder implements IReplaceBuilder {
     @Override
     void refreshAndroidSql() throws SQLException {
         StringBuilder sb = new StringBuilder("INSERT OR REPLACE INTO ");
-        DataSqlConstructor.appendEntityName(sb, mTableName);
+        DataSQLConstructor.appendEntityName(sb, mTableName);
 
         StringBuilder params = null;
         StringBuilder values = null;
@@ -176,7 +176,7 @@ class ReplaceBuilder extends BaseSqlBuilder implements IReplaceBuilder {
             } else {
                 params.append(", ");
             }
-            DataSqlConstructor.appendEntityName(params, key);
+            DataSQLConstructor.appendEntityName(params, key);
             // 拼接所有的值对应的？
             if (values == null) {
                 values = new StringBuilder("?");
@@ -188,7 +188,7 @@ class ReplaceBuilder extends BaseSqlBuilder implements IReplaceBuilder {
         sb.append("(");
         if (params == null) {
             if (mNullColumnHack != null) {
-                DataSqlConstructor.appendEntityName(sb, mNullColumnHack);
+                DataSQLConstructor.appendEntityName(sb, mNullColumnHack);
             }
         } else {
             sb.append(params);
@@ -276,7 +276,7 @@ class ReplaceBuilder extends BaseSqlBuilder implements IReplaceBuilder {
             if (TextUtils.isEmpty(tableName)) {
                 throw SqlExceptionUtil.create("TableName is empty! ", null);
             }
-            DataSqlConstructor.appendEntityName(sb, tableName);
+            DataSQLConstructor.appendEntityName(sb, tableName);
         } else {
             throw SqlExceptionUtil.create("Has no ATable annotation! ", null);
         }
@@ -308,7 +308,7 @@ class ReplaceBuilder extends BaseSqlBuilder implements IReplaceBuilder {
                 } else {
                     keyBuilder.append(",");
                 }
-                DataSqlConstructor.appendEntityName(sb, fieldName);
+                DataSQLConstructor.appendEntityName(sb, fieldName);
 
                 // 值填充
                 if (valueBuilder == null) {

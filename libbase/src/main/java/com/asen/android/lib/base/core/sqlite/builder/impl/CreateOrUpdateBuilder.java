@@ -11,7 +11,7 @@ import com.asen.android.lib.base.core.sqlite.field.DataType;
 import com.asen.android.lib.base.core.sqlite.field.DefaultType;
 import com.asen.android.lib.base.core.sqlite.table.ATable;
 import com.asen.android.lib.base.core.sqlite.table.TableConfig;
-import com.asen.android.lib.base.core.sqlite.utils.DataSqlConstructor;
+import com.asen.android.lib.base.core.sqlite.utils.DataSQLConstructor;
 import com.asen.android.lib.base.core.sqlite.utils.SqlExceptionUtil;
 import com.asen.android.lib.base.tool.util.DateUtil;
 import com.asen.android.lib.base.tool.util.HexUtil;
@@ -361,10 +361,10 @@ class CreateOrUpdateBuilder extends BaseBuilder implements ICreateOrUpdateBuilde
                         // 主键
                         if (whereSb == null) {
                             whereSb = new StringBuilder();
-                            DataSqlConstructor.appendEntityName(whereSb, fieldName);
+                            DataSQLConstructor.appendEntityName(whereSb, fieldName);
                         } else {
                             whereSb.append("and ");
-                            DataSqlConstructor.appendEntityName(whereSb, fieldName);
+                            DataSQLConstructor.appendEntityName(whereSb, fieldName);
                         }
 
                         if (valueObj == null) {

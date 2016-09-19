@@ -10,7 +10,7 @@ import com.asen.android.lib.base.core.sqlite.field.DataType;
 import com.asen.android.lib.base.core.sqlite.field.DefaultType;
 import com.asen.android.lib.base.core.sqlite.table.ATable;
 import com.asen.android.lib.base.core.sqlite.table.TableConfig;
-import com.asen.android.lib.base.core.sqlite.utils.DataSqlConstructor;
+import com.asen.android.lib.base.core.sqlite.utils.DataSQLConstructor;
 import com.asen.android.lib.base.core.sqlite.utils.SqlExceptionUtil;
 import com.asen.android.lib.base.tool.util.DateUtil;
 import com.asen.android.lib.base.tool.util.JsonUtil;
@@ -79,7 +79,7 @@ class DeleteBuilder extends BaseSqlBuilder implements IDeleteBuilder {
     @Override
     void refreshAndroidSql() throws SQLException {
         StringBuilder sb = new StringBuilder("DELETE from ");
-        DataSqlConstructor.appendEntityName(sb, mTableName);
+        DataSQLConstructor.appendEntityName(sb, mTableName);
 
         sb.append("WHERE ").append(mWhereClause);
         Collections.addAll(paramsList, mWhereArgs);
@@ -139,11 +139,11 @@ class DeleteBuilder extends BaseSqlBuilder implements IDeleteBuilder {
                         // 主键
                         if (whereSb == null) {
                             whereSb = new StringBuilder();
-                            DataSqlConstructor.appendEntityName(whereSb, fieldName);
+                            DataSQLConstructor.appendEntityName(whereSb, fieldName);
 //                            whereSb.append(fieldName);
                         } else {
                             whereSb.append("and ");
-                            DataSqlConstructor.appendEntityName(whereSb, fieldName);
+                            DataSQLConstructor.appendEntityName(whereSb, fieldName);
 //                            whereSb.append(fieldName);
                         }
 
@@ -181,7 +181,7 @@ class DeleteBuilder extends BaseSqlBuilder implements IDeleteBuilder {
             if (TextUtils.isEmpty(tableName)) {
                 throw SqlExceptionUtil.create("TableName is empty! ", null);
             }
-            DataSqlConstructor.appendEntityName(sb, tableName);
+            DataSQLConstructor.appendEntityName(sb, tableName);
         } else {
             throw SqlExceptionUtil.create("Has no ATable annotation! ", null);
         }
@@ -224,10 +224,10 @@ class DeleteBuilder extends BaseSqlBuilder implements IDeleteBuilder {
                         // 主键
                         if (whereBuilder == null) {
                             whereBuilder = new StringBuilder();
-                            DataSqlConstructor.appendEntityName(whereBuilder, fieldName);
+                            DataSQLConstructor.appendEntityName(whereBuilder, fieldName);
                         } else {
                             whereBuilder.append("and ");
-                            DataSqlConstructor.appendEntityName(whereBuilder, fieldName);
+                            DataSQLConstructor.appendEntityName(whereBuilder, fieldName);
                         }
                         whereBuilder.append(" = ? ");
                         whereParams.add(valueObj);

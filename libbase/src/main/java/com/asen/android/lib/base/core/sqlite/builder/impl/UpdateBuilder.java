@@ -11,7 +11,7 @@ import com.asen.android.lib.base.core.sqlite.field.DataType;
 import com.asen.android.lib.base.core.sqlite.field.DefaultType;
 import com.asen.android.lib.base.core.sqlite.table.ATable;
 import com.asen.android.lib.base.core.sqlite.table.TableConfig;
-import com.asen.android.lib.base.core.sqlite.utils.DataSqlConstructor;
+import com.asen.android.lib.base.core.sqlite.utils.DataSQLConstructor;
 import com.asen.android.lib.base.core.sqlite.utils.SqlExceptionUtil;
 import com.asen.android.lib.base.tool.util.DateUtil;
 import com.asen.android.lib.base.tool.util.HexUtil;
@@ -98,7 +98,7 @@ class UpdateBuilder extends BaseSqlBuilder implements IUpdateBuilder {
     @Override
     void refreshAndroidSql() throws SQLException {
         StringBuilder sb = new StringBuilder("UPDATE ");
-        DataSqlConstructor.appendEntityName(sb, mTableName);
+        DataSQLConstructor.appendEntityName(sb, mTableName);
 
         sb.append("SET ");
 
@@ -115,7 +115,7 @@ class UpdateBuilder extends BaseSqlBuilder implements IUpdateBuilder {
             } else {
                 params.append(", ");
             }
-            DataSqlConstructor.appendEntityName(params, key);
+            DataSQLConstructor.appendEntityName(params, key);
             params.append(" = ? ");
         }
 
@@ -185,11 +185,11 @@ class UpdateBuilder extends BaseSqlBuilder implements IUpdateBuilder {
                         // 主键
                         if (whereSb == null) {
                             whereSb = new StringBuilder();
-                            DataSqlConstructor.appendEntityName(whereSb, fieldName);
+                            DataSQLConstructor.appendEntityName(whereSb, fieldName);
 //                            whereSb.append(fieldName);
                         } else {
                             whereSb.append("and ");
-                            DataSqlConstructor.appendEntityName(whereSb, fieldName);
+                            DataSQLConstructor.appendEntityName(whereSb, fieldName);
 //                            whereSb.append(fieldName);
                         }
 
@@ -229,7 +229,7 @@ class UpdateBuilder extends BaseSqlBuilder implements IUpdateBuilder {
             if (TextUtils.isEmpty(tableName)) {
                 throw SqlExceptionUtil.create("TableName is empty! ", null);
             }
-            DataSqlConstructor.appendEntityName(sb, tableName);
+            DataSQLConstructor.appendEntityName(sb, tableName);
         } else {
             throw SqlExceptionUtil.create("Has no ATable annotation! ", null);
         }
@@ -275,10 +275,10 @@ class UpdateBuilder extends BaseSqlBuilder implements IUpdateBuilder {
                         // 主键
                         if (whereBuilder == null) {
                             whereBuilder = new StringBuilder();
-                            DataSqlConstructor.appendEntityName(whereBuilder, fieldName);
+                            DataSQLConstructor.appendEntityName(whereBuilder, fieldName);
                         } else {
                             whereBuilder.append("and ");
-                            DataSqlConstructor.appendEntityName(whereBuilder, fieldName);
+                            DataSQLConstructor.appendEntityName(whereBuilder, fieldName);
                         }
                         whereBuilder.append(" = ? ");
                         whereParams.add(valueObj);
@@ -286,10 +286,10 @@ class UpdateBuilder extends BaseSqlBuilder implements IUpdateBuilder {
                         // 非主键
                         if (setBuilder == null) {
                             setBuilder = new StringBuilder();
-                            DataSqlConstructor.appendEntityName(setBuilder, fieldName);
+                            DataSQLConstructor.appendEntityName(setBuilder, fieldName);
                         } else {
                             setBuilder.append(", ");
-                            DataSqlConstructor.appendEntityName(setBuilder, fieldName);
+                            DataSQLConstructor.appendEntityName(setBuilder, fieldName);
                         }
                         setBuilder.append(" = ? ");
                         setParams.add(valueObj);

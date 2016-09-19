@@ -22,7 +22,7 @@ import com.asen.android.lib.base.core.sqlite.dao.ISqliteDao;
 import com.asen.android.lib.base.core.sqlite.field.AField;
 import com.asen.android.lib.base.core.sqlite.field.DataType;
 import com.asen.android.lib.base.core.sqlite.table.TableConfig;
-import com.asen.android.lib.base.core.sqlite.utils.DataSqlConstructor;
+import com.asen.android.lib.base.core.sqlite.utils.DataSQLConstructor;
 import com.asen.android.lib.base.core.sqlite.utils.SqlExceptionUtil;
 import com.asen.android.lib.base.tool.util.ConvertUtil;
 import com.asen.android.lib.base.tool.util.DateUtil;
@@ -433,9 +433,9 @@ public class SqliteDaoImpl implements ISqliteDao {
             StringBuilder sb = new StringBuilder();
             sb.append("SELECT ");
             sb.append(column);
-//            DataSqlConstructor.appendEntityName(sb, column);
+//            DataSQLConstructor.appendEntityName(sb, column);
             sb.append(" FROM ");
-            DataSqlConstructor.appendEntityName(sb, table);
+            DataSQLConstructor.appendEntityName(sb, table);
             sb.append("WHERE ");
 
             int indexOf = -1;

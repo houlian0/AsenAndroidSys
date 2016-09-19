@@ -76,13 +76,13 @@ public class TableUtils {
      */
     private static void clearTable(SQLiteDatabase db, String tableName, boolean isDelete) throws SQLException {
         StringBuilder sb = new StringBuilder("DELETE FROM "); // SQLITE 不支持 "TRUNCATE TABLE "
-        DataSqlConstructor.appendEntityName(sb, tableName); // 拼接表名
+        DataSQLConstructor.appendEntityName(sb, tableName); // 拼接表名
         execSQL(db, sb.toString());
 
         if (!isDelete) {
             // 需要重置自增长
             sb = new StringBuilder("DELETE from SQLITE_SEQUENCE WHERE NAME = ");
-            DataSqlConstructor.appendValueName(sb, tableName);
+            DataSQLConstructor.appendValueName(sb, tableName);
             execSQL(db, sb.toString());
         }
     }
@@ -96,7 +96,7 @@ public class TableUtils {
      */
     public static void dropTable(SQLiteDatabase db, String tableName) throws SQLException {
         StringBuilder sb = new StringBuilder("DROP TABLE ");
-        DataSqlConstructor.appendEntityName(sb, tableName); // 拼接表名
+        DataSQLConstructor.appendEntityName(sb, tableName); // 拼接表名
         execSQL(db, sb.toString());
     }
 
@@ -113,7 +113,7 @@ public class TableUtils {
         if (isIfNotExists) {
             sb.append("IF NOT EXISTS ");
         }
-        DataSqlConstructor.appendEntityName(sb, tableInfo.getTableName()); // 拼接表名
+        DataSQLConstructor.appendEntityName(sb, tableInfo.getTableName()); // 拼接表名
 
         List<FieldInfo> idFieldList = tableInfo.getIdFieldList();
         int idSize = idFieldList.size();
@@ -126,7 +126,7 @@ public class TableUtils {
         for (int i = 0; i < fieldList.size(); i++) {
             FieldInfo info = fieldList.get(i);
             sb.append("\n\t");
-            DataSqlConstructor.appendFieldInfo(sb, info, isOnlyOnId);
+            DataSQLConstructor.appendFieldInfo(sb, info, isOnlyOnId);
             if (i != fieldList.size() - 1 || !isOnlyOnId) {
                 // 不是最后一条记录，或者不是只有一个唯一的id
                 sb.append(", ");
@@ -138,13 +138,13 @@ public class TableUtils {
                 FieldInfo info = idFieldList.get(i);
                 if (i == 0) {
                     sb.append("\n\tCONSTRAINT ");
-                    DataSqlConstructor.appendEntityName(sb, info.getFieldName()); // 拼接表名
-                    DataSqlConstructor.appendPrimaryKey(sb);
+                    DataSQLConstructor.appendEntityName(sb, info.getFieldName()); // 拼接表名
+                    DataSQLConstructor.appendPrimaryKey(sb);
                     sb.append("(");
-                    DataSqlConstructor.appendEntityName(sb, info.getFieldName()); // 拼接表名
+                    DataSQLConstructor.appendEntityName(sb, info.getFieldName()); // 拼接表名
                 } else {
                     sb.append(",");
-                    DataSqlConstructor.appendEntityName(sb, info.getFieldName()); // 拼接表名
+                    DataSQLConstructor.appendEntityName(sb, info.getFieldName()); // 拼接表名
                 }
             }
             sb.append(") ");
