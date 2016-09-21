@@ -38,7 +38,7 @@ public abstract class BaseApplication extends Application {
             }
         });
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {//>=5.0的系统默认对dex进行oat优化
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) { //>=5.0的系统默认对dex进行oat优化
             MultiDex.install(this);
         }
     }
