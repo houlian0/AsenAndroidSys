@@ -17,7 +17,7 @@ LibBase介绍
     * 无限极树结构(支持小数据量)<br>
     * 一些工具类的整合<br>
     * 几个常用的简单自定义View<br>
-    * 快速操作sqlite数据库，优点：支持多主键、支持不含空构造函数、更好的支持sql语句的操作等等<br>
+    * 快速操作sqlite数据库，优点：支持多主键、支持blob字段、支持createOrUpdate、支持原始sql语句、支持对数据库操作的builder转json串和json串转builder 等等<br>
     
 ## GPS定位
 
