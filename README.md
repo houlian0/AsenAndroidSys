@@ -6,6 +6,9 @@
 
 LibBase介绍
 ======
+示例程序:<br>
+    https://github.com/houlian0/AsenAndroidDemo.git
+
 功能点:<br>
     * GPS定位(Android原生定位,支持扩展定位)<br>
     * 网络部分(含断点下载)--已修复保存路径含中文时失败的BUG<br>
@@ -14,6 +17,7 @@ LibBase介绍
     * 无限极树结构(支持小数据量)<br>
     * 一些工具类的整合<br>
     * 几个常用的简单自定义View<br>
+    * 快速操作sqlite数据库，优点：支持多主键、支持不含空构造函数、更好的支持sql语句的操作等等<br>
     
 ## GPS定位
 
@@ -170,3 +174,42 @@ Fragment中或者其他需要在View中查找控件的,可用如下方法
      书架式GridView: BookcaseGridView
      垂直进度条: VerticalProgressBar
      可嵌套入ScrollView的 GridViewForScroll 和 ListViewForScroll
+     
+## 快速操作sqlite数据库
+     
+     @ATable(tableName = "T_PERSON") // 设置表名，具体详见“示例程序”
+     public class PersonInfo {
+     
+         @AField(fieldName = "ID", id = true, canBeNull = false, defaultType = DefaultType.SYS_UUID)
+         private String id; // 唯一编码
+     
+         @AField(fieldName = "SECOND_ID", id = true, canBeNull = false)
+         private String secondId; // 第二个主键（测试双主键）
+     
+         @AField(fieldName = "NAME", length = 20)
+         private String name; // 姓名，支持设置字段长度上限，超过上限的字段内容会被砍掉
+     
+         @AField(fieldName = "AGE", defaultValue = "1")
+         private int age; // 年龄，支持设置默认值
+     
+         @AField(fieldName = "HEIGHT", dataType = DataType.NUMBER_FORM, form = "0.00")
+         private double height; // 身高，支持格式化之后保存数据库
+     
+         @AField(fieldName = "REGISTER_DATE", dataType = DataType.DATE_STRING, form = DateUtil.dateFormatYMDHMS, defaultType = DefaultType.SYS_DATE)
+         private Date registerDate; // 注册时间
+     
+         @AField(fieldName = "PICTURES", dataType = DataType.DEFAULT)
+         private byte[] pictures; // 头像图片的字节数据（测试存入blob字段）
+     
+         public PersonInfo(String id, String secondId, String name, int age, double height, Date registerDate, byte[] pictures) {
+             this.id = id;
+             this.secondId = secondId;
+             this.name = name;
+             this.age = age;
+             this.height = height;
+             this.registerDate = registerDate;
+             this.pictures = pictures;
+         }
+         ....
+     }
+     
