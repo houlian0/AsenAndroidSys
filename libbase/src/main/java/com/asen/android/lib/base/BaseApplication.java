@@ -3,6 +3,8 @@ package com.asen.android.lib.base;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.os.Build;
+import android.support.multidex.MultiDex;
 
 import com.asen.android.lib.base.tool.singleton.CrashHandler;
 
@@ -35,6 +37,10 @@ public abstract class BaseApplication extends Application {
                 return abnormalExit();
             }
         });
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {//>=5.0的系统默认对dex进行oat优化
+            MultiDex.install(this);
+        }
     }
 
     /**
